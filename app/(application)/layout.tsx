@@ -1,6 +1,6 @@
 import React from 'react';
-import ApplicationHeader from '@/lib/components/header';
-import ApplicationFooter from '@/lib/components/footer';
+import ApplicationHeader from '@/lib/components/common/header';
+import ApplicationFooter from '@/lib/components/common/footer';
 
 // Generate dynamic metadata
 export async function generateMetadata() {
