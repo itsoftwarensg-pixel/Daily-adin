@@ -20,7 +20,9 @@ export default function AppLayout({ children }: Props) {
     return (
         <div>
             <ApplicationHeader />
-            {children}
+            <main className='py-4'>
+                {children}
+            </main>
             <ApplicationFooter />
         </div>
     )
