@@ -6,7 +6,7 @@ import Container from "../../common/container";
 export default function ApplicationHeader() {
   return (
     <Container>
-      <div className="w-full h-full flex flex-col items-start gap-[30px] py-[30px]">
+      <div className="w-full h-full flex flex-col items-start gap-[30px] pt-[30px]">
         <TopBar />
         <Navbar />
       </div>
