@@ -3,6 +3,7 @@ import HomeLead from "@/lib/features/home-page/lead";
 import HomeLeadBelow from "@/lib/features/home-page/lead-below";
 import HomeSports from "@/lib/features/home-page/sports";
 import HomeCountry from "@/lib/features/home-page/country";
+import HomeInternational from "@/lib/features/home-page/international";
 
 const HomePage = () => {
     return (
@@ -11,6 +12,7 @@ const HomePage = () => {
             <HomeLeadBelow />
             <HomeSports />
             <HomeCountry />
+            <HomeInternational />
         </>
     );
 };
