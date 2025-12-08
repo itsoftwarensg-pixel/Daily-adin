@@ -47,8 +47,8 @@ const ImageWithFallback = ({
     <Image
       src={imageSrc}
       alt={alt || "image"}
-      width={width}
-      height={height}
+      width={fill ? undefined : width}
+      height={fill ? undefined : height}
       fill={fill}
       className={className}
       onError={handleError}

@@ -27,7 +27,7 @@ export default function ApplicationFooter() {
   return (
     <footer className="w-full">
       {/* Upper Section */}
-      <div className="w-full pt-[45px] pb-[90px] bg-[#F5F5F5]">
+      <div className="w-full pt-[45px] pb-[90px] bg-gray-2">
         <div className="max-w-[1200px] mx-auto flex justify-between items-start">
           {/* Left Sections */}
           <div className="flex gap-[76px]">
@@ -94,7 +94,7 @@ export default function ApplicationFooter() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="w-full py-[76px] bg-[#ECECEC] text-center">
+      <div className="w-full py-[76px] bg-gray-3 text-center">
         <p className="text-[20px] font-normal text-textGray">
           © স্বত্ব ২০২৫ দৈনিক এদিন | ভারপ্রাপ্ত সম্পাদক: মো. সাইদুল ইসলাম সাজু
         </p>
