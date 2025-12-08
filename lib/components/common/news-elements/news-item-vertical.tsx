@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { NewsItemType } from "@/lib/data"; // Temporary
-import { ImageWithFallback } from "../../image";
+import { ImageWithFallback } from "@/lib/components/image";
 
 // Props
 interface Props {
@@ -53,7 +53,7 @@ const NewsItemVertical = ({ newsItem, titleSize = "base", bgColor }: Props) => {
           <div className="">
             <h4
               className={`px-2 py-3 ${
-                titleSize === "large" ? "text-lg" : "text-md"
+                titleSize === "large" ? "text-xl" : "text-md"
               } group-hover:text-blue-700 font-semibol`}
             >
               {newsItem.brief}
