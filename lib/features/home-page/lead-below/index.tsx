@@ -2,7 +2,7 @@ import React from "react";
 import Container from "@/lib/components/common/container";
 import GradientHeader from "@/lib/components/common/section-headers/gradient";
 import NewsItemVertical from "@/lib/components/common/news-elements/news-item-vertical";
-import { newsJson } from "@/lib/data";
+import { newsJson } from "@/lib/data"; // Temporary
 import BottomMoreButton from "@/lib/components/common/section-headers/bottom-more";
 import LatestPopularNews from "@/lib/components/common/news-elements/latest-popular";
 
@@ -20,8 +20,6 @@ const HomeLeadBelow = () => {
                                     <GradientHeader
                                         title="জাতীয় সংবাদ"
                                         color="red"
-                                        href="/"
-                                        showReadMoreBtn={true}
                                     />
                                 </div>
 
@@ -62,8 +60,6 @@ const HomeLeadBelow = () => {
                                 <GradientHeader
                                     title="রাজনীতি"
                                     color="purple"
-                                    href="/"
-                                    showReadMoreBtn={true}
                                 />
                                 {/* News contents */}
                                 <div className="space-y-2">
