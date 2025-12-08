@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { ImageWithFallback } from "../../image";
 import { NewsItemType, newsJson } from "@/lib/data"; // Temporary
 
 // Props
@@ -19,7 +19,7 @@ const LeadNewsItem = () => {
         >
           <div className="w-full bg-white">
             <div className="w-full">
-              <Image
+              <ImageWithFallback
                 src={`${newsItem.image}`}
                 height={600}
                 width={900}

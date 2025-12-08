@@ -1,7 +1,7 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { CiPlay1 } from "react-icons/ci";
+import { ImageWithFallback } from "../../image";
 import { FaArrowRightLong } from "react-icons/fa6";
 import HtmlContent from "@/lib/components/common/html-content";
 import CelebrityImage from "@/public/images/celebrityImage.png";
@@ -27,7 +27,7 @@ const LeadNewsItemVideoCelebrity = ({
       >
         <div className="w-full grid grid-cols-2 gap-2 relative">
           <div className="w-full">
-            <Image
+            <ImageWithFallback
               src={`${CelebrityImage.src}`}
               height={600}
               width={900}
@@ -41,7 +41,7 @@ const LeadNewsItemVideoCelebrity = ({
           </div>
 
           <div className="absolute right-2 bottom-9 p-4 bg-white">
-            <blockquote>"{quote}"</blockquote>
+            <blockquote>&quot;{quote}&quot;</blockquote>
             <small>{quoteFrom}</small>
           </div>
 

@@ -49,13 +49,13 @@ const TopBar = () => {
             <div className="w-[5px] h-[40px] bg-black" />
             <div className="bg-primaryRed text-white px-3 py-2">শিরোনাম :</div>
             <div className="bg-gray-1 px-5 py-2 flex items-center gap-6 justify-end">
-              <div className="flex items-center gap-5">
+              <div className="flex items-center gap-2">
                 <div className="bg-primaryRed w-2.5 h-2.5 rounded-full" />
                 <p>
                   আইনশৃঙ্খলা পরিস্থিতির অবনতির শঙ্কা নেই: স্বরাষ্ট্র উপদেষ্টা
                 </p>
               </div>
-              <div className="flex items-center gap-5">
+              <div className="flex items-center gap-2">
                 <div className="bg-primaryRed w-2.5 h-2.5 rounded-full" />
                 <p>
                   নির্বাচনে ইসিকে সর্বাত্মক সহযোগিতা করবে সেনাবাহিনী: সেনাপ্রধান
