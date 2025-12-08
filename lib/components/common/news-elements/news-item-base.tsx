@@ -1,38 +1,40 @@
 import React from "react";
-import { NewsItemType, newsJson } from "@/lib/data"; // Temporary
 import Image from "next/image";
 import Link from "next/link";
+import { NewsItemType } from "@/lib/data"; // Temporary
 
 // Props
 interface Props {
-    newsContent: NewsItemType | {};
+    newsItem: NewsItemType;
+    bgColor?:
+    | "slate" | "gray" | "zinc" | "neutral" | "stone"
+    | "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "emerald"
+    | "teal" | "cyan" | "sky" | "blue" | "indigo" | "violet" | "purple"
+    | "fuchsia" | "pink" | "rose";
 }
 
-const NewsItemBase = () => {
-    const newsItem = newsJson[0];
+const NewsItemBase = ({ newsItem, bgColor }: Props) => {
     return (
         <>
-            {newsJson.slice(4, 8).map((newsItem, index) => (
-                <Link
-                    key={index}
-                    href={'/'}
-                    className="block group"
-                >
-                    <div className="w-full grid grid-cols-5 items-center justify-center bg-white gap-2">
-                        <div className="col-span-2">
-                            <Image
-                                src={`${newsItem.image}`}
-                                height={300}
-                                width={400}
-                                alt={`${newsItem.title}`}
-                            />
-                        </div>
-                        <div className="col-span-3">
-                            <h4 className="p-2 group-hover:text-blue-700">{newsItem.brief}</h4>
-                        </div>
+            <Link
+                href={'/'}
+                className="block group overflow-hidden"
+            >
+                <div className={`w-full grid grid-cols-5 items-center justify-center ${bgColor ? `bg-${bgColor}-100` : `bg-transparent`} gap-2 overflow-hidden`}>
+                    <div className="col-span-2 aspect-[16/10]">
+                        <Image
+                            src={`${newsItem.image}`}
+                            height={300}
+                            width={400}
+                            alt={`${newsItem.title}`}
+                            className="w-full object-cover h-full"
+                        />
                     </div>
-                </Link>
-            ))}
+                    <div className="col-span-3">
+                        <h4 className="p-2 group-hover:text-blue-700">{newsItem.brief}</h4>
+                    </div>
+                </div>
+            </Link>
         </>
     );
 };

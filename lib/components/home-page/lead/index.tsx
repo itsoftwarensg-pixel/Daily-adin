@@ -4,6 +4,7 @@ import Container from "@/lib/components/common/container";
 import HomeLeadSidebar from "@/lib/components/home-page/lead/aside";
 import LeadNewsItem from "@/lib/components/common/news-elements/lead-news-item";
 import NewsItemBase from "@/lib/components/common/news-elements/news-item-base";
+import { newsJson } from "@/lib/data";
 
 const HomeLead = () => {
     return (
@@ -12,7 +13,9 @@ const HomeLead = () => {
                 <div className="grid grid-cols-4 gap-4">
                     {/* Lead news - Left side */}
                     <div className="space-y-2">
-                        <NewsItemBase />
+                        {newsJson.slice(4, 8).map((newsItem, index) => (
+                            <NewsItemBase key={index} newsItem={newsItem} />
+                        ))}
                         <Advertisement height={'90'} width={'360'} />
                     </div>
 
