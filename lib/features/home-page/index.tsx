@@ -4,6 +4,7 @@ import HomeLeadBelow from "@/lib/features/home-page/lead-below";
 import HomeSports from "@/lib/features/home-page/sports";
 import HomeCountry from "@/lib/features/home-page/country";
 import HomeInternational from "@/lib/features/home-page/international";
+import HomeCommercePantholokChoose from "@/lib/features/home-page/commerce";
 
 const HomePage = () => {
     return (
@@ -13,6 +14,7 @@ const HomePage = () => {
             <HomeSports />
             <HomeCountry />
             <HomeInternational />
+            <HomeCommercePantholokChoose />
         </>
     );
 };
