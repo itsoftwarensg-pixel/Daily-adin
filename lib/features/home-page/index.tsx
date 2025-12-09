@@ -6,6 +6,7 @@ import HomeCountry from "@/lib/features/home-page/country";
 import HomeLaceTap from "@/lib/features/home-page/lace-tap";
 import HomeLeadBelow from "@/lib/features/home-page/lead-below";
 import HomeInternational from "@/lib/features/home-page/international";
+import HomeClickedMemories from "@/lib/features/home-page/clicked-memories";
 import HomeCommercePantholokChoose from "@/lib/features/home-page/commerce";
 
 const HomePage = () => {
@@ -18,6 +19,7 @@ const HomePage = () => {
       <HomeMedia />
       <HomeLaceTap />
       <HomeInternational />
+      <HomeClickedMemories />
       <HomeCommercePantholokChoose />
     </>
   );

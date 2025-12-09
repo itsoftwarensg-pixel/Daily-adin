@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import {
   globe,
@@ -14,46 +14,26 @@ import { ImageWithFallback } from "@/lib/components/image";
 
 const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // toggle drop down
-  const toggleDropdown = (text: string) => {
-    setOpenDropdown(openDropdown === text ? null : text);
-  };
-
-  // Close dropdown if user clicks outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target as Node)
-      ) {
-        setOpenDropdown(null);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   return (
     <div className="w-full flex items-center justify-between gap-5">
       <div className="w-full h-full flex items-stretch bg-gray-4">
-        <div ref={containerRef} className="flex items-center gap-4 px-3 py-2">
+        <div className="flex items-center gap-4 px-3 py-2">
           {navItems.map((item) => (
-            <div key={item.text} className="relative flex flex-col">
-              <div
-                className="flex items-center gap-[10px] cursor-pointer text-[16px]"
-                onClick={() => item.children && toggleDropdown(item.text)}
-              >
+            <div
+              key={item.text}
+              className="relative flex flex-col"
+              onMouseEnter={() => item.children && setOpenDropdown(item.text)}
+              onMouseLeave={() => item.children && setOpenDropdown(null)}
+            >
+              <div className="flex items-center gap-[10px] cursor-pointer text-[16px]">
                 <Link
                   href={item.href ?? "#"}
                   className="flex items-center gap-[10px]"
                   onClick={(e) => item.children && e.preventDefault()}
                 >
                   <p>{item.text}</p>
+
                   {item.children && (
                     <ImageWithFallback
                       src={openDropdown === item.text ? arrowUp : arrowDown}
@@ -65,9 +45,9 @@ const Navbar = () => {
                 </Link>
               </div>
 
-              {/* Dropdown items */}
+              {/* Dropdown */}
               {item.children && openDropdown === item.text && (
-                <div className="absolute w-fit shrink-0 z-50 flex flex-col top-full left-0 mt-1 bg-[#F4F4F4] shadow-md rounded-md">
+                <div className="absolute w-fit shrink-0 z-50 flex flex-col top-[90%] left-0 mt-1 bg-[#F4F4F4] shadow-md rounded-md">
                   {item.children.map((child) => (
                     <Link
                       key={child.text}
@@ -83,6 +63,7 @@ const Navbar = () => {
             </div>
           ))}
         </div>
+
         <div className="px-3 py-2 border-l border-gray-5 ml-auto">
           <ImageWithFallback
             src={hamburger}
