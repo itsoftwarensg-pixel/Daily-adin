@@ -7,6 +7,7 @@ const config: Config = {
     extend: {
       colors: {
         textGray: "#5F5F5F",
+        textLightGray: "#7D7D7D",
         primaryRed: "#FF0C0C",
         gray: {
           1: "#F8F6F6",

@@ -2,20 +2,31 @@ import React from "react";
 
 // Props
 interface Props {
-    height: string;
-    width: string;
-    className?: string;
+  label?: string;
+  height: string | number;
+  width?: string | number;
+  className?: string;
 }
 
-const Advertisement = ({ height, width, className }: Props) => {
-    return (
-        <div
-            style={{ maxWidth: `${width}px`, height: `${height}px` }}
-            className={`bg-gray-200 rounded flex items-center justify-center ${className}`}
-        >
-            Advertisement
-        </div>
-    );
+const Advertisement = ({
+  label = "Advertisement",
+  height,
+  width,
+  className,
+}: Props) => {
+  return (
+    <div
+      style={{
+        width: width
+          ? `${width}${typeof width === "number" ? "px" : ""}`
+          : "100%",
+        height: `${height}${typeof height === "number" ? "px" : ""}`,
+      }}
+      className={`bg-gray-200 rounded flex items-center justify-center ${className}`}
+    >
+      {label}
+    </div>
+  );
 };
 
 export default Advertisement;

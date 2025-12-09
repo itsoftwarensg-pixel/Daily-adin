@@ -78,3 +78,35 @@ export const getQueryParam = (
 
   return String(fallback);
 };
+
+/**
+ * Returns an object with a random snippet of the text highlighted.
+ * @param text - The full string to highlight a part of
+ * @param maxWords - Maximum number of words to highlight (default: 3)
+ * @returns An object { before, highlight, after } or null if text is too short
+ */
+export const getRandomHighlightedText = (text: string, maxWords = 3) => {
+  // Split the text into individual words
+  const words = text.split(" ");
+
+  // If there are too few words, no highlight is possible
+  if (words.length <= 2) return null;
+
+  // Pick a random starting index for the snippet
+  const startIdx = Math.floor(Math.random() * (words.length - 2));
+
+  // Determine the length of the snippet (min of maxWords or remaining words)
+  const snippetLength = Math.min(maxWords, words.length - startIdx);
+
+  // Extract the snippet to highlight
+  const highlight = words.slice(startIdx, startIdx + snippetLength).join(" ");
+
+  // Get the text before the highlighted snippet
+  const before = words.slice(0, startIdx).join(" ");
+
+  // Get the text after the highlighted snippet
+  const after = words.slice(startIdx + snippetLength).join(" ");
+
+  // Return the structured object
+  return { before, highlight, after };
+};
