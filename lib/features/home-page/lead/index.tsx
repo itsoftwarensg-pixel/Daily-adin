@@ -7,32 +7,32 @@ import { newsJson } from "@/lib/data";
 import HomeLeadSidebar from "@/lib/features/home-page/lead/aside";
 
 const HomeLead = () => {
-    return (
-        <div className="py-8">
-            <Container>
-                <div className="grid grid-cols-4 gap-4">
-                    {/* Lead news - Left side */}
-                    <div className="space-y-2">
-                        {newsJson.slice(4, 8).map((newsItem, index) => (
-                            <NewsItemBase key={index} newsItem={newsItem} />
-                        ))}
-                        <Advertisement height={'90'} width={'360'} />
-                    </div>
+  return (
+    <div className="py-8">
+      <Container>
+        <div className="grid grid-cols-4 gap-4">
+          {/* Lead news - Left side */}
+          <div className="space-y-2">
+            {newsJson.slice(4, 8).map((newsItem, index) => (
+              <NewsItemBase key={index} newsItem={newsItem} />
+            ))}
+            <Advertisement height={"90"} width={"350"} />
+          </div>
 
-                    {/* Lead news - Center */}
-                    <div className="col-span-2">
-                        <LeadNewsItem />
-                        <Advertisement width={'728'} height={'90'} className="mx-auto" />
-                    </div>
+          {/* Lead news - Center */}
+          <div className="col-span-2">
+            <LeadNewsItem />
+            <Advertisement width={"680"} height={"90"} className="mx-auto" />
+          </div>
 
-                    {/* Sidebar - Rigt side */}
-                    <div className="">
-                        <HomeLeadSidebar />
-                    </div>
-                </div>
-            </Container>
+          {/* Sidebar - Rigt side */}
+          <div className="">
+            <HomeLeadSidebar />
+          </div>
         </div>
-    );
+      </Container>
+    </div>
+  );
 };
 
 export default HomeLead;
