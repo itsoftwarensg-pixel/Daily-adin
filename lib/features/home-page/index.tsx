@@ -1,22 +1,24 @@
 import React from "react";
 import HomeLead from "@/lib/features/home-page/lead";
-import HomeLeadBelow from "@/lib/features/home-page/lead-below";
+import HomeMedia from "@/lib/features/home-page/media";
 import HomeSports from "@/lib/features/home-page/sports";
 import HomeCountry from "@/lib/features/home-page/country";
+import HomeLeadBelow from "@/lib/features/home-page/lead-below";
 import HomeInternational from "@/lib/features/home-page/international";
 import HomeCommercePantholokChoose from "@/lib/features/home-page/commerce";
 
 const HomePage = () => {
-    return (
-        <>
-            <HomeLead />
-            <HomeLeadBelow />
-            <HomeSports />
-            <HomeCountry />
-            <HomeInternational />
-            <HomeCommercePantholokChoose />
-        </>
-    );
+  return (
+    <>
+      <HomeLead />
+      <HomeLeadBelow />
+      <HomeSports />
+      <HomeCountry />
+      <HomeMedia />
+      <HomeInternational />
+      <HomeCommercePantholokChoose />
+    </>
+  );
 };
 
 export default HomePage;
