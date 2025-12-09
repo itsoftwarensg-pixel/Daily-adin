@@ -7,7 +7,7 @@ interface Props {
   href?: string;
 }
 
-const NewsMediaLargeCard = ({ image, title, href = "/" }: Props) => {
+const MediaNewsBanner = ({ image, title, href = "/" }: Props) => {
   return (
     <Link href={href} className="relative group block overflow-hidden">
       <div className="aspect-[16/10] w-full">
@@ -27,4 +27,4 @@ const NewsMediaLargeCard = ({ image, title, href = "/" }: Props) => {
   );
 };
 
-export default NewsMediaLargeCard;
+export default MediaNewsBanner;

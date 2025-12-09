@@ -2,16 +2,16 @@ import React from "react";
 import { newsJson } from "@/lib/data";
 import Container from "@/lib/components/common/container";
 import GradientHeader from "@/lib/components/common/section-headers/gradient";
-import MediaLargeCard from "@/lib/components/common/news-elements/news-media-large";
-import NewsMediaSmallCard from "@/lib/components/common/news-elements/news-media-small";
+import MediaNewsItem from "@/lib/components/common/news-elements/media-news-item";
+import MediaNewsBanner from "@/lib/components/common/news-elements/media-news-banner";
 
 const HomeMedia = () => {
   return (
-    <div className="py-8 bg-blue-50">
+    <div className="py-8 bg-red-500 bg-opacity-5">
       <Container>
         <GradientHeader
           title="চিত্রলোক"
-          color="blue"
+          color="red"
           href="/"
           showReadMoreBtn={true}
         />
@@ -20,7 +20,7 @@ const HomeMedia = () => {
           {/* Left */}
           <div className="col-span-6 space-y-5">
             {newsJson.slice(13, 16).map((newsItem, index) => (
-              <NewsMediaSmallCard
+              <MediaNewsItem
                 key={index}
                 image={newsItem.image}
                 title={newsItem.title}
@@ -32,7 +32,7 @@ const HomeMedia = () => {
           {/* Right */}
           <div className="col-span-6 space-y-5">
             {newsJson.slice(9, 10).map((newsItem, index) => (
-              <MediaLargeCard
+              <MediaNewsBanner
                 key={index}
                 image={newsItem.image}
                 title={newsItem.title}

@@ -6,6 +6,7 @@ import youtube from "@/public/icons/youtube.svg";
 import arrowUp from "@/public/icons/arrow-up.svg";
 import facebook from "@/public/icons/facebook.svg";
 import hamburger from "@/public/icons/hamburger.svg";
+import playVideo from "@/public/icons/play-video.svg";
 import arrowDown from "@/public/icons/arrow-down.svg";
 
 export {
@@ -17,5 +18,6 @@ export {
   arrowUp,
   facebook,
   hamburger,
+  playVideo,
   arrowDown,
 };

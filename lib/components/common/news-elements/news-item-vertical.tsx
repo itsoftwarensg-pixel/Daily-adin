@@ -1,11 +1,14 @@
 import React from "react";
 import Link from "next/link";
+import { playVideo } from "../../icons";
 import { NewsItemType } from "@/lib/data"; // Temporary
 import { ImageWithFallback } from "@/lib/components/image";
 
 // Props
 interface Props {
   newsItem: NewsItemType;
+  showVideoLink?: boolean;
+  largeVideoIcon?: boolean;
   titleSize?: "base" | "large";
   bgColor?:
     | "slate"
@@ -32,10 +35,37 @@ interface Props {
     | "rose";
 }
 
-const NewsItemVertical = ({ newsItem, titleSize = "base", bgColor }: Props) => {
+const NewsItemVertical = ({
+  newsItem,
+  showVideoLink = false,
+  largeVideoIcon = false,
+  titleSize = "base",
+  bgColor,
+}: Props) => {
+  const getHighlightedText = () => {
+    const text = newsItem.brief;
+    if (!showVideoLink) return text;
+
+    const words = text.split(" ");
+    if (words.length <= 2) return text; // too short to highlight
+
+    // Pick a random start index for the snippet
+    const startIdx = Math.floor(Math.random() * (words.length - 2));
+    const snippetLength = Math.min(3, words.length - startIdx); // 2-3 words
+    const snippet = words.slice(startIdx, startIdx + snippetLength).join(" ");
+
+    // Split text into three parts: before, highlight, after
+    const before = words.slice(0, startIdx).join(" ");
+    const after = words.slice(startIdx + snippetLength).join(" ");
+
+    return { before, highlight: snippet, after };
+  };
+
+  const highlighted = getHighlightedText();
+
   return (
     <>
-      <Link href={"/"} className="block group h-full">
+      <Link href={"/"} className="relative block group h-full">
         <div
           className={`w-full h-full ${
             bgColor ? `bg-${bgColor}-100` : `bg-transparent`
@@ -54,12 +84,41 @@ const NewsItemVertical = ({ newsItem, titleSize = "base", bgColor }: Props) => {
             <h4
               className={`px-2 py-3 ${
                 titleSize === "large" ? "text-xl" : "text-md"
-              } group-hover:text-blue-700 font-semibol`}
+              } group-hover:text-blue-700 font-normal`}
             >
-              {newsItem.brief}
+              {showVideoLink && typeof highlighted === "object" ? (
+                <>
+                  {highlighted.before && <span>{highlighted.before} </span>}
+                  <span className="text-red-500">{highlighted.highlight}</span>
+                  {highlighted.after && <span> {highlighted.after}</span>}
+                </>
+              ) : (
+                newsItem.brief
+              )}
             </h4>
           </div>
         </div>
+
+        {showVideoLink && (
+          <Link
+            href="#"
+            className="absolute gap-3 flex items-center gap top-0 left-0 bg-red-600 text-white text-xs px-2 py-1"
+          >
+            <ImageWithFallback
+              src={playVideo}
+              width={largeVideoIcon ? 24 : 15}
+              height={largeVideoIcon ? 24 : 15}
+              alt="play-video"
+            />
+            <p
+              className={`${
+                largeVideoIcon ? "text-md" : "text-[10px]"
+              } text-white font-normal`}
+            >
+              ভিডিও দেখুন
+            </p>
+          </Link>
+        )}
       </Link>
     </>
   );

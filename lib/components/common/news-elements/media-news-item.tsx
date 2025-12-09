@@ -8,7 +8,7 @@ interface PropsType {
   href?: string;
 }
 
-const NewsMediaSmallCard = ({
+const MediaNewsItem = ({
   image,
   title,
   description,
@@ -36,4 +36,4 @@ const NewsMediaSmallCard = ({
   );
 };
 
-export default NewsMediaSmallCard;
+export default MediaNewsItem;
