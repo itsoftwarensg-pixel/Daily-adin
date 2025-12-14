@@ -8,6 +8,7 @@ import facebook from "@/public/icons/facebook.svg";
 import hamburger from "@/public/icons/hamburger.svg";
 import playVideo from "@/public/icons/play-video.svg";
 import arrowDown from "@/public/icons/arrow-down.svg";
+import whiteArrowDown from "@/public/icons/white-arrow-down.svg";
 
 export {
   x,
@@ -20,4 +21,5 @@ export {
   hamburger,
   playVideo,
   arrowDown,
+  whiteArrowDown,
 };

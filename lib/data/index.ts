@@ -21,94 +21,120 @@ export interface NewsItemType {
   category: string;
 }
 
-interface NavItem {
+export type NavItem = {
   text: string;
-  href?: string;
+  href: string;
   children?: NavItem[];
-}
+};
 
 export const navItems: NavItem[] = [
-  {
-    text: "সর্বশেষ",
-    href: "#latest",
-    children: [
-      { text: "জাতীয়", href: "#national" },
-      { text: "আন্তর্জাতিক", href: "#international" },
-      { text: "প্রাদেশিক", href: "#regional" },
-    ],
-  },
-  {
-    text: "বাংলাদেশ",
-    href: "#bd",
-    children: [
-      { text: "রাজধানী", href: "#capital" },
-      { text: "পরিবেশ", href: "#environment" },
-      { text: "ক্যাম্পাস", href: "#campus" },
-    ],
-  },
-  {
-    text: "রাজনীতি",
-    href: "#politics",
-    children: [
-      { text: "জাতীয় সরকার", href: "#national-gov" },
-      { text: "আঞ্চলিক রাজনীতি", href: "#regional-politics" },
-      { text: "নির্বাচন", href: "#elections" },
-    ],
-  },
+  { text: "সর্বশেষ", href: "#latest" },
+  { text: "জাতীয়", href: "#national" },
+  { text: "রাজনীতি", href: "#politics" },
   {
     text: "বিশ্ব",
-    href: "#internation",
+    href: "#international",
     children: [
-      { text: "আন্তর্জাতিক সম্পর্ক", href: "#international-relations" },
-      { text: "সংঘাত ও যুদ্ধ", href: "#conflict" },
-      { text: "অর্থনীতি", href: "#global-economy" },
+      { text: "ভারত", href: "#india" },
+      { text: "পাকিস্তান", href: "#pakistan" },
+      { text: "চীন", href: "#china" },
+      { text: "মধ্যপ্রাচ্য", href: "#middle-east" },
+      { text: "এশিয়া", href: "#asia" },
+      { text: "যুক্তরাষ্ট্র", href: "#usa" },
+      { text: "লাতিন আমেরিকা", href: "#latin-america" },
+      { text: "ইউরোপ", href: "#europe" },
+      { text: "আফ্রিকা", href: "#africa" },
+      { text: "অস্ট্রেলিয়া", href: "#australia" },
     ],
   },
   {
-    text: "বাণিজ্য",
-    href: "#business",
+    text: "প্রান্তলোক",
+    href: "#marginalized",
     children: [
-      { text: "শেয়ার বাজার", href: "#stock-market" },
-      { text: "বাণিজ্যিক আইন", href: "#trade-law" },
-      { text: "উদ্যোক্তা", href: "#entrepreneurs" },
+      { text: "ঢাকা", href: "#dhaka" },
+      { text: "চট্টগ্রাম", href: "#chattogram" },
+      { text: "রাজশাহী", href: "#rajshahi" },
+      { text: "রংপুর", href: "#rangpur" },
+      { text: "ময়মনসিংহ", href: "#mymensingh" },
+      { text: "সিলেট", href: "#sylhet" },
+      { text: "খুলনা", href: "#khulna" },
+      { text: "বরিশাল", href: "#barishal" },
     ],
   },
   {
-    text: "খেলাধুলা",
-    href: "#sports",
+    text: "বাণিজ্যলোক",
+    href: "#traders",
+    children: [
+      { text: "ব্যাংক", href: "#bank" },
+      { text: "শেয়ারবাজার", href: "#stock-market" },
+      { text: "কর্পোরেট", href: "#corporate" },
+      { text: "নতুন উদ্যোগ", href: "#new-ventures" },
+      { text: "বিশ্ববাণিজ্য", href: "#global-trade" },
+    ],
+  },
+  {
+    text: "ক্রীড়ালোক",
+    href: "#sports-world",
     children: [
       { text: "ফুটবল", href: "#football" },
       { text: "ক্রিকেট", href: "#cricket" },
-      { text: "অলিম্পিক", href: "#olympics" },
+      { text: "টেনিস", href: "#tennis" },
+      { text: "অন্য খেলা", href: "#other-sports" },
     ],
   },
+  { text: "প্রযুক্তি", href: "#technology" },
   {
-    text: "চাকরি",
-    href: "#jobs",
+    text: "চিত্রলোক",
+    href: "#art-world",
     children: [
-      { text: "সরকারি চাকরি", href: "#gov-jobs" },
-      { text: "বেসরকারি চাকরি", href: "#private-jobs" },
-      { text: "ইন্টার্নশিপ", href: "#internships" },
+      { text: "সিনেমা", href: "#cinema" },
+      { text: "বলিউড", href: "#bollywood" },
+      { text: "দক্ষিণের সিনেমা", href: "#south-cinema" },
+      { text: "সংগীত", href: "#music" },
+      { text: "হলিউড", href: "#hollywood" },
+      { text: "টেলিভিশন", href: "#television" },
+      { text: "সিরিয়াল", href: "#serial" },
+      { text: "মঞ্চ", href: "#stage" },
+      { text: "লোক-সংস্কৃতি", href: "#folk-culture" },
     ],
   },
   {
     text: "জীবনযাপন",
     href: "#lifestyle",
     children: [
-      { text: "স্বাস্থ্য ও ফিটনেস", href: "#health-fitness" },
-      { text: "ভ্রমণ", href: "#travel" },
-      { text: "খাদ্য ও রান্না", href: "#food" },
+      { text: "লেইসফিতা", href: "#leisfita" },
+      { text: "পান্থলোক", href: "#pantholok" },
+      { text: "রেসিপি", href: "#recipe" },
+      { text: "যত্নআত্তি", href: "#care-taker" },
+      { text: "গ্যাজেট", href: "#gadgets" },
+      { text: "সোস্যাল মিডিয়া", href: "#social-media" },
     ],
   },
   {
     text: "স্বাস্থ্য",
     href: "#health",
     children: [
-      { text: "রোগ ও চিকিৎসা", href: "#diseases" },
-      { text: "মানসিক স্বাস্থ্য", href: "#mental-health" },
-      { text: "স্বাস্থ্য টিপস", href: "#health-tips" },
+      { text: "চিকিৎসা", href: "#treatment" },
+      { text: "পরামর্শ", href: "#advice" },
+      { text: "শিশু", href: "#child" },
+      { text: "নারী", href: "#women" },
+      { text: "পুরুষ", href: "#men" },
     ],
   },
+  {
+    text: "ক্যারিয়ার",
+    href: "#career",
+    children: [
+      { text: "সরকারি", href: "#government" },
+      { text: "বেসরকারি", href: "#private" },
+      { text: "ব্যাংক", href: "#bank-jobs" },
+      { text: "এনজিও", href: "#ngo" },
+      { text: "পরামর্শ", href: "#career-advice" },
+    ],
+  },
+  { text: "আজকের পত্রিকা", href: "#todays-paper" },
+  { text: "আর্কাইভ", href: "#archive" },
+  { text: "ইপেপার", href: "#epaper" },
 ];
 
 // https://www.rupalibangladesh.com/media/imgAll/2025July/SM/High-Court-20251207115549.webp
