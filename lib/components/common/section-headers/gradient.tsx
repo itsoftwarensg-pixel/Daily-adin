@@ -77,7 +77,7 @@ export default function GradientHeader({
 
     const content = (
         <div
-            className={`flex justify-between items-center pl-4 py-2 pr-2 mb-4 text-xl font-bold
+            className={`group flex justify-between items-center pl-4 py-2 pr-2 mb-4 text-xl font-bold
                  text-white bg-gradient-to-r ${gradientClasses} 
                  ${className}`}
         >
@@ -87,7 +87,7 @@ export default function GradientHeader({
             {href && showReadMoreBtn && (
                 <div
                     className={`flex gap-2 items-center bg-gradient-to-r ${btnGradientClasses} 
-                        text-white py-2 px-4 font-normal text-sm transition-all hover:gap-4`}
+                        text-white py-2 px-4 font-normal text-sm transition-all group-hover:gap-4`}
                 >
                     <span>আরও দেখুন</span>
                     <FaArrowRightLong />

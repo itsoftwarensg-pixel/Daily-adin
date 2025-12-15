@@ -5,6 +5,7 @@ import GradientHeader from "@/lib/components/common/section-headers/gradient";
 import NewsItemVertical from "@/lib/components/common/news-elements/news-item-vertical";
 import NewsItemBase from "@/lib/components/common/news-elements/news-item-base";
 import { newsJson } from "@/lib/data"; // Temporary
+import ImageWithFallback from "@/lib/components/image/ImageWithFallback";
 
 const HomeSports = () => {
     return (
@@ -18,21 +19,57 @@ const HomeSports = () => {
                 />
                 <div className="grid grid-cols-12 gap-4">
                     {/* Left */}
-                    <div className="col-span-3 space-y-2">
-                        {newsJson.slice(4, 9).map((newsItem, index) => (
-                            <NewsItemBase key={index} newsItem={newsItem} />
+                    <div className="col-span-4 space-y-4 pr-4">
+                        {newsJson.slice(5, 9).map((newsItem, index) => (
+                            <Link key={index} href={"/"} className="block group overflow-hidden bg-red-100">
+                                <div
+                                    className={`w-full grid grid-cols-5 items-center justify-center
+                                        gap-2 overflow-hidden`}
+                                >
+                                    <div className="col-span-2 aspect-[16/11]">
+                                        <ImageWithFallback
+                                            src={`${newsItem.image}`}
+                                            height={300}
+                                            width={400}
+                                            alt={`${newsItem.title}`}
+                                            className="w-full object-cover h-full"
+                                        />
+                                    </div>
+                                    <div className="col-span-3">
+                                        <h4 className="p-2 group-hover:text-blue-700">{newsItem.brief}</h4>
+                                    </div>
+                                </div>
+                            </Link>
                         ))}
                     </div>
 
                     {/* Middle */}
-                    <div className="col-span-6 space-y-2">
-                        {newsJson.slice(17, 18).map((newsItem, idx) => (
+                    <div className="col-span-5 space-y-4">
+                        {newsJson.slice(12, 13).map((newsItem, idx) => (
                             <div key={idx} className="h-auto">
-                                <NewsItemVertical
-                                    newsItem={newsItem}
-                                    titleSize="large"
-                                    bgColor="red"
-                                />
+                                <Link href={"/"} className="relative block group h-full">
+                                    <div
+                                        className={`w-full h-full bg-red-100`}
+                                    >
+                                        <div className="w-full aspect-[16/10]">
+                                            <ImageWithFallback
+                                                src={`${newsItem.image}`}
+                                                height={600}
+                                                width={900}
+                                                alt={`${newsItem.title}`}
+                                                className="w-full object-cover h-full"
+                                            />
+                                        </div>
+                                        <div>
+                                            <h4
+                                                className={`px-2 py-3 text-2xl
+                                                 group-hover:text-blue-700 font-normal`}
+                                            >
+                                                {newsItem.description}
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </Link>
                             </div>
                         ))}
 
@@ -42,13 +79,34 @@ const HomeSports = () => {
                     </div>
 
                     {/* Right */}
-                    <div className="col-span-3 space-y-4">
+                    <div className="col-span-3 space-y-4 pl-4">
                         {newsJson.slice(13, 15).map((newsItem, idx) => (
                             <div key={idx} className="h-auto">
-                                <NewsItemVertical
-                                    newsItem={newsItem}
-                                    bgColor="red"
-                                />
+                                <Link href={"/"} className="relative block group h-full">
+                                    <div
+                                        className={`w-full h-full bg-red-100`}
+                                    >
+                                        <div className="w-full aspect-[16/9.5]">
+                                            <ImageWithFallback
+                                                src={`${newsItem.image}`}
+                                                height={600}
+                                                width={900}
+                                                alt={`${newsItem.title}`}
+                                                className="w-full object-cover h-full"
+                                            />
+                                        </div>
+                                        <div>
+                                            <h4
+                                                className={`px-2 py-3 "text-md border-l-4 border-red-600
+                                                 group-hover:text-blue-700 font-normal`}
+                                            >
+                                                {newsItem.brief}
+                                            </h4>
+                                        </div>
+                                    </div>
+
+
+                                </Link>
                             </div>
                         ))}
                     </div>

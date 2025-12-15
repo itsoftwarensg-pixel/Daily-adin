@@ -3,6 +3,7 @@ import { newsJson } from "@/lib/data"; // Temporary
 import Container from "@/lib/components/common/container";
 import SectionHeaderBase from "@/lib/components/common/section-headers/base";
 import NewsItemVertical from "@/lib/components/common/news-elements/news-item-vertical";
+import GradientHeader from "@/lib/components/common/section-headers/gradient";
 
 const HomeCommercePantholokChoose = () => {
   return (
@@ -11,11 +12,11 @@ const HomeCommercePantholokChoose = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* বাণিজ্য লোক */}
           <div className="space-y-2">
-            <SectionHeaderBase
+            <GradientHeader
               title="বাণিজ্য লোক"
               color="red"
+              showReadMoreBtn
               href="/"
-              showReadMoreBtn={true}
             />
             {/* News contents */}
             <div className="space-y-2">
@@ -39,11 +40,11 @@ const HomeCommercePantholokChoose = () => {
 
           {/* পান্থলোক */}
           <div className="space-y-2">
-            <SectionHeaderBase
+            <GradientHeader
               title="পান্থলোক"
               color="gray"
+              showReadMoreBtn
               href="/"
-              showReadMoreBtn={true}
             />
             {/* News contents */}
             <div className="space-y-2">
@@ -67,11 +68,11 @@ const HomeCommercePantholokChoose = () => {
 
           {/* বাছাইকৃত */}
           <div className="space-y-2">
-            <SectionHeaderBase
+            <GradientHeader
               title="বাছাইকৃত"
               color="indigo"
+              showReadMoreBtn
               href="/"
-              showReadMoreBtn={true}
             />
             {/* News contents */}
             <div className="space-y-2">

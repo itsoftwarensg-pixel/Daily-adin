@@ -110,3 +110,16 @@ export const getRandomHighlightedText = (text: string, maxWords = 3) => {
   // Return the structured object
   return { before, highlight, after };
 };
+
+// Displays today's date in Bangla format (bn-BD locale)
+// Example output: আজ ২৪ নভেম্বর ২০২৫
+// Uses browser/JS Date API for dynamic rendering
+export default function TodayDate() {
+  const today = new Date().toLocaleDateString('bn-BD', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+
+  return today;
+}

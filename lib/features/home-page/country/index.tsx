@@ -4,6 +4,8 @@ import GradientHeader from "@/lib/components/common/section-headers/gradient";
 import NewsItemVertical from "@/lib/components/common/news-elements/news-item-vertical";
 import { newsJson } from "@/lib/data"; // Temporary
 import { BiSearchAlt2 } from "react-icons/bi";
+import Link from "next/link";
+import ImageWithFallback from "@/lib/components/image/ImageWithFallback";
 
 
 const HomeCountry = () => {
@@ -55,14 +57,30 @@ const HomeCountry = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Left */}
-                    <div className="space-y-2">
+                    <div className="space-y-2 h-full">
                         {newsJson.slice(11, 12).map((newsItem, idx) => (
-                            <div key={idx} className="h-auto">
-                                <NewsItemVertical
-                                    newsItem={newsItem}
-                                    titleSize="large"
-                                    bgColor="gray"
-                                />
+                            <div key={idx} className="h-full">
+                                <Link href={"/"} className="relative block group h-full">
+                                    <div className={`w-full h-full bg-gray-1`}>
+                                        <div className="w-full aspect-[16/9]">
+                                            <ImageWithFallback
+                                                src={`${newsItem.image}`}
+                                                height={600}
+                                                width={900}
+                                                alt={`${newsItem.title}`}
+                                                className="w-full object-cover h-full"
+                                            />
+                                        </div>
+                                        <div>
+                                            <h4
+                                                className={`px-2 pt-3 text-3xl group-hover:text-blue-700 font-normal`}
+                                            >
+                                                {newsItem.brief}
+                                            </h4>
+                                            <p className="px-2 py-3">{newsItem.description}</p>
+                                        </div>
+                                    </div>
+                                </Link>
                             </div>
                         ))}
                     </div>
