@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ImageWithFallback } from "../../image";
 import { NewsItemType, newsJson } from "@/lib/data"; // Temporary
+import HtmlContent from "@/lib/components/common/html-content";
 
 // Props
 interface Props {
@@ -11,11 +12,11 @@ interface Props {
 const LeadNewsItem = () => {
   return (
     <>
-      {newsJson.slice(7, 8).map((newsItem, index) => (
+      {newsJson.slice(45, 46).map((newsItem, index) => (
         <Link
           key={index}
           href={"/"}
-          className="block group border-r border-l px-3"
+          className="block group mb-4"
         >
           <div className="w-full bg-white">
             <div className="w-full">
@@ -24,16 +25,14 @@ const LeadNewsItem = () => {
                 height={600}
                 width={900}
                 alt={`${newsItem.title}`}
-                className="w-full rounded"
+                className="w-full"
               />
             </div>
             <div className="">
               <h4 className="mt-2 p-2 text-4xl group-hover:text-blue-700 font-semibol">
-                {newsItem.brief}
+                {newsItem.title}
               </h4>
-              <p className="p-2 text-gray-400">
-                {newsItem.description} {newsItem.description}{" "}
-              </p>
+              <HtmlContent html={newsItem.description} maxContent={200} className="p-2 text-gray-500" />
             </div>
           </div>
         </Link>

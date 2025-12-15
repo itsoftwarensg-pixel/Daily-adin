@@ -15,7 +15,7 @@ export default function LatestPopularNews({ latestNews, popularNews }: NewsTabsP
     const [activeTab, setActiveTab] = useState<Tab>("latest");
 
     return (
-        <div className="bg-red-50 h-full overflow-hidden">
+        <div className="bg-red-50 overflow-hidden">
 
             {/* Tabs Header */}
             <div className="sticky top-0 bg-white z-10 mb-2">

@@ -8,7 +8,7 @@ export default function ApplicationHeader() {
     <Container>
       <div className="w-full fixed top-0 left-0 z-50 bg-white">
         <Container>
-          <div className="w-full flex flex-col gap-[30px] pt-[30px]">
+          <div className="w-full flex flex-col gap-2 pt-[30px]">
             <TopBar />
             <Navbar />
           </div>

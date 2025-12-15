@@ -19,7 +19,7 @@ const HomeLaceTap = () => {
           {/* Left */}
           <div className="col-span-6 space-y-2">
             {newsJson.slice(11, 12).map((newsItem, idx) => (
-              <div key={idx} className="h-auto">
+              <div key={idx} className="h-full">
                 <NewsItemVertical
                   newsItem={newsItem}
                   titleSize="large"

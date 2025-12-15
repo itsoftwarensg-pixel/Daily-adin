@@ -3,18 +3,20 @@ import { newsJson } from "@/lib/data";
 import Container from "@/lib/components/common/container";
 import Advertisement from "@/lib/components/common/advertisement";
 import ClickedMemoryItem from "@/lib/components/common/news-elements/clicked-memory-item";
+import Link from "next/link";
+import GradientHeader from "@/lib/components/common/section-headers/gradient";
 
 const HomeClickedMemories = () => {
   return (
     <div className="py-8 my-12">
       <Container>
-        <div className="flex items-center gap-4 mb-11">
-          <div className="w-4 h-12 bg-[#3C3C3C]" />
-          <p className="text-[32px] font-normal text-primaryRed">
-            ক্লিক স্মৃতি{" "}
-          </p>
-        </div>
-        <div className="grid grid-cols-12 gap-6">
+        <GradientHeader
+          title="ক্লিক স্মৃতি"
+          color="red"
+          href="/"
+          showReadMoreBtn={true}
+        />
+        <div className="grid grid-cols-12 gap-6 mt-6">
           {/* Left */}
           <div className="col-span-7 space-y-2">
             {newsJson.slice(10, 11).map((newsItem, idx) => (
@@ -29,20 +31,20 @@ const HomeClickedMemories = () => {
           </div>
 
           {/* Right */}
-          <div className="col-span-5 space-y-4">
+          <div className="col-span-5 space-y-5">
             {newsJson.slice(8, 10).map((newsItem, index) => (
               <ClickedMemoryItem
                 key={index}
                 newsItem={newsItem}
                 variant="clicked"
-                height="190px"
+                height="160px"
               />
             ))}
-            <Advertisement
-              height={"90"}
-              label="সব কালেকশন দেখুন "
-              className="text-[24px] font-normal py-4"
-            />
+            <Link
+              href={'/'}
+              className="text-[24px] flex items-center justify-center bg-gray-3 w-full h-20 font-normal py-4 hover:bg-gray-200"
+            >সব কালেকশন দেখুন
+            </Link>
           </div>
         </div>
       </Container>
