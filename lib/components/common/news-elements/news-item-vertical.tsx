@@ -10,7 +10,7 @@ interface Props {
   newsItem: NewsItemType;
   showVideoLink?: boolean;
   largeVideoIcon?: boolean;
-  titleSize?: "base" | "large";
+   titleSize?: "base" | "large" | "xlarge" | "3xl";
   bgColor?:
     | "slate"
     | "gray"
@@ -50,9 +50,8 @@ const NewsItemVertical = ({
   return (
     <Link href={"/"} className="relative block group h-full">
       <div
-        className={`w-full h-full ${
-          bgColor ? `bg-${bgColor}-100` : `bg-transparent`
-        }`}
+        className={`w-full h-full ${bgColor ? `bg-${bgColor}-100` : `bg-transparent`
+          }`}
       >
         <div className="w-full aspect-[16/9]">
           <ImageWithFallback
@@ -65,9 +64,15 @@ const NewsItemVertical = ({
         </div>
         <div>
           <h4
-            className={`px-2 py-2 ${
-              titleSize === "large" ? "text-xl" : "text-[17px]"
-            } group-hover:text-blue-700 font-semibold`}
+            className={`px-2 py-2 
+              ${titleSize === "3xl"
+                ? "text-3xl"
+                : titleSize === "xlarge"
+                  ? "text-2xl"
+                  : titleSize === "large"
+                    ? "text-xl" : "text-[17px]"
+              }
+               group-hover:text-blue-700 font-semibold`}
           >
             {highlighted ? (
               <>
@@ -91,9 +96,8 @@ const NewsItemVertical = ({
             alt="play-video"
           />
           <p
-            className={`${
-              largeVideoIcon ? "text-md" : "text-[10px]"
-            } text-white font-normal`}
+            className={`${largeVideoIcon ? "text-md" : "text-[10px]"
+              } text-white font-normal`}
           >
             ভিডিও দেখুন
           </p>

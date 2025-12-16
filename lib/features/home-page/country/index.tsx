@@ -6,6 +6,7 @@ import { newsJson } from "@/lib/data"; // Temporary
 import { BiSearchAlt2 } from "react-icons/bi";
 import Link from "next/link";
 import ImageWithFallback from "@/lib/components/image/ImageWithFallback";
+import HtmlContent from "@/lib/components/common/html-content";
 
 const HomeCountry = () => {
   return (
@@ -62,10 +63,10 @@ const HomeCountry = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Left */}
           <div className="space-y-2 h-full">
-            {newsJson.slice(11, 12).map((newsItem, idx) => (
+            {newsJson.slice(59, 60).map((newsItem, idx) => (
               <div key={idx} className="h-full">
                 <Link href={"/"} className="relative block group h-full">
-                  <div className={`w-full h-full bg-gray-1`}>
+                  <div className={`w-full h-full bg-gray-100`}>
                     <div className="w-full aspect-[16/9]">
                       <ImageWithFallback
                         src={`${newsItem.image}`}
@@ -77,11 +78,11 @@ const HomeCountry = () => {
                     </div>
                     <div>
                       <h4
-                        className={`px-2 pt-3 text-3xl group-hover:text-blue-700 font-normal`}
+                        className={`px-2 pt-3 text-3xl group-hover:text-blue-700 font-semibold`}
                       >
-                        {newsItem.brief}
+                        {newsItem.title}
                       </h4>
-                      <p className="px-2 py-3">{newsItem.description}</p>
+                      <HtmlContent html={newsItem.brief} maxContent={160} className="pt-1 px-2 text-gray-500" />
                     </div>
                   </div>
                 </Link>
@@ -92,7 +93,7 @@ const HomeCountry = () => {
           {/* Right */}
           <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {newsJson.slice(6, 10).map((newsItem, idx) => (
+              {newsJson.slice(55, 59).map((newsItem, idx) => (
                 <div key={idx} className="h-auto">
                   <NewsItemVertical
                     newsItem={newsItem}

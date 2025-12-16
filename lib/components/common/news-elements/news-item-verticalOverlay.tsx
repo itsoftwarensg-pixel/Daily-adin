@@ -41,9 +41,8 @@ const NewsItemVerticalOverlay = ({
     <>
       <Link href={"/"} className="block group h-full">
         <div
-          className={` w-full h-full ${
-            bgColor ? `bg-${bgColor}-100` : `bg-transparent`
-          }`}
+          className={` w-full h-full ${bgColor ? `bg-${bgColor}-100` : `bg-transparent`
+            }`}
         >
           <div className="w-full">
             <ImageWithFallback
@@ -51,17 +50,17 @@ const NewsItemVerticalOverlay = ({
               height={600}
               width={900}
               alt={`${newsItem.title}`}
-              className="w-full object-cover h-full"
+              className="w-full object-cover"
             />
           </div>
+          <h4
+            className={`py-3 text-black ${titleSize === "large" ? "text-3xl" : "text-md"
+              } group-hover:text-blue-600 font-semibold`}
+          >
+            {newsItem.brief}
+          </h4>
         </div>
-        <h4
-          className={`py-3 text-black ${
-            titleSize === "large" ? "text-3xl" : "text-md"
-          } group-hover:text-blue-600 font-semibold`}
-        >
-          {newsItem.brief}
-        </h4>
+
       </Link>
     </>
   );

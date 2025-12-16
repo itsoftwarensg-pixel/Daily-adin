@@ -22,7 +22,7 @@ const HomeLaceTap = () => {
               <div key={idx} className="h-full">
                 <NewsItemVertical
                   newsItem={newsItem}
-                  titleSize="large"
+                  titleSize="3xl"
                   bgColor="gray"
                   showVideoLink
                   largeVideoIcon
@@ -42,6 +42,7 @@ const HomeLaceTap = () => {
                 <div key={idx} className="h-auto">
                   <NewsItemVertical
                     newsItem={newsItem}
+                    titleSize="large"
                     bgColor="gray"
                     showVideoLink
                   />
