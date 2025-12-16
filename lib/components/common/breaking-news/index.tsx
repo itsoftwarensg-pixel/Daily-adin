@@ -18,7 +18,7 @@ const BreakingNews = () => {
                         gradient={false}
                         className="bg-[#FFB2B2] px-5 py-2 border-t border-black"
                     >
-                        <div className="flex items-center gap-10">
+                        <div className="flex items-center gap-10 pr-10">
                             {newsJson.slice(0, 10).map((item, index) => (
                                 <div key={index} className="flex items-center gap-2">
                                     <div className="bg-primaryRed w-2.5 h-2.5 rounded-full shrink-0" />
