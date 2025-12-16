@@ -111,14 +111,6 @@ export const getRandomHighlightedText = (text: string, maxWords = 3) => {
   return { before, highlight, after };
 };
 
-// Displays year. e.g. 2025
-// export default function getBnYear() {
-//   const year = new Date().toLocaleDateString('bn-BD', {
-//     year: 'numeric',
-//   });
-
-//   return year;
-// };
 
 // Displays today's date in Bangla format (bn-BD locale)
 // Example output: আজ ২৪ নভেম্বর ২০২৫
