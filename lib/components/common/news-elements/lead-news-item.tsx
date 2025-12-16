@@ -29,10 +29,10 @@ const LeadNewsItem = () => {
               />
             </div>
             <div className="">
-              <h4 className="mt-2 p-2 text-4xl group-hover:text-blue-700 font-semibol">
+              <h4 className="mt-2 pt-2 pb-0 text-3xl group-hover:text-blue-700 font-semibold">
                 {newsItem.title}
               </h4>
-              <HtmlContent html={newsItem.description} maxContent={200} className="p-2 text-gray-500" />
+              <HtmlContent html={newsItem.description} maxContent={200} className="pt-2 text-gray-500" />
             </div>
           </div>
         </Link>

@@ -54,7 +54,7 @@ const NewsItemBase = ({ newsItem, bgColor }: Props) => {
             />
           </div>
           <div className="col-span-3">
-            <h4 className="p-2 group-hover:text-blue-700">{newsItem.brief}</h4>
+            <h4 className="p-2 group-hover:text-blue-700 text-[17px] font-semibold">{newsItem.brief}</h4>
           </div>
         </div>
       </Link>

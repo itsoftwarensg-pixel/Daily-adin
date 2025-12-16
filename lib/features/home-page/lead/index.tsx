@@ -41,7 +41,7 @@ const HomeLead = () => {
               <div className="col-span-3">
                 <LeadNewsItem />
 
-                <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="grid grid-cols-2 gap-2 mb-4">
                   {newsJson.slice(14, 16).map((newsItem, index) => (
                     <NewsItemBase key={index} newsItem={newsItem} bgColor="gray" />
                   ))}
@@ -66,10 +66,7 @@ const HomeLead = () => {
                       />
                     </div>
                     <div>
-                      <h4
-                        className={`px-2 pt-2 text-lg
-                           group-hover:text-blue-700 font-normal`}
-                      >
+                      <h4 className={`px-2 pt-2 text-lg group-hover:text-blue-700 font-semibold`}>
                         {newsItem.title}
                       </h4>
                       <HtmlContent html={newsItem.description} maxContent={100} className="p-2 text-gray-500" />
