@@ -118,7 +118,7 @@ const HomeLead = () => {
 
                   {/* Next two items in a 2-column grid */}
                   <div className="grid grid-cols-2 gap-2">
-                    {newsJson.slice(52, 54).map((newsItem, idx) => (
+                    {newsJson.slice(53, 55).map((newsItem, idx) => (
                       <NewsItemVertical
                         key={idx}
                         newsItem={newsItem}

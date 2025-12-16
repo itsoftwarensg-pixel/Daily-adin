@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ImageWithFallback } from "@/lib/components/image";
 import { x, tiktok, youtube, facebook } from "@/lib/components/icons";
 import Container from "@/lib/components/common/container";
-import getBnYear from "@/lib/utils/helpers";
+import { getBnYear } from "@/lib/utils/helpers";
 
 export default function ApplicationFooter() {
   const urls = [
@@ -28,8 +28,8 @@ export default function ApplicationFooter() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-[30px] items-start">
             {/* Address */}
             <div className="flex flex-col gap-[20px]">
-              <div className="flex flex-col space-y-3">
-                <p className="text-lg text-textGray font-normal mb-0">
+              <div className="flex flex-col space-y-4">
+                <p className="text-lg text-black font-semibold mb-0">
                   ভারপ্রাপ্ত সম্পাদক: মো. সাইদুল ইসলাম সাজু
                   <br />
                   প্রকাশক : মো. সাইদুল ইসলাম সাজু
@@ -123,7 +123,7 @@ export default function ApplicationFooter() {
               Design & Developed by
               <a
                 href="http://www.bongosoftbd.com/"
-                className="text-green-600 hover:underline"
+                className="text-green-600 hover:underline pl-1"
               >
                 Bongosoft Ltd
               </a>

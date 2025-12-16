@@ -30,7 +30,7 @@ const HomeSports = () => {
                   className={`w-full grid grid-cols-5 items-center justify-center
                                         gap-2 overflow-hidden`}
                 >
-                  <div className="col-span-2 aspect-[16/11]">
+                  <div className="col-span-2 aspect-[16/12]">
                     <ImageWithFallback
                       src={`${newsItem.image}`}
                       height={300}
@@ -40,7 +40,7 @@ const HomeSports = () => {
                     />
                   </div>
                   <div className="col-span-3">
-                    <h4 className="p-2 group-hover:text-blue-700">
+                    <h4 className="px-2 group-hover:text-blue-700 text-lg font-semibold">
                       {newsItem.brief}
                     </h4>
                   </div>
@@ -55,7 +55,7 @@ const HomeSports = () => {
               <div key={idx} className="h-auto">
                 <Link href={"/"} className="relative block group h-full">
                   <div className={`w-full h-full bg-red-100`}>
-                    <div className="w-full aspect-[16/10]">
+                    <div className="w-full aspect-[16/11]">
                       <ImageWithFallback
                         src={`${newsItem.image}`}
                         height={600}
@@ -66,7 +66,7 @@ const HomeSports = () => {
                     </div>
                     <div>
                       <h4
-                        className={`px-2 py-3 max-h-[77px] overflow-hidden text-2xl group-hover:text-blue-700 font-normal`}
+                        className={`px-2 py-2 max-h-[84px] overflow-hidden text-2xl group-hover:text-blue-700 font-semibold`}
                       >
                         {newsItem.description}
                       </h4>
@@ -76,7 +76,7 @@ const HomeSports = () => {
               </div>
             ))}
 
-            <Link href="/" className="block group bg-red-100 px-6 py-3">
+            <Link href="/" className="block group bg-red-100 px-6 py-4">
               <h4 className="m-0 text-3xl text-center group-hover:text-red-700">
                 দেখে নিন ২০২৬ টি–টোয়েন্টি বিশ্বকাপের সূচি
               </h4>
@@ -100,8 +100,8 @@ const HomeSports = () => {
                     </div>
                     <div>
                       <h4
-                        className={`px-2 py-3 "text-md border-l-4 border-red-600
-                                                 group-hover:text-blue-700 font-normal`}
+                        className={`px-2 py-2.5 text-xl border-l-4 border-red-600
+                                                 group-hover:text-blue-700 font-semibold`}
                       >
                         {newsItem.brief}
                       </h4>

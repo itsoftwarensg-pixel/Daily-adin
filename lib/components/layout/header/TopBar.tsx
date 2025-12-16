@@ -9,7 +9,7 @@ import { globe } from "@/lib/components/icons";
 import { ImageWithFallback } from "@/lib/components/image";
 import headerBanner from "@/public/images/header-banner.svg";
 import { x, youtube, facebook } from "@/lib/components/icons";
-import TodayDate from "@/lib/utils/helpers";
+import { TodayDate } from "@/lib/utils/helpers";
 
 const socialLinks = [
   { href: "https://www.facebook.com", icon: facebook, alt: "facebook" },
