@@ -43,7 +43,10 @@ export default function LatestPopularNews({ latestNews, popularNews, height = 63
             </div>
 
             {/* Scrollable Content */}
-            <div className={`max-h-[${height}px] overflow-y-auto`}>
+            <div
+                className={`overflow-y-auto`}
+                style={{ maxHeight: `${height}px` }}
+            >
                 {activeTab === "latest" &&
                     <div>
                         {newsJson.slice(1, 10).map((newsItem, index) => (

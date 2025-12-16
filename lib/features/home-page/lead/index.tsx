@@ -154,7 +154,7 @@ const HomeLead = () => {
 
             {/* Latest - Popular */}
             <div className="my-4">
-              <LatestPopularNews />
+              <LatestPopularNews height={600} />
             </div>
           </div>
         </div>
