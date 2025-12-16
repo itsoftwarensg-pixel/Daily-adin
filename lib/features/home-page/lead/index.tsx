@@ -34,7 +34,6 @@ const HomeLead = () => {
                     className="object-contain"
                   />
                 </div>
-
               </div>
 
               {/* Lead news - Center */}
@@ -69,7 +68,7 @@ const HomeLead = () => {
                       <h4 className={`px-2 pt-2 text-lg group-hover:text-blue-700 font-semibold`}>
                         {newsItem.title}
                       </h4>
-                      <HtmlContent html={newsItem.description} maxContent={100} className="p-2 text-gray-500" />
+                      <HtmlContent html={newsItem.description} maxContent={100} className="p-2 pt-1 text-gray-500" />
                     </div>
                   </div>
                 </Link>
