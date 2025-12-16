@@ -45,7 +45,7 @@ const Navbar = () => {
     <div className="w-full flex flex-col items-start justify-between gap-3">
       {/* Navbar */}
       <div className="w-full h-full flex items-stretch justify-between bg-[#D30000]">
-        <div className="flex items-center gap-6 px-3 py-2">
+        <div className="flex items-center gap-6 px-2.5 py-2">
           {navItems.map((item) => (
             <div
               key={item.text}
@@ -53,7 +53,7 @@ const Navbar = () => {
               onMouseEnter={() => item.children && setOpenDropdown(item.text)}
               onMouseLeave={() => item.children && setOpenDropdown(null)}
             >
-              <div className="flex items-center gap-[10px] cursor-pointer text-[16px] text-white">
+              <div className="flex items-center gap-[10px] cursor-pointer text-[17px] font-semibold text-white">
                 <Link
                   href={item.href ?? "#"}
                   className="flex items-center gap-[6px]"
@@ -75,12 +75,12 @@ const Navbar = () => {
               </div>
 
               {item.children && openDropdown === item.text && (
-                <div className="absolute min-w-[150px] w-fit shrink-0 z-50 flex flex-col top-[90%] left-0 mt-1 bg-[#F4F4F4] shadow-md rounded-md">
+                <div className="absolute min-w-[150px] w-fit shrink-0 z-50 flex flex-col top-[90%] left-0 mt-1 bg-[#F4F4F4] shadow-md rounded-md overflow-hidden">
                   {item.children.map((child) => (
                     <Link
                       key={child.text}
                       href={child.href ?? "#"}
-                      className="flex items-center gap-[10px] px-5 py-[7px] text-[14px]"
+                      className="flex items-center gap-[10px] px-5 py-[7px] text-[14px] hover:bg-red-100 hover:text-red-600"
                     >
                       <div className="bg-primaryRed w-2.5 h-2.5 rounded-full shrink-0" />
                       {child.text}
