@@ -91,7 +91,7 @@ const HomeLead = () => {
                 {/* News contents */}
                 <div className="space-y-2 pr-4 border-r">
                   {/* First item (large) */}
-                  {newsJson.slice(8, 9).map((newsItem, idx) => (
+                  {newsJson.slice(52, 53).map((newsItem, idx) => (
                     <NewsItemVertical
                       key={idx}
                       titleSize="large"
@@ -102,7 +102,7 @@ const HomeLead = () => {
 
                   {/* Next two items in a 2-column grid */}
                   <div className="grid grid-cols-2 gap-2">
-                    {newsJson.slice(9, 11).map((newsItem, idx) => (
+                    {newsJson.slice(52, 54).map((newsItem, idx) => (
                       <NewsItemVertical
                         key={idx}
                         newsItem={newsItem}
@@ -124,7 +124,7 @@ const HomeLead = () => {
                 {/* News contents */}
                 <div className="space-y-2">
                   {/* First item (large) */}
-                  {newsJson.slice(18, 19).map((newsItem, idx) => (
+                  {newsJson.slice(57, 58).map((newsItem, idx) => (
                     <NewsItemVertical
                       key={idx}
                       titleSize="large"
@@ -135,7 +135,7 @@ const HomeLead = () => {
 
                   {/* Next two items in a 2-column grid */}
                   <div className="grid grid-cols-2 gap-2">
-                    {newsJson.slice(13, 15).map((newsItem, idx) => (
+                    {newsJson.slice(58, 60).map((newsItem, idx) => (
                       <NewsItemVertical
                         key={idx}
                         newsItem={newsItem}

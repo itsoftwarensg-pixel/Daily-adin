@@ -12,28 +12,28 @@ interface Props {
   largeVideoIcon?: boolean;
   titleSize?: "base" | "large";
   bgColor?:
-    | "slate"
-    | "gray"
-    | "zinc"
-    | "neutral"
-    | "stone"
-    | "red"
-    | "orange"
-    | "amber"
-    | "yellow"
-    | "lime"
-    | "green"
-    | "emerald"
-    | "teal"
-    | "cyan"
-    | "sky"
-    | "blue"
-    | "indigo"
-    | "violet"
-    | "purple"
-    | "fuchsia"
-    | "pink"
-    | "rose";
+  | "slate"
+  | "gray"
+  | "zinc"
+  | "neutral"
+  | "stone"
+  | "red"
+  | "orange"
+  | "amber"
+  | "yellow"
+  | "lime"
+  | "green"
+  | "emerald"
+  | "teal"
+  | "cyan"
+  | "sky"
+  | "blue"
+  | "indigo"
+  | "violet"
+  | "purple"
+  | "fuchsia"
+  | "pink"
+  | "rose";
 }
 
 const NewsItemVertical = ({
@@ -50,9 +50,7 @@ const NewsItemVertical = ({
   return (
     <Link href={"/"} className="relative block group h-full">
       <div
-        className={`w-full h-full ${
-          bgColor ? `bg-${bgColor}-100` : `bg-transparent`
-        }`}
+        className={`w-full h-full ${bgColor ? `bg-${bgColor}-100` : `bg-transparent`}`}
       >
         <div className="w-full aspect-[16/9]">
           <ImageWithFallback
@@ -65,9 +63,7 @@ const NewsItemVertical = ({
         </div>
         <div>
           <h4
-            className={`px-2 py-3 ${
-              titleSize === "large" ? "text-xl" : "text-md"
-            } group-hover:text-blue-700 font-normal`}
+            className={`px-2 py-2 ${titleSize === "large" ? "text-xl" : "text-[17px]"} group-hover:text-blue-700 font-semibold`}
           >
             {highlighted ? (
               <>
@@ -76,7 +72,7 @@ const NewsItemVertical = ({
                 {highlighted.after && <span> {highlighted.after}</span>}
               </>
             ) : (
-              newsItem.brief
+              newsItem.title
             )}
           </h4>
         </div>
@@ -90,11 +86,7 @@ const NewsItemVertical = ({
             height={largeVideoIcon ? 24 : 15}
             alt="play-video"
           />
-          <p
-            className={`${
-              largeVideoIcon ? "text-md" : "text-[10px]"
-            } text-white font-normal`}
-          >
+          <p className={`${largeVideoIcon ? "text-md" : "text-[10px]"} text-white font-normal`}>
             ভিডিও দেখুন
           </p>
         </div>

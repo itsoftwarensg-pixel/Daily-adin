@@ -12,7 +12,7 @@ interface Props {
 const LeadNewsItem = () => {
   return (
     <>
-      {newsJson.slice(45, 46).map((newsItem, index) => (
+      {newsJson.slice(51, 52).map((newsItem, index) => (
         <Link
           key={index}
           href={"/"}
