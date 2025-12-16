@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ImageWithFallback } from "@/lib/components/image";
 import { x, tiktok, youtube, facebook } from "@/lib/components/icons";
 import Container from "@/lib/components/common/container";
-import { getBnYear } from "@/lib/utils/helpers";
+import { CurrentYear } from "@/lib/utils/helpers";
 
 export default function ApplicationFooter() {
   const urls = [
@@ -117,7 +117,7 @@ export default function ApplicationFooter() {
         <Container>
           <div className="flex justify-between gap-4">
             <p className="text-md font-normal text-textGray">
-              © স্বত্ব {getBnYear()}, দৈনিক এদিন
+              © স্বত্ব {CurrentYear()}, দৈনিক এদিন
             </p>
             <p className="text-md font-normal text-textGray">
               Design & Developed by

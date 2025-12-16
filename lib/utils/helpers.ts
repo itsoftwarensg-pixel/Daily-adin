@@ -111,25 +111,32 @@ export const getRandomHighlightedText = (text: string, maxWords = 3) => {
   return { before, highlight, after };
 };
 
+// ============ Start: Date, Month, Year ===========
+const bnMonths = [
+  "জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল",
+  "মে", "জুন", "জুলাই", "আগস্ট",
+  "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর",
+];
+
+// Convert en number into bangla number
+const toBanglaNumber = (num: number) => num.toString().replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[+d]);
 
 // Displays today's date in Bangla format (bn-BD locale)
 // Example output: আজ ২৪ নভেম্বর ২০২৫
 // Uses browser/JS Date API for dynamic rendering
 export const TodayDate = () => {
-  const today = new Date().toLocaleDateString('bn-BD', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
+  const d = new Date();
 
-  return today;
-}
+  const day = toBanglaNumber(d.getDate());
+  const month = bnMonths[d.getMonth()];
+  const year = toBanglaNumber(d.getFullYear());
+
+  return ` ${day} ${month} ${year}`;
+};
 
 // Displays year. e.g. 2025
-export const getBnYear = () => {
-  const y = new Date().toLocaleDateString('bn-BD', {
-    year: 'numeric',
-  });
-
-  return y;
+export const CurrentYear = () => {
+  const y = new Date();
+  return toBanglaNumber(y.getFullYear());
 };
+// ============ END: Date, Month, Year ===========
