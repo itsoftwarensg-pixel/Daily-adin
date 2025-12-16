@@ -45,7 +45,7 @@ const NewsItemVerticalOverlay = ({
             bgColor ? `bg-${bgColor}-100` : `bg-transparent`
           }`}
         >
-          <div className="w-full aspect-[16/11]">
+          <div className="w-full">
             <ImageWithFallback
               src={`${newsItem.image}`}
               height={600}
@@ -58,7 +58,7 @@ const NewsItemVerticalOverlay = ({
         <h4
           className={`py-3 text-black ${
             titleSize === "large" ? "text-3xl" : "text-md"
-          } group-hover:text-blue-600 font-semibol`}
+          } group-hover:text-blue-600 font-semibold`}
         >
           {newsItem.brief}
         </h4>
