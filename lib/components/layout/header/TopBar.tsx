@@ -21,7 +21,7 @@ const TopBar = () => {
   return (
     <div className="w-full bg-white">
       <div className="flex justify-between items-center gap-10">
-        <div className="relative overflow-hidden">
+        <Link href={'/'} className="relative overflow-hidden">
           <ImageWithFallback
             src={logo}
             width={320}
@@ -29,7 +29,7 @@ const TopBar = () => {
             alt="The Daily Adin Logo"
             className="object-contain"
           />
-        </div>
+        </Link>
 
         <div className="relative overflow-hidden">
           <ImageWithFallback
@@ -88,7 +88,7 @@ const TopBar = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
