@@ -92,18 +92,21 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Search Icon */}
-        <div className="w-28 flex items-center justify-between">
+        {/* Search, Language Icon */}
+        <div className="w-36 flex items-center justify-between">
           <div
-            className="px-3 py-2 w-12 border-l border-gray-5 ml-auto cursor-pointer"
+            className="group px-3 py-2 w-12 border-l border-red-400 ml-auto cursor-pointer"
             onClick={() => setSearchOpen(true)}
           >
-            <FiSearch size={24} className="text-white" />
+            <FiSearch size={24} className="text-white group-hover:text-red-100" />
           </div>
           <div
-            className="px-3 py-2 w-12 border-l border-gray-5 ml-auto text-white cursor-pointer"
+            className="px-3 py-2 w-22 border-l group border-red-400 ml-auto text-white cursor-pointer"
           >
-            <LuGlobe size={24} className="text-white" />
+            <div className="flex items-center gap-2 group-hover:text-red-100">
+              <LuGlobe size={20} className="text-white group-hover:text-red-100" />
+              <span>ENG</span>
+            </div>
           </div>
         </div>
       </div>
