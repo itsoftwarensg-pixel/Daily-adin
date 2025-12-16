@@ -2,7 +2,7 @@ import React from "react";
 import { newsJson } from "@/lib/data"; // Temporary
 import Container from "@/lib/components/common/container";
 import GradientHeader from "@/lib/components/common/section-headers/gradient";
-import LatestPopularNews from "@/lib/components/common/news-elements/latest-popular";
+import LatestPopularNews from "@/lib/components/common/latest-popular";
 import NewsItemVertical from "@/lib/components/common/news-elements/news-item-vertical";
 
 const HomeLeadBelow = () => {

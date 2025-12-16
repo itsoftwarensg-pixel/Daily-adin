@@ -2,21 +2,21 @@
 
 import { useState } from "react";
 import { NewsItemType, newsJson } from "@/lib/data";
-import NewsItemBase from "@/lib/components/common/news-elements/news-item-base";
+import NewsItemLatestPopular from "@/lib/components/common/news-elements/news-item-latest-popular";
 
 type Tab = "latest" | "popular";
 
 interface NewsTabsProps {
     latestNews?: NewsItemType[];
     popularNews?: NewsItemType[];
+    height?: number
 }
 
-export default function LatestPopularNews({ latestNews, popularNews }: NewsTabsProps) {
+export default function LatestPopularNews({ latestNews, popularNews, height = 630 }: NewsTabsProps) {
     const [activeTab, setActiveTab] = useState<Tab>("latest");
 
     return (
         <div className="bg-red-50 overflow-hidden">
-
             {/* Tabs Header */}
             <div className="sticky top-0 bg-white z-10 mb-2">
                 <div className="flex">
@@ -37,18 +37,18 @@ export default function LatestPopularNews({ latestNews, popularNews }: NewsTabsP
                             : "bg-gray-300 hover:text-gray-800"
                             }`}
                     >
-                        সর্বাধিক পঠিত সংবাদ
+                        সর্বাধিক পঠিত
                     </button>
                 </div>
             </div>
 
             {/* Scrollable Content */}
-            <div className="max-h-[630px] overflow-y-auto">
+            <div className={`max-h-[${height}px] overflow-y-auto`}>
                 {activeTab === "latest" &&
                     <div>
                         {newsJson.slice(1, 10).map((newsItem, index) => (
-                            <div key={index} className="py-2 px-2 border-b">
-                                <NewsItemBase newsItem={newsItem} />
+                            <div key={index} className="px-2">
+                                <NewsItemLatestPopular newsItem={newsItem} />
                             </div>
                         ))}
                     </div>
@@ -56,8 +56,8 @@ export default function LatestPopularNews({ latestNews, popularNews }: NewsTabsP
                 {activeTab === "popular" &&
                     <div>
                         {newsJson.slice(11, 20).map((newsItem, index) => (
-                            <div key={index} className="py-2 px-2 border-b">
-                                <NewsItemBase newsItem={newsItem} />
+                            <div key={index} className="px-2">
+                                <NewsItemLatestPopular newsItem={newsItem} />
                             </div>
                         ))}
                     </div>

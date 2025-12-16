@@ -1,6 +1,6 @@
 import Container from "@/lib/components/common/container";
 import HtmlContent from "@/lib/components/common/html-content";
-import LatestPopularNews from "@/lib/components/common/news-elements/latest-popular";
+import LatestPopularNews from "@/lib/components/common/latest-popular";
 import { ImageWithFallback } from "@/lib/components/image";
 import { newsJson } from "@/lib/data";
 import Link from "next/link";

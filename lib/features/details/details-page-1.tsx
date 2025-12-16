@@ -1,5 +1,5 @@
 import Container from "@/lib/components/common/container"
-import LatestPopularNews from "@/lib/components/common/news-elements/latest-popular";
+import LatestPopularNews from "@/lib/components/common/latest-popular";
 
 const DetailsIndex1 = () => {
     return (
@@ -15,7 +15,7 @@ const DetailsIndex1 = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-[auto_300px] gap-8 divider-mBottom-deskRight">
 
                     <div className="col-span-auto">
-                        
+
                         <div className="details-head">
                             <h1>আগামী নির্বাচনকে ঐতিহাসিক ও স্মরণীয় করে রাখতে হবে : প্রধান উপদেষ্টা</h1>
                         </div>
@@ -57,11 +57,11 @@ const DetailsIndex1 = () => {
                             <a href="#">জেলা প্রশাসক</a>
                             <a href="#">বাংলাদেশ</a>
                         </div>
-                        
+
                     </div>
 
                     <div className="col-span-auto">
-                        
+
                         <div className="flex justify-center">
                             <img src="https://tpc.googlesyndication.com/simgad/11473454279542623205" alt="logo" />
                         </div>

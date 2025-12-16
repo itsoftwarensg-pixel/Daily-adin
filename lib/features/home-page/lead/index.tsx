@@ -10,7 +10,7 @@ import { ImageWithFallback } from "@/lib/components/image";
 import HtmlContent from "@/lib/components/common/html-content";
 import GradientHeader from "@/lib/components/common/section-headers/gradient";
 import NewsItemVertical from "@/lib/components/common/news-elements/news-item-vertical";
-import LatestPopularNews from "@/lib/components/common/news-elements/latest-popular";
+import LatestPopularNews from "@/lib/components/common/latest-popular";
 import headerBanner from "@/public/images/header-banner.svg";
 
 const HomeLead = () => {
