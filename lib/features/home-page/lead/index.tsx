@@ -15,7 +15,7 @@ import headerBanner from "@/public/images/header-banner.svg";
 
 const HomeLead = () => {
   return (
-    <div className="py-8">
+    <div className="pt-4 pb-8">
       <Container>
         <div className="grid grid-cols-4 gap-6">
           <div className="col-span-3">
