@@ -24,50 +24,68 @@ export default function ApplicationFooter() {
       {/* Upper Section */}
       <div className="w-full py-12 bg-gray-2">
         <Container>
-          <div className="flex justify-between items-start">
-            {/* Left Sections */}
-            <div className="flex gap-[76px]">
-              {/* Contact */}
-              <div className="flex flex-col gap-[20px]">
-                <p className="w-fit text-[20px] border-b rounded-[3px] border-[#BABABA] mb-3">
-                  যোগাযোগ করুন
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-[30px] items-start">
+            {/* Address */}
+            <div className="flex flex-col gap-[20px]">
+              <p className="w-fit text-[20px] border-b rounded-[3px] border-[#BABABA] mb-3">
+                আমাদের ঠিকানা
+              </p>
+              <div className="flex flex-col space-y-3">
+                <p className="text-lg text-textGray font-normal">
+                  টাওয়ার-এ (২য় তলা),
                 </p>
-                <div className="flex flex-col space-y-3">
-                  <p className="text-lg text-textGray font-normal">
-                    টাওয়ার-এ (২য় তলা) , হাউস-১৩, রোড-১৭, বনানী, ঢাকা-১২১৩।
-                  </p>
-                  <p className="text-lg text-textGray font-normal">
-                    টেলিফোন : ০৯৬৩৯১০১৯২৩
-                  </p>
-                  <p className="text-lg text-textGray font-normal">
-                    Email: <Link href={`malito:dailyadinbd@gmail.com`} className="hover:text-black">dailyadinbd@gmail.com</Link>
-                  </p>
-                </div>
+                <p className="text-lg text-textGray font-normal">
+                  হাউস-১৩, রোড-১৭,
+                </p>
+                <p className="text-lg text-textGray font-normal">
+                  বনানী, ঢাকা-১২১৩।
+                </p>
               </div>
+            </div>
 
-              {/* Links */}
-              <div className="flex flex-col gap-[20px]">
-                <p className="w-fit text-[20px] border-b rounded-[3px] border-[#BABABA] mb-3">
-                  লিঙ্কসমূহ
+            {/* Contact Info */}
+            <div className="flex flex-col gap-[20px]">
+              <p className="w-fit text-[20px] border-b rounded-[3px] border-[#BABABA] mb-3">
+                যোগাযোগ করুন
+              </p>
+              <div className="flex flex-col space-y-3">
+                <p className="text-lg text-textGray font-normal">
+                  টেলিফোন : ০৯৬৩৯১০১৯২৩
                 </p>
-                <div className="flex flex-col space-y-3">
-                  {urls.map((item, i) => (
-                    <Link
-                      key={i}
-                      href={item.href}
-                      className="text-lg text-textGray font-normal hover:text-black"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
+                <p className="text-lg text-textGray font-normal">
+                  ইমেইল :{" "}
+                  <Link
+                    href="mailto:dailyadinbd@gmail.com"
+                    className="hover:text-black"
+                  >
+                    dailyadinbd@gmail.com
+                  </Link>
+                </p>
+              </div>
+            </div>
+
+            {/* Useful Links */}
+            <div className="flex flex-col gap-[20px]">
+              <p className="w-fit text-[20px] border-b rounded-[3px] border-[#BABABA] mb-3">
+                লিঙ্ক
+              </p>
+              <div className="flex flex-col space-y-3">
+                {urls.map((item, i) => (
+                  <Link
+                    key={i}
+                    href={item.href}
+                    className="text-lg text-textGray font-normal hover:text-black"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </div>
             </div>
 
             {/* Social Media */}
             <div className="flex flex-col gap-[20px]">
               <p className="w-fit text-[20px] border-b rounded-[3px] border-[#BABABA] mb-3">
-                আমাদের সোসিয়াল মিডিয়া সমূহ
+                আমাদের সোশ্যাল মিডিয়া
               </p>
               <div className="flex items-center gap-[10px]">
                 {socialLinks.map((item, i) => (
@@ -75,7 +93,7 @@ export default function ApplicationFooter() {
                     key={i}
                     target="_blank"
                     href={item.href}
-                    className="bg-white p-[10px] overflow-hidden"
+                    className="bg-white p-[10px] rounded hover:scale-105 transition-transform"
                   >
                     <ImageWithFallback
                       src={item.icon}
@@ -96,10 +114,18 @@ export default function ApplicationFooter() {
         <Container>
           <div className="flex justify-between gap-4">
             <p className="text-md font-normal text-textGray">
-              © স্বত্ব ২০২৫ দৈনিক এদিন | ভারপ্রাপ্ত সম্পাদক: মো. সাইদুল ইসলাম সাজু
+              © স্বত্ব ২০২৫ দৈনিক এদিন | ভারপ্রাপ্ত সম্পাদক: মো. সাইদুল ইসলাম
+              সাজু
             </p>
             <p className="text-md font-normal text-textGray">
-              Design & Developed by <a href="http://www.bongosoftbd.com/" className="text-green-600 hover:underline">Bongosoft Ltd</a>.
+              Design & Developed by 
+              <a
+                href="http://www.bongosoftbd.com/"
+                className="text-green-600 hover:underline"
+              >
+                Bongosoft Ltd
+              </a>
+              .
             </p>
           </div>
         </Container>
