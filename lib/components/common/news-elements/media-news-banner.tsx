@@ -20,7 +20,7 @@ const MediaNewsBanner = ({ image, title, href = "/" }: Props) => {
         />
       </div>
 
-      <h2 className="absolute left-5 bottom-5 text-white text-3xl font-normal group-hover:underline z-20">
+      <h2 className="absolute left-5 bottom-5 text-white text-3xl font-semibold group-hover:underline z-20">
         {title}
       </h2>
 

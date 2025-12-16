@@ -8,7 +8,7 @@ import GradientHeader from "@/lib/components/common/section-headers/gradient";
 
 const HomeClickedMemories = () => {
   return (
-    <div className="py-8 my-12">
+    <div className="py-8">
       <Container>
         <GradientHeader
           title="ক্লিক স্মৃতি"

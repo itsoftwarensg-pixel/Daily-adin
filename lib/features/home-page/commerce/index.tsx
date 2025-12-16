@@ -9,7 +9,7 @@ const HomeCommercePantholokChoose = () => {
   return (
     <div className="py-8">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* বাণিজ্য লোক */}
           <div className="space-y-2">
             <GradientHeader

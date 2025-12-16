@@ -37,7 +37,7 @@ const HomeMedia = () => {
                     </div>
 
                     <div className="col-span-3 group-hover:text-blue-700 px-2">
-                      <h4 className="text-xl mb-2">{newsItem.title}</h4>
+                      <h4 className="text-xl mb-2 font-semibold">{newsItem.title}</h4>
                       <HtmlContent className="group-hover:text-gray-700" html={newsItem.description} maxContent={100} />
                     </div>
                   </div>
