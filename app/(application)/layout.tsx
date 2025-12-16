@@ -20,7 +20,7 @@ export default function AppLayout({ children }: Props) {
   return (
     <div>
       <ApplicationHeader />
-      <main className="pt-[280px] pb-4">{children}</main>
+      <main className="pb-4">{children}</main>
       <ApplicationFooter />
     </div>
   );

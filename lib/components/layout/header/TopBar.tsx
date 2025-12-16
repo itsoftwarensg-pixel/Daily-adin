@@ -31,7 +31,7 @@ const TopBar = () => {
           />
         </div>
 
-        <div className="relative overflow-hidden mt-3">
+        <div className="relative overflow-hidden">
           <ImageWithFallback
             src={headerBanner}
             width={500}

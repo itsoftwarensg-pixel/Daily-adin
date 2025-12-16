@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { navItems, newsJson } from "@/lib/data";
-import Marquee from "react-fast-marquee";
+
 import { FiSearch, FiX } from "react-icons/fi";
 import { whiteArrowDown } from "@/lib/components/icons";
 import { ImageWithFallback } from "@/lib/components/image";
@@ -106,29 +106,6 @@ const Navbar = () => {
             <LuGlobe size={24} className="text-white" />
           </div>
         </div>
-      </div>
-
-      {/* Title row */}
-      <div className="flex items-center justify-beteen text-[16px] font-normal w-full">
-        <div className="bg-[#FF4646] text-white px-3 py-2 shrink-0 border-l-[6px] border-black">
-          শিরোনাম :
-        </div>
-
-        <Marquee
-          pauseOnHover={true}
-          speed={50}
-          gradient={false}
-          className="bg-[#FFB2B2] px-5 py-2 border-t border-black"
-        >
-          <div className="flex items-center gap-10">
-            {newsJson.slice(0, 10).map((item, index) => (
-              <div key={index} className="flex items-center gap-2">
-                <div className="bg-primaryRed w-2.5 h-2.5 rounded-full shrink-0" />
-                <Link href={'/'} className="hover:text-red-600">{item.title}</Link>
-              </div>
-            ))}
-          </div>
-        </Marquee>
       </div>
 
       {/* Search Overlay */}

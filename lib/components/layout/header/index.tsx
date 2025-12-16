@@ -1,19 +1,23 @@
 import React from "react";
-import TopBar from "./TopBar";
-import Navbar from "./Navbar";
-import Container from "../../common/container";
+import Container from "@/lib/components/common/container";
+import TopBar from "@/lib/components/layout/header/TopBar";
+import Navbar from "@/lib/components/layout/header/Navbar";
 
 export default function ApplicationHeader() {
   return (
-    <Container>
-      <div className="w-full fixed top-0 left-0 z-50 bg-white">
+    <>
+      <div className="w-full bg-white">
         <Container>
-          <div className="w-full flex flex-col gap-2 pt-[30px]">
+          <div className="w-full flex flex-col gap-2 pt-3">
             <TopBar />
-            <Navbar />
           </div>
         </Container>
       </div>
-    </Container>
+      <div className="sticky top-0 w-full bg-white z-50">
+        <Container>
+          <Navbar />
+        </Container>
+      </div>
+    </>
   );
 }

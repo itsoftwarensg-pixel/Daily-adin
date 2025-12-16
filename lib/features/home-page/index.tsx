@@ -8,10 +8,12 @@ import HomeLeadBelow from "@/lib/features/home-page/lead-below";
 import HomeInternational from "@/lib/features/home-page/international";
 import HomeClickedMemories from "@/lib/features/home-page/clicked-memories";
 import HomeCommercePantholokChoose from "@/lib/features/home-page/commerce";
+import BreakingNews from "@/lib/components/common/breaking-news";
 
 const HomePage = () => {
   return (
     <>
+      <BreakingNews />
       <HomeLead />
       {/* <HomeLeadBelow /> */}
       <HomeSports />
