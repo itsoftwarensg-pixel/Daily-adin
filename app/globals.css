@@ -17,3 +17,12 @@ input[type="number"] {
   appearance: textfield;
   -moz-appearance: textfield;
 }
+
+/* Content details css */
+.content-details p {
+  margin-bottom: 15px;
+}
+
+.content-details img {
+  margin-bottom: 15px;
+}
