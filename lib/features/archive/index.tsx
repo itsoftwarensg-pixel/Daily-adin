@@ -4,6 +4,7 @@ import Container from "@/lib/components/common/container";
 import NewsItemArchive from "@/lib/components/common/news-elements/news-item-archive";
 import { newsJson } from "@/lib/data";
 import { IoIosArrowForward } from "react-icons/io";
+import Calendar from "./calendar";
 
 const ArchivePage = () => {
     // Local state variables
@@ -21,6 +22,14 @@ const ArchivePage = () => {
                 <div className="text-xl border-l-4 border-red-500 text-red-500 font-bold flex gap-2 items-center mb-4">
                     <span className="pl-4">{`আর্কাইভ`}</span>
                     <IoIosArrowForward />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+
+                    <div className="">
+                        <Calendar/>
+                    </div>
+
                 </div>
 
                 {/* Content Section */}
@@ -48,3 +57,4 @@ const ArchivePage = () => {
 }
 
 export default ArchivePage;
+
