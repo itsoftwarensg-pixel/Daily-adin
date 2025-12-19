@@ -61,9 +61,9 @@ const HomeCountry = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {/* Left */}
-          <div className="space-y-2 h-full">
+          <div className="col-span-1 md:col-span-5 space-y-2 h-full">
             {newsJson.slice(59, 60).map((newsItem, idx) => (
               <div key={idx} className="h-full">
                 <Link href={"/"} className="relative block group h-full">
@@ -83,7 +83,7 @@ const HomeCountry = () => {
                       >
                         {newsItem.title}
                       </h4>
-                      <HtmlContent html={newsItem.brief} maxContent={160} className="pt-1 px-2 text-gray-500" />
+                      <HtmlContent html={newsItem.description} maxContent={160} className="pt-1 px-2 text-gray-500" />
                     </div>
                   </div>
                 </Link>
@@ -92,9 +92,9 @@ const HomeCountry = () => {
           </div>
 
           {/* Right */}
-          <div className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {newsJson.slice(55, 59).map((newsItem, idx) => (
+          <div className="col-span-2 md:col-span-7 space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {newsJson.slice(53, 59).map((newsItem, idx) => (
                 <div key={idx} className="h-auto">
                   <NewsItemVertical
                     newsItem={newsItem}
