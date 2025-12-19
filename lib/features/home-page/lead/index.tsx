@@ -146,8 +146,15 @@ const HomeLead = () => {
 
             {/* Latest - Popular */}
             <div className="my-4">
-              <LatestPopularNews height={600} />
+              <LatestPopularNews height={510} />
             </div>
+
+            {/* Advertisement */}
+            <div className="flex justify-center mb-4">
+              <img src="https://tpc.googlesyndication.com/simgad/11473454279542623205" alt="" />
+            </div>
+
+            {/* Opinion */}
             <Opinion />
           </div>
         </div>

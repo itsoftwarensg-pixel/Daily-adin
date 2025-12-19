@@ -23,7 +23,7 @@ const HomeLaceTap = () => {
               <div key={idx} className="h-full">
                 <NewsItemLaceTape
                   newsItem={newsItem}
-                  titleSize="3xl"
+                  titleSize="xlarge"
                   bgColor="gray"
                 />
               </div>
