@@ -133,7 +133,7 @@ export const navItems: NavItem[] = [
     ],
   },
   // { text: "আজকের পত্রিকা", href: "#todays-paper" },
-  { text: "আর্কাইভ", href: "#archive" },
+  { text: "আর্কাইভ", href: "/archive" },
   // { text: "ইপেপার", href: "#epaper" },
 ];
 
