@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { newsJson } from "@/lib/data"; // Temporary
 import Container from "@/lib/components/common/container";
-import ClickedMemoryItem from "@/lib/components/common/news-elements/clicked-memory-item";
+import ClickedMemoryItem from "@/lib/components/common/news-elements/clicked-memory-item-old";
 import GradientHeader from "@/lib/components/common/section-headers/gradient";
 
 const HomeClickedMemories = () => {

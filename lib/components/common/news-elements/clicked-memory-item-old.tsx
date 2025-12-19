@@ -13,7 +13,7 @@ interface PropsType {
   height?: string; // optional height for clicked variant
 }
 
-const ClickedMemoryItemNew = ({
+const ClickedMemoryItemOld = ({
   newsItem,
   href = "/",
   variant = "clicked",
@@ -23,7 +23,8 @@ const ClickedMemoryItemNew = ({
   return (
     <Link href={href} className="block overflow-hidden relative group">
       <div
-        className={`relative w-full ${variant === "memory" ? "px-6 py-5" : ""} ${bgColor && variant === "memory" ? `bg-${bgColor}-100` : ""}`}
+        className={`relative w-full ${variant === "memory" ? "px-9 py-8" : ""
+          } ${bgColor && variant === "memory" ? `bg-${bgColor}-100` : ""}`}
       >
         <div
           className={`relative w-full overflow-hidden ${variant === "memory" ? "aspect-[16/9]" : `aspect-[16/5]`
@@ -55,7 +56,7 @@ const ClickedMemoryItemNew = ({
               }`}
           >
             <p
-              className={`${variant === "memory" ? "text-[26px]" : "text-[20px]"
+              className={`${variant === "memory" ? "text-[32px]" : "text-[20px]"
                 } font-normal group-hover:text-red-500`}
             >
               {newsItem.title}
@@ -67,4 +68,4 @@ const ClickedMemoryItemNew = ({
   );
 };
 
-export default ClickedMemoryItemNew;
+export default ClickedMemoryItemOld;
