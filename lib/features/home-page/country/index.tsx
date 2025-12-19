@@ -79,7 +79,7 @@ const HomeCountry = () => {
                     </div>
                     <div>
                       <h4
-                        className={`px-2 pt-3 text-3xl group-hover:text-blue-700 font-semibold`}
+                        className={`px-2 pt-2 text-2xl group-hover:text-blue-700 font-semibold`}
                       >
                         {newsItem.title}
                       </h4>
