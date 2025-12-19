@@ -20,7 +20,7 @@ const socialLinks = [
 
 const TopBar = () => {
   const pathname = usePathname();
-  const todayDate = pathname === "/home-2" ? `${TodayBnDate}` : `আজ ${TodayDate()}`; // TODO:: remove `/home-2` condition later. Keep only -> todayDate = TodayBnDate
+  const todayDate = pathname === "/home-old" ? `আজ ${TodayDate()}` : `${TodayBnDate}`; // TODO:: remove `/home-2` condition later. Keep only -> todayDate = TodayBnDate
 
   return (
     <div className="w-full bg-white">
