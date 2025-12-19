@@ -9,7 +9,8 @@ import { globe } from "@/lib/components/icons";
 import { ImageWithFallback } from "@/lib/components/image";
 import headerBanner from "@/public/images/header-banner.svg";
 import { x, youtube, facebook } from "@/lib/components/icons";
-import { TodayBnDate } from "@/lib/utils/helpers";
+import { TodayBnDate, TodayDate } from "@/lib/utils/helpers";
+import { usePathname } from "next/navigation";
 
 const socialLinks = [
   { href: "https://www.facebook.com", icon: facebook, alt: "facebook" },
@@ -18,6 +19,9 @@ const socialLinks = [
 ];
 
 const TopBar = () => {
+  const pathname = usePathname();
+  const todayDate = pathname === "/home-2" ? `${TodayBnDate}` : `আজ ${TodayDate()}`; // TODO:: remove `/home-2` condition later. Keep only -> todayDate = TodayBnDate
+
   return (
     <div className="w-full bg-white">
       <div className="flex justify-between items-center gap-10">
@@ -42,7 +46,7 @@ const TopBar = () => {
         </div>
 
         <div className="flex flex-col gap-3 items-end">
-          <p className="text-[20px] font-normal">{TodayBnDate}</p>
+          <p className="text-[20px] font-normal">{todayDate}</p>
           <div className="flex items-center gap-3">
             <button className="group flex items-center gap-2 px-4 py-2.5 rounded-lg bg-gray-100 text-[17px] font-medium text-black shadow-sm hover:bg-red-600 hover:text-white transition-all duration-200">
               <GiNewspaper
