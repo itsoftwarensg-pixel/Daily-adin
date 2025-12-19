@@ -27,7 +27,7 @@ const HomeCountry = () => {
           </div>
           <div className="flex gap-2">
             <select
-              className="block w-full border rounded px-4 py-1 bg-white
+              className="selectArrow block w-full border rounded px-4 py-1 bg-white focus:outline-0
                      active:ring-0 focus:ring-0 focus:ring-blue-0 focus:border-blue-0"
             >
               <option value={""}>বিভাগ</option>
@@ -36,7 +36,7 @@ const HomeCountry = () => {
               <option value={""}>Chittagong</option>
             </select>
             <select
-              className="block w-full border rounded px-4 py-1 bg-white
+              className="selectArrow block w-full border rounded px-4 py-1 bg-white focus:outline-0
                      active:ring-0 focus:ring-0 focus:ring-blue-0 focus:border-blue-0"
             >
               <option value={""}>জেলা</option>
@@ -45,7 +45,7 @@ const HomeCountry = () => {
               <option value={""}>Chittagong</option>
             </select>
             <select
-              className="block w-full border rounded px-4 py-1 bg-white
+              className="selectArrow block w-full border rounded px-4 py-1 bg-white focus:outline-0
                      active:ring-0 focus:ring-0 focus:ring-blue-0 focus:border-blue-0"
             >
               <option value={""}>উপজেলা</option>
