@@ -3,11 +3,7 @@
 import { useState } from 'react';
 import Datepicker from 'react-tailwindcss-datepicker';
 
-// import { useArchive } from '@/lib/hooks/useArchive';
-
 const DateFilter = () => {
-	// const { setProviderStartDate, setProviderEndDate } = useArchive();
-
 	const [startDateValues, setStartDate] = useState({
 		startDate: null,
 		endDate: null,
@@ -22,7 +18,6 @@ const DateFilter = () => {
 			startDate: input.startDate,
 			endDate: input.endDate,
 		});
-		// setProviderStartDate(input.startDate);
         console.log(input.startDate);
 
 		if(!input.startDate) {
@@ -30,7 +25,6 @@ const DateFilter = () => {
 				startDate: null,
 				endDate: null,
 			});
-			// setProviderEndDate(input.startDate);
         console.log(input.startDate);
 		}
 	}
@@ -40,16 +34,15 @@ const DateFilter = () => {
 			startDate: input.startDate,
 			endDate: input.endDate,
 		});
-		// setProviderEndDate(input.startDate);
         console.log(input.startDate);
 	}
 
 	return (
 		<>
 			<div className='col-span-6 lg:col-span-4'>
-				<div className='block w-full'>
+				<div className='block w-full mb-4'>
 					<Datepicker
-						inputClassName='w-full rounded-sm p-3 text-base focus:outline-0 dark:bg-slate-300'
+						inputClassName='w-full !text-black rounded-sm p-3 text-base border-[1px] border-gray-300 focus:outline-0'
 						asSingle={true}
 						useRange={false}
 						minDate={new Date('2020-11-28')}
@@ -65,9 +58,9 @@ const DateFilter = () => {
 			</div>
 
 			<div className='col-span-6 lg:col-span-4'>
-				<div className='block w-full'>
+				<div className='block w-full mb-4'>
 					<Datepicker
-						inputClassName='w-full rounded-sm p-3 text-base focus:outline-0 dark:bg-slate-300'
+						inputClassName='w-full rounded-sm p-3 text-base border-[1px] border-gray-300 focus:outline-0'
 						asSingle={true}
 						useRange={false}
 						readOnly={true}
