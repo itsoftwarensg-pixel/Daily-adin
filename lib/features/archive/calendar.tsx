@@ -40,7 +40,7 @@ const DateFilter = () => {
 	return (
 		<>
 			<div className='col-span-6 lg:col-span-4'>
-				<div className='block w-full mb-4'>
+				<div className='block w-full'>
 					<Datepicker
 						inputClassName='w-full !text-black rounded-sm p-3 text-base border-[1px] border-gray-300 focus:outline-0'
 						asSingle={true}
@@ -58,7 +58,7 @@ const DateFilter = () => {
 			</div>
 
 			<div className='col-span-6 lg:col-span-4'>
-				<div className='block w-full mb-4'>
+				<div className='block w-full'>
 					<Datepicker
 						inputClassName='w-full rounded-sm p-3 text-base border-[1px] border-gray-300 focus:outline-0'
 						asSingle={true}
