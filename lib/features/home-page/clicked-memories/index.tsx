@@ -1,9 +1,7 @@
 import React from "react";
 import { newsJson } from "@/lib/data";
 import Container from "@/lib/components/common/container";
-import Advertisement from "@/lib/components/common/advertisement";
-import ClickedMemoryItem from "@/lib/components/common/news-elements/clicked-memory-item";
-import Link from "next/link";
+import ClickedMemoryItemNew from "@/lib/components/common/news-elements/clicked-memory-item-new";
 import GradientHeader from "@/lib/components/common/section-headers/gradient";
 
 const HomeClickedMemories = () => {
@@ -16,36 +14,16 @@ const HomeClickedMemories = () => {
           href="/"
           showReadMoreBtn={true}
         />
-        <div className="grid grid-cols-12 gap-6 mt-6">
-          {/* Left */}
-          <div className="col-span-7 space-y-2">
-            {newsJson.slice(10, 11).map((newsItem, idx) => (
-              <div key={idx} className="h-auto">
-                <ClickedMemoryItem
-                  newsItem={newsItem}
-                  variant="memory"
-                  bgColor="gray"
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Right */}
-          <div className="col-span-5 space-y-5">
-            {newsJson.slice(8, 10).map((newsItem, index) => (
-              <ClickedMemoryItem
-                key={index}
+        <div className="grid grid-cols-3 gap-6 mt-6">
+          {newsJson.slice(11, 17).map((newsItem, idx) => (
+            <div key={idx} className="h-auto">
+              <ClickedMemoryItemNew
                 newsItem={newsItem}
-                variant="clicked"
-                height="160px"
+                variant="memory"
+                bgColor="gray"
               />
-            ))}
-            <Link
-              href={'/'}
-              className="text-[24px] flex items-center justify-center bg-gray-3 w-full h-20 font-normal py-4 hover:bg-gray-200"
-            >সব কালেকশন দেখুন
-            </Link>
-          </div>
+            </div>
+          ))}
         </div>
       </Container>
     </div>
