@@ -29,36 +29,17 @@ const HomeLead = () => {
                     bgColor="gray"
                   />
                 ))}
-                <div className="relative overflow-hidden mt-3">
-                  <ImageWithFallback
-                    src={headerBanner}
-                    width={500}
-                    height={150}
-                    alt="The Daily Adin Logo"
-                    className="object-contain"
-                  />
-                </div>
               </div>
 
               {/* Lead news - Center */}
               <div className="col-span-3">
                 <LeadNewsItem />
-
-                <div className="grid grid-cols-2 gap-2 mb-4">
-                  {newsJson.slice(14, 16).map((newsItem, index) => (
-                    <NewsItemBase
-                      key={index}
-                      newsItem={newsItem}
-                      bgColor="gray"
-                    />
-                  ))}
-                </div>
               </div>
             </div>
 
             {/* 3 contents. Lead below */}
             <div className="grid grid-cols-3 gap-4 mb-6">
-              {newsJson.slice(40, 43).map((newsItem, idx) => (
+              {newsJson.slice(40, 46).map((newsItem, idx) => (
                 <Link
                   href={"/"}
                   key={idx}
@@ -80,11 +61,6 @@ const HomeLead = () => {
                       >
                         {newsItem.title}
                       </h4>
-                      <HtmlContent
-                        html={newsItem.description}
-                        maxContent={100}
-                        className="p-2 pt-1 text-gray-500"
-                      />
                     </div>
                   </div>
                 </Link>
@@ -170,8 +146,15 @@ const HomeLead = () => {
 
             {/* Latest - Popular */}
             <div className="my-4">
-              <LatestPopularNews height={600} />
+              <LatestPopularNews height={510} />
             </div>
+
+            {/* Advertisement */}
+            <div className="flex justify-center mb-4">
+              <img src="https://tpc.googlesyndication.com/simgad/11473454279542623205" alt="" />
+            </div>
+
+            {/* Opinion */}
             <Opinion />
           </div>
         </div>

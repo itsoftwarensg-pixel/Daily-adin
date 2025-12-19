@@ -76,7 +76,7 @@ export default function GradientHeader({
     const btnGradientClasses = buttonColorMap[color] || buttonColorMap["blue"];
 
     const content = (
-        <div className={`group flex justify-between items-center pl-4 py-2 pr-2 mb-4 text-2xl font-bold text-white bg-gradient-to-r ${gradientClasses} ${className}`}>
+        <div className={`group flex justify-between items-center pl-4 py-2 pr-2 mb-4 text-xl font-bold text-white bg-gradient-to-r ${gradientClasses} ${className}`}>
             <span className="py-1">
                 {title}
             </span>

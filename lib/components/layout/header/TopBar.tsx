@@ -3,13 +3,15 @@
 import React from "react";
 import Link from "next/link";
 import logo from "@/public/logo.svg";
-import { IoMdPaper } from "react-icons/io";
+import { IoIosShareAlt, IoMdPaper } from "react-icons/io";
 import { GiNewspaper } from "react-icons/gi";
 import { globe } from "@/lib/components/icons";
 import { ImageWithFallback } from "@/lib/components/image";
 import headerBanner from "@/public/images/header-banner.svg";
 import { x, youtube, facebook } from "@/lib/components/icons";
-import { TodayDate } from "@/lib/utils/helpers";
+import { TodayBnDate, TodayDate } from "@/lib/utils/helpers";
+import { usePathname } from "next/navigation";
+import { RiNewspaperLine } from "react-icons/ri";
 
 const socialLinks = [
   { href: "https://www.facebook.com", icon: facebook, alt: "facebook" },
@@ -18,6 +20,9 @@ const socialLinks = [
 ];
 
 const TopBar = () => {
+  const pathname = usePathname();
+  const todayDate = pathname === "/home-old" ? `আজ ${TodayDate()}` : `${TodayBnDate}`; // TODO:: remove `/home-2` condition later. Keep only -> todayDate = TodayBnDate
+
   return (
     <div className="w-full bg-white">
       <div className="flex justify-between items-center gap-10">
@@ -41,24 +46,32 @@ const TopBar = () => {
           />
         </div>
 
-        <div className="flex flex-col gap-3 items-end">
-          <p className="text-[20px] font-normal">আজ {TodayDate()}</p>
-          <div className="flex items-center gap-3">
-            <button className="group flex items-center gap-2 px-4 py-2.5 rounded-lg bg-gray-100 text-[17px] font-medium text-black shadow-sm hover:bg-red-600 hover:text-white transition-all duration-200">
-              <GiNewspaper
-                size={22}
-                className="text-red-600 group-hover:text-white transition-colors"
+        <div className="flex flex-col gap-2 items-end">
+          <p className="text-[20px] font-normal">{todayDate}</p>
+          <div className="flex items-center gap-4">
+            <Link href={'/'} className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600">
+              <RiNewspaperLine
+                size={16}
+                className="group-hover:text-blue-600"
               />
               আজকের পত্রিকা
-            </button>
+            </Link>
 
-            <button className="group flex items-center gap-2 px-4 py-2.5 rounded-lg bg-gray-100 text-[17px] font-medium text-black shadow-sm hover:bg-red-600 hover:text-white transition-all duration-200">
+            <Link href={'/'} className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600">
               <IoMdPaper
-                size={22}
-                className="text-blue-600 group-hover:text-white transition-colors"
+                size={16}
+                className="group-hover:text-blue-600 "
               />
               ই-পেপার
-            </button>
+            </Link>
+
+            <Link href={'/'} className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600">
+              <IoIosShareAlt
+                size={16}
+                className="group-hover:text-blue-600"
+              />
+              সোশ্যাল মিডিয়া
+            </Link>
           </div>
 
           <div className="flex items-center gap-3 hidden">

@@ -14,7 +14,7 @@ const HomeCommercePantholokChoose = () => {
           <div className="space-y-2">
             <GradientHeader
               title="বাণিজ্য লোক"
-              color="red"
+              color="emerald"
               showReadMoreBtn
               href="/"
             />

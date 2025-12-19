@@ -140,3 +140,101 @@ export const CurrentYear = () => {
   return toBanglaNumber(y.getFullYear());
 };
 // ============ END: Date, Month, Year ===========
+
+
+
+// ========================== Start Bangla Date Time Helper ===========================
+// ======== Bangla Date Converter ========
+
+// Bangla calendar months
+const BN_MONTHS = [
+  "বৈশাখ", "জ্যৈষ্ঠ", "আষাঢ়", "শ্রাবণ",
+  "ভাদ্র", "আশ্বিন", "কার্তিক", "অগ্রহায়ণ",
+  "পৌষ", "মাঘ", "ফাল্গুন", "চৈত্র",
+];
+
+// Standard month lengths (Falgun may change in leap year)
+const BN_MONTH_DAYS = [31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29, 30];
+
+// Convert number to Bangla digits (plain, no commas)
+const toBnNumber = (num: number) =>
+  num.toString().replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[+d]);
+
+// Check Gregorian leap year
+const isLeapYear = (year: number) =>
+  (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+
+// Get Bangla calendar date
+const getBanglaCalendarDate = (date: Date) => {
+  // Fix timezone to Asia/Dhaka
+  const dhakaOffset = 6 * 60; // +6 hours
+  const utcTime = date.getTime() + date.getTimezoneOffset() * 60000;
+  const dhakaTime = new Date(utcTime + dhakaOffset * 60000);
+
+  const enYear = dhakaTime.getFullYear();
+  const enMonth = dhakaTime.getMonth(); // 0-11
+  const enDay = dhakaTime.getDate();
+
+  // Bangla year
+  let bnYear = enYear - 593;
+  if (enMonth < 3 || (enMonth === 3 && enDay < 14)) {
+    bnYear--;
+  }
+
+  // Adjust Falgun for leap year
+  const monthDays = [...BN_MONTH_DAYS];
+  if (isLeapYear(enYear)) {
+    monthDays[10] = 30; // Falgun = 30 days
+  }
+
+  // Bangla New Year starts 14 April
+  const bnYearStart = new Date(Date.UTC(
+    enMonth < 3 ? enYear - 1 : enYear,
+    3, 14
+  ));
+
+  // Compute days passed
+  let diffDays = Math.round((dhakaTime.getTime() - bnYearStart.getTime()) / 86400000);
+  if (diffDays < 0) diffDays = 0; // safety for early hours
+
+  // Find month and day
+  let bnMonthIndex = 0;
+  while (diffDays >= monthDays[bnMonthIndex]) {
+    diffDays -= monthDays[bnMonthIndex];
+    bnMonthIndex++;
+  }
+
+  const bnDay = diffDays + 1;
+
+  return {
+    day: toBnNumber(bnDay),
+    month: BN_MONTHS[bnMonthIndex],
+    year: toBnNumber(bnYear),
+  };
+};
+
+// Format Gregorian date in Bangla
+const formatGregorianBn = (date: Date) => {
+  const formatter = new Intl.DateTimeFormat("bn-BD", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "Asia/Dhaka",
+  });
+  return formatter.format(date);
+};
+
+// ===== Public API =====
+export const convertToBanglaDate = (inputDate = new Date()) => {
+  const date = new Date(inputDate);
+
+  const gregorianBn = formatGregorianBn(date);
+  const bangla = getBanglaCalendarDate(date);
+
+  return `${gregorianBn}, ${bangla.day} ${bangla.month} ${bangla.year}`;
+};
+
+
+export const TodayBnDate = convertToBanglaDate();
+
+// ========================== End Bangla Date Time Helper ===========================
