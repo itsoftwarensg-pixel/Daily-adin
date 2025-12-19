@@ -3,6 +3,7 @@ import { newsJson } from "@/lib/data"; // Temporary
 import Container from "@/lib/components/common/container";
 import GradientHeader from "@/lib/components/common/section-headers/gradient";
 import NewsItemVertical from "@/lib/components/common/news-elements/news-item-vertical";
+import NewsItemLaceTape from "@/lib/components/common/news-elements/news-item-lace-tap";
 
 const HomeLaceTap = () => {
   return (
@@ -20,12 +21,10 @@ const HomeLaceTap = () => {
           <div className="col-span-6 space-y-2">
             {newsJson.slice(11, 12).map((newsItem, idx) => (
               <div key={idx} className="h-full">
-                <NewsItemVertical
+                <NewsItemLaceTape
                   newsItem={newsItem}
                   titleSize="3xl"
                   bgColor="gray"
-                  showVideoLink
-                  largeVideoIcon
                 />
               </div>
             ))}
@@ -40,11 +39,10 @@ const HomeLaceTap = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {newsJson.slice(6, 10).map((newsItem, idx) => (
                 <div key={idx} className="h-auto">
-                  <NewsItemVertical
+                  <NewsItemLaceTape
                     newsItem={newsItem}
                     titleSize="large"
                     bgColor="gray"
-                    showVideoLink
                   />
                 </div>
               ))}
