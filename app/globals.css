@@ -27,17 +27,20 @@ input[type="number"] {
   margin-bottom: 15px;
 }
 
-.content-details .quote-body {
-  @apply mb-4;
+.content-details blockquote {
+  @apply mb-4 relative bg-gray-100 dark:bg-[#414346] px-4 pt-12 pb-2 lg:px-6 lg:pt-12 lg:pb-2 border-l-[6px] border-gray-400;
 }
-.content-details .quote-body .quote-text {
-  @apply relative bg-[#ecf3fd] dark:bg-[#414346] px-4 pt-8 pb-4 lg:px-10 lg:pt-8 lg:pb-5 text-2xl lg:text-[26px] lg:leading-8 text-black dark:text-white print:text-base print:text-black print:dark:text-black print:!bg-[#ecf3fd] print:dark:bg-[#ecf3fd];
+
+.content-details blockquote p {
+  @apply text-xl text-black dark:text-white print:text-base print:text-black print:dark:text-black print:!bg-[#ecf3fd] print:dark:bg-[#ecf3fd];
 }
-.content-details .quote-body .quote-text:before {
+
+.content-details blockquote:before {
   content: "❝";
-  @apply absolute text-4xl lg:text-5xl text-black dark:text-white top-2
+  @apply absolute text-4xl lg:text-5xl text-gray-300 dark:text-white top-2
 }
-.content-details .quote-body .quote-author {
+
+.content-details blockquote .quote-author {
   @apply bg-[#d5dce7] dark:bg-[#313235] p-4 lg:px-10 lg:py-5 text-xl lg:text-[22px] text-black dark:text-white print:text-base print:text-black print:dark:text-black;
 }
 
@@ -45,10 +48,10 @@ input[type="number"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: 
+  background-image:
     linear-gradient(45deg, transparent 50%, #565656 0),
     linear-gradient(135deg, #565656 50%, transparent 0);
-  background-position: 
+  background-position:
     calc(100% - 15px) 50%,
     calc(100% - 10px) 50%;
   background-size: 5px 5px, 5px 5px;
