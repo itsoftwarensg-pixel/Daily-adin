@@ -1,17 +1,17 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import logo from "@/public/logo.svg";
-import { IoIosShareAlt, IoMdPaper } from "react-icons/io";
-import { GiNewspaper } from "react-icons/gi";
+import { usePathname } from "next/navigation";
 import { globe } from "@/lib/components/icons";
+import { RiNewspaperLine } from "react-icons/ri";
+import { IoIosShareAlt, IoMdPaper } from "react-icons/io";
 import { ImageWithFallback } from "@/lib/components/image";
+import { TodayBnDate, TodayDate } from "@/lib/utils/helpers";
 import headerBanner from "@/public/images/header-banner.svg";
 import { x, youtube, facebook } from "@/lib/components/icons";
-import { TodayBnDate, TodayDate } from "@/lib/utils/helpers";
-import { usePathname } from "next/navigation";
-import { RiNewspaperLine } from "react-icons/ri";
+import SocialMediaDropdown from "@/lib/components/layout/header/SocialMediaDropdown";
 
 const socialLinks = [
   { href: "https://www.facebook.com", icon: facebook, alt: "facebook" },
@@ -21,12 +21,31 @@ const socialLinks = [
 
 const TopBar = () => {
   const pathname = usePathname();
-  const todayDate = pathname === "/home-old" ? `আজ ${TodayDate()}` : `${TodayBnDate}`; // TODO:: remove `/home-2` condition later. Keep only -> todayDate = TodayBnDate
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const [openSocialMediaDropdown, setOpenSocialMediaDropdown] = useState(false);
+
+  // Close on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
+        setOpenSocialMediaDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const todayDate =
+    pathname === "/home-old" ? `আজ ${TodayDate()}` : `${TodayBnDate}`; // TODO:: remove `/home-2` condition later. Keep only -> todayDate = TodayBnDate
 
   return (
     <div className="w-full bg-white">
       <div className="flex justify-between items-center gap-10">
-        <Link href={'/'} className="relative overflow-hidden">
+        <Link href={"/"} className="relative overflow-hidden">
           <ImageWithFallback
             src={logo}
             width={320}
@@ -49,7 +68,10 @@ const TopBar = () => {
         <div className="flex flex-col gap-2 items-end">
           <p className="text-[20px] font-normal">{todayDate}</p>
           <div className="flex items-center gap-4">
-            <Link href={'/'} className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600">
+            <Link
+              href={"/"}
+              className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600"
+            >
               <RiNewspaperLine
                 size={16}
                 className="group-hover:text-blue-600"
@@ -57,21 +79,28 @@ const TopBar = () => {
               আজকের পত্রিকা
             </Link>
 
-            <Link href={'/'} className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600">
-              <IoMdPaper
-                size={16}
-                className="group-hover:text-blue-600 "
-              />
+            <Link
+              href={"/"}
+              className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600"
+            >
+              <IoMdPaper size={16} className="group-hover:text-blue-600 " />
               ই-পেপার
             </Link>
 
-            <Link href={'/'} className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600">
-              <IoIosShareAlt
-                size={16}
-                className="group-hover:text-blue-600"
-              />
-              সোশ্যাল মিডিয়া
-            </Link>
+            <div ref={dropdownRef} className="relative">
+              <button
+                onClick={() => setOpenSocialMediaDropdown((prev) => !prev)}
+                className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600"
+              >
+                <IoIosShareAlt
+                  size={16}
+                  className="group-hover:text-blue-600"
+                />
+                সোশ্যাল মিডিয়া
+              </button>
+
+              {openSocialMediaDropdown && <SocialMediaDropdown />}
+            </div>
           </div>
 
           <div className="flex items-center gap-3 hidden">
@@ -101,7 +130,7 @@ const TopBar = () => {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 
