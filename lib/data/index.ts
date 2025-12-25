@@ -518,7 +518,7 @@ export const newsJson = [
     description:
       "শহরে নতুন স্টেডিয়াম ও প্রশিক্ষণ সুবিধা যুবাদের জন্য উন্মুক্ত।",
     image:
-      "https://www.rupalibangladesh.com/media/imgAll/2025July/SM/High-Court-20251207115549.webp",
+      "https://www.rupalibangladesh.com/media/imgAll/2025July/02-20251223170534.jpg",
     category: "খেলাধুলা",
   },
   {

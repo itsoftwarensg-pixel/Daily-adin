@@ -99,7 +99,7 @@ const CategoryIndex = () => {
                         </div>
 
                         <div className="flex flex-col gap-4">
-                            {newsJson.slice(40, 46).map((newsItem, idx) => (
+                            {newsJson.slice(37, 47).map((newsItem, idx) => (
                                 <div key={idx} className="border-b pb-4">
                                     <Link href={"/"} className="group flex flex-row gap-3">
                                         <div className="w-36 lg:w-80 shrink-0">
