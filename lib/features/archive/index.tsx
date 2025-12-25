@@ -26,9 +26,11 @@ const ArchivePage = () => {
         <div className="my-4">
             <Container>
                 {/* Section title */}
-                <div className="text-xl border-l-4 border-red-500 text-red-500 font-bold flex gap-2 items-center mb-4">
-                    <span className="pl-4">{`আর্কাইভ`}</span>
-                    <IoIosArrowForward />
+                <div className="flex items-center gap-2 pb-4">
+                    <Link href="#" className="text-2xl border-l-4 border-red-500 text-red-500 font-bold flex gap-2 items-center">
+                        <span className="pl-4">আর্কাইভ</span>
+                        <IoIosArrowForward />
+                    </Link>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-4 border-t pt-4 items-center">

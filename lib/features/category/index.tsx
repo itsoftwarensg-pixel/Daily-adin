@@ -7,14 +7,57 @@ import Link from "next/link";
 import { IoIosArrowForward } from "react-icons/io";
 
 const CategoryIndex = () => {
+    const subCategories = [
+        {
+            name_en: "bnp",
+            name_bn: "বিএনপি",
+        },
+        {
+            name_en: "jamaat",
+            name_bn: "জামায়াত",
+        },
+        {
+            name_en: "awami-league",
+            name_bn: "আওয়ামী লীগ",
+        },
+        {
+            name_en: "jatiyo-party",
+            name_bn: "জাতীয় পার্টি",
+        },
+        {
+            name_en: "national-citizen-party",
+            name_bn: "জাতীয় নাগরিক পার্টি (এনসিপি)",
+        },
+    ];
+
     return (
         <div className="">
             <Container>
                 <div className="my-6">
-                    <Link href="#" className="text-2xl border-l-4 border-red-500 text-red-500 font-bold flex gap-2 items-center">
-                        <span className="pl-4">রাজনীতি</span>
-                        <IoIosArrowForward />
-                    </Link>
+                    <div className="flex items-center gap-2">
+                        <Link href="#" className="text-2xl border-l-4 border-red-500 text-red-500 font-bold flex gap-2 items-center">
+                            <span className="pl-4">রাজনীতি</span>
+                            <IoIosArrowForward />
+                        </Link>
+                    </div>
+                    <div className="border-b pb-2 mt-2 mb-0 pl-[22px]">
+                        <ul className="flex gap-4">
+                            {subCategories.map((subCat, index) => (
+                                <li
+                                    key={index}
+                                    className={
+                                        index !== subCategories.length - 1
+                                            ? "pr-4 border-r"
+                                            : ""
+                                    }
+                                >
+                                    <Link href={`/category/${subCat.name_en}`} className="text-gray-700 hover:text-blue-700 font-semibold">
+                                        {subCat.name_bn}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-[auto_360px] gap-4">
                     <div className="col-span-1 lg:col-auto">
