@@ -6,6 +6,7 @@ import { newsJson } from "@/lib/data";
 import { IoIosArrowForward } from "react-icons/io";
 import Calendar from "./calendar";
 import { BiSearchAlt2 } from "react-icons/bi";
+import Link from "next/link";
 
 const ArchivePage = () => {
     // Local state variables
@@ -14,6 +15,11 @@ const ArchivePage = () => {
     // Handle load more content
     const handleMore = () => {
         setRecords(records + 12);
+    }
+
+    // Handle reset filters
+    const handleReset = () => {
+        window.location.reload();
     }
 
     return (
@@ -114,8 +120,11 @@ const ArchivePage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-span-1 lg:col-span-2">
-                        <button className="w-full flex gap-4 px-8 py-3 items-center justify-center text-white bg-green-500 rounded">
+                    <div className="col-span-1 lg:col-span-2 space-y-4 pl-4 border-l">
+                        <button onClick={handleReset} className="w-full flex gap-4 px-6 py-3.5 items-center justify-center bg-gray-200 hover:bg-gray-300">
+                            সকল খবর
+                        </button>
+                        <button className="w-full flex gap-4 px-6 py-3.5 items-center justify-center text-white bg-green-500 hover:bg-green-600">
                             <BiSearchAlt2 size={22} />
                             খুঁজুন
                         </button>
