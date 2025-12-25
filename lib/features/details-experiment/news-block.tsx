@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { googleNews } from "@/lib/components/icons";
+import { ImageWithFallback } from "@/lib/components/image";
 import HtmlContent from "@/lib/components/common/html-content";
 import DetailsLeftSidebar from "@/lib/features/details/left-sidebar";
 
@@ -67,9 +69,10 @@ const NewsBlock = ({
             className="flex items-center justify-center gap-4"
             target="_blank"
           >
-            <img
-              className="w-8"
-              src="https://www.rupalibangladesh.com/media/common/google-news-feed.png"
+            <ImageWithFallback
+              src={googleNews}
+              width={32}
+              height={32}
               alt="Google News"
             />
             সর্বশেষ খবর পেতে দৈনিক এদিন এর গুগল নিউজ চ্যানেল ফলো করুন
