@@ -29,11 +29,11 @@ export type NavItem = {
 
 export const navItems: NavItem[] = [
   { text: "সর্বশেষ", href: "#" },
-  { text: "জাতীয়", href: "/category" },
-  { text: "রাজনীতি", href: "#politics" },
+  { text: "জাতীয়", href: "/national-news" },
+  { text: "রাজনীতি", href: "/political-news" },
   {
     text: "বিশ্ব",
-    href: "#international",
+    href: "/world-news",
     children: [
       { text: "ভারত", href: "#india" },
       { text: "পাকিস্তান", href: "#pakistan" },
@@ -49,7 +49,7 @@ export const navItems: NavItem[] = [
   },
   {
     text: "প্রান্তলোক",
-    href: "#marginalized",
+    href: "/all-bd-news",
     children: [
       { text: "ঢাকা", href: "#dhaka" },
       { text: "চট্টগ্রাম", href: "#chattogram" },
@@ -63,7 +63,7 @@ export const navItems: NavItem[] = [
   },
   {
     text: "বাণিজ্যলোক",
-    href: "#traders",
+    href: "/business-news",
     children: [
       { text: "ব্যাংক", href: "#bank" },
       { text: "শেয়ারবাজার", href: "#stock-market" },
@@ -74,18 +74,18 @@ export const navItems: NavItem[] = [
   },
   {
     text: "ক্রীড়ালোক",
-    href: "#sports-world",
+    href: "/sports-news",
     children: [
       { text: "ফুটবল", href: "#football" },
-      { text: "ক্রিকেট", href: "#cricket" },
+      { text: "ক্রিকেট", href: "/sports-news/cricket" },
       { text: "টেনিস", href: "#tennis" },
       { text: "অন্য খেলা", href: "#other-sports" },
     ],
   },
-  { text: "প্রযুক্তি", href: "#technology" },
+  { text: "প্রযুক্তি", href: "/information-technology-news" },
   {
     text: "চিত্রলোক",
-    href: "#art-world",
+    href: "/entertainment-news",
     children: [
       { text: "সিনেমা", href: "#cinema" },
       { text: "বলিউড", href: "#bollywood" },
@@ -100,7 +100,7 @@ export const navItems: NavItem[] = [
   },
   {
     text: "জীবনযাপন",
-    href: "#lifestyle",
+    href: "/lifestyle",
     children: [
       { text: "লেইসফিতা", href: "#leisfita" },
       { text: "পান্থলোক", href: "#pantholok" },
@@ -112,7 +112,7 @@ export const navItems: NavItem[] = [
   },
   {
     text: "স্বাস্থ্য",
-    href: "#health",
+    href: "/health-news",
     children: [
       { text: "চিকিৎসা", href: "#treatment" },
       { text: "পরামর্শ", href: "#advice" },
@@ -123,7 +123,7 @@ export const navItems: NavItem[] = [
   },
   {
     text: "ক্যারিয়ার",
-    href: "#career",
+    href: "/jobs-news",
     children: [
       { text: "সরকারি", href: "#government" },
       { text: "বেসরকারি", href: "#private" },

@@ -1,57 +1,59 @@
-import { versionedUrl } from "@/lib/utils/helpers";
+export type API_Params = {
+  url: string;
+  method?: string;
+  data?: object;
+  verify?: boolean;
+  has_file?: boolean;
+};
 
-/**
- *
- * @param url - relative or absolute URL
- * @param config - fetch config
- * @returns - parsed JSON response
- */
-export async function fetchTyped<TResponse>(
-  url: string,
-  config: RequestInit = {}
-): Promise<TResponse> {
-  const vUrl = versionedUrl(url);
-  const uConfig: RequestInit = {
-    ...config,
-    headers: {
-      ...config.headers,
-      Accept: "application/json",
-    },
+export const apiRequest = async ({ url, data, verify = false, method = "POST", has_file }: API_Params) => {
+
+  const isFormData = typeof FormData !== "undefined" && data instanceof FormData;
+  const treatAsFileUpload = has_file ?? isFormData;
+
+  const headers: HeadersInit = {
+    Accept: "application/json",
   };
 
-  const res = await fetch(vUrl, uConfig);
+  const options: RequestInit = {
+    method,
+    headers,
+  };
 
-  // Throw on non-2xx so callers never get silent `undefined`
-  if (!res.ok) {
-    const body = await res.text().catch(() => "");
-    throw new Error(
-      `HTTP ${res.status} ${res.statusText} at ${res.url}: ${body.slice(
-        0,
-        500
-      )}`
-    );
+  if (
+    (method.toUpperCase() === "POST" || method.toUpperCase() === "PUT" || method.toUpperCase() === "PATCH") &&
+    data
+  ) {
+    if (treatAsFileUpload) {
+      options.body = data as BodyInit;
+    } else {
+      options.body = JSON.stringify(data) as BodyInit;
+    }
   }
 
-  // If content type is not json then throw error
-  const ctype = res.headers.get("content-type") || "";
-  if (!ctype.includes("application/json")) {
-    const text = await res.text().catch(() => "");
-    throw new Error(
-      `Expected JSON from ${res.url}, got "${ctype}". Body: ${text.slice(
-        0,
-        500
-      )}`
-    );
+  if (method.toUpperCase() === "GET" && data) {
+    const queryParams = new URLSearchParams(data as Record<string, string>).toString();
+    url += `?${queryParams}`;
   }
 
-  const raw = await res.json();
+  const response = await fetch(url, { ...options, cache: "no-store" });
+  const dataResponse = await response.json();
+  // const apiErrors: Record<string, string[]> = dataResponse.errors ?? {};
 
-  console.log(`url: ${vUrl} Response: ${JSON.stringify(raw)}`);
+  return {
+    success: dataResponse.success,
+    status: response.status,
+    data: dataResponse.data,
+    message: dataResponse.message,
+  };
 
-  try {
-    return raw as TResponse;
-  } catch (error) {
-    console.log("Type assertion error", error);
-    throw error;
-  }
-}
+  /*
+  // Example Response:
+      {
+          "success": false,
+          "status": 404,
+          "data": [] / null
+          "message": "Resource not found",
+      }
+  */
+};
