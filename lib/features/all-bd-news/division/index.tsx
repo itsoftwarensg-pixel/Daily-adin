@@ -7,6 +7,7 @@ import DivisionPageLoadMoreContent from "@/lib/features/all-bd-news/division/loa
 import { ContentItem } from "@/lib/types/category.page";
 import { DivisionPageContentType } from "@/lib/types/division.page";
 import { IoIosArrowForward } from "react-icons/io";
+import { COUNTRY_PAGE } from "@/lib/config/constant";
 
 // Define the props type
 interface Props {
@@ -18,7 +19,6 @@ interface Props {
 }
 
 const DivisionPage = ({ contents, division }: Props) => {
-    console.log("DivisionPage division:", division);
     const lead = division?.contents?.[0] ?? null; // 
     const subLead = division?.contents?.[1] ?? null; // second item
     const otherSubLead = division?.contents?.slice(2, 5); // max 3 item
@@ -29,11 +29,11 @@ const DivisionPage = ({ contents, division }: Props) => {
                 <div className="my-6">
                     <div className="flex items-center gap-2">
                         <Link href="#" className="text-2xl border-l-4 border-red-500 text-red-500 font-bold flex gap-2 items-center">
-                            <span className="pl-4">{`প্রান্তলোক`}</span>
+                            <span className="pl-4">{COUNTRY_PAGE.name_bn}</span>
                             <IoIosArrowForward />
                         </Link>
 
-                        <Link href={`/all-bd-news/${division.alias}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
+                        <Link href={`/${COUNTRY_PAGE.slug}/${division.alias}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
                             <span >{division.name_bn}</span>
                         </Link>
                     </div>
@@ -51,7 +51,7 @@ const DivisionPage = ({ contents, division }: Props) => {
                                         }
                                     >
                                         <Link
-                                            href={`/all-bd-news/${division.alias}/${district.alias}`}
+                                            href={`/${COUNTRY_PAGE.slug}/${division.alias}/${district.alias}`}
                                             className={`text-gray-700 hover:text-blue-700 font-semibold`}
                                         >
                                             {district.name_bn}

@@ -1,7 +1,5 @@
 import React from "react";
-import { getContentsByDistrictIdAction, getContentsByUpazilaIdAction } from "@/app/actions/content";
-import { getDistrictBySlugAction } from "@/app/actions/district";
-import DistrictPage from "@/lib/features/all-bd-news/district";
+import { getContentsByUpazilaIdAction } from "@/app/actions/content";
 import { getUpazilaBySlugAction, getUpazilasByDistrictIdAction } from "@/app/actions/upazila";
 import UpazilaPage from "@/lib/features/all-bd-news/upazila";
 

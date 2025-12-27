@@ -1,5 +1,7 @@
 // This file is for temporary usage
 
+import { COUNTRY_PAGE } from "@/lib/config/constant";
+
 export enum NewsCategory {
   BINODON = "বিনোদন",
   SHIKSHA = "শিক্ষা",
@@ -48,8 +50,8 @@ export const navItems: NavItem[] = [
     ],
   },
   {
-    text: "প্রান্তলোক",
-    href: "/all-bd-news",
+    text: COUNTRY_PAGE.name_bn,
+    href: COUNTRY_PAGE.slug,
     children: [
       { text: "ঢাকা", href: "#dhaka" },
       { text: "চট্টগ্রাম", href: "#chattogram" },

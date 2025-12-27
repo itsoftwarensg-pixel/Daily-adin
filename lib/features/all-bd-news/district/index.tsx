@@ -7,6 +7,7 @@ import { ContentItem } from "@/lib/types/category.page";
 import { IoIosArrowForward } from "react-icons/io";
 import { DistrictPageContentType } from "@/lib/types/district.page";
 import DistrictPageLoadMoreContent from "@/lib/features/all-bd-news/district/load-more-content";
+import { COUNTRY_PAGE } from "@/lib/config/constant";
 
 // Define the props type
 interface Props {
@@ -18,7 +19,6 @@ interface Props {
 }
 
 const DistrictPage = ({ contents, district }: Props) => {
-    console.log("DistrictPage district:", district);
     const lead = district?.contents?.[0] ?? null; // 
     const subLead = district?.contents?.[1] ?? null; // second item
     const otherSubLead = district?.contents?.slice(2, 5); // max 3 item
@@ -28,15 +28,15 @@ const DistrictPage = ({ contents, district }: Props) => {
                 <div className="my-6">
                     <div className="flex items-center gap-2">
                         <Link href="#" className="text-2xl border-l-4 border-red-500 text-red-500 font-bold flex gap-2 items-center">
-                            <span className="pl-4">{`প্রান্তলোক`}</span>
+                            <span className="pl-4">{COUNTRY_PAGE.name_bn}</span>
                             <IoIosArrowForward />
                         </Link>
 
-                        <Link href={`/all-bd-news/${district.division.alias}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
+                        <Link href={`/${COUNTRY_PAGE.slug}/${district.division.alias}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
                             <span >{district.division.name_bn}</span>
                             <IoIosArrowForward />
                         </Link>
-                        <Link href={`/all-bd-news/${district.division.alias}/${district.alias}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
+                        <Link href={`/${COUNTRY_PAGE.slug}/${district.division.alias}/${district.alias}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
                             <span >{district.name_bn}</span>
                         </Link>
                     </div>
@@ -54,7 +54,7 @@ const DistrictPage = ({ contents, district }: Props) => {
                                         }
                                     >
                                         <Link
-                                            href={`/all-bd-news/${district.division.alias}/${district.alias}/${upazila.alias}`}
+                                            href={`/${COUNTRY_PAGE.slug}/${district.division.alias}/${district.alias}/${upazila.alias}`}
                                             className={`text-gray-700 hover:text-blue-700 font-semibold`}
                                         >
                                             {upazila.name_bn}

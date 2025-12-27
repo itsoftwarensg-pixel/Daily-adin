@@ -4,10 +4,10 @@ import HtmlContent from "@/lib/components/common/html-content";
 import LatestPopularNews from "@/lib/components/common/latest-popular";
 import { ImageWithFallback } from "@/lib/components/image";
 import { IoIosArrowForward } from "react-icons/io";
-import DistrictPageLoadMoreContent from "@/lib/features/all-bd-news/district/load-more-content";
 import { UpazilaContentItemType, UpazilaPageContentType } from "@/lib/types/upazila.page";
 import { UpazilaType } from "@/lib/types/district.page";
 import UpazilaPageLoadMoreContent from "@/lib/features/all-bd-news/upazila/load-more-content";
+import { COUNTRY_PAGE } from "@/lib/config/constant";
 
 // Define the props type
 interface Props {
@@ -29,19 +29,19 @@ const UpazilaPage = ({ contents, upazila, upazilas }: Props) => {
                 <div className="my-6">
                     <div className="flex items-center gap-2">
                         <Link href="#" className="text-2xl border-l-4 border-red-500 text-red-500 font-bold flex gap-2 items-center">
-                            <span className="pl-4">{`প্রান্তলোক`}</span>
+                            <span className="pl-4">{COUNTRY_PAGE.name_bn}</span>
                             <IoIosArrowForward />
                         </Link>
 
-                        <Link href={`/all-bd-news/${upazila.division.alias}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
+                        <Link href={`/${COUNTRY_PAGE.slug}/${upazila.division.alias}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
                             <span >{upazila.division.name_bn}</span>
                             <IoIosArrowForward />
                         </Link>
-                        <Link href={`/all-bd-news/${upazila.division.alias}/${upazila.district.alias}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
+                        <Link href={`/${COUNTRY_PAGE.slug}/${upazila.division.alias}/${upazila.district.alias}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
                             <span >{upazila.district.name_bn}</span>
                             <IoIosArrowForward />
                         </Link>
-                        <Link href={`/all-bd-news/${upazila.division.alias}/${upazila.district.alias}/${upazila.alias}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
+                        <Link href={`/${COUNTRY_PAGE.slug}/${upazila.division.alias}/${upazila.district.alias}/${upazila.alias}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
                             <span >{upazila.name_bn}</span>
                         </Link>
                     </div>
@@ -59,7 +59,7 @@ const UpazilaPage = ({ contents, upazila, upazilas }: Props) => {
                                         }
                                     >
                                         <Link
-                                            href={`/all-bd-news/${upazila.division.alias}/${upazila.district.alias}/${up.alias}`}
+                                            href={`/${COUNTRY_PAGE.slug}/${upazila.division.alias}/${upazila.district.alias}/${up.alias}`}
                                             className={` hover:text-blue-700 font-semibold ${up.alias === upazila.alias ? 'text-blue-700' : 'text-gray-700'}`}
                                         >
                                             {up.name_bn}

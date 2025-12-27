@@ -1,11 +1,12 @@
+import Link from "next/link";
 import Container from "@/lib/components/common/container";
 import HtmlContent from "@/lib/components/common/html-content";
 import LatestPopularNews from "@/lib/components/common/latest-popular";
 import { ImageWithFallback } from "@/lib/components/image";
+import { COUNTRY_PAGE } from "@/lib/config/constant";
 import AllBDNewsLoadMoreContent from "@/lib/features/all-bd-news/load-more-content";
 import { Division } from "@/lib/types/all-bd-news.page";
 import { Category, ContentItem } from "@/lib/types/category.page";
-import Link from "next/link";
 import { IoIosArrowForward } from "react-icons/io";
 
 // Define the props type
@@ -30,7 +31,7 @@ const AllBDNewsPage = ({ category, contents, divisions }: Props) => {
                     <div className="flex items-center gap-2">
                         <Link href="#" className="text-2xl border-l-4 border-red-500 text-red-500 font-bold flex gap-2 items-center">
                             <span className="pl-4">
-                                {`প্রান্তলোক`}
+                                {COUNTRY_PAGE.name_bn}
                             </span>
                             <IoIosArrowForward />
                         </Link>

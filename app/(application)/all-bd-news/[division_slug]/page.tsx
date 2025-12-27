@@ -1,9 +1,6 @@
 import React from "react";
-import CategoryPage from "@/lib/features/category";
-import { getCategoryBySlugAction } from "@/app/actions/category";
-import { getContentsByCategoryIdAction, getContentsByDivisionIdAction } from "@/app/actions/content";
-import AllBDNewsPage from "@/lib/features/all-bd-news";
-import { getAllDivisionsAction, getDivisionBySlugAction } from "@/app/actions/division";
+import { getContentsByDivisionIdAction } from "@/app/actions/content";
+import { getDivisionBySlugAction } from "@/app/actions/division";
 import DivisionPage from "@/lib/features/all-bd-news/division";
 
 // Generate dynamic metadata

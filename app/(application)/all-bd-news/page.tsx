@@ -1,9 +1,9 @@
 import React from "react";
-import CategoryPage from "@/lib/features/category";
 import { getCategoryBySlugAction } from "@/app/actions/category";
 import { getContentsByCategoryIdAction } from "@/app/actions/content";
 import AllBDNewsPage from "@/lib/features/all-bd-news";
 import { getAllDivisionsAction } from "@/app/actions/division";
+import { COUNTRY_PAGE } from "@/lib/config/constant";
 
 // Generate dynamic metadata
 export async function generateMetadata() {
@@ -16,7 +16,7 @@ export async function generateMetadata() {
 
 
 const Page = async () => {
-    const category_slug = "all-bd-news";
+    const category_slug = COUNTRY_PAGE.slug;
 
     // Fetch category details with position_contents
     const category = await getCategoryBySlugAction(category_slug, 'position_contents');
