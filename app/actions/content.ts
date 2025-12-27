@@ -4,7 +4,7 @@ import { APIEndpoint } from "@/lib/api/api-endpoints";
 import { apiRequest } from "@/lib/api/client";
 
 /** ============================================================================
- * Bids - Service Request APIs
+ * Contents APIs
  * ============================================================================*/
 
 

@@ -18,6 +18,13 @@ export const APIEndpoint = {
         getByCategoryId: (id: number, page?: number, limit?: number) =>
             `${APIEndpoint.base_url}/contents/?for=category&id=${id}&page=${page}&limit=${limit}`,
         getBySubCategoryId: (id: number, page?: number, limit?: number) =>
-            `${APIEndpoint.base_url}/contents/?for=subcategory&id=${id}&page=${page}&limit=${limit}`
-    }
+            `${APIEndpoint.base_url}/contents/?for=subcategory&id=${id}&page=${page}&limit=${limit}`,
+        getByDivisionId: (id: number, page?: number, limit?: number) =>
+            `${APIEndpoint.base_url}/contents/?for=division&id=${id}&page=${page}&limit=${limit}`,
+    },
+
+    // Division API endpoints
+    division: {
+        getAll: () => `${APIEndpoint.base_url}/divisions`,
+    },
 };
