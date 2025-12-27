@@ -99,3 +99,26 @@ export const getContentsByDistrictIdAction = async (id: number, page?: number, l
         return [];
     }
 };
+
+/** 
+ * Fetch Contents by upazila id with included relations 
+ * 
+ * @param id - The id of the upazila to fetch
+ * @param page - Optional page number for pagination
+ * @param limit - Optional limit of items per page
+ * @returns The upazila data or an empty array in case of an error
+ */
+export const getContentsByUpazilaIdAction = async (id: number, page?: number, limit?: number) => {
+    try {
+        const apiResponse = await apiRequest({
+            url: APIEndpoint.content.getByUpazilaId(id, page, limit),
+            method: "GET",
+        });
+
+        return apiResponse.data;
+
+    } catch (err) {
+        console.error("Error fetching contents by upazila id:", err);
+        return [];
+    }
+};

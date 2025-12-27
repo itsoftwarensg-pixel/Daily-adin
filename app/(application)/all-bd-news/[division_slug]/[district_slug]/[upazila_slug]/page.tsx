@@ -1,13 +1,14 @@
 import React from "react";
-import SubCategoryPage from "@/lib/features/sub-category";
-import { getCategoryByIdAction, getCategoryBySlugAction } from "@/app/actions/category";
-import { getContentsBySubCategoryIdAction } from "@/app/actions/content";
-import { getSubCategoryBySlugAction } from "@/app/actions/sub-category";
+import { getContentsByDistrictIdAction, getContentsByUpazilaIdAction } from "@/app/actions/content";
+import { getDistrictBySlugAction } from "@/app/actions/district";
+import DistrictPage from "@/lib/features/all-bd-news/district";
+import { getUpazilaBySlugAction, getUpazilasByDistrictIdAction } from "@/app/actions/upazila";
+import UpazilaPage from "@/lib/features/all-bd-news/upazila";
 
 // Generate dynamic metadata
 export async function generateMetadata() {
     return {
-        title: `Sub Category | The Daily Adin`,
+        title: `Upazila page | The Daily Adin`,
         keywords: "daily-adin, adin, news, news-portal, content, article",
         description: "A modern, fast and SEO-friendly news portal",
     };
@@ -16,33 +17,25 @@ export async function generateMetadata() {
 // Define the type for the params
 interface Params {
     params: {
-        category_slug: string;
-        sub_category_slug: string;
+        division_slug: string;
+        district_slug: string;
+        upazila_slug: string;
     }
 }
 
 const Page = async ({ params }: Params) => {
-    const { category_slug, sub_category_slug } = await params;
+    const { division_slug, district_slug, upazila_slug } = await params;
 
-    console.log('======== sub_category_slug: ', params);
+    // Fetch upazila details with contents,district,division
+    const upazila = await getUpazilaBySlugAction(upazila_slug, 'contents,district,division');
 
-    // Fetch category with subcategories
-    const category = await getCategoryBySlugAction(category_slug, 'subcategories');
+    // Fetch upazillas by district id
+    const upazilas = await getUpazilasByDistrictIdAction(upazila.district.id);
 
-    // Fetch sub-category contents and category
-    const subCategory = await getSubCategoryBySlugAction(sub_category_slug, 'contents');
-    // console.log('======== subCategory Data: ', category);
+    // Fetch contents for the upazila (first page, 10 items per page)
+    const contents = await getContentsByUpazilaIdAction(upazila.id, 1, 10);
 
-    // Fetch contents for the sub-category (first page, 10 items per page)
-    const contents = await getContentsBySubCategoryIdAction(subCategory.id, 1, 10);
-
-    return (
-        <SubCategoryPage
-            subCategory={subCategory}
-            category={category}
-            contents={contents}
-        />
-    )
+    return <UpazilaPage upazila={upazila} upazilas={upazilas} contents={contents} />;
 };
 
 export default Page;
