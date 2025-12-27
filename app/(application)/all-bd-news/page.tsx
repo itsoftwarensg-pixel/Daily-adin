@@ -8,7 +8,7 @@ import { COUNTRY_PAGE } from "@/lib/config/constant";
 // Generate dynamic metadata
 export async function generateMetadata() {
     return {
-        title: `Category | The Daily Adin`,
+        title: `${COUNTRY_PAGE.name_bn} | The Daily Adin`,
         keywords: "daily-adin, adin, news, news-portal, content, article",
         description: "A modern, fast and SEO-friendly news portal",
     };
