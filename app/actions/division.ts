@@ -29,24 +29,23 @@ export const getAllDivisionsAction = async () => {
 };
 
 /** 
- * Fetch Contents by division id with included relations 
+ * Fetch a division by division slug with included relations 
  * 
- * @param id - The id of the division to fetch
- * @param page - Optional page number for pagination
- * @param limit - Optional limit of items per page
+ * @param slug - The slug of the division to fetch
+ * @param include - Optional comma-separated list of relations to include. e.g. 'contents,disctricts'
  * @returns The division data or an empty array in case of an error
  */
-export const getContentsByDivisionIdAction = async (id: number, page?: number, limit?: number) => {
+export const getDivisionBySlugAction = async (slug: string, include?: string) => {
     try {
         const apiResponse = await apiRequest({
-            url: APIEndpoint.content.getByDivisionId(id, page, limit),
+            url: APIEndpoint.division.getBySlug(slug, include),
             method: "GET",
         });
 
         return apiResponse.data;
 
     } catch (err) {
-        console.error("Error fetching contents by division id:", err);
+        console.error("Error fetching division by slug:", err);
         return [];
     }
 };

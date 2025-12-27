@@ -3,14 +3,13 @@ export const APIEndpoint = {
 
     // Category API endpoints - Only for Category Page
     category: {
-        getById: (id: number, include?: string) => `${APIEndpoint.base_url}/categories/${id}?include=${include || ''}`, // include: position_contents,subcategories etc. As comma separated string 
-        getBySlug: (slug: string, include?: string) => `${APIEndpoint.base_url}/categories/slug/${slug}?include=${include || ''}`, // include: position_contents,subcategories etc. As comma separated string 
+        getById: (id: number, include?: string) => `${APIEndpoint.base_url}/categories/${id}?include=${include || ''}`, // include: position_contents,subcategories
+        getBySlug: (slug: string, include?: string) => `${APIEndpoint.base_url}/categories/slug/${slug}?include=${include || ''}`, // include: position_contents,subcategories
     },
 
     // Category API endpoints - Only for Category Page
     subCategory: {
-        getBySlug: (slug: string, include?: string) => `${APIEndpoint.base_url}/subcategories/slug/${slug}?include=${include || ''}`, // include: contents,category etc. As comma separated string 
-        // subcategories/slug/cricket?include=contents,category
+        getBySlug: (slug: string, include?: string) => `${APIEndpoint.base_url}/subcategories/slug/${slug}?include=${include || ''}`, // include: contents,category
     },
 
     // Content API endpoints
@@ -26,5 +25,12 @@ export const APIEndpoint = {
     // Division API endpoints
     division: {
         getAll: () => `${APIEndpoint.base_url}/divisions`,
+        getBySlug: (slug: string, include?: string) => `${APIEndpoint.base_url}/divisions/slug/${slug}?include=${include || ''}`, // include: contents,districts
+    },
+
+    // Division API endpoints
+    disctrict: {
+        // getAll: () => `${APIEndpoint.base_url}/divisions`,
+        // getBySlug: (slug: string, include?: string) => `${APIEndpoint.base_url}/subcategories/slug/${slug}?include=${include || ''}`, // include: contents,category
     },
 };
