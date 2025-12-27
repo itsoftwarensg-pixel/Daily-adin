@@ -42,7 +42,6 @@ const LoadMoreContent = ({ loadMoreContents, id, type }: Props) => {
     const fetchContents = async () => {
         setLoading(true);
         const nextPage = page + 1;
-        
 
         let data: any; // Explicitly type data as 'any' or a more specific type if known
         if (type === LOAD_MORE_TYPES.CATEGORY)
@@ -67,7 +66,7 @@ const LoadMoreContent = ({ loadMoreContents, id, type }: Props) => {
         <div className="flex flex-col gap-4">
             {contents.map((newsItem, idx) => (
                 <div key={idx} className="border-b pb-4">
-                    <Link href={"/"} className="group flex flex-row gap-3">
+                    <Link href={`${newsItem.full_url}`} className="group flex flex-row gap-3">
                         <div className="w-36 lg:w-80 shrink-0">
                             <div className="w-full aspect-[16/9]">
                                 <ImageWithFallback

@@ -1,13 +1,12 @@
 import Link from "next/link";
 import Container from "@/lib/components/common/container";
-import HtmlContent from "@/lib/components/common/html-content";
 import LatestPopularNews from "@/lib/components/common/latest-popular";
-import { ImageWithFallback } from "@/lib/components/image";
 import LoadMoreContent from "@/lib/components/load-more-content";
 import { LOAD_MORE_TYPES } from "@/lib/config/constant";
 import { Category } from "@/lib/types/category.page";
 import { SubCatContentItem, SubCategory } from "@/lib/types/sub-category.page";
 import { IoIosArrowForward } from "react-icons/io";
+import InnnerInitalContents from "@/lib/components/inner-initial-contents";
 
 // Props
 interface Props {
@@ -21,9 +20,6 @@ interface Props {
 
 
 const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
-    const lead = subCategory?.contents?.[0] ?? null; // 
-    const subLead = subCategory?.contents?.[1] ?? null; // second item
-    const otherSubLead = subCategory?.contents?.slice(2, 5); // max 3 items
 
     return (
         <div className="">
@@ -68,86 +64,8 @@ const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
                     <div className="col-span-1 lg:col-auto">
                         {subCategory?.contents && subCategory?.contents.length > 0 ?
                             <>
-                                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4 divider">
-                                    {/* Lead */}
-                                    <div className="col-span-1 lg:col-span-2">
-                                        <div className="aspect-[16/9]">
-                                            <Link href="#" className="relative group">
-                                                <div className="">
-                                                    {/* <img className="w-full aspect-[16/9]" src="https://cdn.dhakapost.com/media/imgAll/BG/2025December/jobaida-20251208155025.jpg" alt="" /> */}
-                                                    <ImageWithFallback
-                                                        src={`${lead.full_image_path}`}
-                                                        height={600}
-                                                        width={900}
-                                                        alt={`${lead.heading}`}
-                                                        className="w-full object-cover h-full"
-                                                    />
-                                                </div>
-                                                <div className="absolute w-full h-1/2 bg-gradient-to-t from-red-500 to-black/0 bottom-0 right-0 z-10"></div>
-                                                <h2 className="absolute left-5 bottom-5 text-white text-3xl font-normal group-hover:underline z-20">
-                                                    {lead.heading}
-                                                </h2>
-                                            </Link>
-                                        </div>
-                                    </div>
-
-                                    {/* Lead right */}
-                                    <div className="col-span-1">
-                                        <div className="">
-                                            <Link href={"/"} className="relative block group h-full">
-                                                <div
-                                                    className={`w-full h-full`}
-                                                >
-                                                    <div className="w-full aspect-[16/9]">
-                                                        <ImageWithFallback
-                                                            src={`${subLead.full_image_path}`}
-                                                            height={600}
-                                                            width={900}
-                                                            alt={`${subLead.heading}`}
-                                                            className="w-full object-cover h-full"
-                                                        />
-                                                    </div>
-                                                    <div>
-                                                        <h4
-                                                            className={`pt-2 text-lg group-hover:text-blue-700 font-semibold`}>
-                                                            {subLead.heading}
-                                                        </h4>
-                                                        <HtmlContent html={subLead.description} maxContent={300} className="py-1 text-gray-500" />
-                                                    </div>
-                                                </div>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* 3 contents. Lead below */}
-                                <div className="grid grid-cols-3 gap-4 mb-6">
-                                    {otherSubLead?.map((newsItem, idx) => (
-                                        <Link
-                                            href={`/${category.alias}/${newsItem.id}`}
-                                            key={idx} className="relative block group h-full">
-                                            <div
-                                                className={`w-full h-full bg-gray-100`}
-                                            >
-                                                <div className="w-full aspect-[16/9]">
-                                                    <ImageWithFallback
-                                                        src={`${newsItem.full_image_path}`}
-                                                        height={600}
-                                                        width={900}
-                                                        alt={`${newsItem.heading}`}
-                                                        className="w-full object-cover h-full"
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <h4 className={`px-2 pt-2 text-lg group-hover:text-blue-700 font-semibold`}>
-                                                        {newsItem.heading}
-                                                    </h4>
-                                                    <HtmlContent html={newsItem.description} maxContent={100} className="p-2 pt-1 text-gray-500" />
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    ))}
-                                </div>
+                                {/* Lead, SubLead, and 3 contents. Lead below */}
+                                <InnnerInitalContents contents={subCategory.contents} />
 
                                 {/* Advertisement */}
                                 <div className="flex justify-center mb-4">
