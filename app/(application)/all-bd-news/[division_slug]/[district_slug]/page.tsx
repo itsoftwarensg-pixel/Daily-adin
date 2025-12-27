@@ -1,35 +1,35 @@
-// import React from "react";
-// import CategoryPage from "@/lib/features/category";
-// import { getCategoryBySlugAction } from "@/app/actions/category";
-// import { getContentsByCategoryIdAction } from "@/app/actions/content";
+import React from "react";
+import { getContentsByDistrictIdAction } from "@/app/actions/content";
+import { getDistrictBySlugAction } from "@/app/actions/district";
+import DistrictPage from "@/lib/features/all-bd-news/district";
 
-// // Generate dynamic metadata
-// export async function generateMetadata() {
-//     return {
-//         title: `Category | The Daily Adin`,
-//         keywords: "daily-adin, adin, news, news-portal, content, article",
-//         description: "A modern, fast and SEO-friendly news portal",
-//     };
-// }
+// Generate dynamic metadata
+export async function generateMetadata() {
+    return {
+        title: `District page | The Daily Adin`,
+        keywords: "daily-adin, adin, news, news-portal, content, article",
+        description: "A modern, fast and SEO-friendly news portal",
+    };
+}
 
-// // Define the type for the params
-// interface Params {
-//     params: {
-//         category_slug: string;
-//     }
-// }
+// Define the type for the params
+interface Params {
+    params: {
+        division_slug: string;
+        district_slug: string;
+    }
+}
 
-// const RootHomePage = async ({ params }: Params) => {
-//     const { category_slug } = await params;
+const Page = async ({ params }: Params) => {
+    const { division_slug, district_slug } = await params;
 
-//     // Fetch category details with position_contents and subcategories
-//     const category = await getCategoryBySlugAction(category_slug, 'subcategories,position_contents');
-//     // console.log('======== Category Data: ', category);
+    // Fetch district details with contents,upazilas,division
+    const district = await getDistrictBySlugAction(district_slug, 'contents,upazilas,division');
 
-//     // Fetch contents for the category (first page, 10 items per page)
-//     const contents = await getContentsByCategoryIdAction(category.id, 1, 10);
+    // Fetch contents for the district (first page, 10 items per page)
+    const contents = await getContentsByDistrictIdAction(district.id, 1, 10);
 
-//     return <CategoryPage category={category} contents={contents} />;
-// };
+    return <DistrictPage district={district} contents={contents} />;
+};
 
-// export default RootHomePage;
+export default Page;

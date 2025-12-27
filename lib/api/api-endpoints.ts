@@ -20,6 +20,8 @@ export const APIEndpoint = {
             `${APIEndpoint.base_url}/contents/?for=subcategory&id=${id}&page=${page}&limit=${limit}`,
         getByDivisionId: (id: number, page?: number, limit?: number) =>
             `${APIEndpoint.base_url}/contents/?for=division&id=${id}&page=${page}&limit=${limit}`,
+        getByDistrictId: (id: number, page?: number, limit?: number) =>
+            `${APIEndpoint.base_url}/contents/?for=district&id=${id}&page=${page}&limit=${limit}`,
     },
 
     // Division API endpoints
@@ -28,9 +30,8 @@ export const APIEndpoint = {
         getBySlug: (slug: string, include?: string) => `${APIEndpoint.base_url}/divisions/slug/${slug}?include=${include || ''}`, // include: contents,districts
     },
 
-    // Division API endpoints
+    // District API endpoints
     disctrict: {
-        // getAll: () => `${APIEndpoint.base_url}/divisions`,
-        // getBySlug: (slug: string, include?: string) => `${APIEndpoint.base_url}/subcategories/slug/${slug}?include=${include || ''}`, // include: contents,category
+        getBySlug: (slug: string, include?: string) => `${APIEndpoint.base_url}/districts/slug/${slug}?include=${include || ''}`, // include: contents,upazilas,division
     },
 };
