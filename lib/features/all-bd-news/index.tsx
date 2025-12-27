@@ -3,11 +3,11 @@ import Container from "@/lib/components/common/container";
 import HtmlContent from "@/lib/components/common/html-content";
 import LatestPopularNews from "@/lib/components/common/latest-popular";
 import { ImageWithFallback } from "@/lib/components/image";
-import { COUNTRY_PAGE } from "@/lib/config/constant";
-import AllBDNewsLoadMoreContent from "@/lib/features/all-bd-news/load-more-content";
+import { COUNTRY_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
 import { Division } from "@/lib/types/all-bd-news.page";
 import { Category, ContentItem } from "@/lib/types/category.page";
 import { IoIosArrowForward } from "react-icons/io";
+import LoadMoreContent from "@/lib/components/load-more-content";
 
 // Define the props type
 interface Props {
@@ -148,15 +148,16 @@ const AllBDNewsPage = ({ category, contents, divisions }: Props) => {
                                 </div>
 
                                 {/* LoadMoreContent component */}
-                                <AllBDNewsLoadMoreContent
-                                    categoryId={category.id}
+                                <LoadMoreContent
+                                    id={category.id}
+                                    type={LOAD_MORE_TYPES.CATEGORY}
                                     loadMoreContents={{
                                         contents: contents.data,
                                         last_page: contents.last_page, // Assuming 1 for now, will be updated with actual last_page from API
                                     }}
                                 />
                             </> :
-                            <p>No contents available in this sub-category.</p>
+                            <p>No contents available</p>
                         }
                     </div>
 

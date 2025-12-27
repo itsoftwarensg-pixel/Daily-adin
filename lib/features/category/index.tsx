@@ -1,11 +1,11 @@
+import Link from "next/link";
 import Container from "@/lib/components/common/container";
 import HtmlContent from "@/lib/components/common/html-content";
 import LatestPopularNews from "@/lib/components/common/latest-popular";
 import { ImageWithFallback } from "@/lib/components/image";
-import { newsJson } from "@/lib/data";
-import LoadMoreContent from "@/lib/features/category/load-more-content";
+import LoadMoreContent from "@/lib/components/load-more-content";
+import { LOAD_MORE_TYPES } from "@/lib/config/constant";
 import { Category, ContentItem } from "@/lib/types/category.page";
-import Link from "next/link";
 import { IoIosArrowForward } from "react-icons/io";
 
 // Define the props type
@@ -18,29 +18,6 @@ interface Props {
 }
 
 const CategoryIndex = ({ category, contents }: Props) => {
-    const subCategories = [
-        {
-            name_en: "bnp",
-            name_bn: "বিএনপি",
-        },
-        {
-            name_en: "jamaat",
-            name_bn: "জামায়াত",
-        },
-        {
-            name_en: "awami-league",
-            name_bn: "আওয়ামী লীগ",
-        },
-        {
-            name_en: "jatiyo-party",
-            name_bn: "জাতীয় পার্টি",
-        },
-        {
-            name_en: "national-citizen-party",
-            name_bn: "জাতীয় নাগরিক পার্টি (এনসিপি)",
-        },
-    ];
-
     const lead = category?.position_contents?.[0] ?? null; // 
     const subLead = category?.position_contents?.[1] ?? null; // second item
     const otherSubLead = category?.position_contents?.slice(2, 5); // max 3 items
@@ -167,14 +144,15 @@ const CategoryIndex = ({ category, contents }: Props) => {
 
                                 {/* LoadMoreContent component */}
                                 <LoadMoreContent
-                                    categoryId={category.id}
+                                    id={category.id}
+                                    type={LOAD_MORE_TYPES.CATEGORY}
                                     loadMoreContents={{
                                         contents: contents.data,
                                         last_page: contents.last_page, // Assuming 1 for now, will be updated with actual last_page from API
                                     }}
                                 />
                             </> :
-                            <p>No contents available in this sub-category.</p>
+                            <p>No contents available</p>
                         }
                     </div>
 

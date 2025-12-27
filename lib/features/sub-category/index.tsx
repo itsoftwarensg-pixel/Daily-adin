@@ -1,12 +1,12 @@
+import Link from "next/link";
 import Container from "@/lib/components/common/container";
 import HtmlContent from "@/lib/components/common/html-content";
 import LatestPopularNews from "@/lib/components/common/latest-popular";
 import { ImageWithFallback } from "@/lib/components/image";
-import { newsJson } from "@/lib/data";
-import SubCategoryLoadMoreContent from "@/lib/features/sub-category/load-more-content";
+import LoadMoreContent from "@/lib/components/load-more-content";
+import { LOAD_MORE_TYPES } from "@/lib/config/constant";
 import { Category } from "@/lib/types/category.page";
 import { SubCatContentItem, SubCategory } from "@/lib/types/sub-category.page";
-import Link from "next/link";
 import { IoIosArrowForward } from "react-icons/io";
 
 // Props
@@ -21,25 +21,6 @@ interface Props {
 
 
 const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
-    const subCategories = [
-        {
-            name_en: "bnp",
-            name_bn: "বিএনপি",
-        },
-        {
-            name_en: "jamaat",
-            name_bn: "জামায়াত",
-        },
-        {
-            name_en: "jatiyo-party",
-            name_bn: "জাতীয় পার্টি",
-        },
-        {
-            name_en: "national-citizen-party",
-            name_bn: "জাতীয় নাগরিক পার্টি (এনসিপি)",
-        },
-    ];
-
     const lead = subCategory?.contents?.[0] ?? null; // 
     const subLead = subCategory?.contents?.[1] ?? null; // second item
     const otherSubLead = subCategory?.contents?.slice(2, 5); // max 3 items
@@ -173,10 +154,10 @@ const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
                                     <img src="https://tpc.googlesyndication.com/simgad/15643014635329783982" alt="" />
                                 </div>
 
-                                {/* Sub Category LoadMoreContent component */}
-                                <SubCategoryLoadMoreContent
-                                    subCategoryId={subCategory.id}
-                                    categoryId={category.id}
+                                {/* LoadMoreContent component */}
+                                <LoadMoreContent
+                                    id={subCategory.id}
+                                    type={LOAD_MORE_TYPES.SUB_CATEGORY}
                                     loadMoreContents={{
                                         contents: contents.data,
                                         last_page: contents.last_page, // Assuming 1 for now, will be updated with actual last_page from API
@@ -184,7 +165,7 @@ const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
                                 />
                             </>
                             : <div className="text-center text-gray-500 py-20">
-                                No contents found in this sub-category.
+                                No contents available.
                             </div>
                         }
                     </div>

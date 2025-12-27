@@ -3,11 +3,11 @@ import Container from "@/lib/components/common/container";
 import HtmlContent from "@/lib/components/common/html-content";
 import LatestPopularNews from "@/lib/components/common/latest-popular";
 import { ImageWithFallback } from "@/lib/components/image";
-import DivisionPageLoadMoreContent from "@/lib/features/all-bd-news/division/load-more-content";
 import { ContentItem } from "@/lib/types/category.page";
 import { DivisionPageContentType } from "@/lib/types/division.page";
 import { IoIosArrowForward } from "react-icons/io";
-import { COUNTRY_PAGE } from "@/lib/config/constant";
+import { COUNTRY_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
+import LoadMoreContent from "@/lib/components/load-more-content";
 
 // Define the props type
 interface Props {
@@ -146,16 +146,17 @@ const DivisionPage = ({ contents, division }: Props) => {
                                     <img src="https://tpc.googlesyndication.com/simgad/15643014635329783982" alt="" />
                                 </div>
 
-                                {/* Division page LoadMoreContent component */}
-                                <DivisionPageLoadMoreContent
-                                    divisionId={division.id}
+                                {/* LoadMoreContent component */}
+                                <LoadMoreContent
+                                    id={division.id}
+                                    type={LOAD_MORE_TYPES.DIVISION}
                                     loadMoreContents={{
                                         contents: contents.data,
                                         last_page: contents.last_page, // Assuming 1 for now, will be updated with actual last_page from API
                                     }}
                                 />
                             </> :
-                            <p>No contents available in this division.</p>
+                            <p>No contents available</p>
                         }
                     </div>
 

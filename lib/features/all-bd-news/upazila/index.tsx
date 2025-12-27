@@ -6,8 +6,8 @@ import { ImageWithFallback } from "@/lib/components/image";
 import { IoIosArrowForward } from "react-icons/io";
 import { UpazilaContentItemType, UpazilaPageContentType } from "@/lib/types/upazila.page";
 import { UpazilaType } from "@/lib/types/district.page";
-import UpazilaPageLoadMoreContent from "@/lib/features/all-bd-news/upazila/load-more-content";
-import { COUNTRY_PAGE } from "@/lib/config/constant";
+import { COUNTRY_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
+import LoadMoreContent from "@/lib/components/load-more-content";
 
 // Define the props type
 interface Props {
@@ -154,16 +154,17 @@ const UpazilaPage = ({ contents, upazila, upazilas }: Props) => {
                                     <img src="https://tpc.googlesyndication.com/simgad/15643014635329783982" alt="" />
                                 </div>
 
-                                {/* Upazila page LoadMoreContent component */}
-                                <UpazilaPageLoadMoreContent
-                                    upazilaId={upazila.id}
+                                {/* LoadMoreContent component */}
+                                <LoadMoreContent
+                                    id={upazila.id}
+                                    type={LOAD_MORE_TYPES.UPAZILA}
                                     loadMoreContents={{
                                         contents: contents.data,
                                         last_page: contents.last_page, // Assuming 1 for now, will be updated with actual last_page from API
                                     }}
                                 />
                             </> :
-                            <p>No contents available in this division.</p>
+                            <p>No contents available</p>
                         }
                     </div>
 

@@ -1,21 +1,36 @@
 "use client"
+import Link from "next/link";
 import { useState } from "react";
 import { ContentItem } from "@/lib/types/category.page";
-import { getContentsByCategoryIdAction } from "@/app/actions/content";
+import {
+    getContentsByCategoryIdAction,
+    getContentsByDistrictIdAction,
+    getContentsByDivisionIdAction,
+    getContentsBySubCategoryIdAction,
+    getContentsByUpazilaIdAction
+} from "@/app/actions/content";
 import HtmlContent from "@/lib/components/common/html-content";
 import { ImageWithFallback } from "@/lib/components/image";
-import Link from "next/link";
 import { LiaSpinnerSolid } from "react-icons/lia";
+import { COUNTRY_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
 
+// Props
 interface Props {
     loadMoreContents: {
         contents: ContentItem[];
         last_page: number;
     };
-    categoryId: number;
+    id: number;
+    type:
+    | typeof LOAD_MORE_TYPES.CATEGORY       // category
+    | typeof LOAD_MORE_TYPES.SUB_CATEGORY   // sub-category
+    | typeof LOAD_MORE_TYPES.DIVISION       // division
+    | typeof LOAD_MORE_TYPES.DISTRICT       // district
+    | typeof LOAD_MORE_TYPES.UPAZILA        // upazila
+    | typeof COUNTRY_PAGE.slug;
 }
 
-const LoadMoreContent = ({ loadMoreContents, categoryId }: Props) => {
+const LoadMoreContent = ({ loadMoreContents, id, type }: Props) => {
     // States variables
     const [loading, setLoading] = useState(false);
     const [contents, setContents] = useState<ContentItem[]>(loadMoreContents.contents);
@@ -23,13 +38,28 @@ const LoadMoreContent = ({ loadMoreContents, categoryId }: Props) => {
     const recordsPerPage = 10;
     const lastPage = loadMoreContents.last_page;
 
+    // Fetch contents based on type and id
     const fetchContents = async () => {
         setLoading(true);
-        const data = await getContentsByCategoryIdAction(categoryId, page, recordsPerPage);
+        const nextPage = page + 1;
+        
+
+        let data: any; // Explicitly type data as 'any' or a more specific type if known
+        if (type === LOAD_MORE_TYPES.CATEGORY)
+            data = await getContentsByCategoryIdAction(id, nextPage, recordsPerPage);
+        else if (type === LOAD_MORE_TYPES.SUB_CATEGORY)
+            data = await getContentsBySubCategoryIdAction(id, nextPage, recordsPerPage);
+        else if (type === LOAD_MORE_TYPES.DIVISION)
+            data = await getContentsByDivisionIdAction(id, nextPage, recordsPerPage);
+        else if (type === LOAD_MORE_TYPES.DISTRICT)
+            data = await getContentsByDistrictIdAction(id, nextPage, recordsPerPage);
+        else if (type === LOAD_MORE_TYPES.UPAZILA)
+            data = await getContentsByUpazilaIdAction(id, nextPage, recordsPerPage);
+
         // Append new contents to existing contents
         setContents((prev) => [...prev, ...data.data]);
 
-        setPage(page + 1);
+        setPage(nextPage);
         setLoading(false);
     };
 
