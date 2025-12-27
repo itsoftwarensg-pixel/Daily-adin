@@ -2,15 +2,7 @@ import React from "react";
 import CategoryPage from "@/lib/features/category";
 import { getCategoryBySlugAction } from "@/app/actions/category";
 import { getContentsByCategoryIdAction } from "@/app/actions/content";
-
-// Generate dynamic metadata
-export async function generateMetadata() {
-    return {
-        title: `Category | The Daily Adin`,
-        keywords: "daily-adin, adin, news, news-portal, content, article",
-        description: "A modern, fast and SEO-friendly news portal",
-    };
-}
+import { Category } from "@/lib/types/category.page";
 
 // Define the type for the params
 interface Params {
@@ -18,6 +10,26 @@ interface Params {
         category_slug: string;
     }
 }
+
+// Generate dynamic metadata
+export async function generateMetadata({ params }: Params) {
+    const { category_slug } = await params;
+
+    const category: Category = await getCategoryBySlugAction(category_slug);
+
+    return {
+        title: category.meta_title || `${category.name_bn} | The Daily Adin`,
+        keywords: category.meta_keywords || "daily-adin, adin, news, news-portal, content, article",
+        description: category.meta_description || "A modern, fast and SEO-friendly news portal",
+        openGraph: {
+            images: category.photo || '',
+            title: category.meta_title || `${category.name_bn} | The Daily Adin`,
+            description: category.meta_description || "A modern, fast and SEO-friendly news portal",
+        }
+    };
+}
+
+
 
 const RootHomePage = async ({ params }: Params) => {
     const { category_slug } = await params;

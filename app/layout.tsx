@@ -2,15 +2,12 @@ import { ReactNode } from "react";
 import "./globals.css";
 import type { Metadata } from "next";
 import "slick-carousel/slick/slick.css";
-import { Inter } from "next/font/google";
-import { Tiro_Bangla, Noto_Serif_Bengali } from 'next/font/google' // TODO:: Yet font is not finalized
+import { Noto_Serif_Bengali } from 'next/font/google'
 import "slick-carousel/slick/slick-theme.css";
 import "react-toastify/dist/ReactToastify.css";
 import { Bounce, ToastContainer } from "react-toastify";
 
-const noto_serif = Noto_Serif_Bengali({ // TODO:: Yet font is not finalized
-  // weight: ['400'], // choose available weights
-  // subsets: ['latin', "bengali"], // Bangla subset is required
+const noto_serif = Noto_Serif_Bengali({
   display: 'swap'
 });
 
@@ -24,8 +21,40 @@ interface PropsType {
 }
 
 export default function RootLayout({ children }: PropsType) {
+  // Schema
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'The Daily Adin',
+    url: 'https://www.dailyadin.com/'
+  };
+
   return (
     <html lang="en">
+      <head>
+        {/* START SCHEMA */}
+        {/* <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        /> */}
+        {/* END SCHEMA */}
+
+        {/* START Google Analytics */}
+        {/* <Script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
+        /> */}
+
+        {/* <Script id='google-analytics'>
+          {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', ${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID});
+          `}
+        </Script> */}
+        {/* END Google Analytics */}
+      </head>
       <body className={`${noto_serif.className} antialiased`}>
         <main>
           <div className="w-full">{children}</div>
