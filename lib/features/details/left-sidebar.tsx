@@ -1,3 +1,4 @@
+import { ContentDetailsType } from "@/lib/types/details.page";
 import Link from "next/link";
 import { FiPrinter } from "react-icons/fi";
 import { GrFacebookOption } from "react-icons/gr";
@@ -7,11 +8,12 @@ import { RiTwitterXFill, RiWhatsappLine } from "react-icons/ri";
 
 // Props
 interface Props {
+    contentDetails: ContentDetailsType;
     category: string;
     categoryUrl: string;
 }
 
-const DetailsLeftSidebar = ({ category, categoryUrl }: Props) => {
+const DetailsLeftSidebar = ({ contentDetails, category, categoryUrl }: Props) => {
     return (
         <div className="mb-6">
             {/* Category title */}
@@ -22,13 +24,13 @@ const DetailsLeftSidebar = ({ category, categoryUrl }: Props) => {
 
             {/* Writer */}
             <div className="text-gray-700 font-semibold mb-2">
-                <span>নিজস্ব প্রতিবেদক</span>
+                <span>{contentDetails?.writer?.name || `নিজস্ব প্রতিবেদক`}</span>
             </div>
 
             {/* Publish/updated time */}
             <div className="text-gray-500 mb-4">
-                <p>১৭ ডিসেম্বর ২০২৫, ১১:০১ পিএম</p>
-                <p>আপডেট: ১৭ ডিসেম্বর ২০২৫, ১৫:৪৩ পিএম</p>
+                <p>{contentDetails?.created_at_bangla}</p>
+                {contentDetails?.updated_at_bangla && <p>আপডেট: {contentDetails.updated_at_bangla}</p>}
             </div>
 
             {/* Social sharable links */}

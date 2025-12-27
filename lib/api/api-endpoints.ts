@@ -24,6 +24,8 @@ export const APIEndpoint = {
             `${APIEndpoint.base_url}/contents/?for=district&id=${id}&page=${page}&limit=${limit}`,
         getByUpazilaId: (id: number, page?: number, limit?: number) =>
             `${APIEndpoint.base_url}/contents/?for=upazila&id=${id}&page=${page}&limit=${limit}`,
+        getById: (id: number, include?: string) =>
+            `${APIEndpoint.base_url}/contents/${id}?include=${include || ''}`,
     },
 
     // Division API endpoints

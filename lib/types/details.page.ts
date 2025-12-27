@@ -25,7 +25,7 @@ export interface ContentDetailsType {
     updated_at_bangla: string;
     full_image_path: string;
     full_url: string;
-    tags: ContentDetailsTagType | null;
+    tags: ContentDetailsTagType[] | null;
     next_ids?: ContentDetailsNextItemType[] | null;
 }
 

@@ -7,6 +7,26 @@ import { apiRequest } from "@/lib/api/client";
  * Contents APIs
  * ============================================================================*/
 
+/** 
+ * Fetch Content details by content id with included relations 
+ * 
+ * @param id - The id of the content to fetch
+ * @returns The category data or an empty array in case of an error
+ */
+export const getContentByIdAction = async (id: number, include?: string) => {
+    try {
+        const apiResponse = await apiRequest({
+            url: APIEndpoint.content.getById(id, include),
+            method: "GET",
+        });
+
+        return apiResponse.data;
+
+    } catch (err) {
+        console.error("Error fetching content by content id:", err);
+        return [];
+    }
+};
 
 /** 
  * Fetch Contents by category id with included relations 
