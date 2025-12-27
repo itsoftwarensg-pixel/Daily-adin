@@ -57,7 +57,6 @@ const Navbar = () => {
                 <Link
                   href={item.href ?? "#"}
                   className="flex items-center gap-[6px]"
-                  onClick={(e) => item.children && e.preventDefault()}
                 >
                   <p>{item.text}</p>
 
