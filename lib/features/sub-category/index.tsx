@@ -142,7 +142,9 @@ const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
                                 {/* 3 contents. Lead below */}
                                 <div className="grid grid-cols-3 gap-4 mb-6">
                                     {otherSubLead?.map((newsItem, idx) => (
-                                        <Link href={"/"} key={idx} className="relative block group h-full">
+                                        <Link
+                                            href={`/${category.alias}/${newsItem.id}`}
+                                            key={idx} className="relative block group h-full">
                                             <div
                                                 className={`w-full h-full bg-gray-100`}
                                             >

@@ -86,9 +86,8 @@ const CategoryIndex = ({ category, contents }: Props) => {
                                     {/* Lead */}
                                     <div className="col-span-1 lg:col-span-2">
                                         <div className="aspect-[16/9]">
-                                            <Link href="#" className="relative group">
+                                            <Link href={`/${category.alias}/${lead.id}`} className="relative group">
                                                 <div className="">
-                                                    {/* <img className="w-full aspect-[16/9]" src="https://cdn.dhakapost.com/media/imgAll/BG/2025December/jobaida-20251208155025.jpg" alt="" /> */}
                                                     <ImageWithFallback
                                                         src={`${lead.full_image_path}`}
                                                         height={600}
@@ -108,7 +107,7 @@ const CategoryIndex = ({ category, contents }: Props) => {
                                     {/* Lead right */}
                                     <div className="col-span-1">
                                         <div className="">
-                                            <Link href={"/"} className="relative block group h-full">
+                                            <Link href={`/${category.alias}/${subLead.id}`} className="relative block group h-full">
                                                 <div
                                                     className={`w-full h-full`}
                                                 >
@@ -137,7 +136,7 @@ const CategoryIndex = ({ category, contents }: Props) => {
                                 {/* 3 contents. Lead below */}
                                 <div className="grid grid-cols-3 gap-4 mb-6">
                                     {otherSubLead?.map((newsItem, idx) => (
-                                        <Link href={"/"} key={idx} className="relative block group h-full">
+                                        <Link href={`/${category.alias}/${newsItem.id}`} key={idx} className="relative block group h-full">
                                             <div
                                                 className={`w-full h-full bg-gray-100`}
                                             >
