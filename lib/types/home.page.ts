@@ -34,3 +34,20 @@ export interface HomePagePhotoAlbumSection {
     url: string | null;
     contents: HomePagePhotoAlbumItem[];
 }
+
+// Home page Video item interface
+export interface HomeVideoItem {
+    id: number;
+    title: string;
+    embed_code: string;
+    description: string;          // HTML string
+    thumbnail: string;            // image URL
+    created_at: string;           // ISO datetime
+    created_at_bangla: string;
+}
+
+export interface HomePageVideoSection {
+    name: string;
+    url: string | null;
+    contents: HomeVideoItem[];
+}

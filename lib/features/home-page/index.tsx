@@ -9,7 +9,7 @@ import HomeClickedMemories from "@/lib/features/home-page/clicked-memories";
 import HomeCommercePantholokChoose from "@/lib/features/home-page/commerce";
 import BreakingNews from "@/lib/components/common/breaking-news";
 import HomeVideo from "@/lib/features/home-page/video";
-import { HomePageContnetSection, HomePagePhotoAlbumSection } from "@/lib/types/home.page";
+import { HomePageContnetSection, HomePagePhotoAlbumSection, HomePageVideoSection } from "@/lib/types/home.page";
 
 // Props
 interface Props {
@@ -19,7 +19,7 @@ interface Props {
     'all-bd-news': HomePageContnetSection,
     'entertainment-news': HomePageContnetSection,
     'world-news': HomePageContnetSection,
-    'video': HomePageContnetSection,
+    'video': HomePageVideoSection,
     'business-news': HomePageContnetSection,
     'lifestyle': HomePageContnetSection, // lace tap
     'photo': HomePagePhotoAlbumSection, // clicked memories
@@ -36,7 +36,7 @@ const HomePage = ({ homeData }: Props) => {
       <HomeMedia homeData={homeData} />
       <HomeLaceTap homeData={homeData} />
       <HomeInternational homeData={homeData} />
-      <HomeVideo />
+      <HomeVideo homeData={homeData} />
       <HomeCommercePantholokChoose homeData={homeData} />
       <HomeClickedMemories homeData={homeData} />
     </>
