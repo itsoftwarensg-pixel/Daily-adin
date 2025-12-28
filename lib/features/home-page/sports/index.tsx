@@ -33,7 +33,7 @@ const HomeSports = ({ homeData }: Props) => {
                     <div className="col-span-3 space-y-4">
                         {leadLeftContents && leadLeftContents.length > 0 && leadLeftContents.map((newsItem, idx) => (
                             <div key={idx} className="h-auto">
-                                <Link href={"/"} className="relative block group h-full">
+                                <Link href={newsItem.full_url} className="relative block group h-full">
                                     <div className={`w-full h-full bg-red-100`}>
                                         <div className="w-full aspect-[16/9.5]">
                                             <ImageWithFallback
@@ -59,7 +59,7 @@ const HomeSports = ({ homeData }: Props) => {
                     <div className="col-span-6 space-y-4">
                         {leadMainContent &&
                             <div className="h-auto">
-                                <Link href={"/"} className="relative block group h-full">
+                                <Link href={leadMainContent.full_url} className="relative block group h-full">
                                     <div className={`w-full h-full bg-red-100`}>
                                         <div className="w-full aspect-[16/9]">
                                             <ImageWithFallback
@@ -93,7 +93,7 @@ const HomeSports = ({ homeData }: Props) => {
                     <div className="col-span-3 space-y-4">
                         {leadRightContents && leadRightContents.length > 0 && leadRightContents.map((newsItem, idx) => (
                             <div key={idx} className="h-auto">
-                                <Link href={"/"} className="relative block group h-full">
+                                <Link href={newsItem.full_url} className="relative block group h-full">
                                     <div className={`w-full h-full bg-red-100`}>
                                         <div className="w-full aspect-[16/9.5]">
                                             <ImageWithFallback

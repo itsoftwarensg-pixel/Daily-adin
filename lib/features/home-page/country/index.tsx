@@ -41,7 +41,7 @@ const HomeCountry = ({ homeData }: Props) => {
                     <div className="col-span-1 md:col-span-5 space-y-2 h-full">
                         {leadMainContent &&
                             <div className="h-full">
-                                <Link href={"/"} className="relative block group h-full">
+                                <Link href={leadMainContent.full_url} className="relative block group h-full">
                                     <div className={`w-full h-full bg-gray-100`}>
                                         <div className="w-full aspect-[16/9]">
                                             <ImageWithFallback
