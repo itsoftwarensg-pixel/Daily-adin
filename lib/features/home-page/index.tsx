@@ -17,7 +17,7 @@ interface Props {
     'lead': HomePageContnetSection,
     'sports-news': HomePageContnetSection,
     'all-bd-news': HomePageContnetSection,
-    'media-news': HomePageContnetSection,
+    'entertainment-news': HomePageContnetSection,
     'lace-tap': HomePageContnetSection,
     'world-news': HomePageContnetSection,
     'video-news': HomePageContnetSection,
@@ -33,7 +33,7 @@ const HomePage = ({ homeData }: Props) => {
       <HomeLead homeData={homeData} />
       <HomeSports homeData={homeData} />
       <HomeCountry homeData={homeData} />
-      <HomeMedia />
+      <HomeMedia homeData={homeData} />
       <HomeLaceTap />
       <HomeInternational />
       <HomeVideo />
