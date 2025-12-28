@@ -12,7 +12,7 @@ interface Props {
 const VideoItem = ({ videoItem }: Props) => {
     return (
         <Link
-            href={"/"}
+            href={`/videos/${videoItem.id}`}
             className="block group overflow-hidden h-full rounded"
         >
             <div className="relative overflow-hidden h-full">

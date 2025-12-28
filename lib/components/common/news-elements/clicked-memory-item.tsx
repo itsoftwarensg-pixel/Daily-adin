@@ -27,12 +27,17 @@ const ClickedMemoryItem = ({
                     className={`relative w-full overflow-hidden ${variant === "memory" ? "aspect-[16/9]" : `aspect-[16/5]`
                         }`}
                 >
-                    <ImageWithFallback
-                        src={newsItem.feature_image}
-                        alt={newsItem.name}
-                        fill
-                        className="w-full h-full object-cover"
-                    />
+
+                    {newsItem.feature_image ? (
+                        <ImageWithFallback
+                            src={newsItem.feature_image}
+                            alt={newsItem.name}
+                            fill
+                            className="w-full h-full object-cover"
+                        />
+                    ) : (
+                        <div className="w-full object-cover h-full bg-gray-100" />
+                    )}
 
                     {/* Memory variant corner frames */}
                     {variant === "memory" && (

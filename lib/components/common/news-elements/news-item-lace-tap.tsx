@@ -41,7 +41,7 @@ const NewsItemLaceTape = ({
     const highlighted = getRandomHighlightedText(newsItem.heading, 3);
 
     return (
-        <Link href={"/"} className="relative block group h-full">
+        <Link href={newsItem.full_url} className="relative block group h-full">
             <div
                 className={`w-full h-full ${bgColor ? `bg-${bgColor}-100` : `bg-transparent`
                     }`}
