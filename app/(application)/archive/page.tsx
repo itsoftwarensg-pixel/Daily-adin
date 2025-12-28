@@ -1,12 +1,20 @@
-import ArchivePage from "@/lib/features/archive";
-import { getAllDivisionsAction } from "@/app/actions/division";
-import { getAllCategoriesAction } from "@/app/actions/category";
 import { getSearchArchiveAction } from "@/app/actions/archive";
+import ArchivePage from "@/lib/features/archive";
+import { getAllCategoriesAction } from "@/app/actions/category";
+import { getAllDivisionsAction } from "@/app/actions/division";
+
+export const dynamic = "force-dynamic";
 
 const Page = async () => {
-  const divisionList = await getAllDivisionsAction();
-  const categoryList = await getAllCategoriesAction();
-  const archiveSearchResult = await getSearchArchiveAction(1, 12);
+  const divisionListRequest = getAllDivisionsAction();
+  const categoryListRequest = getAllCategoriesAction();
+  const archiveSearchResultRequest = getSearchArchiveAction(1, 12);
+
+  const [divisionList, categoryList, archiveSearchResult] = await Promise.all([
+    divisionListRequest,
+    categoryListRequest,
+    archiveSearchResultRequest,
+  ]);
 
   return (
     <ArchivePage

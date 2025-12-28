@@ -4,11 +4,19 @@ export type API_Params = {
   data?: object;
   verify?: boolean;
   has_file?: boolean;
+  cache?: RequestCache;
 };
 
-export const apiRequest = async ({ url, data, verify = false, method = "POST", has_file }: API_Params) => {
-
-  const isFormData = typeof FormData !== "undefined" && data instanceof FormData;
+export const apiRequest = async ({
+  url,
+  data,
+  verify = false,
+  method = "POST",
+  has_file,
+  cache,
+}: API_Params) => {
+  const isFormData =
+    typeof FormData !== "undefined" && data instanceof FormData;
   const treatAsFileUpload = has_file ?? isFormData;
 
   const headers: HeadersInit = {
@@ -21,7 +29,9 @@ export const apiRequest = async ({ url, data, verify = false, method = "POST", h
   };
 
   if (
-    (method.toUpperCase() === "POST" || method.toUpperCase() === "PUT" || method.toUpperCase() === "PATCH") &&
+    (method.toUpperCase() === "POST" ||
+      method.toUpperCase() === "PUT" ||
+      method.toUpperCase() === "PATCH") &&
     data
   ) {
     if (treatAsFileUpload) {
@@ -32,11 +42,13 @@ export const apiRequest = async ({ url, data, verify = false, method = "POST", h
   }
 
   if (method.toUpperCase() === "GET" && data) {
-    const queryParams = new URLSearchParams(data as Record<string, string>).toString();
+    const queryParams = new URLSearchParams(
+      data as Record<string, string>
+    ).toString();
     url += `?${queryParams}`;
   }
 
-  const response = await fetch(url, { ...options, cache: "no-store" });
+  const response = await fetch(url, { ...options, cache: cache ?? "no-store" });
   const dataResponse = await response.json();
   // const apiErrors: Record<string, string[]> = dataResponse.errors ?? {};
 

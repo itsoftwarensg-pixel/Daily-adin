@@ -3,6 +3,8 @@
 import { apiRequest } from "@/lib/api/client";
 import { APIEndpoint } from "@/lib/api/api-endpoints";
 
+import { cache } from "react";
+
 /** ============================================================================
  * Category related APIs
  * ============================================================================*/
@@ -31,42 +33,43 @@ export const getAllCategoriesAction = async () => {
  *
  * @param id - The id of the category to fetch
  * @param include - Optional comma-separated list of relations to include. e.g. 'position_contents,subcategories'
- * @returns The category data or an empty array in case of an error
+ * @returns The category data or null in case of an error
  */
-export const getCategoryByIdAction = async (id: number, include?: string) => {
-  try {
-    const apiResponse = await apiRequest({
-      url: APIEndpoint.category.getById(id, include),
-      method: "GET",
-    });
+export const getCategoryByIdAction = cache(
+  async (id: number, include?: string) => {
+    try {
+      const apiResponse = await apiRequest({
+        url: APIEndpoint.category.getById(id, include),
+        method: "GET",
+      });
 
-    return apiResponse.data;
-  } catch (err) {
-    console.error("Error fetching category by id:", err);
-    return [];
+      return apiResponse.data;
+    } catch (err) {
+      console.error("Error fetching category by id:", err);
+      return null;
+    }
   }
-};
+);
 
 /**
  * Fetch a category by category slug with included relations
  *
  * @param slug - The slug of the category to fetch
  * @param include - Optional comma-separated list of relations to include. e.g. 'position_contents,subcategories'
- * @returns The category data or an empty array in case of an error
+ * @returns The category data or null in case of an error
  */
-export const getCategoryBySlugAction = async (
-  slug: string,
-  include?: string
-) => {
-  try {
-    const apiResponse = await apiRequest({
-      url: APIEndpoint.category.getBySlug(slug, include),
-      method: "GET",
-    });
+export const getCategoryBySlugAction = cache(
+  async (slug: string, include?: string) => {
+    try {
+      const apiResponse = await apiRequest({
+        url: APIEndpoint.category.getBySlug(slug, include),
+        method: "GET",
+      });
 
-    return apiResponse.data;
-  } catch (err) {
-    console.error("Error fetching category by slug:", err);
-    return [];
+      return apiResponse.data;
+    } catch (err) {
+      console.error("Error fetching category by slug:", err);
+      return null;
+    }
   }
-};
+);

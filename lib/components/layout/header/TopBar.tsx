@@ -23,6 +23,7 @@ const TopBar = () => {
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [openSocialMediaDropdown, setOpenSocialMediaDropdown] = useState(false);
+  const [todayDate, setTodayDate] = useState("");
 
   // Close on outside click
   useEffect(() => {
@@ -39,8 +40,11 @@ const TopBar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const todayDate =
-    pathname === "/home-old" ? `আজ ${TodayDate()}` : `${TodayBnDate}`; // TODO:: remove `/home-2` condition later. Keep only -> todayDate = TodayBnDate
+  useEffect(() => {
+    const date =
+      pathname === "/home-old" ? `আজ ${TodayDate()}` : `${TodayBnDate}`;
+    setTodayDate(date);
+  }, [pathname]);
 
   return (
     <div className="w-full bg-white">
