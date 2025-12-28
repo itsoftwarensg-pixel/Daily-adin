@@ -21,4 +21,4 @@ export const LOAD_MORE_TYPES = {
 
 
 // Home page dataset includes
-export const HOME_PAGE_INCLUDES = `lead,scroll,trending_tag,special,recent,popular,national-news,political-news,sports-news,${COUNTRY_PAGE.slug},entertainment-news,lifestyle,world-news,business-news`;
+export const HOME_PAGE_INCLUDES = `lead,scroll,trending_tag,special,recent,popular,national-news,political-news,sports-news,${COUNTRY_PAGE.slug},entertainment-news,lifestyle,world-news,business-news,photo,video`;

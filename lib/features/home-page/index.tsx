@@ -9,7 +9,7 @@ import HomeClickedMemories from "@/lib/features/home-page/clicked-memories";
 import HomeCommercePantholokChoose from "@/lib/features/home-page/commerce";
 import BreakingNews from "@/lib/components/common/breaking-news";
 import HomeVideo from "@/lib/features/home-page/video";
-import { HomePageContnetSection } from "@/lib/types/home.page";
+import { HomePageContnetSection, HomePagePhotoAlbumSection } from "@/lib/types/home.page";
 
 // Props
 interface Props {
@@ -20,9 +20,9 @@ interface Props {
     'entertainment-news': HomePageContnetSection,
     'world-news': HomePageContnetSection,
     'video': HomePageContnetSection,
-    'photo': HomePageContnetSection, // clicked memories
     'business-news': HomePageContnetSection,
     'lifestyle': HomePageContnetSection, // lace tap
+    'photo': HomePagePhotoAlbumSection, // clicked memories
   };
 }
 
@@ -38,7 +38,7 @@ const HomePage = ({ homeData }: Props) => {
       <HomeInternational homeData={homeData} />
       <HomeVideo />
       <HomeCommercePantholokChoose homeData={homeData} />
-      <HomeClickedMemories />
+      <HomeClickedMemories homeData={homeData} />
     </>
   );
 };
