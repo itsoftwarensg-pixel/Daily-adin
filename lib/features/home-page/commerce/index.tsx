@@ -1,102 +1,60 @@
 import React from "react";
-import { newsJson } from "@/lib/data"; // Temporary
 import Container from "@/lib/components/common/container";
-import SectionHeaderBase from "@/lib/components/common/section-headers/base";
-import NewsItemVertical from "@/lib/components/common/news-elements/news-item-vertical";
-import GradientHeader from "@/lib/components/common/section-headers/gradient";
+import HomeContentBox from "@/lib/components/home-content-box";
+import { HomePageContnetSection } from "@/lib/types/home.page";
 
-const HomeCommercePantholokChoose = () => {
-  return (
-    <div className="py-8">
-      <Container>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* বাণিজ্য লোক */}
-          <div className="space-y-2">
-            <GradientHeader
-              title="বাণিজ্য লোক"
-              color="emerald"
-              showReadMoreBtn
-              href="/"
-            />
-            {/* News contents */}
-            <div className="space-y-2">
-              {/* First item (large) */}
-              {newsJson.slice(8, 9).map((newsItem, idx) => (
-                <NewsItemVertical
-                  key={idx}
-                  titleSize="large"
-                  newsItem={newsItem}
-                />
-              ))}
+// Props
+interface Props {
+    homeData: {
+        'business-news'?: HomePageContnetSection,
+        'national-news'?: HomePageContnetSection,
+        'lifestyle'?: HomePageContnetSection,
+    };
+}
 
-              {/* Next two items in a 2-column grid */}
-              <div className="grid grid-cols-2 gap-2">
-                {newsJson.slice(3, 5).map((newsItem, idx) => (
-                  <NewsItemVertical key={idx} newsItem={newsItem} />
-                ))}
-              </div>
-            </div>
-          </div>
+const HomeCommercePantholokChoose = ({ homeData }: Props) => {
+    const { 'business-news': businessContents, 'national-news': nationalContents, 'lifestyle': lifestyleContents } = homeData;
+    const businessNewsContents = businessContents?.contents || [];
+    const nationalNewsContents = nationalContents?.contents || [];
+    const lifestyleNewsContents = lifestyleContents?.contents || [];
 
-          {/* পান্থলোক */}
-          <div className="space-y-2">
-            <GradientHeader
-              title="পান্থলোক"
-              color="gray"
-              showReadMoreBtn
-              href="/"
-            />
-            {/* News contents */}
-            <div className="space-y-2">
-              {/* First item (large) */}
-              {newsJson.slice(19, 20).map((newsItem, idx) => (
-                <NewsItemVertical
-                  key={idx}
-                  titleSize="large"
-                  newsItem={newsItem}
-                />
-              ))}
+    return (
+        <div className="py-8">
+            <Container>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {/* বাণিজ্য লোক */}
+                    <HomeContentBox
+                        contents={businessNewsContents}
+                        // sectionHeaderTitle={businessContents?.name || `বাণিজ্য লোক`}
+                        sectionHeaderTitle={`বাণিজ্য লোক`}
+                        sectionHeaderColor="emerald"
+                        sectionUrl={businessContents?.url || `/`}
+                        showSectionReadMoreBtn
+                    />
 
-              {/* Next two items in a 2-column grid */}
-              <div className="grid grid-cols-2 gap-2">
-                {newsJson.slice(13, 15).map((newsItem, idx) => (
-                  <NewsItemVertical key={idx} newsItem={newsItem} />
-                ))}
-              </div>
-            </div>
-          </div>
+                    {/* পান্থলোক */}
+                    <HomeContentBox
+                        contents={nationalNewsContents}
+                        // sectionHeaderTitle={nationalContents?.name || `পান্থলোক`}
+                        sectionHeaderTitle={`পান্থলোক`}
+                        sectionHeaderColor="gray"
+                        sectionUrl={nationalContents?.url || `/`}
+                        showSectionReadMoreBtn
+                    />
 
-          {/* বাছাইকৃত */}
-          <div className="space-y-2">
-            <GradientHeader
-              title="বাছাইকৃত"
-              color="indigo"
-              showReadMoreBtn
-              href="/"
-            />
-            {/* News contents */}
-            <div className="space-y-2">
-              {/* First item (large) */}
-              {newsJson.slice(1, 2).map((newsItem, idx) => (
-                <NewsItemVertical
-                  key={idx}
-                  titleSize="large"
-                  newsItem={newsItem}
-                />
-              ))}
-
-              {/* Next two items in a 2-column grid */}
-              <div className="grid grid-cols-2 gap-2">
-                {newsJson.slice(6, 8).map((newsItem, idx) => (
-                  <NewsItemVertical key={idx} newsItem={newsItem} />
-                ))}
-              </div>
-            </div>
-          </div>
+                    {/* বাছাইকৃত */}
+                    <HomeContentBox
+                        contents={lifestyleNewsContents}
+                        // sectionHeaderTitle={lifestyleContents?.name || `বাছাইকৃত`}
+                        sectionHeaderTitle={`বাছাইকৃত`}
+                        sectionHeaderColor="indigo"
+                        sectionUrl={lifestyleContents?.url || `/`}
+                        showSectionReadMoreBtn
+                    />
+                </div>
+            </Container>
         </div>
-      </Container>
-    </div>
-  );
+    );
 };
 
 export default HomeCommercePantholokChoose;
