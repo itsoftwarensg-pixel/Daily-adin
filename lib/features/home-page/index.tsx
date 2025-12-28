@@ -31,9 +31,8 @@ const HomePage = ({ homeData }: Props) => {
     <>
       <BreakingNews />
       <HomeLead homeData={homeData} />
-      {/* <HomeLeadBelow /> */}
       <HomeSports homeData={homeData} />
-      <HomeCountry />
+      <HomeCountry homeData={homeData} />
       <HomeMedia />
       <HomeLaceTap />
       <HomeInternational />
