@@ -15,7 +15,7 @@ import { APIEndpoint } from "@/lib/api/api-endpoints";
 export const getAllCategoriesAction = async () => {
   try {
     const apiResponse = await apiRequest({
-      url: APIEndpoint.division.getAll(),
+      url: APIEndpoint.category.getAll(),
       method: "GET",
     });
 
