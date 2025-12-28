@@ -102,13 +102,13 @@ const InfiniteArticleList = ({
 
         if (activeArticle) {
           const newUrl = activeArticle.full_url;
-          const normalizedUrl = newUrl.replace(
-            "https://bongonews24.com",
-            "http://localhost:3000"
-          );
+          // const normalizedUrl = newUrl.replace(
+          //   "https://bongonews24.com",
+          //   "http://localhost:3000"
+          // );
 
-          if (window.location.href !== normalizedUrl) {
-            window.history.replaceState(null, "", normalizedUrl);
+          if (window.location.href !== newUrl) {
+            window.history.replaceState(null, "", newUrl);
           }
 
           const newTitle =
