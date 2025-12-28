@@ -18,7 +18,7 @@ export const LOAD_MORE_TYPES = {
     COUNTRY: COUNTRY_PAGE.slug,
 };
 
-
-
 // Home page dataset includes
-export const HOME_PAGE_INCLUDES = `lead,scroll,trending_tag,special,recent,popular,national-news,political-news,sports-news,${COUNTRY_PAGE.slug},entertainment-news,lifestyle,world-news,business-news,photo,video`;
+export const HOME_PAGE_CHUNK_1 = `lead,scroll,trending_tag,special,recent,popular,national-news,political-news`;
+export const HOME_PAGE_CHUNK_2 = `sports-news,all-bd-news,entertainment-news,lifestyle,world-news,business-news,photo,video`;
+export const HOME_PAGE_INCLUDES = `${HOME_PAGE_CHUNK_1},${HOME_PAGE_CHUNK_2}`;
