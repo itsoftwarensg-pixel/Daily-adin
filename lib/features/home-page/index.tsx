@@ -18,11 +18,11 @@ interface Props {
     'sports-news': HomePageContnetSection,
     'all-bd-news': HomePageContnetSection,
     'entertainment-news': HomePageContnetSection,
-    'lace-tap': HomePageContnetSection,
     'world-news': HomePageContnetSection,
-    'video-news': HomePageContnetSection,
+    'video': HomePageContnetSection,
+    'photo': HomePageContnetSection, // clicked memories
     'business-news': HomePageContnetSection,
-    'clicked-memories': HomePageContnetSection,
+    'lifestyle': HomePageContnetSection, // lace tap
   };
 }
 
@@ -34,7 +34,7 @@ const HomePage = ({ homeData }: Props) => {
       <HomeSports homeData={homeData} />
       <HomeCountry homeData={homeData} />
       <HomeMedia homeData={homeData} />
-      <HomeLaceTap />
+      <HomeLaceTap homeData={homeData} />
       <HomeInternational homeData={homeData} />
       <HomeVideo />
       <HomeCommercePantholokChoose homeData={homeData} />
