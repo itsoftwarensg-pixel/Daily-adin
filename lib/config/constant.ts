@@ -17,3 +17,8 @@ export const LOAD_MORE_TYPES = {
     UPAZILA: "upazila",
     COUNTRY: COUNTRY_PAGE.slug,
 };
+
+
+
+// Home page dataset includes
+export const HOME_PAGE_INCLUDES = `lead,scroll,trending_tag,special,recent,popular,national-news,political-news,sports-news,${COUNTRY_PAGE.slug},entertainment-news,lifestyle,world-news,business-news`;

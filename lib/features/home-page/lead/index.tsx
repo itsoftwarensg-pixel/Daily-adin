@@ -12,8 +12,28 @@ import GradientHeader from "@/lib/components/common/section-headers/gradient";
 import NewsItemBase from "@/lib/components/common/news-elements/news-item-base";
 import LeadNewsItem from "@/lib/components/common/news-elements/lead-news-item";
 import NewsItemVertical from "@/lib/components/common/news-elements/news-item-vertical";
+import { HomePageContnetSection } from "@/lib/types/home.page";
 
-const HomeLead = () => {
+// Props
+interface Props {
+  homeData: {
+    'lead': HomePageContnetSection,
+    'national-news'?: HomePageContnetSection,
+    'political-news'?: HomePageContnetSection,
+  };
+}
+
+const HomeLead = ({ homeData }: Props) => {
+  const { lead: leadContents, 'national-news': nationalContents, 'political-news': politicalContents } = homeData;
+
+  const leadNewsContents = leadContents?.contents || [];
+  const nationalNewsContents = nationalContents?.contents || [];
+  const politicalNewsContents = politicalContents?.contents || [];
+
+  const leadMainContent = leadNewsContents[0];              // Main lead news
+  const leadLeftContents = leadNewsContents.slice(1, 6);    // Left side contents
+  const leadBelowContents = leadNewsContents.slice(6, 12);  // Below lead contents
+
   return (
     <div className="pt-4 pb-8">
       <Container>
@@ -22,36 +42,53 @@ const HomeLead = () => {
             <div className="grid grid-cols-5 gap-6">
               {/* Lead news - Left side */}
               <div className="col-span-2 space-y-2">
-                {newsJson.slice(4, 9).map((newsItem, index) => (
-                  <NewsItemBase
+                {leadLeftContents && leadLeftContents.length > 0 && leadLeftContents.map((newsItem, index) => (
+                  <Link
                     key={index}
-                    newsItem={newsItem}
-                    bgColor="gray"
-                  />
+                    href={`${newsItem.full_url}`}
+                    className="block group overflow-hidden"
+                  >
+                    <div
+                      className={`w-full grid grid-cols-5 items-center justify-center bg-gray-100 gap-2 overflow-hidden`}
+                    >
+                      <div className="col-span-2 aspect-[16/10]">
+                        <ImageWithFallback
+                          src={`${newsItem.full_image_path}`}
+                          height={300}
+                          width={400}
+                          alt={`${newsItem.heading}`}
+                          className="w-full object-cover h-full"
+                        />
+                      </div>
+                      <div className="col-span-3">
+                        <h4 className="p-2 group-hover:text-blue-700 text-[17px] font-semibold">{newsItem.heading}</h4>
+                      </div>
+                    </div>
+                  </Link>
                 ))}
               </div>
 
               {/* Lead news - Center */}
               <div className="col-span-3">
-                <LeadNewsItem />
+                <LeadNewsItem content={leadMainContent}/>
               </div>
             </div>
 
-            {/* 3 contents. Lead below */}
+            {/* 6 contents. Lead below */}
             <div className="grid grid-cols-3 gap-4 mb-6">
-              {newsJson.slice(40, 46).map((newsItem, idx) => (
+              {leadBelowContents && leadBelowContents.length > 0 && leadBelowContents.map((newsItem, index) => (
                 <Link
-                  href={"/"}
-                  key={idx}
+                  href={`${newsItem.full_url}`}
+                  key={index}
                   className="relative block group h-full"
                 >
                   <div className={`w-full h-full bg-gray-100`}>
                     <div className="w-full aspect-[16/9]">
                       <ImageWithFallback
-                        src={`${newsItem.image}`}
+                        src={`${newsItem.full_image_path}`}
                         height={600}
                         width={900}
-                        alt={`${newsItem.title}`}
+                        alt={`${newsItem.heading}`}
                         className="w-full object-cover h-full"
                       />
                     </div>
@@ -59,7 +96,7 @@ const HomeLead = () => {
                       <h4
                         className={`px-2 pt-2 text-lg group-hover:text-blue-700 font-semibold`}
                       >
-                        {newsItem.title}
+                        {newsItem.heading}
                       </h4>
                     </div>
                   </div>
@@ -158,8 +195,8 @@ const HomeLead = () => {
             <Opinion />
           </div>
         </div>
-      </Container>
-    </div>
+      </Container >
+    </div >
   );
 };
 

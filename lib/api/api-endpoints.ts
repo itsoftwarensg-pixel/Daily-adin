@@ -4,16 +4,17 @@ import { buildQueryString } from "../utils/helpers";
 export const APIEndpoint = {
   base_url: BASE_URL || "http://127.0.0.1:8000/api/v1",
 
-  // Category API endpoints - Only for Category Page
-  category: {
-    getAll: () => `${APIEndpoint.base_url}/categories`,
-    getById: (id: number, include?: string) =>
-      `${APIEndpoint.base_url}/categories/${id}?include=${include || ""}`, // include: position_contents,subcategories
-    getBySlug: (slug: string, include?: string) =>
-      `${APIEndpoint.base_url}/categories/slug/${slug}?include=${
-        include || ""
-      }`, // include: position_contents,subcategories
-  },
+    // Home API endpoints
+    home: {
+        getData: (include?: string) => `${APIEndpoint.base_url}/home?include=${include || ''}`,
+        // include: lead,scroll,trending_tag,special,recent,popular,national,politics
+    },
+
+    // Category API endpoints - Only for Category Page
+    category: {
+        getById: (id: number, include?: string) => `${APIEndpoint.base_url}/categories/${id}?include=${include || ''}`, // include: position_contents,subcategories
+        getBySlug: (slug: string, include?: string) => `${APIEndpoint.base_url}/categories/slug/${slug}?include=${include || ''}`, // include: position_contents,subcategories
+    },
 
   // Category API endpoints - Only for Category Page
   subCategory: {

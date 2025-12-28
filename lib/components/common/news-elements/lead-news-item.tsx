@@ -1,42 +1,39 @@
 import React from "react";
 import Link from "next/link";
 import { ImageWithFallback } from "../../image";
-import { NewsItemType, newsJson } from "@/lib/data"; // Temporary
 import HtmlContent from "@/lib/components/common/html-content";
+import { HomePageContentItem } from "@/lib/types/home.page";
 
 // Props
 interface Props {
-  newsContent: NewsItemType | {};
+  content: HomePageContentItem;
 }
 
-const LeadNewsItem = () => {
+const LeadNewsItem = ({ content }: Props) => {
   return (
     <>
-      {newsJson.slice(51, 52).map((newsItem, index) => (
-        <Link
-          key={index}
-          href={"/"}
-          className="block group mb-4"
-        >
-          <div className="w-full bg-white">
-            <div className="w-full">
-              <ImageWithFallback
-                src={`${newsItem.image}`}
-                height={600}
-                width={900}
-                alt={`${newsItem.title}`}
-                className="w-full"
-              />
-            </div>
-            <div className="">
-              <h4 className="mt-2 pt-2 pb-0 text-3xl group-hover:text-blue-700 font-semibold">
-                {newsItem.title}
-              </h4>
-              <HtmlContent html={newsItem.description} maxContent={200} className="pt-2 text-gray-500" />
-            </div>
+      <Link
+        href={`${content.full_url}`}
+        className="block group mb-4"
+      >
+        <div className="w-full bg-white">
+          <div className="w-full">
+            <ImageWithFallback
+              src={`${content.full_image_path}`}
+              height={900}
+              width={1200}
+              alt={`${content.heading}`}
+              className="w-full"
+            />
           </div>
-        </Link>
-      ))}
+          <div className="">
+            <h4 className="mt-2 pt-2 pb-0 text-3xl group-hover:text-blue-700 font-semibold">
+              {content.heading}
+            </h4>
+            <HtmlContent html={content.description} maxContent={200} className="pt-2 text-gray-500" />
+          </div>
+        </div>
+      </Link>
     </>
   );
 };
