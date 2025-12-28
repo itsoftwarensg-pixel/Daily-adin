@@ -15,15 +15,17 @@ interface Props {
         'lead': HomePageContnetSection,
         'national-news'?: HomePageContnetSection,
         'political-news'?: HomePageContnetSection,
+        'recent'?: HomePageContnetSection,
     };
 }
 
 const HomeLead = ({ homeData }: Props) => {
-    const { lead: leadContents, 'national-news': nationalContents, 'political-news': politicalContents } = homeData;
+    const { lead: leadContents, 'national-news': nationalContents, 'political-news': politicalContents, 'recent': recentContents } = homeData;
 
     const leadNewsContents = leadContents?.contents || [];
     const nationalNewsContents = nationalContents?.contents || [];
     const politicalNewsContents = politicalContents?.contents || [];
+    const recentNewsContents = recentContents?.contents || [];
 
     const leadMainContent = leadNewsContents[0];              // Main lead news
     const leadLeftContents = leadNewsContents.slice(1, 6);    // Left side contents
@@ -128,7 +130,7 @@ const HomeLead = ({ homeData }: Props) => {
 
                         {/* Latest - Popular */}
                         <div className="my-4">
-                            <LatestPopularNews height={510} />
+                            <LatestPopularNews height={510} latestNews={recentNewsContents} popularNews={recentNewsContents} />
                         </div>
 
                         {/* Advertisement */}

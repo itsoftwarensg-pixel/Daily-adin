@@ -15,6 +15,7 @@ import { HomePageContnetSection, HomePagePhotoAlbumSection, HomePageVideoSection
 interface Props {
   homeData: {
     'lead': HomePageContnetSection,
+    'recent': HomePageContnetSection,
     'sports-news': HomePageContnetSection,
     'all-bd-news': HomePageContnetSection,
     'entertainment-news': HomePageContnetSection,
