@@ -1,8 +1,12 @@
+import { BASE_URL } from "../config/constant";
+import { buildQueryString } from "../utils/helpers";
+
 export const APIEndpoint = {
-  base_url: process.env.BASE_URL || "http://127.0.0.1:8000/api/v1",
+  base_url: BASE_URL || "http://127.0.0.1:8000/api/v1",
 
   // Category API endpoints - Only for Category Page
   category: {
+    getAll: () => `${APIEndpoint.base_url}/categories`,
     getById: (id: number, include?: string) =>
       `${APIEndpoint.base_url}/categories/${id}?include=${include || ""}`, // include: position_contents,subcategories
     getBySlug: (slug: string, include?: string) =>
@@ -38,12 +42,16 @@ export const APIEndpoint = {
   // Division API endpoints
   division: {
     getAll: () => `${APIEndpoint.base_url}/divisions`,
+    getDistrictByDivisionId: (divisionId: number) =>
+      `${APIEndpoint.base_url}/divisions/${divisionId}/districts`,
     getBySlug: (slug: string, include?: string) =>
       `${APIEndpoint.base_url}/divisions/slug/${slug}?include=${include || ""}`, // include: contents,districts
   },
 
   // District API endpoints
-  disctrict: {
+  district: {
+    getUpazilasByDistrictId: (districtId: number) =>
+      `${APIEndpoint.base_url}/districts/${districtId}/upazilas`,
     getBySlug: (slug: string, include?: string) =>
       `${APIEndpoint.base_url}/districts/slug/${slug}?include=${include || ""}`, // include: contents,upazilas,division
   },
@@ -67,7 +75,19 @@ export const APIEndpoint = {
       division_id?: number,
       district_id?: number,
       upazila_id?: number
-    ) =>
-      `${APIEndpoint.base_url}/archive/?page=${page}&limit=${limit}&date_start=${date_start}&date_end=${date_end}&category_id=${category_id}&division_id=${division_id}&district_id=${district_id}&upazila_id=${upazila_id}`,
+    ) => {
+      const query = buildQueryString({
+        page,
+        limit,
+        date_start,
+        date_end,
+        category_id,
+        division_id,
+        district_id,
+        upazila_id,
+      });
+
+      return `${APIEndpoint.base_url}/archive${query}`;
+    },
   },
 };

@@ -111,15 +111,50 @@ export const getRandomHighlightedText = (text: string, maxWords = 3) => {
   return { before, highlight, after };
 };
 
+/**
+ * Builds a URL query string from an object of parameters.
+ *
+ * - Automatically excludes parameters that are `undefined` or empty strings
+ * - Encodes both keys and values to ensure URL safety
+ * - Returns an empty string if no valid query parameters exist
+ *
+ * @param params - An object containing query parameters as key-value pairs
+ * @returns A formatted query string starting with `?`, or an empty string if no parameters are valid
+ *
+ */
+export const buildQueryString = (
+  params: Record<string, string | number | undefined>
+) => {
+  const query = Object.entries(params)
+    .filter(([_, value]) => value !== undefined && value !== "")
+    .map(
+      ([key, value]) =>
+        `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`
+    )
+    .join("&");
+
+  return query ? `?${query}` : "";
+};
+
 // ============ Start: Date, Month, Year ===========
 const bnMonths = [
-  "জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল",
-  "মে", "জুন", "জুলাই", "আগস্ট",
-  "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর",
+  "জানুয়ারি",
+  "ফেব্রুয়ারি",
+  "মার্চ",
+  "এপ্রিল",
+  "মে",
+  "জুন",
+  "জুলাই",
+  "আগস্ট",
+  "সেপ্টেম্বর",
+  "অক্টোবর",
+  "নভেম্বর",
+  "ডিসেম্বর",
 ];
 
 // Convert en number into bangla number
-const toBanglaNumber = (num: number) => num.toString().replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[+d]);
+const toBanglaNumber = (num: number) =>
+  num.toString().replace(/\d/g, (d) => "০১২৩৪৫৬৭৮৯"[+d]);
 
 // Displays today's date in Bangla format (bn-BD locale)
 // Example output: আজ ২৪ নভেম্বর ২০২৫
@@ -141,16 +176,23 @@ export const CurrentYear = () => {
 };
 // ============ END: Date, Month, Year ===========
 
-
-
 // ========================== Start Bangla Date Time Helper ===========================
 // ======== Bangla Date Converter ========
 
 // Bangla calendar months
 const BN_MONTHS = [
-  "বৈশাখ", "জ্যৈষ্ঠ", "আষাঢ়", "শ্রাবণ",
-  "ভাদ্র", "আশ্বিন", "কার্তিক", "অগ্রহায়ণ",
-  "পৌষ", "মাঘ", "ফাল্গুন", "চৈত্র",
+  "বৈশাখ",
+  "জ্যৈষ্ঠ",
+  "আষাঢ়",
+  "শ্রাবণ",
+  "ভাদ্র",
+  "আশ্বিন",
+  "কার্তিক",
+  "অগ্রহায়ণ",
+  "পৌষ",
+  "মাঘ",
+  "ফাল্গুন",
+  "চৈত্র",
 ];
 
 // Standard month lengths (Falgun may change in leap year)
@@ -158,7 +200,7 @@ const BN_MONTH_DAYS = [31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29, 30];
 
 // Convert number to Bangla digits (plain, no commas)
 const toBnNumber = (num: number) =>
-  num.toString().replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[+d]);
+  num.toString().replace(/\d/g, (d) => "০১২৩৪৫৬৭৮৯"[+d]);
 
 // Check Gregorian leap year
 const isLeapYear = (year: number) =>
@@ -188,13 +230,14 @@ const getBanglaCalendarDate = (date: Date) => {
   }
 
   // Bangla New Year starts 14 April
-  const bnYearStart = new Date(Date.UTC(
-    enMonth < 3 ? enYear - 1 : enYear,
-    3, 14
-  ));
+  const bnYearStart = new Date(
+    Date.UTC(enMonth < 3 ? enYear - 1 : enYear, 3, 14)
+  );
 
   // Compute days passed
-  let diffDays = Math.round((dhakaTime.getTime() - bnYearStart.getTime()) / 86400000);
+  let diffDays = Math.round(
+    (dhakaTime.getTime() - bnYearStart.getTime()) / 86400000
+  );
   if (diffDays < 0) diffDays = 0; // safety for early hours
 
   // Find month and day
@@ -233,7 +276,6 @@ export const convertToBanglaDate = (inputDate = new Date()) => {
 
   return `${gregorianBn}, ${bangla.day} ${bangla.month} ${bangla.year}`;
 };
-
 
 export const TodayBnDate = convertToBanglaDate();
 
