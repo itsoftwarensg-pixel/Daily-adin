@@ -9,21 +9,36 @@ import HomeClickedMemories from "@/lib/features/home-page/clicked-memories";
 import HomeCommercePantholokChoose from "@/lib/features/home-page/commerce";
 import BreakingNews from "@/lib/components/common/breaking-news";
 import HomeVideo from "@/lib/features/home-page/video";
+import { HomePageContnetSection, HomePagePhotoAlbumSection, HomePageVideoSection } from "@/lib/types/home.page";
 
-const HomePage = () => {
+// Props
+interface Props {
+  homeData: {
+    'lead': HomePageContnetSection,
+    'sports-news': HomePageContnetSection,
+    'all-bd-news': HomePageContnetSection,
+    'entertainment-news': HomePageContnetSection,
+    'world-news': HomePageContnetSection,
+    'video': HomePageVideoSection,
+    'business-news': HomePageContnetSection,
+    'lifestyle': HomePageContnetSection, // lace tap
+    'photo': HomePagePhotoAlbumSection, // clicked memories
+  };
+}
+
+const HomePage = ({ homeData }: Props) => {
   return (
     <>
       <BreakingNews />
-      <HomeLead />
-      {/* <HomeLeadBelow /> */}
-      <HomeSports />
-      <HomeCountry />
-      <HomeMedia />
-      <HomeLaceTap />
-      <HomeInternational />
-      <HomeVideo />
-      <HomeCommercePantholokChoose />
-      <HomeClickedMemories />
+      <HomeLead homeData={homeData} />
+      <HomeSports homeData={homeData} />
+      <HomeCountry homeData={homeData} />
+      <HomeMedia homeData={homeData} />
+      <HomeLaceTap homeData={homeData} />
+      <HomeInternational homeData={homeData} />
+      <HomeVideo homeData={homeData} />
+      <HomeCommercePantholokChoose homeData={homeData} />
+      <HomeClickedMemories homeData={homeData} />
     </>
   );
 };
