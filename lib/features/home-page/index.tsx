@@ -32,7 +32,7 @@ const HomePage = ({ homeData }: Props) => {
       <BreakingNews />
       <HomeLead homeData={homeData} />
       {/* <HomeLeadBelow /> */}
-      <HomeSports />
+      <HomeSports homeData={homeData} />
       <HomeCountry />
       <HomeMedia />
       <HomeLaceTap />
