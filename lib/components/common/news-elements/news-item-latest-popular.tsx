@@ -2,10 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { NewsItemType } from "@/lib/data"; // Temporary
 import ImageWithFallback from "@/lib/components/image/ImageWithFallback";
+import { ContentItem } from "@/lib/types/category.page";
 
 // Props
 interface Props {
-  newsItem: NewsItemType;
+  newsItem: ContentItem;
 }
 
 const NewsItemLatestPopular = ({ newsItem }: Props) => {
@@ -15,16 +16,16 @@ const NewsItemLatestPopular = ({ newsItem }: Props) => {
 
   return (
     <>
-      <Link href={"/"} className="block group overflow-hidden">
+      <Link href={newsItem.full_url} className="block group overflow-hidden">
         <div className="flex gap-2 mb-2">
           {/* Left: Image (fixed 100px width) */}
           <div className="w-[120px] flex-shrink-0">
             <div className="aspect-[16/10]">
               <ImageWithFallback
-                src={newsItem.image}
+                src={newsItem.full_image_path}
                 height={100}
                 width={160}
-                alt={newsItem.title}
+                alt={newsItem.heading}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -33,12 +34,11 @@ const NewsItemLatestPopular = ({ newsItem }: Props) => {
           {/* Right: Content */}
           <div className="flex-1">
             <h4 className="group-hover:text-blue-700 font-semibold">
-              {newsItem.brief}
+              {newsItem.heading}
             </h4>
           </div>
         </div>
       </Link>
-
     </>
   );
 };

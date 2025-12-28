@@ -1,48 +1,58 @@
 import React from "react";
 import SubCategoryPage from "@/lib/features/sub-category";
-import { getCategoryByIdAction, getCategoryBySlugAction } from "@/app/actions/category";
+import { getCategoryBySlugAction } from "@/app/actions/category";
 import { getContentsBySubCategoryIdAction } from "@/app/actions/content";
 import { getSubCategoryBySlugAction } from "@/app/actions/sub-category";
+import { notFound, redirect } from "next/navigation";
 
 // Generate dynamic metadata
 export async function generateMetadata() {
-    return {
-        title: `Sub Category | The Daily Adin`,
-        keywords: "daily-adin, adin, news, news-portal, content, article",
-        description: "A modern, fast and SEO-friendly news portal",
-    };
+  return {
+    title: `Sub Category | The Daily Adin`,
+    keywords: "daily-adin, adin, news, news-portal, content, article",
+    description: "A modern, fast and SEO-friendly news portal",
+  };
 }
 
 // Define the type for the params
 interface Params {
-    params: {
-        category_slug: string;
-        sub_category_slug: string;
-    }
+  params: {
+    category_slug: string;
+    sub_category_slug: string;
+  };
 }
 
+export const dynamic = "force-dynamic";
+
 const Page = async ({ params }: Params) => {
-    const { category_slug, sub_category_slug } = await params;
+  const { category_slug, sub_category_slug } = await params;
 
-    console.log('======== sub_category_slug: ', params);
+  const [category, subCategory] = await Promise.all([
+    getCategoryBySlugAction(category_slug, "subcategories"),
+    getSubCategoryBySlugAction(sub_category_slug, "category"),
+  ]);
 
-    // Fetch category with subcategories
-    const category = await getCategoryBySlugAction(category_slug, 'subcategories');
+  if (!subCategory) {
+    notFound();
+  }
 
-    // Fetch sub-category contents and category
-    const subCategory = await getSubCategoryBySlugAction(sub_category_slug, 'contents');
-    // console.log('======== subCategory Data: ', category);
+  if (subCategory.category.alias !== category_slug) {
+    redirect(`/${subCategory.category.alias}/${sub_category_slug}`);
+  }
 
-    // Fetch contents for the sub-category (first page, 10 items per page)
-    const contents = await getContentsBySubCategoryIdAction(subCategory.id, 1, 10);
+  const contents = await getContentsBySubCategoryIdAction(
+    subCategory.id,
+    1,
+    10
+  );
 
-    return (
-        <SubCategoryPage
-            subCategory={subCategory}
-            category={category}
-            contents={contents}
-        />
-    )
+  return (
+    <SubCategoryPage
+      subCategory={subCategory}
+      category={category}
+      contents={contents}
+    />
+  );
 };
 
 export default Page;

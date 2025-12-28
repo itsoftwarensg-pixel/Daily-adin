@@ -12,6 +12,8 @@ export async function generateMetadata() {
   };
 }
 
+export const dynamic = "force-dynamic";
+
 const RootHomePage = async () => {
   // Fetch home page data with included relations
   const homeData = await getHomePageDataAction(HOME_PAGE_INCLUDES);
