@@ -35,7 +35,7 @@ const HomePage = ({ homeData }: Props) => {
       <HomeCountry homeData={homeData} />
       <HomeMedia homeData={homeData} />
       <HomeLaceTap />
-      <HomeInternational />
+      <HomeInternational homeData={homeData} />
       <HomeVideo />
       <HomeCommercePantholokChoose />
       <HomeClickedMemories />
