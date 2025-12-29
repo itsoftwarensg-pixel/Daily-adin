@@ -31,7 +31,7 @@ const HomeMedia = ({ homeData }: Props) => {
 
                 <div className="grid grid-cols-12 gap-4">
                     {/* Left */}
-                    <div className="col-span-6 space-y-4 pr-4">
+                    <div className="col-span-6 space-y-4">
                         {subLeadContents && subLeadContents.length > 0 && subLeadContents.map((newsItem, index) => (
                             <div
                                 key={index}
@@ -39,7 +39,7 @@ const HomeMedia = ({ homeData }: Props) => {
                             >
                                 <Link href={newsItem.full_url} className="group block overflow-hidden">
                                     <div className="grid grid-cols-5 gap-2 items-center">
-                                        <div className="col-span-2 aspect-[16/10]">
+                                        <div className="col-span-2 aspect-[16/9]">
                                             <ImageWithFallback
                                                 src={newsItem.full_image_path}
                                                 width={140}
@@ -63,7 +63,7 @@ const HomeMedia = ({ homeData }: Props) => {
                     <div className="col-span-6 space-y-5">
                         {leadMainContent &&
                             <Link href={`${leadMainContent.full_url}`} className="relative group block overflow-hidden">
-                                <div className="aspect-[16/12] w-full">
+                                <div className="aspect-[16/11] w-full">
                                     <ImageWithFallback
                                         src={leadMainContent.full_image_path}
                                         width={450}
