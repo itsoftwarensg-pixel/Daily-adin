@@ -153,8 +153,6 @@ export const navItems: NavItem[] = [
   // { text: "ইপেপার", href: "#epaper" },
 ];
 
-// https://www.rupalibangladesh.com/media/imgAll/2025July/SM/High-Court-20251207115549.webp
-// https://via.placeholder.com/600x400?text=News
 export const newsJson = [
   {
     id: 1,
