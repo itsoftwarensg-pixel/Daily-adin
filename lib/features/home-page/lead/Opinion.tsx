@@ -64,6 +64,17 @@ const Opinion = () => {
   return (
     <Link href={"/"} className="block group overflow-hidden bg-gray-2">
       <div className="w-full flex items-start bg-transparent overflow-hidden">
+        <div className="">
+          <h3 className="bg-gray-5 text-[14px] my-5 text-center p-1 font-semibold">
+            সভ্যতার বিকাশে সংবাদপত্রের ভূমিকা?
+          </h3>
+          <h4 className=" group-hover:text-blue-700 px-2 text-[14px] font-normal leading-[18px] text-justify">
+            “সভ্যতার বিকাশে সংবাদপত্র অত্যন্ত গুরুত্বপূর্ণ ভূমিকা রাখে। এটি
+            মানুষের জ্ঞান বৃদ্ধি করে, সমাজ–রাজনীতি সম্পর্কে সচেতন করে, মতামত
+            গঠনে সহায়তা করে এবং শিক্ষিত, দায়িত্বশীল ও অগ্রসর নাগরিক গড়ে তুলতে
+            কার্যকর ভূমিকা পালন করে”
+          </h4>
+        </div>
         <div className="flex flex-col items-start justify-center">
           <div className="w-[150px] h-[220px] relative overflow-hidden">
             <ImageWithFallback
@@ -80,17 +91,7 @@ const Opinion = () => {
           </div>
         </div>
 
-        <div className="">
-          <h3 className="bg-gray-5 text-[12px] my-5 text-center p-1 font-semibold">
-            সভ্যতার বিকাশে সংবাদপত্রের ভূমিকা?
-          </h3>
-          <h4 className=" group-hover:text-blue-700 px-2 text-[12px] font-normal leading-[18px] text-justify">
-            “সভ্যতার বিকাশে সংবাদপত্র অত্যন্ত গুরুত্বপূর্ণ ভূমিকা রাখে। এটি
-            মানুষের জ্ঞান বৃদ্ধি করে, সমাজ–রাজনীতি সম্পর্কে সচেতন করে, মতামত
-            গঠনে সহায়তা করে এবং শিক্ষিত, দায়িত্বশীল ও অগ্রসর নাগরিক গড়ে তুলতে
-            কার্যকর ভূমিকা পালন করে”
-          </h4>
-        </div>
+
       </div>
     </Link>
   );
