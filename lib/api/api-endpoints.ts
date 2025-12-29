@@ -4,6 +4,12 @@ import { buildQueryString } from "../utils/helpers";
 export const APIEndpoint = {
   base_url: BASE_URL || "http://127.0.0.1:8000/api/v1",
 
+  // Utils API endpoints
+  utils: {
+    getBnDateTime: () =>
+      `${APIEndpoint.base_url}/datetime-bn`,
+  },
+
   // Home API endpoints
   home: {
     getData: (include?: string) =>
@@ -17,16 +23,14 @@ export const APIEndpoint = {
     getById: (id: number, include?: string) =>
       `${APIEndpoint.base_url}/categories/${id}?include=${include || ""}`, // include: position_contents,subcategories
     getBySlug: (slug: string, include?: string) =>
-      `${APIEndpoint.base_url}/categories/slug/${slug}?include=${
-        include || ""
+      `${APIEndpoint.base_url}/categories/slug/${slug}?include=${include || ""
       }`, // include: position_contents,subcategories
   },
 
   // Category API endpoints - Only for Category Page
   subCategory: {
     getBySlug: (slug: string, include?: string) =>
-      `${APIEndpoint.base_url}/subcategories/slug/${slug}?include=${
-        include || ""
+      `${APIEndpoint.base_url}/subcategories/slug/${slug}?include=${include || ""
       }`, // include: contents,category
   },
 
