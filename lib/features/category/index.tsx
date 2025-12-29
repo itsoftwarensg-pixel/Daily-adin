@@ -22,7 +22,7 @@ const CategoryIndex = ({ category }: Props) => {
         <div className="my-6">
           <div className="flex items-center gap-2">
             <Link
-              href="#"
+              href={`${category.full_url}`}
               className="text-2xl border-l-4 border-red-500 text-red-500 font-bold flex gap-2 items-center"
             >
               <span className="pl-4">{category.name}</span>
@@ -44,7 +44,7 @@ const CategoryIndex = ({ category }: Props) => {
                       }
                     >
                       <Link
-                        href={`${category.alias}/${subCat.alias}`}
+                        href={`${subCat.full_url}`}
                         className="text-gray-700 hover:text-blue-700 font-semibold"
                       >
                         {subCat.name}
@@ -58,7 +58,7 @@ const CategoryIndex = ({ category }: Props) => {
         <div className="grid grid-cols-1 lg:grid-cols-[auto_360px] gap-4">
           <div className="col-span-1 lg:col-auto">
             {category?.position_contents &&
-            category?.position_contents.length > 0 ? (
+              category?.position_contents.length > 0 ? (
               <>
                 {/* Lead, SubLead, and 3 contents. Lead below */}
                 <InnnerInitalContents contents={category.position_contents} />
