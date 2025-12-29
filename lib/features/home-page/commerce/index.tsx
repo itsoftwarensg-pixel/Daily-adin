@@ -1,60 +1,68 @@
 import React from "react";
 import Container from "@/lib/components/common/container";
-import HomeContentBox from "@/lib/components/home-content-box";
+import GradientHeader from "@/lib/components/common/section-headers/gradient";
+import NewsItemLaceTape from "@/lib/components/common/news-elements/news-item-lace-tap";
 import { HomePageContnetSection } from "@/lib/types/home.page";
 
 // Props
 interface Props {
     homeData: {
-        'business-news'?: HomePageContnetSection,
-        'national-news'?: HomePageContnetSection,
-        'lifestyle'?: HomePageContnetSection,
+        'business-news': HomePageContnetSection,
     };
 }
 
-const HomeCommercePantholokChoose = ({ homeData }: Props) => {
-    const { 'business-news': businessContents, 'national-news': nationalContents, 'lifestyle': lifestyleContents } = homeData;
-    const businessNewsContents = businessContents?.contents || [];
-    const nationalNewsContents = nationalContents?.contents || [];
-    const lifestyleNewsContents = lifestyleContents?.contents || [];
+const HomeCommerce = ({ homeData }: Props) => {
+    const { 'business-news': businessContents } = homeData;
+    const leadMainContent = businessContents?.contents[0];              // Main lead news
+    const subLeadContents = businessContents?.contents.slice(1, 5);     // 4 sub lead contents
 
     return (
-        <div className="py-8">
+        <div className="py-8 ">
             <Container>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {/* বাণিজ্য লোক */}
-                    <HomeContentBox
-                        contents={businessNewsContents}
-                        // sectionHeaderTitle={businessContents?.name || `বাণিজ্য লোক`}
-                        sectionHeaderTitle={`বাণিজ্য লোক`}
-                        sectionHeaderColor="emerald"
-                        sectionUrl={businessContents?.url || `/`}
-                        showSectionReadMoreBtn
-                    />
+                <GradientHeader
+                    // title={businessContents?.name || "বাণিজ্য লোক"}
+                    title="বাণিজ্য লোক"
+                    color="red"
+                    href={businessContents.url || "/"}
+                    showReadMoreBtn={true}
+                />
 
-                    {/* পান্থলোক */}
-                    <HomeContentBox
-                        contents={nationalNewsContents}
-                        // sectionHeaderTitle={nationalContents?.name || `পান্থলোক`}
-                        sectionHeaderTitle={`পান্থলোক`}
-                        sectionHeaderColor="gray"
-                        sectionUrl={nationalContents?.url || `/`}
-                        showSectionReadMoreBtn
-                    />
+                <div className="grid grid-cols-12 gap-6">
+                    {/* Lead */}
+                    <div className="col-span-6 space-y-2">
+                        {leadMainContent &&
+                            <div className="h-full">
+                                <NewsItemLaceTape
+                                    newsItem={leadMainContent}
+                                    titleSize="xlarge"
+                                    bgColor="gray"
+                                />
+                            </div>
+                        }
+                    </div>
 
-                    {/* বাছাইকৃত */}
-                    <HomeContentBox
-                        contents={lifestyleNewsContents}
-                        // sectionHeaderTitle={lifestyleContents?.name || `বাছাইকৃত`}
-                        sectionHeaderTitle={`বাছাইকৃত`}
-                        sectionHeaderColor="indigo"
-                        sectionUrl={lifestyleContents?.url || `/`}
-                        showSectionReadMoreBtn
-                    />
+                    <div className="col-span-1 flex justify-center">
+                        <div className="w-[3px] h-full bg-gray-5" />
+                    </div>
+
+                    {/* 4 Sub lead contents */}
+                    <div className="col-span-5  space-y-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {subLeadContents && subLeadContents.length > 0 && subLeadContents.map((newsItem, index) => (
+                                <div key={index} className="h-auto">
+                                    <NewsItemLaceTape
+                                        newsItem={newsItem}
+                                        titleSize="large"
+                                        bgColor="gray"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </Container>
         </div>
     );
 };
 
-export default HomeCommercePantholokChoose;
+export default HomeCommerce;
