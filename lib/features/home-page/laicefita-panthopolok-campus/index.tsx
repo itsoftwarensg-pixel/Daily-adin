@@ -44,11 +44,11 @@ const HomeLaiceFitaPantholokCampus = ({ homeData }: Props) => {
                         transparentReadMoreBtn={true}
                     />
 
-                    {/* বাছাইকৃত */}
+                    {/* ক্যাম্পাস */}
                     <HomeContentBox
                         contents={lifestyleNewsContents}
-                        // sectionHeaderTitle={lifestyleContents?.name || `বাছাইকৃত`}
-                        sectionHeaderTitle={`বাছাইকৃত`}
+                        // sectionHeaderTitle={lifestyleContents?.name || `ক্যাম্পাস`}
+                        sectionHeaderTitle={`ক্যাম্পাস`}
                         sectionHeaderColor="indigo"
                         sectionUrl={lifestyleContents?.url || `/`}
                         showSectionReadMoreBtn
