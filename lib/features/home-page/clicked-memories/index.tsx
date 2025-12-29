@@ -15,8 +15,6 @@ const HomeClickedMemories = ({ homeData }: Props) => {
     const { 'photo': photoContents } = homeData;
     const photoAlbums = photoContents?.contents.slice(0, 6); // First 6 clicked memories
 
-    console.log("Clicked Memories Home Data:", photoContents);
-
     return (
         <div className="py-8">
             <Container>

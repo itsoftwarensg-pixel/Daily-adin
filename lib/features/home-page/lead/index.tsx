@@ -16,16 +16,18 @@ interface Props {
         'national-news'?: HomePageContnetSection,
         'political-news'?: HomePageContnetSection,
         'recent'?: HomePageContnetSection,
+        'popular'?: HomePageContnetSection,
     };
 }
 
 const HomeLead = ({ homeData }: Props) => {
-    const { lead: leadContents, 'national-news': nationalContents, 'political-news': politicalContents, 'recent': recentContents } = homeData;
+    const { lead: leadContents, 'national-news': nationalContents, 'political-news': politicalContents, 'recent': recentContents, 'popular': popularContents } = homeData;
 
     const leadNewsContents = leadContents?.contents || [];
     const nationalNewsContents = nationalContents?.contents || [];
     const politicalNewsContents = politicalContents?.contents || [];
     const recentNewsContents = recentContents?.contents || [];
+    const popularNewsContents = popularContents?.contents || [];
 
     const leadMainContent = leadNewsContents[0];              // Main lead news
     const leadLeftContents = leadNewsContents.slice(1, 6);    // Left side contents
@@ -132,7 +134,7 @@ const HomeLead = ({ homeData }: Props) => {
 
                         {/* Latest - Popular */}
                         <div className="my-4">
-                            <LatestPopularNews height={510} latestNews={recentNewsContents} popularNews={recentNewsContents} />
+                            <LatestPopularNews height={400} latestNews={recentNewsContents} popularNews={popularNewsContents} />
                         </div>
 
                         {/* Advertisement */}

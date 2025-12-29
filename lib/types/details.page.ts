@@ -25,6 +25,13 @@ export interface ContentDetailsType {
   full_url: string;
   tags: ContentDetailsTagType[] | null;
   next_ids?: ContentDetailsNextItemType[] | null;
+  category: {
+    id: number;
+    name: string;
+    alias: string;
+    photo: string | null;
+    full_url: string;
+  };
 }
 
 export interface ContentDetailsWriterType {
