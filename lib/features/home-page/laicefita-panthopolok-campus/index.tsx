@@ -30,6 +30,7 @@ const HomeLaiceFitaPantholokCampus = ({ homeData }: Props) => {
                         sectionHeaderColor="emerald"
                         sectionUrl={businessContents?.url || `/`}
                         showSectionReadMoreBtn
+                        transparentReadMoreBtn={true}
                     />
 
                     {/* পান্থলোক */}
@@ -40,6 +41,7 @@ const HomeLaiceFitaPantholokCampus = ({ homeData }: Props) => {
                         sectionHeaderColor="gray"
                         sectionUrl={nationalContents?.url || `/`}
                         showSectionReadMoreBtn
+                        transparentReadMoreBtn={true}
                     />
 
                     {/* বাছাইকৃত */}
@@ -50,6 +52,7 @@ const HomeLaiceFitaPantholokCampus = ({ homeData }: Props) => {
                         sectionHeaderColor="indigo"
                         sectionUrl={lifestyleContents?.url || `/`}
                         showSectionReadMoreBtn
+                        transparentReadMoreBtn={true}
                     />
                 </div>
             </Container>
