@@ -31,15 +31,15 @@ const UpazilaPage = ({ contents, upazila, upazilas }: Props) => {
                             <IoIosArrowForward />
                         </Link>
 
-                        <Link href={`/${COUNTRY_PAGE.slug}/${upazila.division.alias}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
+                        <Link href={`${upazila.division.full_url}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
                             <span >{upazila.division.name_bn}</span>
                             <IoIosArrowForward />
                         </Link>
-                        <Link href={`/${COUNTRY_PAGE.slug}/${upazila.division.alias}/${upazila.district.alias}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
+                        <Link href={`${upazila.district.full_url}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
                             <span >{upazila.district.name_bn}</span>
                             <IoIosArrowForward />
                         </Link>
-                        <Link href={`/${COUNTRY_PAGE.slug}/${upazila.division.alias}/${upazila.district.alias}/${upazila.alias}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
+                        <Link href={`${upazila.full_url}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
                             <span >{upazila.name_bn}</span>
                         </Link>
                     </div>
@@ -57,7 +57,7 @@ const UpazilaPage = ({ contents, upazila, upazilas }: Props) => {
                                         }
                                     >
                                         <Link
-                                            href={`/${COUNTRY_PAGE.slug}/${upazila.division.alias}/${upazila.district.alias}/${up.alias}`}
+                                            href={`${up.full_url}`}
                                             className={` hover:text-blue-700 font-semibold ${up.alias === upazila.alias ? 'text-blue-700' : 'text-gray-700'}`}
                                         >
                                             {up.name_bn}
