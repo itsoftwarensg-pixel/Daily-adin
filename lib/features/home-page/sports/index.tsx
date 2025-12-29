@@ -28,7 +28,7 @@ const HomeSports = ({ homeData }: Props) => {
                     href={sportsContents?.url || "/"}
                     showReadMoreBtn={true}
                 />
-                <div className="grid grid-cols-12 gap-6">
+                <div className="grid grid-cols-12 gap-4">
                     {/* Left */}
                     <div className="col-span-3 space-y-4">
                         {leadLeftContents && leadLeftContents.length > 0 && leadLeftContents.map((newsItem, idx) => (
