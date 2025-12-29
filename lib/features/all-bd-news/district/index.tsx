@@ -7,6 +7,7 @@ import { DistrictPageContentType } from "@/lib/types/district.page";
 import { COUNTRY_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
 import LoadMoreContent from "@/lib/components/load-more-content";
 import InnnerInitalContents from "@/lib/components/inner-initial-contents";
+import LatestPopular from "@/lib/features/latest-popular";
 
 // Define the props type
 interface Props {
@@ -95,7 +96,7 @@ const DistrictPage = ({ contents, district }: Props) => {
 
                         {/* Latest - Popular */}
                         <div className="my-4">
-                            <LatestPopularNews />
+                            <LatestPopular />
                         </div>
                     </div>
                 </div>
