@@ -42,7 +42,7 @@ const TopBar = () => {
 
   useEffect(() => {
     const date =
-      pathname === "/home-old" ? `আজ ${TodayDate()}` : `${TodayBnDate}`;
+      pathname === "/home-old" ? `আজ ${TodayDate()}` : `সোমবার, ${TodayBnDate}`;
     setTodayDate(date);
   }, [pathname]);
 
