@@ -30,7 +30,7 @@ const HomeInternational = ({ homeData }: Props) => {
                     showReadMoreBtn={true}
                 />
 
-                <div className="grid grid-cols-12 gap-6">
+                <div className="grid grid-cols-12 gap-4">
                     {/* Left */}
                     <div className="col-span-3">
                         <div className="space-y-4">

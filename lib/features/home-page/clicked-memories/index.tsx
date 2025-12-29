@@ -26,7 +26,7 @@ const HomeClickedMemories = ({ homeData }: Props) => {
                     showReadMoreBtn={true}
                 />
 
-                <div className="grid grid-cols-3 gap-6 mt-6">
+                <div className="grid grid-cols-3 gap-4 mt-4">
                     {photoAlbums && photoAlbums.length > 0 && photoAlbums.map((newsItem, idx) => (
                         <div key={idx} className="h-auto">
                             <ClickedMemoryItem

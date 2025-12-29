@@ -104,7 +104,7 @@ const HomeLead = ({ homeData }: Props) => {
                         </div>
 
                         {/* National, Politics */}
-                        <div className="grid grid-cols-2">
+                        <div className="grid grid-cols-2 gap-4">
                             {/* National */}
                             <HomeContentBox
                                 contents={nationalNewsContents}

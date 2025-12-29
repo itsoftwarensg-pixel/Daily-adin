@@ -48,7 +48,7 @@ export default function HomeContentBox({
 
     return (
         <div className="space-y-2">
-            <div className="pr-4">
+            <div className="">
                 <GradientHeader
                     title={sectionHeaderTitle}
                     color={sectionHeaderColor || "red"}
@@ -59,7 +59,7 @@ export default function HomeContentBox({
             </div>
 
             {/* News contents */}
-            <div className="space-y-2 pr-4 border-r">
+            <div className="space-y-2">
                 {/* First item (large) */}
                 <HomeContentBoxNewsItem
                     titleSize="large"

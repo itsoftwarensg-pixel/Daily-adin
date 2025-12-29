@@ -21,7 +21,7 @@ const HomeLaiceFitaPantholokCampus = ({ homeData }: Props) => {
     return (
         <div className="py-8">
             <Container>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {/* লেইসফিতা */}
                     <HomeContentBox
                         contents={businessNewsContents}
