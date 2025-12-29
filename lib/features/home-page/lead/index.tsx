@@ -110,6 +110,7 @@ const HomeLead = ({ homeData }: Props) => {
                                 sectionHeaderColor="red"
                                 sectionUrl={nationalContents?.url || `/`}
                                 showSectionReadMoreBtn
+                                transparentReadMoreBtn={true}
                             />
 
 

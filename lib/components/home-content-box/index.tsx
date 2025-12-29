@@ -8,6 +8,7 @@ interface Props {
     sectionHeaderTitle: string;
     sectionUrl?: string;
     showSectionReadMoreBtn?: boolean;
+    transparentReadMoreBtn?: boolean;
     sectionHeaderColor?:
     | "slate"
     | "gray"
@@ -39,6 +40,7 @@ export default function HomeContentBox({
     sectionHeaderTitle,
     sectionUrl,
     showSectionReadMoreBtn,
+    transparentReadMoreBtn
 }: Props) {
 
     const leadContent = contents[0];                // Lead
@@ -52,6 +54,7 @@ export default function HomeContentBox({
                     color={sectionHeaderColor || "red"}
                     showReadMoreBtn={showSectionReadMoreBtn || false}
                     href={sectionUrl || "/"}
+                    transparentReadMoreBtn={transparentReadMoreBtn || false}
                 />
             </div>
 

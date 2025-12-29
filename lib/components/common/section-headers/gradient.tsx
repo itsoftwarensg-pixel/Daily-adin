@@ -11,6 +11,7 @@ interface GradientHeaderProps {
     | "fuchsia" | "pink" | "rose";
     className?: string;
     showReadMoreBtn?: boolean;
+    transparentReadMoreBtn?: boolean;
 }
 
 // Main header gradient (right side opacity 0 → 10% hover)
@@ -71,6 +72,7 @@ export default function GradientHeader({
     color = "blue",
     className = "",
     showReadMoreBtn = false,
+    transparentReadMoreBtn = false,
 }: GradientHeaderProps) {
     const gradientClasses = colorMap[color] || colorMap["blue"];
     const btnGradientClasses = buttonColorMap[color] || buttonColorMap["blue"];
@@ -81,13 +83,25 @@ export default function GradientHeader({
                 {title}
             </span>
             {href && showReadMoreBtn && (
-                <div
-                    className={`flex gap-2 items-center bg-gradient-to-r ${btnGradientClasses} 
+                <>
+                    {transparentReadMoreBtn ?
+                        <div
+                            className={`flex gap-2 items-center 
+                        text-black px-4 font-normal text-[16px] transition-all group-hover:gap-4`}
+                        >
+                            <span>আরও দেখুন</span>
+                            <FaArrowRightLong />
+                        </div>
+                        :
+                        <div
+                            className={`flex gap-2 items-center bg-gradient-to-r ${btnGradientClasses} 
                         text-white py-2 px-4 font-normal text-sm transition-all group-hover:gap-4`}
-                >
-                    <span>আরও দেখুন</span>
-                    <FaArrowRightLong />
-                </div>
+                        >
+                            <span>আরও দেখুন</span>
+                            <FaArrowRightLong />
+                        </div>
+                    }
+                </>
             )}
         </div>
     );
