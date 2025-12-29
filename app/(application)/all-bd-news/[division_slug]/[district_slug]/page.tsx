@@ -24,10 +24,10 @@ const Page = async ({ params }: Params) => {
     const { division_slug, district_slug } = await params;
 
     // Fetch district details with contents,upazilas,division
-    const district = await getDistrictBySlugAction(district_slug, 'contents,upazilas,division');
+    const district = await getDistrictBySlugAction(district_slug, 'upazilas,division');
 
-    // Fetch contents for the district (first page, 10 items per page)
-    const contents = await getContentsByDistrictIdAction(district.id, 1, 10);
+    // Fetch contents for the district (Top section 5 contents, 10 items per page)
+    const contents = await getContentsByDistrictIdAction(district.id, 1, 15);
 
     return <DistrictPage district={district} contents={contents} />;
 };
