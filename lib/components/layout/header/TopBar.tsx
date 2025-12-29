@@ -19,7 +19,12 @@ const socialLinks = [
   { href: "https://www.x.com", icon: x, alt: "x" },
 ];
 
-const TopBar = () => {
+// Props
+interface Props {
+  dateTimeBn: string;
+}
+
+const TopBar = ({ dateTimeBn }: Props) => {
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [openSocialMediaDropdown, setOpenSocialMediaDropdown] = useState(false);
@@ -42,7 +47,7 @@ const TopBar = () => {
 
   useEffect(() => {
     const date =
-      pathname === "/home-old" ? `আজ ${TodayDate()}` : `সোমবার, ${TodayBnDate}`;
+      pathname === "/home-old" ? `আজ ${TodayDate()}` : `${dateTimeBn}`;
     setTodayDate(date);
   }, [pathname]);
 
