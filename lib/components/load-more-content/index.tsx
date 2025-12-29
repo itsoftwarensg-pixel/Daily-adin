@@ -28,12 +28,13 @@ interface Props {
     | typeof LOAD_MORE_TYPES.DISTRICT       // district
     | typeof LOAD_MORE_TYPES.UPAZILA        // upazila
     | typeof COUNTRY_PAGE.slug;
+    excludeIDs?: number[];
 }
 
-const LoadMoreContent = ({ loadMoreContents, id, type }: Props) => {
+const LoadMoreContent = ({ loadMoreContents, id, type, excludeIDs = [] }: Props) => {
     // States variables
     const [loading, setLoading] = useState(false);
-    const [contents, setContents] = useState<ContentItem[]>(loadMoreContents.contents);
+    const [contents, setContents] = useState<ContentItem[]>(loadMoreContents.contents.filter(item => !excludeIDs.includes(item.id)));
     const [page, setPage] = useState(1);
     const recordsPerPage = 10;
     const lastPage = loadMoreContents.last_page;
@@ -56,7 +57,7 @@ const LoadMoreContent = ({ loadMoreContents, id, type }: Props) => {
             data = await getContentsByUpazilaIdAction(id, nextPage, recordsPerPage);
 
         // Append new contents to existing contents
-        setContents((prev) => [...prev, ...data.data]);
+        setContents((prev) => [...prev, ...data.data.filter((item: { id: number; }) => !excludeIDs.includes(item.id))]);
 
         setPage(nextPage);
         setLoading(false);

@@ -16,6 +16,10 @@ interface Props {
 }
 
 const CategoryIndex = ({ category }: Props) => {
+  // Retrieve IDs of position contents to exclude them from LoadMoreContent
+  const positionContents = category?.position_contents || [];
+  const positionContentsIds: number[] = positionContents.map(item => item.id); // Retrieve IDs of position contents. Array
+
   return (
     <div className="">
       <Container>
@@ -73,7 +77,10 @@ const CategoryIndex = ({ category }: Props) => {
 
                 {/* LoadMoreContent component */}
                 <Suspense fallback={<Loader />}>
-                  <CategoryContents categoryID={category.id} />
+                  <CategoryContents
+                    categoryID={category.id}
+                    excludeIDs={positionContentsIds}
+                  />
                 </Suspense>
               </>
             ) : (

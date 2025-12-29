@@ -2,7 +2,7 @@ import { getContentsByCategoryIdAction } from "@/app/actions/content";
 import LoadMoreContent from "@/lib/components/load-more-content";
 import { LOAD_MORE_TYPES } from "@/lib/config/constant";
 
-const CategoryContents = async ({ categoryID }: { categoryID: number }) => {
+const CategoryContents = async ({ categoryID, excludeIDs = []}: { categoryID: number, excludeIDs?: number[] }) => {
   const contents = await getContentsByCategoryIdAction(categoryID, 1, 10);
 
   return (
@@ -13,6 +13,7 @@ const CategoryContents = async ({ categoryID }: { categoryID: number }) => {
         contents: contents.data,
         last_page: contents.last_page,
       }}
+      excludeIDs={excludeIDs}
     />
   );
 };

@@ -19,6 +19,10 @@ interface Props {
 }
 
 const AllBDNewsPage = ({ category, contents, divisions }: Props) => {
+  // Retrieve IDs of position contents to exclude them from LoadMoreContent
+  const positionContents = category?.position_contents || [];
+  const positionContentsIds: number[] = positionContents.map(item => item.id); // Retrieve IDs of position contents. Array
+
   return (
     <div className="">
       <Container>
@@ -59,7 +63,7 @@ const AllBDNewsPage = ({ category, contents, divisions }: Props) => {
         <div className="grid grid-cols-1 lg:grid-cols-[auto_360px] gap-4">
           <div className="col-span-1 lg:col-auto">
             {category?.position_contents &&
-            category?.position_contents.length > 0 ? (
+              category?.position_contents.length > 0 ? (
               <>
                 {/* Lead, SubLead, and 3 contents. Lead below */}
                 <InnnerInitalContents contents={category?.position_contents} />
@@ -80,6 +84,7 @@ const AllBDNewsPage = ({ category, contents, divisions }: Props) => {
                     contents: contents.data,
                     last_page: contents.last_page, // Assuming 1 for now, will be updated with actual last_page from API
                   }}
+                  excludeIDs={positionContentsIds}
                 />
               </>
             ) : (
