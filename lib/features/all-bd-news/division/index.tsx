@@ -64,7 +64,7 @@ const DivisionPage = ({ contents, division }: Props) => {
                         {contents.data && contents.data.length > 0 ?
                             <>
                                 {/* Lead, SubLead, and 3 contents. Lead below */}
-                                <InnnerInitalContents contents={contents.data} />
+                                <InnnerInitalContents contents={contents.data.slice(0, 5)} />
 
                                 {/* Advertisement */}
                                 <div className="flex justify-center mb-4">
