@@ -8,7 +8,7 @@ const BreakingNews = () => {
         <div className="mt-4">
             <Container>
                 <div className="flex items-center justify-beteen text-[16px] font-normal w-full">
-                    <div className="bg-[#FF4646] text-white px-3 py-2 shrink-0 border-l-[6px] border-t border-black">
+                    <div className="bg-[#FF4646] text-white px-3 py-2 shrink-0 border-l-[6px] border-t border-b border-black">
                         শিরোনাম :
                     </div>
 
@@ -16,7 +16,7 @@ const BreakingNews = () => {
                         pauseOnHover={true}
                         speed={50}
                         gradient={false}
-                        className="bg-[#FFB2B2] px-5 py-2 border-t border-black"
+                        className="bg-[#ffffff] px-5 py-2 border border-l-0 border-black"
                     >
                         <div className="flex items-center gap-10 pr-10">
                             {newsJson.slice(0, 10).map((item, index) => (
