@@ -123,6 +123,19 @@ export const navItems: NavItem[] = [
       { text: "পুরুষ", href: "#men" },
     ],
   },
+  // feature-news
+  {
+    text: "ফিচার",
+    href: "/feature-news",
+    children: [
+      { text: "সাহিত্যলো", href: "#" },
+      { text: "নারীলোক", href: "#" },
+      { text: "ডানপিট", href: "#" },
+      { text: "ক্যাম্পাস", href: "#" },
+      { text: "স্বাস্থ্যলোক", href: "#" },
+      { text: "দ্বীনলোক", href: "#" },
+    ],
+  },
   {
     text: "ক্যারিয়ার",
     href: "/jobs-news",
@@ -134,6 +147,7 @@ export const navItems: NavItem[] = [
       { text: "পরামর্শ", href: "#career-advice" },
     ],
   },
+  { text: "পান্থলোক", href: "#" },
   // { text: "আজকের পত্রিকা", href: "#todays-paper" },
   { text: "আর্কাইভ", href: "/archive" },
   // { text: "ইপেপার", href: "#epaper" },

@@ -45,7 +45,7 @@ const Navbar = () => {
     <div className="w-full flex flex-col items-start justify-between gap-3">
       {/* Navbar */}
       <div className="w-full h-full flex items-stretch justify-between bg-[#D30000]">
-        <div className="flex items-center gap-6 px-2.5 py-2">
+        <div className="flex items-center gap-4 px-2.5 py-2">
           {navItems.map((item) => (
             <div
               key={item.text}
@@ -99,14 +99,14 @@ const Navbar = () => {
           >
             <FiSearch size={24} className="text-white group-hover:text-red-100" />
           </div>
-          <div
+          {/* <div
             className="px-3 py-2 w-22 border-l group border-red-400 ml-auto text-white cursor-pointer"
           >
             <div className="flex items-center gap-2 group-hover:text-red-100">
               <LuGlobe size={20} className="text-white group-hover:text-red-100" />
               <span>ENG</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
