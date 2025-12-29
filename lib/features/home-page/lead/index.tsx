@@ -121,6 +121,7 @@ const HomeLead = ({ homeData }: Props) => {
                                 sectionHeaderColor="purple"
                                 sectionUrl={politicalContents?.url || `/`}
                                 showSectionReadMoreBtn
+                                transparentReadMoreBtn={true}
                             />
                         </div>
                     </div>

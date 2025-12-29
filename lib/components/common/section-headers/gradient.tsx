@@ -87,7 +87,7 @@ export default function GradientHeader({
                     {transparentReadMoreBtn ?
                         <div
                             className={`flex gap-2 items-center 
-                        text-black px-4 font-normal text-[16px] transition-all group-hover:gap-4`}
+                        text-${color}-600 font-semibold text-[16px] transition-all group-hover:gap-4`}
                         >
                             <span>আরও দেখুন</span>
                             <FaArrowRightLong />
