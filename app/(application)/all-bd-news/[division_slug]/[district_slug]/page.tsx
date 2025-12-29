@@ -2,6 +2,7 @@ import React from "react";
 import { getContentsByDistrictIdAction } from "@/app/actions/content";
 import { getDistrictBySlugAction } from "@/app/actions/district";
 import DistrictPage from "@/lib/features/all-bd-news/district";
+import { notFound } from "next/navigation";
 
 // Generate dynamic metadata
 export async function generateMetadata() {
@@ -23,8 +24,12 @@ interface Params {
 const Page = async ({ params }: Params) => {
     const { division_slug, district_slug } = await params;
 
-    // Fetch district details with contents,upazilas,division
+    // Fetch district details with upazilas,division
     const district = await getDistrictBySlugAction(district_slug, 'upazilas,division');
+
+    if (!district) {
+        notFound();
+    }
 
     // Fetch contents for the district (Top section 5 contents, 10 items per page)
     const contents = await getContentsByDistrictIdAction(district.id, 1, 15);

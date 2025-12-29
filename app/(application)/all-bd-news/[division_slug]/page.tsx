@@ -25,7 +25,7 @@ export const dynamic = "force-dynamic";
 const Page = async ({ params }: Params) => {
   const { division_slug } = await params;
 
-  // Fetch division details with contents and districts
+  // Fetch division details with districts
   const division = await getDivisionBySlugAction(division_slug, "districts");
 
   if (!division) {

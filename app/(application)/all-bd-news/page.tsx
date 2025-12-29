@@ -20,7 +20,7 @@ export const dynamic = "force-dynamic";
 const Page = async () => {
   const category_slug = COUNTRY_PAGE.slug;
 
-  // Fetch category details with position_contents, divisions
+  // Fetch category details with position_contents and all divisions in parallel
   const [category, divisions] = await Promise.all([
     getCategoryBySlugAction(category_slug, "position_contents"),
     getAllDivisionsAction(),

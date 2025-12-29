@@ -2,6 +2,7 @@ import React from "react";
 import { getContentsByUpazilaIdAction } from "@/app/actions/content";
 import { getUpazilaBySlugAction, getUpazilasByDistrictIdAction } from "@/app/actions/upazila";
 import UpazilaPage from "@/lib/features/all-bd-news/upazila";
+import { notFound } from "next/navigation";
 
 // Generate dynamic metadata
 export async function generateMetadata() {
@@ -24,14 +25,18 @@ interface Params {
 const Page = async ({ params }: Params) => {
     const { division_slug, district_slug, upazila_slug } = await params;
 
-    // Fetch upazila details with contents,district,division
-    const upazila = await getUpazilaBySlugAction(upazila_slug, 'contents,district,division');
+    // Fetch upazila details with district,division
+    const upazila = await getUpazilaBySlugAction(upazila_slug, 'district,division');
 
-    // Fetch upazillas by district id
-    const upazilas = await getUpazilasByDistrictIdAction(upazila.district.id);
+    if (!upazila) {
+        notFound();
+    }
 
-    // Fetch contents for the upazila (first page, 10 items per page)
-    const contents = await getContentsByUpazilaIdAction(upazila.id, 1, 10);
+    // Fetch upazilas and contents in parallel
+    const [upazilas, contents] = await Promise.all([
+        await getUpazilasByDistrictIdAction(upazila.district.id),
+        getContentsByUpazilaIdAction(upazila.id, 1, 15) // Fetch contents for the upazila (Top section 5 contents, 10 items per page)
+    ]);
 
     return <UpazilaPage upazila={upazila} upazilas={upazilas} contents={contents} />;
 };
