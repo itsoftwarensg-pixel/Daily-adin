@@ -43,7 +43,7 @@ const Page = async ({ params }: Params) => {
   const contents = await getContentsBySubCategoryIdAction(
     subCategory.id,
     1,
-    10
+    15 // 5 for Top section, 10 for Load more section
   );
 
   return (
