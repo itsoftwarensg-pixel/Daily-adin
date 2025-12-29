@@ -59,8 +59,9 @@ const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
                           className={` hover:text-blue-700 font-semibold ${subCat.alias == subCategory.alias
                             ? "text-blue-700"
                             : "text-gray-700"
-                          }`}
+                            }`}
                         >
+                          {subCat.name}
                         </Link>
                       </li>
                     ))}
