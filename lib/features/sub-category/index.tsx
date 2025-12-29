@@ -27,14 +27,14 @@ const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
           <>
             <div className="flex items-center gap-2">
               <Link
-                href={`/${category.alias}`}
+                href={`${category.full_url}`}
                 className="text-2xl border-l-4 border-red-500 text-red-500 font-bold flex gap-2 items-center"
               >
                 <span className="pl-4">{category.name}</span>
                 <IoIosArrowForward />
               </Link>
               <Link
-                href={`/${subCategory.alias}`}
+                href={`${subCategory.full_url}`}
                 className="text-xl text-red-600 font-bold flex gap-2 items-center"
               >
                 <span>{subCategory.name}</span>
@@ -56,11 +56,10 @@ const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
                       >
                         <Link
                           href={`/${category.alias}/${subCat.alias}`}
-                          className={`text-gray-700 hover:text-blue-700 font-semibold ${
-                            subCat.name === subCategory.name
-                              ? "text-blue-700"
-                              : ""
-                          }`}
+                          className={`text-gray-700 hover:text-blue-700 font-semibold ${subCat.name === subCategory.name
+                            ? "text-blue-700"
+                            : ""
+                            }`}
                         >
                           {subCat.name}
                         </Link>
