@@ -1,9 +1,8 @@
 import Link from "next/link";
 import Container from "@/lib/components/common/container";
-import LatestPopularNews from "@/lib/components/common/latest-popular";
+import { ContentItem } from "@/lib/types/category.page";
 import { IoIosArrowForward } from "react-icons/io";
-import { UpazilaContentItemType, UpazilaPageContentType } from "@/lib/types/upazila.page";
-import { UpazilaType } from "@/lib/types/district.page";
+import { DistrictPageContentType } from "@/lib/types/district.page";
 import { COUNTRY_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
 import LoadMoreContent from "@/lib/components/load-more-content";
 import InnnerInitalContents from "@/lib/components/inner-initial-contents";
@@ -11,15 +10,14 @@ import LatestPopular from "@/lib/features/latest-popular";
 
 // Define the props type
 interface Props {
-    upazila: UpazilaPageContentType;
-    upazilas: UpazilaType[];
+    district: DistrictPageContentType;
     contents: {
-        data: UpazilaContentItemType[];
+        data: ContentItem[];
         last_page: number;
     };
 }
 
-const UpazilaPage = ({ contents, upazila, upazilas }: Props) => {
+const DistrictPage = ({ contents, district }: Props) => {
 
     return (
         <div className="">
@@ -31,36 +29,32 @@ const UpazilaPage = ({ contents, upazila, upazilas }: Props) => {
                             <IoIosArrowForward />
                         </Link>
 
-                        <Link href={`${upazila.division.full_url}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
-                            <span >{upazila.division.name_bn}</span>
+                        <Link href={`${district.division.full_url}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
+                            <span >{district.division.name_bn}</span>
                             <IoIosArrowForward />
                         </Link>
-                        <Link href={`${upazila.district.full_url}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
-                            <span >{upazila.district.name_bn}</span>
-                            <IoIosArrowForward />
-                        </Link>
-                        <Link href={`${upazila.full_url}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
-                            <span >{upazila.name_bn}</span>
+                        <Link href={`${district.full_url}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
+                            <span >{district.name_bn}</span>
                         </Link>
                     </div>
 
                     <div className="border-b pb-2 mt-2 mb-0 pl-[22px]">
-                        {upazilas && upazilas.length > 0 &&
+                        {district.upazilas && district.upazilas.length > 0 &&
                             <ul className="flex gap-4">
-                                {upazilas && upazilas.length > 0 && upazilas.map((up, index) => (
+                                {district.upazilas.map((upazila, index) => (
                                     <li
                                         key={index}
                                         className={
-                                            index != (upazilas?.length ?? 0) - 1
+                                            index != (district.upazilas?.length ?? 0) - 1
                                                 ? "pr-4 border-r"
                                                 : ""
                                         }
                                     >
                                         <Link
-                                            href={`${up.full_url}`}
-                                            className={` hover:text-blue-700 font-semibold ${up.alias === upazila.alias ? 'text-blue-700' : 'text-gray-700'}`}
+                                            href={`${upazila.full_url}`}
+                                            className={`text-gray-700 hover:text-blue-700 font-semibold`}
                                         >
-                                            {up.name_bn}
+                                            {upazila.name_bn}
                                         </Link>
                                     </li>
                                 ))}
@@ -82,8 +76,8 @@ const UpazilaPage = ({ contents, upazila, upazilas }: Props) => {
 
                                 {/* LoadMoreContent component */}
                                 <LoadMoreContent
-                                    id={upazila.id}
-                                    type={LOAD_MORE_TYPES.UPAZILA}
+                                    id={district.id}
+                                    type={LOAD_MORE_TYPES.DISTRICT}
                                     loadMoreContents={{
                                         contents: contents.data.slice(5), // Exclude the first 5 contents already displayed
                                         last_page: contents.last_page, // Assuming 1 for now, will be updated with actual last_page from API
@@ -110,4 +104,4 @@ const UpazilaPage = ({ contents, upazila, upazilas }: Props) => {
     )
 }
 
-export default UpazilaPage;    
+export default DistrictPage;    

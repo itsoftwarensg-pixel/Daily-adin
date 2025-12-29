@@ -1,7 +1,7 @@
 import React from "react";
 import { getContentsByUpazilaIdAction } from "@/app/actions/content";
 import { getUpazilaBySlugAction, getUpazilasByDistrictIdAction } from "@/app/actions/upazila";
-import UpazilaPage from "@/lib/features/all-bd-news/upazila";
+import UpazilaPage from "@/lib/features/country-category/upazila";
 import { notFound } from "next/navigation";
 
 // Generate dynamic metadata

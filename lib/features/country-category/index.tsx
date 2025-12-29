@@ -18,7 +18,7 @@ interface Props {
   };
 }
 
-const AllBDNewsPage = ({ category, contents, divisions }: Props) => {
+const CountryCategory = ({ category, contents, divisions }: Props) => {
   // Retrieve IDs of position contents to exclude them from LoadMoreContent
   const positionContents = category?.position_contents || [];
   const positionContentsIds: number[] = positionContents.map(item => item.id); // Retrieve IDs of position contents. Array
@@ -111,4 +111,4 @@ const AllBDNewsPage = ({ category, contents, divisions }: Props) => {
   );
 };
 
-export default AllBDNewsPage;
+export default CountryCategory;

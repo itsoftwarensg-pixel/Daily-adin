@@ -1,9 +1,8 @@
 import Link from "next/link";
 import Container from "@/lib/components/common/container";
-import LatestPopularNews from "@/lib/components/common/latest-popular";
 import { ContentItem } from "@/lib/types/category.page";
+import { DivisionPageContentType } from "@/lib/types/division.page";
 import { IoIosArrowForward } from "react-icons/io";
-import { DistrictPageContentType } from "@/lib/types/district.page";
 import { COUNTRY_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
 import LoadMoreContent from "@/lib/components/load-more-content";
 import InnnerInitalContents from "@/lib/components/inner-initial-contents";
@@ -11,14 +10,14 @@ import LatestPopular from "@/lib/features/latest-popular";
 
 // Define the props type
 interface Props {
-    district: DistrictPageContentType;
+    division: DivisionPageContentType;
     contents: {
         data: ContentItem[];
         last_page: number;
     };
 }
 
-const DistrictPage = ({ contents, district }: Props) => {
+const DivisionPage = ({ contents, division }: Props) => {
 
     return (
         <div className="">
@@ -30,32 +29,28 @@ const DistrictPage = ({ contents, district }: Props) => {
                             <IoIosArrowForward />
                         </Link>
 
-                        <Link href={`${district.division.full_url}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
-                            <span >{district.division.name_bn}</span>
-                            <IoIosArrowForward />
-                        </Link>
-                        <Link href={`${district.full_url}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
-                            <span >{district.name_bn}</span>
+                        <Link href={`${division.full_url}`} className="text-xl text-red-600 font-bold flex gap-2 items-center">
+                            <span >{division.name_bn}</span>
                         </Link>
                     </div>
 
                     <div className="border-b pb-2 mt-2 mb-0 pl-[22px]">
-                        {district.upazilas && district.upazilas.length > 0 &&
+                        {division.districts && division.districts.length > 0 &&
                             <ul className="flex gap-4">
-                                {district.upazilas.map((upazila, index) => (
+                                {division.districts.map((district, index) => (
                                     <li
                                         key={index}
                                         className={
-                                            index != (district.upazilas?.length ?? 0) - 1
+                                            index != (division.districts?.length ?? 0) - 1
                                                 ? "pr-4 border-r"
                                                 : ""
                                         }
                                     >
                                         <Link
-                                            href={`${upazila.full_url}`}
+                                            href={`${district.full_url}`}
                                             className={`text-gray-700 hover:text-blue-700 font-semibold`}
                                         >
-                                            {upazila.name_bn}
+                                            {district.name_bn}
                                         </Link>
                                     </li>
                                 ))}
@@ -77,8 +72,8 @@ const DistrictPage = ({ contents, district }: Props) => {
 
                                 {/* LoadMoreContent component */}
                                 <LoadMoreContent
-                                    id={district.id}
-                                    type={LOAD_MORE_TYPES.DISTRICT}
+                                    id={division.id}
+                                    type={LOAD_MORE_TYPES.DIVISION}
                                     loadMoreContents={{
                                         contents: contents.data.slice(5), // Exclude the first 5 contents already displayed
                                         last_page: contents.last_page, // Assuming 1 for now, will be updated with actual last_page from API
@@ -105,4 +100,4 @@ const DistrictPage = ({ contents, district }: Props) => {
     )
 }
 
-export default DistrictPage;    
+export default DivisionPage;    

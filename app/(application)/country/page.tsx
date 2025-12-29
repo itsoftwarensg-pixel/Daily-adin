@@ -1,7 +1,7 @@
 import React from "react";
 import { getCategoryBySlugAction } from "@/app/actions/category";
 import { getContentsByCategoryIdAction } from "@/app/actions/content";
-import AllBDNewsPage from "@/lib/features/all-bd-news";
+import CountryCategory from "@/lib/features/country-category";
 import { getAllDivisionsAction } from "@/app/actions/division";
 import { COUNTRY_PAGE } from "@/lib/config/constant";
 import { notFound } from "next/navigation";
@@ -34,7 +34,7 @@ const Page = async () => {
   const contents = await getContentsByCategoryIdAction(category.id, 1, 10);
 
   return (
-    <AllBDNewsPage
+    <CountryCategory
       category={category}
       contents={contents}
       divisions={divisions}

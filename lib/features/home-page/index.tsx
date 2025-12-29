@@ -20,7 +20,7 @@ interface FullHomeData {
   'lead'?: HomePageContnetSection;
   'recent'?: HomePageContnetSection;
   'sports-news'?: HomePageContnetSection;
-  'all-bd-news'?: HomePageContnetSection;
+  'country'?: HomePageContnetSection;
   'entertainment-news'?: HomePageContnetSection;
   'world-news'?: HomePageContnetSection;
   'video'?: HomePageVideoSection;

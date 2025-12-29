@@ -1,7 +1,7 @@
 import React from "react";
 import { getContentsByDivisionIdAction } from "@/app/actions/content";
 import { getDivisionBySlugAction } from "@/app/actions/division";
-import DivisionPage from "@/lib/features/all-bd-news/division";
+import DivisionPage from "@/lib/features/country-category/division";
 import { notFound } from "next/navigation";
 
 // Generate dynamic metadata

@@ -1,7 +1,7 @@
 import React from "react";
 import { getContentsByDistrictIdAction } from "@/app/actions/content";
 import { getDistrictBySlugAction } from "@/app/actions/district";
-import DistrictPage from "@/lib/features/all-bd-news/district";
+import DistrictPage from "@/lib/features/country-category/district";
 import { notFound } from "next/navigation";
 
 // Generate dynamic metadata
