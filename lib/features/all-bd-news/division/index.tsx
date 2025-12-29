@@ -61,10 +61,10 @@ const DivisionPage = ({ contents, division }: Props) => {
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-[auto_360px] gap-4">
                     <div className="col-span-1 lg:col-auto">
-                        {division?.contents && division?.contents.length > 0 ?
+                        {contents.data && contents.data.length > 0 ?
                             <>
                                 {/* Lead, SubLead, and 3 contents. Lead below */}
-                                <InnnerInitalContents contents={division.contents} />
+                                <InnnerInitalContents contents={contents.data} />
 
                                 {/* Advertisement */}
                                 <div className="flex justify-center mb-4">
@@ -76,7 +76,7 @@ const DivisionPage = ({ contents, division }: Props) => {
                                     id={division.id}
                                     type={LOAD_MORE_TYPES.DIVISION}
                                     loadMoreContents={{
-                                        contents: contents.data,
+                                        contents: contents.data.slice(5), // Exclude the first 5 contents already displayed
                                         last_page: contents.last_page, // Assuming 1 for now, will be updated with actual last_page from API
                                     }}
                                 />

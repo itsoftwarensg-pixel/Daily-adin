@@ -26,17 +26,14 @@ const Page = async ({ params }: Params) => {
   const { division_slug } = await params;
 
   // Fetch division details with contents and districts
-  const division = await getDivisionBySlugAction(
-    division_slug,
-    "contents,districts"
-  );
+  const division = await getDivisionBySlugAction(division_slug, "districts");
 
   if (!division) {
     notFound();
   }
 
-  // Fetch contents for the division (first page, 10 items per page)
-  const contents = await getContentsByDivisionIdAction(division.id, 1, 10);
+  // Fetch contents for the division (Top section 5 contents, 10 items per page)
+  const contents = await getContentsByDivisionIdAction(division.id, 1, 15);
 
   return <DivisionPage division={division} contents={contents} />;
 };
