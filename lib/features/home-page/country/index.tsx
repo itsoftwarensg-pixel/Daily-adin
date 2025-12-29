@@ -36,7 +36,7 @@ const HomeCountry = ({ homeData }: Props) => {
                 <HomeCountryFilter />
 
                 {/* Contents */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                     {/* Lead content */}
                     <div className="col-span-1 md:col-span-5 space-y-2 h-full">
                         {leadMainContent &&
