@@ -45,7 +45,7 @@ const Navbar = () => {
     <div className="w-full flex flex-col items-start justify-between gap-3">
       {/* Navbar */}
       <div className="w-full h-full flex items-stretch justify-between bg-[#D30000]">
-        <div className="flex items-center gap-4 px-2.5 py-2">
+        <div className="flex items-center gap-6 px-2.5 py-2">
           {navItems.map((item) => (
             <div
               key={item.text}
