@@ -28,9 +28,9 @@ const HomeSports = ({ homeData }: Props) => {
                     href={sportsContents?.url || "/"}
                     showReadMoreBtn={true}
                 />
-                <div className="grid grid-cols-12 gap-4">
+                <div className="grid grid-cols-6 md:grid-cols-12 gap-0 md:gap-4">
                     {/* Left */}
-                    <div className="col-span-3 space-y-4">
+                    <div className="order-2 md:order-1 col-span-6 md:col-span-3 grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-0 items-end space-y-2">
                         {leadLeftContents && leadLeftContents.length > 0 && leadLeftContents.map((newsItem, idx) => (
                             <div key={idx} className="h-auto">
                                 <Link href={newsItem.full_url} className="relative block group h-full">
@@ -45,7 +45,7 @@ const HomeSports = ({ homeData }: Props) => {
                                             />
                                         </div>
                                         <div>
-                                            <h4 className={`px-2 py-2.5 text-xl border-l-4 border-red-600 group-hover:text-blue-700 font-semibold h-[72px]`}>
+                                            <h4 className={`px-2 py-2.5 text-[17px] md:text-xl border-l-4 border-red-600 group-hover:text-blue-700 font-semibold h-auto md:h-[72px]`}>
                                                 {newsItem.heading}
                                             </h4>
                                         </div>
@@ -56,7 +56,7 @@ const HomeSports = ({ homeData }: Props) => {
                     </div>
 
                     {/* Middle */}
-                    <div className="col-span-6 space-y-4">
+                    <div className="order-1 md:order-2 col-span-6 space-y-4">
                         {leadMainContent &&
                             <div className="h-auto">
                                 <Link href={leadMainContent.full_url} className="relative block group h-full">
@@ -72,7 +72,7 @@ const HomeSports = ({ homeData }: Props) => {
                                         </div>
                                         <div>
                                             <h4
-                                                className={`px-2 py-2 h-[84px] overflow-hidden text-2xl group-hover:text-blue-700 font-semibold`}
+                                                className={`px-2 py-2 h-auto md:h-[84px] overflow-hidden text-xl md:text-2xl group-hover:text-blue-700 font-semibold`}
                                             >
                                                 {leadMainContent.heading}
                                             </h4>
@@ -90,7 +90,7 @@ const HomeSports = ({ homeData }: Props) => {
                     </div>
 
                     {/* Right */}
-                    <div className="col-span-3 space-y-4">
+                    <div className="order-3 md:order-3 col-span-6 md:col-span-3 grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-0 items-end space-y-2">
                         {leadRightContents && leadRightContents.length > 0 && leadRightContents.map((newsItem, idx) => (
                             <div key={idx} className="h-auto">
                                 <Link href={newsItem.full_url} className="relative block group h-full">
@@ -105,7 +105,7 @@ const HomeSports = ({ homeData }: Props) => {
                                             />
                                         </div>
                                         <div>
-                                            <h4 className={`px-2 py-2.5 text-xl border-l-4 border-red-600 group-hover:text-blue-700 font-semibold h-[72px]`}>
+                                            <h4 className={`px-2 py-2.5 text-[17px] md:text-xl border-l-4 border-red-600 group-hover:text-blue-700 font-semibold h-auto md:h-[72px]`}>
                                                 {newsItem.heading}
                                             </h4>
                                         </div>
