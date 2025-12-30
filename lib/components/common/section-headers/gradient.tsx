@@ -94,8 +94,10 @@ export default function GradientHeader({
                         </div>
                         :
                         <div
-                            className={`flex gap-2 items-center bg-gradient-to-r ${btnGradientClasses} 
-                        text-white py-2 px-4 font-normal text-sm transition-all group-hover:gap-4`}
+                            className={`flex gap-2 items-center 
+                                text-${color}-600 font-semibold text-[16px]
+                                md:bg-gradient-to-r ${btnGradientClasses} md:text-white md:py-2 md:px-4 md:font-normal md:text-sm 
+                                transition-all group-hover:gap-4`}
                         >
                             <span>আরও দেখুন</span>
                             <FaArrowRightLong />

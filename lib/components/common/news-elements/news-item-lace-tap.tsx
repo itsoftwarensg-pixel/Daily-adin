@@ -61,9 +61,9 @@ const NewsItemLaceTape = ({
                             ${titleSize === "3xl"
                                 ? "text-3xl"
                                 : titleSize === "xlarge"
-                                    ? "text-2xl"
+                                    ? "text-xl md:text-2xl"
                                     : titleSize === "large"
-                                        ? "text-xl" : "text-[17px]"
+                                        ? "text-[17px] md:text-xl" : "text-[17px]"
                             }
                             group-hover:text-blue-700 font-semibold`}
                     >

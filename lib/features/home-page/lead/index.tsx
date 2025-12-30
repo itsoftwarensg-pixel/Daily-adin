@@ -36,11 +36,11 @@ const HomeLead = ({ homeData }: Props) => {
     return (
         <div className="pt-4 pb-8">
             <Container>
-                <div className="grid grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-0 md:gap-6">
                     <div className="col-span-3">
-                        <div className="grid grid-cols-5 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
                             {/* Lead news - Left side */}
-                            <div className="col-span-2 space-y-2">
+                            <div className="order-2 md:order-1 md:col-span-2 space-y-2">
                                 {leadLeftContents && leadLeftContents.length > 0 && leadLeftContents.map((newsItem, index) => (
                                     <Link
                                         key={index}
@@ -68,13 +68,13 @@ const HomeLead = ({ homeData }: Props) => {
                             </div>
 
                             {/* Lead news - Center */}
-                            <div className="col-span-3">
+                            <div className="order-1 md:order-2 md:col-span-3">
                                 <LeadNewsItem content={leadMainContent} />
                             </div>
                         </div>
 
                         {/* 6 contents. Lead below */}
-                        <div className="grid grid-cols-3 gap-4 mb-6">
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 mb-6 mt-2 md:mt-0">
                             {leadBelowContents && leadBelowContents.length > 0 && leadBelowContents.map((newsItem, index) => (
                                 <Link
                                     href={`${newsItem.full_url}`}
@@ -104,7 +104,7 @@ const HomeLead = ({ homeData }: Props) => {
                         </div>
 
                         {/* National, Politics */}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {/* National */}
                             <HomeContentBox
                                 contents={nationalNewsContents}

@@ -14,7 +14,7 @@ const LeadNewsItem = ({ content }: Props) => {
     <>
       <Link
         href={`${content.full_url}`}
-        className="block group mb-4"
+        className="block group mb-0 md:mb-4"
       >
         <div className="w-full bg-white">
           <div className="w-full">
@@ -27,10 +27,27 @@ const LeadNewsItem = ({ content }: Props) => {
             />
           </div>
           <div className="">
-            <h4 className="mt-2 pt-2 pb-0 text-3xl group-hover:text-blue-700 font-semibold">
+            <h4
+              className="
+                mt-1 sm:mt-2
+                pt-1 sm:pt-2
+                pb-0
+                text-2xl
+                lg:text-3xl
+                group-hover:text-blue-700
+                font-semibold
+                leading-snug
+              "
+            >
               {content.heading}
             </h4>
-            <HtmlContent html={content.description} maxContent={200} className="pt-2 text-gray-500" />
+            <div className="hidden md:block">
+              <HtmlContent
+                html={content.description}
+                maxContent={200}
+                className="pt-2 text-gray-500"
+              />
+            </div>
           </div>
         </div>
       </Link>

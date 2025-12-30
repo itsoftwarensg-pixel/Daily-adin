@@ -27,7 +27,7 @@ const HomeCommerce = ({ homeData }: Props) => {
                     showReadMoreBtn={true}
                 />
 
-                <div className="grid grid-cols-12 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-0 md:gap-6 space-y-2 md:space-y-0">
                     {/* Lead */}
                     <div className="col-span-6 space-y-2">
                         {leadMainContent &&
@@ -46,8 +46,8 @@ const HomeCommerce = ({ homeData }: Props) => {
                     </div>
 
                     {/* 4 Sub lead contents */}
-                    <div className="col-span-5  space-y-4">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="col-span-5 space-y-4">
+                        <div className="grid grid-cols-2 md:grid-cols-2 gap-2 md:gap-4">
                             {subLeadContents && subLeadContents.length > 0 && subLeadContents.map((newsItem, index) => (
                                 <div key={index} className="h-auto">
                                     <NewsItemLaceTape
