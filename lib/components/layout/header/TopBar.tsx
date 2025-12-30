@@ -52,7 +52,7 @@ const TopBar = ({ dateTimeBn }: Props) => {
   }, [pathname]);
 
   return (
-    <div className="w-full bg-white">
+    <div className="w-full bg-white border-b-red-500 border-b-2 pb-2 md:pb-0">
       <div className="flex justify-between items-center gap-10">
         <Link href={"/"} className="relative overflow-hidden">
           <ImageWithFallback
@@ -60,11 +60,11 @@ const TopBar = ({ dateTimeBn }: Props) => {
             width={320}
             height={150}
             alt="The Daily Adin Logo"
-            className="object-contain"
+            className="object-contain w-24"
           />
         </Link>
 
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden hidden md:block">
           <ImageWithFallback
             src={headerBanner}
             width={500}
@@ -74,7 +74,7 @@ const TopBar = ({ dateTimeBn }: Props) => {
           />
         </div>
 
-        <div className="flex flex-col gap-2 items-end">
+        <div className="flex flex-col gap-2 items-end  hidden md:block">
           <p className="text-[20px] font-normal">{todayDate}</p>
           <div className="flex items-center gap-4">
             <Link
