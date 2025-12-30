@@ -33,10 +33,12 @@ const HomeCountry = ({ homeData }: Props) => {
                 />
 
                 {/* আমার এলাকার খবর  */}
-                <HomeCountryFilter />
+                <div className="hidden md:block">
+                    <HomeCountryFilter />
+                </div>
 
                 {/* Contents */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-12 space-y-2 md:space-y-0 gap-0 md:gap-4">
                     {/* Lead content */}
                     <div className="col-span-1 md:col-span-5 space-y-2 h-full">
                         {leadMainContent &&
@@ -54,11 +56,17 @@ const HomeCountry = ({ homeData }: Props) => {
                                         </div>
                                         <div>
                                             <h4
-                                                className={`px-2 pt-2 text-2xl group-hover:text-blue-700 font-semibold`}
+                                                className={`px-2 pt-2 text-xl md:text-2xl group-hover:text-blue-700 font-semibold`}
                                             >
                                                 {leadMainContent.heading}
                                             </h4>
-                                            <HtmlContent html={leadMainContent.description} maxContent={160} className="pt-1 px-2 text-gray-500" />
+                                            <div className="hidden md:block">
+                                                <HtmlContent
+                                                    html={leadMainContent.description}
+                                                    maxContent={160}
+                                                    className="pt-1 px-2 text-gray-500"
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </Link>
@@ -68,7 +76,7 @@ const HomeCountry = ({ homeData }: Props) => {
 
                     {/* 6 Sub lead contents*/}
                     <div className="col-span-2 md:col-span-7 space-y-4">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
                             {subLeadContents && subLeadContents.length > 0 && subLeadContents.map((newsItem, idx) => (
                                 <div key={idx} className="h-auto">
                                     <ContentNewsVerticalItem
