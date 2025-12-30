@@ -15,7 +15,7 @@ const HomeVideo = ({ homeData }: Props) => {
     const { 'video': videoContents } = homeData;
     const contents = videoContents?.contents.slice(0, 8); // First 8 clicked memories
     return (
-        <div className="py-8">
+        <div className="py-0 md:py-8">
             <Container>
                 <GradientHeader
                     // title={videoContents?.name || "ভিডিও"}
@@ -24,7 +24,7 @@ const HomeVideo = ({ homeData }: Props) => {
                     href={videoContents.url || "/"}
                     showReadMoreBtn={true}
                 />
-                <div className="grid grid-cols-4 gap-2 mt-2">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2">
                     {contents && contents.length > 0 && contents.map((videoItem, idx) => (
                         <div key={idx} className="h-full">
                             <VideoItem
