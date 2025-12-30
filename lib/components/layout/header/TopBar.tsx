@@ -57,8 +57,8 @@ const TopBar = ({ dateTimeBn }: Props) => {
         <Link href={"/"} className="relative overflow-hidden">
           <ImageWithFallback
             src={logo}
-            width={320}
-            height={150}
+            width={960}
+            height={450}
             alt="The Daily Adin Logo"
             className="object-contain w-24"
           />
