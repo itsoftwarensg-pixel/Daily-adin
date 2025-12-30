@@ -21,7 +21,7 @@ const ClickedMemoryItem = ({
     return (
         <Link href={`/photos/${newsItem.id}`} className="block overflow-hidden relative group">
             <div
-                className={`relative w-full ${variant === "memory" ? "px-6 py-5" : ""} ${bgColor && variant === "memory" ? `bg-${bgColor}-100` : ""}`}
+                className={`relative w-full ${variant === "memory" ? "px-1 md:px-6 py-1 md:py-5" : ""} ${bgColor && variant === "memory" ? `bg-${bgColor}-100` : ""}`}
             >
                 <div
                     className={`relative w-full overflow-hidden ${variant === "memory" ? "aspect-[16/9]" : `aspect-[16/5]`
@@ -51,15 +51,15 @@ const ClickedMemoryItem = ({
 
                     {/* Overlay text */}
                     <div
-                        className={`absolute ${variant === "memory" ? "bottom-0 right-0" : "bottom-0 left-0"
-                            } bg-gray-100 bg-opacity-80 px-4 py-2 rounded-tr-lg ${variant === "memory"
+                        className={`absolute text-right ${variant === "memory" ? "bottom-0 right-0" : "bottom-0 left-0"
+                            } bg-gray-100 bg-opacity-80 px-4 py-2 rounded-tl-lg ${variant === "memory"
                                 ? "opacity-9 group-hover:opacity-100 transition-opacity duration-300"
                                 : ""
                             }`}
                     >
                         <p
-                            className={`${variant === "memory" ? "text-[26px]" : "text-[20px]"
-                                } font-normal group-hover:text-red-500`}
+                            className={`${variant === "memory" ? "text-sm md:text-xl" : "text-[20px]"
+                                } font-semibold group-hover:text-red-500`}
                         >
                             {newsItem.name}
                         </p>
