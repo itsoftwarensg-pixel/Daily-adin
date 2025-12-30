@@ -6,17 +6,17 @@ import { getBnDateTimeAction } from "@/app/actions/utils";
 
 export default async function ApplicationHeader() {
   const dateTimeBn = await getBnDateTimeAction();
-  
+
   return (
     <>
-      <div className="w-full bg-white">
+      <div className="w-full bg-white sticky top-0 z-50 md:top-auto">
         <Container>
           <div className="w-full flex flex-col gap-2 pt-3">
-            <TopBar dateTimeBn={dateTimeBn}/>
+            <TopBar dateTimeBn={dateTimeBn} />
           </div>
         </Container>
       </div>
-      <div className="sticky top-0 w-full bg-white z-50">
+      <div className="sticky top-0 hidden md:block w-full bg-white z-50">
         <Container>
           <Navbar />
         </Container>
