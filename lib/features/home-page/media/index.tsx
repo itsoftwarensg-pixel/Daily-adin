@@ -29,9 +29,9 @@ const HomeMedia = ({ homeData }: Props) => {
                     showReadMoreBtn={true}
                 />
 
-                <div className="grid grid-cols-12 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4">
                     {/* Left */}
-                    <div className="col-span-6 space-y-4">
+                    <div className="order-2 md:order-1 col-span-6 space-y-2 md:space-y-4">
                         {subLeadContents && subLeadContents.length > 0 && subLeadContents.map((newsItem, index) => (
                             <div
                                 key={index}
@@ -50,8 +50,10 @@ const HomeMedia = ({ homeData }: Props) => {
                                         </div>
 
                                         <div className="col-span-3 group-hover:text-blue-700 px-2">
-                                            <h4 className="text-xl mb-2 font-semibold">{newsItem.heading}</h4>
-                                            <HtmlContent className="text-gray-600" html={newsItem.description} maxContent={100} />
+                                            <h4 className="text-[17px] md:text-xl mb-2 font-semibold">{newsItem.heading}</h4>
+                                            <div className="hidden md:block">
+                                                <HtmlContent className="text-gray-600" html={newsItem.description} maxContent={100} />
+                                            </div>
                                         </div>
                                     </div>
                                 </Link>
@@ -60,7 +62,7 @@ const HomeMedia = ({ homeData }: Props) => {
                     </div>
 
                     {/* Right */}
-                    <div className="col-span-6 space-y-5">
+                    <div className="order-1 md:order-2 col-span-6 space-y-5">
                         {leadMainContent &&
                             <Link href={`${leadMainContent.full_url}`} className="relative group block overflow-hidden">
                                 <div className="aspect-[16/11] w-full">
@@ -73,7 +75,7 @@ const HomeMedia = ({ homeData }: Props) => {
                                     />
                                 </div>
 
-                                <h2 className="absolute left-5 bottom-5 text-white text-3xl font-semibold group-hover:underline z-20">
+                                <h2 className="absolute left-5 bottom-5 text-white text-xl md:text-3xl font-semibold group-hover:underline z-20">
                                     {leadMainContent.heading}
                                 </h2>
 
