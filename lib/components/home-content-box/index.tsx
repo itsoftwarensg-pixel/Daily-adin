@@ -61,15 +61,17 @@ export default function HomeContentBox({
             {/* News contents */}
             <div className="space-y-2">
                 {/* First item (large) */}
-                <HomeContentBoxNewsItem
-                    titleSize="large"
-                    newsItem={leadContent}
-                    bgColor={"gray"}
-                />
+                {leadContent && leadContent.id &&
+                    <HomeContentBoxNewsItem
+                        titleSize="large"
+                        newsItem={leadContent}
+                        bgColor={"gray"}
+                    />
+                }
 
                 {/* Next two items in a 2-column grid */}
                 <div className="grid grid-cols-2 gap-2">
-                    {subLeadContents.map((newsItem, idx) => (
+                    {subLeadContents && subLeadContents.length > 0 && subLeadContents.map((newsItem, idx) => (
                         <HomeContentBoxNewsItem
                             key={idx}
                             newsItem={newsItem}
