@@ -31,7 +31,7 @@ const LeadNewsItem = ({ content }: Props) => {
               <div className="">
                 <h4
                   className="
-                mt-1 sm:mt-2
+                mt-1
                 pt-1 sm:pt-2
                 pb-0
                 text-2xl
