@@ -37,7 +37,7 @@ const HomeLead = ({ homeData }: Props) => {
         <div className="pt-4 pb-8">
             <Container>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-0 md:gap-6">
-                    <div className="col-span-3">
+                    <div className="col-span-3 space-y-4">
                         <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
                             {/* Lead news - Left side */}
                             <div className="order-2 md:order-1 md:col-span-2 space-y-2">
