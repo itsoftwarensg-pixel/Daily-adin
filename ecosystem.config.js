@@ -4,6 +4,8 @@ module.exports = {
       name: 'daily-adin',
       script: 'npm',
       args: 'start',
+      instances: 2,
+      exec_mode: 'cluster',
       watch: false,
       time: true,
       env: {
@@ -17,3 +19,4 @@ module.exports = {
     },
   ],
 };
+``
