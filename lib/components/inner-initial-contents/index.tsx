@@ -30,9 +30,9 @@ const InnnerInitalContents = ({ contents }: Props) => {
                 />
               </div>
 
-              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-red-500 to-transparent z-10" />
+              <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-red-500 to-transparent z-10" />
 
-              <h2 className="absolute left-5 bottom-5 z-20 text-white text-3xl font-normal group-hover:underline">
+              <h2 className="absolute left-5 bottom-5 z-20 text-white text-xl md:text-3xl font-semibold group-hover:underline">
                 {lead.heading}
               </h2>
             </Link>
