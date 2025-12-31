@@ -148,14 +148,13 @@ const InfiniteArticleList = ({
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-[auto_360px] gap-6 mb-12">
               <div className="col-span-auto">
-                <div className="grid grid-cols-12 gap-4">
+                <div className="grid grid-cols-12 gap-0 md:gap-4">
                   {/* Left Sidebar */}
                   <div className="col-span-full md:col-span-3 lg:sticky lg:top-16 self-start">
                     <DetailsLeftSidebar
                       category={`${article.category?.name || category.name}`}
-                      categoryUrl={`/${
-                        article.category?.alias || category.alias
-                      }`}
+                      categoryUrl={`/${article.category?.alias || category.alias
+                        }`}
                       contentDetails={article}
                     />
                   </div>
