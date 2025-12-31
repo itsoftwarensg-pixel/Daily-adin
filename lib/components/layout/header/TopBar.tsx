@@ -6,7 +6,12 @@ import logo from "@/public/logo.svg";
 import { usePathname } from "next/navigation";
 import { globe } from "@/lib/components/icons";
 import { RiNewspaperLine } from "react-icons/ri";
-import { IoIosArrowDown, IoIosArrowUp, IoIosShareAlt, IoMdPaper } from "react-icons/io";
+import {
+  IoIosArrowDown,
+  IoIosArrowUp,
+  IoIosShareAlt,
+  IoMdPaper,
+} from "react-icons/io";
 import { ImageWithFallback } from "@/lib/components/image";
 import { TodayBnDate, TodayDate } from "@/lib/utils/helpers";
 import headerBanner from "@/public/images/header-banner.svg";
@@ -35,7 +40,7 @@ const TopBar = ({ dateTimeBn }: Props) => {
 
   // Mobile menu toggle
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [openSubmenus, setOpenSubmenus] = useState<number[]>([]); // store open submenu indexes 
+  const [openSubmenus, setOpenSubmenus] = useState<number[]>([]); // store open submenu indexes
 
   // Toogle menu click
   const toggleSubmenu = (index: number) => {
@@ -59,16 +64,36 @@ const TopBar = ({ dateTimeBn }: Props) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Set today's date based on pathname
   useEffect(() => {
     const date =
       pathname === "/home-old" ? `আজ ${TodayDate()}` : `${dateTimeBn}`;
     setTodayDate(date);
   }, [pathname]);
 
+  // Disable background scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      // Disable background scroll
+      document.body.style.overflow = "hidden";
+    } else {
+      // Restore scroll
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup (important)
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <div className="w-full bg-white border-b-red-500 border-b-2 pb-2 md:pb-0">
       <div className="flex justify-between items-center gap-10 z-50">
-        <Link href={"/"} className="relative overflow-hidden w-24 h-12 md:w-80 md:h-40">
+        <Link
+          href={"/"}
+          className="relative overflow-hidden w-24 h-12 md:w-80 md:h-40"
+        >
           <ImageWithFallback
             src={logo}
             alt="The Daily Adin Logo"
@@ -162,7 +187,11 @@ const TopBar = ({ dateTimeBn }: Props) => {
       {/* Mobile menu */}
       {mobileMenuOpen && (
         <div className="flex flex-row w-screen h-screen fixed top-0 right-0">
-          <div className="flex-1 bg-[#cfcfcf6e]"></div>
+          <div
+            className="flex-1 bg-[#cfcfcf6e]"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+
           <div
             className="
                 md:hidden bg-white border-t border-gray-200 
@@ -171,7 +200,6 @@ const TopBar = ({ dateTimeBn }: Props) => {
                 w-80 right-0 top-0
                 pb-12"
           >
-
             <div className="sticky top-0 py-4 px-4 bg-gray-100">
               <div className="flex justify-between items-center gap-10">
                 <div></div>
@@ -180,7 +208,11 @@ const TopBar = ({ dateTimeBn }: Props) => {
                   className="md:hidden"
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 >
-                  {mobileMenuOpen ? <AiOutlineClose size={24} /> : <FaBars size={24} />}
+                  {mobileMenuOpen ? (
+                    <AiOutlineClose size={24} />
+                  ) : (
+                    <FaBars size={24} />
+                  )}
                 </button>
               </div>
             </div>
@@ -189,7 +221,9 @@ const TopBar = ({ dateTimeBn }: Props) => {
                 <div className="flex justify-between items-center px-2 gap-2">
                   <Link
                     href={item.href}
-                    className={`font-medium hover:text-red-500 px-2 py-3 hover:bg-gray-100 ${item.children ? 'w-[85%]' : 'w-full'}`}
+                    className={`font-medium hover:text-red-500 px-2 py-3 hover:bg-gray-100 ${
+                      item.children ? "w-[85%]" : "w-full"
+                    }`}
                     onClick={() => setMobileMenuOpen(false)} // Close menu on click
                   >
                     {item.text}
@@ -201,7 +235,11 @@ const TopBar = ({ dateTimeBn }: Props) => {
                       onClick={() => toggleSubmenu(index)}
                       className="shrink-0 text-gray-500 font-bold hover:bg-gray-100 w-[15%]"
                     >
-                      {openSubmenus.includes(index) ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                      {openSubmenus.includes(index) ? (
+                        <IoIosArrowUp />
+                      ) : (
+                        <IoIosArrowDown />
+                      )}
                     </button>
                   )}
                 </div>

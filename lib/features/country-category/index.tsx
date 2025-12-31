@@ -21,13 +21,13 @@ interface Props {
 const CountryCategory = ({ category, contents, divisions }: Props) => {
   // Retrieve IDs of position contents to exclude them from LoadMoreContent
   const positionContents = category?.position_contents || [];
-  const positionContentsIds: number[] = positionContents.map(item => item.id); // Retrieve IDs of position contents. Array
+  const positionContentsIds: number[] = positionContents.map((item) => item.id); // Retrieve IDs of position contents. Array
 
   return (
     <div className="">
       <Container>
         <div className="my-6">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 overflow-x-auto">
             <Link
               href={`${category.full_url}`}
               className="text-2xl border-l-4 border-red-500 text-red-500 font-bold flex gap-2 items-center"
@@ -36,9 +36,9 @@ const CountryCategory = ({ category, contents, divisions }: Props) => {
               <IoIosArrowForward />
             </Link>
           </div>
-          <div className="border-b pb-2 mt-2 mb-0 pl-[22px]">
+          <div className="border-b pb-2 mt-2 mb-0 pl-[22px] overflow-x-auto">
             {divisions && divisions.length > 0 && (
-              <ul className="flex gap-4">
+              <ul className="flex gap-4 whitespace-nowrap">
                 {divisions.map((division, index) => (
                   <li
                     key={index}
@@ -63,7 +63,7 @@ const CountryCategory = ({ category, contents, divisions }: Props) => {
         <div className="grid grid-cols-1 lg:grid-cols-[auto_360px] gap-4">
           <div className="col-span-1 lg:col-auto">
             {category?.position_contents &&
-              category?.position_contents.length > 0 ? (
+            category?.position_contents.length > 0 ? (
               <>
                 {/* Lead, SubLead, and 3 contents. Lead below */}
                 <InnnerInitalContents contents={category?.position_contents} />

@@ -19,7 +19,7 @@ const DetailsLeftSidebar = ({
   categoryUrl,
 }: Props) => {
   return (
-    <div className="mb-6">
+    <div className="mb-0">
       {/* Category title */}
       <Link
         href={categoryUrl}
@@ -43,7 +43,7 @@ const DetailsLeftSidebar = ({
       </div>
 
       {/* Social sharable links */}
-      <div className="flex gap-1 mb-8">
+      <div className="flex gap-1 mb-4 md:mb-8">
         <GrFacebookOption
           size={36}
           className="p-2 hover:bg-gray-100 cursor-pointer rounded text-black border"

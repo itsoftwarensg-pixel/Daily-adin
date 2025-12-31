@@ -2,12 +2,11 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { navItems, newsJson } from "@/lib/data";
-
+import { navItems } from "@/lib/data";
+import { LuGlobe } from "react-icons/lu";
 import { FiSearch, FiX } from "react-icons/fi";
 import { whiteArrowDown } from "@/lib/components/icons";
 import { ImageWithFallback } from "@/lib/components/image";
-import { LuGlobe } from "react-icons/lu";
 
 const Navbar = () => {
   const searchRef = useRef<HTMLDivElement>(null);
@@ -45,50 +44,70 @@ const Navbar = () => {
     <div className="w-full flex flex-col items-start justify-between gap-3">
       {/* Navbar */}
       <div className="w-full h-full flex items-stretch justify-between bg-[#D30000]">
-        <div className="flex items-center gap-6 px-2.5 py-2">
-          {navItems.map((item) => (
-            <div
-              key={item.text}
-              className="relative flex flex-col"
-              onMouseEnter={() => item.children && setOpenDropdown(item.text)}
-              onMouseLeave={() => item.children && setOpenDropdown(null)}
-            >
-              <div className="flex items-center gap-[10px] cursor-pointer text-[17px] font-semibold text-white">
-                <Link
-                  href={item.href ?? "#"}
-                  className="flex items-center gap-[6px]"
+        <div className="flex-1 flex items-center px-4 py-2">
+          {!searchOpen ? (
+            <div className="flex items-center gap-6">
+              {navItems.map((item) => (
+                <div
+                  key={item.text}
+                  className="relative flex flex-col"
+                  onMouseEnter={() =>
+                    item.children && setOpenDropdown(item.text)
+                  }
+                  onMouseLeave={() => item.children && setOpenDropdown(null)}
                 >
-                  <p>{item.text}</p>
+                  <Link
+                    href={item.href ?? "#"}
+                    className="flex items-center gap-2 text-[17px] font-semibold text-white"
+                  >
+                    {item.text}
 
-                  {item.children && (
-                    <ImageWithFallback
-                      src={whiteArrowDown}
-                      width={10}
-                      height={5}
-                      alt="whiteArrowDown"
-                      className={`${openDropdown === item.text ? "rotate-180" : ""
-                        }`}
-                    />
+                    {item.children && (
+                      <ImageWithFallback
+                        src={whiteArrowDown}
+                        width={10}
+                        height={5}
+                        alt="arrow"
+                        className={
+                          openDropdown === item.text ? "rotate-180" : ""
+                        }
+                      />
+                    )}
+                  </Link>
+
+                  {item.children && openDropdown === item.text && (
+                    <div className="absolute top-full left-0 mt-1 bg-[#F4F4F4] rounded-md shadow-md z-50">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.text}
+                          href={child.href ?? "#"}
+                          className="block px-5 py-2 text-sm hover:bg-red-100 hover:text-red-600"
+                        >
+                          {child.text}
+                        </Link>
+                      ))}
+                    </div>
                   )}
-                </Link>
-              </div>
-
-              {item.children && openDropdown === item.text && (
-                <div className="absolute min-w-[150px] w-fit shrink-0 z-50 flex flex-col top-[90%] left-0 mt-1 bg-[#F4F4F4] shadow-md rounded-md overflow-hidden">
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.text}
-                      href={child.href ?? "#"}
-                      className="flex items-center gap-[10px] px-5 py-[7px] text-[14px] hover:bg-red-100 hover:text-red-600"
-                    >
-                      <div className="bg-primaryRed w-2.5 h-2.5 rounded-full shrink-0" />
-                      {child.text}
-                    </Link>
-                  ))}
                 </div>
-              )}
+              ))}
             </div>
-          ))}
+          ) : (
+            <div className="flex items-center w-full gap-2">
+              <input
+                autoFocus
+                type="text"
+                placeholder="Search news..."
+                className="flex-1 px-4 py-1 rounded-md text-mds focus:outline-none"
+              />
+
+              <button
+                onClick={() => setSearchOpen(false)}
+                className="text-white"
+              >
+                <FiX size={24} />
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Search, Language Icon */}
@@ -97,39 +116,22 @@ const Navbar = () => {
             className="group px-3 py-2 w-12 border-l border-red-400 ml-auto cursor-pointer"
             onClick={() => setSearchOpen(true)}
           >
-            <FiSearch size={24} className="text-white group-hover:text-red-100" />
+            <FiSearch
+              size={24}
+              className="text-white group-hover:text-red-100"
+            />
           </div>
-          {/* <div
-            className="px-3 py-2 w-22 border-l group border-red-400 ml-auto text-white cursor-pointer"
-          >
+          {/* <div className="px-3 py-2 w-22 border-l group border-red-400 ml-auto text-white cursor-pointer">
             <div className="flex items-center gap-2 group-hover:text-red-100">
-              <LuGlobe size={20} className="text-white group-hover:text-red-100" />
+              <LuGlobe
+                size={20}
+                className="text-white group-hover:text-red-100"
+              />
               <span>ENG</span>
             </div>
           </div> */}
         </div>
       </div>
-
-      {/* Search Overlay */}
-      {searchOpen && (
-        <div className="fixed inset-0 z-50 bg-black/70 flex items-start justify-center p-5">
-          <div ref={searchRef} className="max-w-full w-full relative">
-            {/* Close Button */}
-            <button
-              className="absolute top-4 right-4 text-white text-2xl"
-              onClick={() => setSearchOpen(false)}
-            >
-              <FiX size={25} className="text-red-500" />
-            </button>
-
-            <input
-              type="text"
-              placeholder="Search..."
-              className="w-full px-8 py-4 text-lg rounded-md focus:outline-none"
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 };

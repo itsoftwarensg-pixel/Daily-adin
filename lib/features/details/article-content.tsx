@@ -12,7 +12,7 @@ const ArticleContent = ({ contentDetails, forwardRef }: Props) => {
   return (
     <div ref={forwardRef}>
       {/* Headline/Title */}
-      <h2 className="text-4xl font-semibold mb-4">{contentDetails.heading}</h2>
+      <h2 className="text-2xl lg:text-4xl font-semibold mb-4">{contentDetails.heading}</h2>
 
       {/* Image */}
       <div className="mb-6">
