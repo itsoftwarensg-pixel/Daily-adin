@@ -86,7 +86,7 @@ const HomePage = ({ initialHomeData }: Props) => {
 
   return (
     <>
-      <BreakingNews />
+      {/* <BreakingNews /> */}
       <HomeLead homeData={homeData as any} />
 
       {/* Second Chunk Components */}
