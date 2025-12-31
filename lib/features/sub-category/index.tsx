@@ -25,7 +25,7 @@ const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
       <Container>
         <div className="my-6">
           <>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 overflow-x-auto">
               <Link
                 href={`${category.full_url}`}
                 className="text-2xl border-l-4 border-red-500 text-red-500 font-bold flex gap-2 items-center"
@@ -40,11 +40,11 @@ const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
                 <span>{subCategory.name}</span>
               </Link>
             </div>
-            <div className="border-b pb-2 mt-2 mb-0 pl-[22px]">
+            <div className="border-b pb-2 mt-2 mb-0 pl-[22px] overflow-x-auto">
               {category &&
                 category.subcategories &&
                 category.subcategories.length > 0 && (
-                  <ul className="flex gap-4">
+                  <ul className="flex gap-4 whitespace-nowrap">
                     {category.subcategories.map((subCat, index) => (
                       <li
                         key={index}
@@ -56,10 +56,11 @@ const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
                       >
                         <Link
                           href={`${subCat.full_url}`}
-                          className={` hover:text-blue-700 font-semibold ${subCat.alias == subCategory.alias
-                            ? "text-blue-700"
-                            : "text-gray-700"
-                            }`}
+                          className={` hover:text-blue-700 font-semibold ${
+                            subCat.alias == subCategory.alias
+                              ? "text-blue-700"
+                              : "text-gray-700"
+                          }`}
                         >
                           {subCat.name}
                         </Link>

@@ -35,7 +35,9 @@ export default function ApplicationFooter() {
                   প্রকাশক : মো. সাইদুল ইসলাম সাজু
                 </p>
                 <p className="text-md text-textGray font-normal">
-                  সম্পাদক কর্তৃক বিসমিল্লাহ্ প্রিন্টিং প্রেস, ২১৯ ফকিরাপুল ১ম গলি, মতিঝিল, ঢাকা থেকে মুদ্রিত ও হাউজ নং ৯, রোড ১৭, ব্লক ডি, বনানী, ঢাকা-১২১৭ থেকে প্রকাশিত।
+                  সম্পাদক কর্তৃক বিসমিল্লাহ্ প্রিন্টিং প্রেস, ২১৯ ফকিরাপুল ১ম
+                  গলি, মতিঝিল, ঢাকা থেকে মুদ্রিত ও হাউজ নং ৯, রোড ১৭, ব্লক ডি,
+                  বনানী, ঢাকা-১২১৭ থেকে প্রকাশিত।
                 </p>
               </div>
             </div>
@@ -47,10 +49,7 @@ export default function ApplicationFooter() {
               </p>
               <div className="flex flex-col space-y-3">
                 <p className="text-lg text-textGray font-normal">
-                  টাওয়ার-এ (২য় তলা),
-
-                  হাউস-১৩, রোড-১৭,
-                  বনানী, ঢাকা-১২১৩।
+                  টাওয়ার-এ (২য় তলা), হাউস-১৩, রোড-১৭, বনানী, ঢাকা-১২১৩।
                 </p>
                 <p className="text-lg text-textGray font-normal">
                   টেলিফোন : ০৯৬৩৯১০১৯২৩
@@ -115,7 +114,7 @@ export default function ApplicationFooter() {
       {/* Bottom Bar */}
       <div className="w-full py-6 bg-gray-3">
         <Container>
-          <div className="flex justify-between gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-md font-normal text-textGray">
               © স্বত্ব {CurrentYear()}, দৈনিক এদিন
             </p>
