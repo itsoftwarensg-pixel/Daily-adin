@@ -8,9 +8,9 @@ const BreakingNews = () => {
         <div className="mt-4">
             <Container>
                 <div className="flex items-center justify-beteen text-[16px] font-normal w-full">
-                    <div className="bg-[#FF4646] text-white px-3 py-2 shrink-0 border-l-[6px] border-t border-b border-black">
+                    {/* <div className="bg-[#FF4646] text-white px-3 py-2 shrink-0 border-l-[6px] border-t border-b border-black">
                         শিরোনাম :
-                    </div>
+                    </div> */}
 
                     <Marquee
                         pauseOnHover={true}
