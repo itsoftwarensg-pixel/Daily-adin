@@ -153,7 +153,7 @@ export const navItems: NavItem[] = [
       { text: "পরামর্শ", href: "#career-advice" },
     ],
   },
-  { text: "পান্থলোক", href: "#" },
+  { text: "পান্থলোক", href: "/lifestyle/tourism" },
   // { text: "আজকের পত্রিকা", href: "#todays-paper" },
   { text: "আর্কাইভ", href: "/archive" },
   // { text: "ইপেপার", href: "#epaper" },
