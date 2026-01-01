@@ -7,12 +7,12 @@ import { HomePageContnetSection } from "@/lib/types/home.page";
 // Props
 interface Props {
     homeData: {
-        'business-news': HomePageContnetSection,
+        'business': HomePageContnetSection,
     };
 }
 
 const HomeCommerce = ({ homeData }: Props) => {
-    const { 'business-news': businessContents } = homeData;
+    const { 'business': businessContents } = homeData;
     const leadMainContent = businessContents?.contents[0];              // Main lead news
     const subLeadContents = businessContents?.contents.slice(1, 5);     // 4 sub lead contents
 

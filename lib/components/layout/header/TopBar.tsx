@@ -249,7 +249,7 @@ const TopBar = ({ dateTimeBn }: Props) => {
                         {item.children.map((child, i) => (
                           <Link
                             key={i}
-                            href={child.href}
+                            href={`${item.href}/${child.href}`}
                             onClick={() => setMobileMenuOpen(false)}
                             className="block px-4 py-2 text-gray-600
                                  hover:text-red-500 hover:bg-gray-100

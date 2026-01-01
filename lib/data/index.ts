@@ -31,11 +31,11 @@ export type NavItem = {
 
 export const navItems: NavItem[] = [
   { text: "সর্বশেষ", href: "#" },
-  { text: "জাতীয়", href: "/national-news" },
-  { text: "রাজনীতি", href: "/political-news" },
+  { text: "জাতীয়", href: "/national" },
+  { text: "রাজনীতি", href: "/politics" },
   {
     text: "বিশ্ব",
-    href: "/world-news",
+    href: "/international",
     children: [
       { "text": "লাতিন আমেরিকা", "href": "latin-america" },
       { "text": "ভারত", "href": "india" },
@@ -66,7 +66,7 @@ export const navItems: NavItem[] = [
   },
   {
     text: "বাণিজ্যলোক",
-    href: "/business-news",
+    href: "/business",
     children: [
       { "text": "নতুন উদ্যোগ", "href": "new-ventures" },
       { "text": "কর্পোরেট", "href": "corporate" },
@@ -78,7 +78,7 @@ export const navItems: NavItem[] = [
   },
   {
     text: "ক্রীড়ালোক",
-    href: "/sports-news",
+    href: "/sports",
     children: [
       { "text": "ক্রিকেট", "href": "cricket" },
       { "text": "ফুটবল", "href": "football" },
@@ -89,7 +89,7 @@ export const navItems: NavItem[] = [
   { text: "বিজ্ঞানলোক", href: "/science" },
   {
     text: "চিত্রলোক",
-    href: "/entertainment-news",
+    href: "/entertainment",
     children: [
       { "text": "সিনেমা", "href": "cinema" },
       { "text": "টেলিভিশন", "href": "television" },
@@ -117,7 +117,7 @@ export const navItems: NavItem[] = [
   },
   {
     text: "স্বাস্থ্যলোক",
-    href: "/health-news",
+    href: "/health",
     children: [
       { "text": "চিকিৎসা", "href": "treatment" },
       { "text": "পরামর্শ", "href": "health-tips" },
@@ -127,10 +127,10 @@ export const navItems: NavItem[] = [
     ]
     ,
   },
-  // feature-news
+  // feature
   {
     text: "ফিচার",
-    href: "/feature-news",
+    href: "/feature",
     children: [
       { "text": "দেহঘড়ি", "href": "prescription" },
       { "text": "ভিন্যলোক", "href": "vinnolok" },

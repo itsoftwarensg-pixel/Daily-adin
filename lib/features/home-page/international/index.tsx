@@ -9,12 +9,12 @@ import NewsItem from "@/lib/features/home-page/international/news-item";
 // Props
 interface Props {
     homeData: {
-        'world-news': HomePageContnetSection,
+        'international': HomePageContnetSection,
     };
 }
 
 const HomeInternational = ({ homeData }: Props) => {
-    const { 'world-news': worldContents } = homeData;
+    const { 'international': worldContents } = homeData;
     const leadMainContent = worldContents?.contents[0];              // Main lead news
     const leadLeftContents = worldContents?.contents.slice(1, 3);    // Left side contents
     const leadRightContents = worldContents?.contents.slice(3, 5);   // Right lead contents

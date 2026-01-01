@@ -13,15 +13,15 @@ import HomeContentBox from "@/lib/components/home-content-box";
 interface Props {
     homeData: {
         'lead': HomePageContnetSection,
-        'national-news'?: HomePageContnetSection,
-        'political-news'?: HomePageContnetSection,
+        'national'?: HomePageContnetSection,
+        'politics'?: HomePageContnetSection,
         'recent'?: HomePageContnetSection,
         'popular'?: HomePageContnetSection,
     };
 }
 
 const HomeLead = ({ homeData }: Props) => {
-    const { lead: leadContents, 'national-news': nationalContents, 'political-news': politicalContents, 'recent': recentContents, 'popular': popularContents } = homeData;
+    const { lead: leadContents, 'national': nationalContents, 'politics': politicalContents, 'recent': recentContents, 'popular': popularContents } = homeData;
 
     const leadNewsContents = leadContents?.contents || [];
     const nationalNewsContents = nationalContents?.contents || [];
