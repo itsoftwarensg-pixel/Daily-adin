@@ -102,4 +102,10 @@ export const APIEndpoint = {
       return `${APIEndpoint.base_url}/archive${query}`;
     },
   },
+
+  // Video API endpoints - Video page and video details page
+  video: {
+    getAll: (page: number, limit: number) => `${APIEndpoint.base_url}/videos?page=${page}&limit=${limit}`,
+    getById: (id: number) => `${APIEndpoint.base_url}/videos/${id}`,
+  },
 };
