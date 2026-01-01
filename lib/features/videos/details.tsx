@@ -9,6 +9,7 @@ import { GrFacebookOption } from "react-icons/gr";
 import { RiTwitterXFill, RiWhatsappLine } from "react-icons/ri";
 import { MdContentCopy } from "react-icons/md";
 import { FiPrinter } from "react-icons/fi";
+import HtmlContent from "@/lib/components/common/html-content";
 
 // Props
 interface Props {
@@ -50,7 +51,7 @@ const VideoDetails = ({ videoDetails }: Props) => {
                                 <h1 className="text-2xl lg:text-4xl font-semibold border-b pb-4 mb-4">{videoDetails.title}</h1>
 
                                 {/* Social sharable links */}
-                                <div className="flex gap-1 mb-4 md:mb-8">
+                                <div className="flex gap-1 mb-4 md:mb-8 border-b pb-4 mb-4">
                                     <GrFacebookOption
                                         size={36}
                                         className="p-2 hover:bg-gray-100 cursor-pointer rounded text-black border"
@@ -72,6 +73,11 @@ const VideoDetails = ({ videoDetails }: Props) => {
                                         className="p-2 hover:bg-gray-100 cursor-pointer rounded text-black border"
                                     />
                                 </div>
+
+                                {/* Description */}
+                                {videoDetails.description && (
+                                    <HtmlContent html={videoDetails.description} />
+                                )}
                             </>
                         ) : (
                             <NoContentFound />
