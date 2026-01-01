@@ -23,51 +23,51 @@ const SOCIAL_DATA = [
     links: [
       {
         name: "The Daily Adin",
-        href: "https://www.facebook.com",
+        href: "https://www.facebook.com/dailyadin/?ref=waios.fb_links_xma_control",
         icon: facebook,
       },
-      {
-        name: "Alternative Page",
-        href: "https://www.facebook.com",
-        icon: facebook,
-      },
-    ],
-  },
-  {
-    title: "ইউটিউব",
-    type: "grid-2",
-    links: [
       {
         name: "The Daily Adin",
-        href: "https://www.youtube.com",
-        icon: youtube,
-      },
-      {
-        name: "Alternative Page",
-        href: "https://www.youtube.com",
+        href: "https://www.youtube.com/@dailyadinbd",
         icon: youtube,
       },
     ],
   },
+  // {
+  //   title: "ইউটিউব",
+  //   type: "grid-2",
+  //   links: [
+  //     {
+  //       name: "The Daily Adin",
+  //       href: "https://www.youtube.com",
+  //       icon: youtube,
+  //     },
+  //     {
+  //       name: "Alternative Page",
+  //       href: "https://www.youtube.com",
+  //       icon: youtube,
+  //     },
+  //   ],
+  // },
   {
     type: "grid-3",
     items: [
       {
         title: "এক্স",
         name: "The Daily Adin",
-        href: "https://www.x.com",
+        href: "#",
         icon: x,
       },
       {
         title: "টিকটক",
         name: "The Daily Adin",
-        href: "https://www.tiktok.com",
+        href: "https://www.tiktok.com/@adinbd?_r=1&_t=ZS-92gEDUTEwkL",
         icon: tiktok,
       },
       {
         title: "ইনস্টাগ্রাম",
         name: "The Daily Adin",
-        href: "https://www.instagram.com",
+        href: "#",
         icon: instagram,
       },
     ],
@@ -78,19 +78,19 @@ const SOCIAL_DATA = [
       {
         title: "লিঙ্কডইন",
         name: "The Daily Adin",
-        href: "https://www.linkedin.com",
+        href: "#",
         icon: linkedIn,
       },
       {
         title: "পিন্টারেস্ট",
         name: "The Daily Adin",
-        href: "https://www.pinterest.com",
+        href: "#",
         icon: pinterest,
       },
       {
         title: "গুগল নিউজ",
         name: "The Daily Adin",
-        href: "https://www.news.google.com",
+        href: "#",
         icon: googleNews,
       },
     ],
@@ -101,19 +101,19 @@ const SOCIAL_DATA = [
       {
         title: "হোয়াটসঅ্যাপ",
         name: "The Daily Adin",
-        href: "https://www.whatsapp.com",
+        href: "#",
         icon: whatsapp,
       },
       {
         title: "টেলিগ্রাম",
         name: "The Daily Adin",
-        href: "https://t.me",
+        href: "#",
         icon: telegram,
       },
       {
         title: "মেসেঞ্জার",
         name: "The Daily Adin",
-        href: "https://www.messenger.com",
+        href: "#",
         icon: messenger,
       },
     ],
@@ -125,7 +125,7 @@ const SOCIAL_DATA = [
       {
         title: "ফিড",
         name: "The Daily Adin",
-        href: "https://www.google.com",
+        href: "#",
         icon: feed,
       },
     ],
@@ -134,20 +134,18 @@ const SOCIAL_DATA = [
 
 const SocialMediaDropdown = () => {
   return (
-    <div className="absolute right-0 mt-3 w-[600px] rounded-md bg-white shadow-lg border z-[999]">
+    <div className="absolute right-0 mt-3 w-[600px] rounded-md bg-white shadow-lg border z-[9999]">
       <div className="absolute -top-2 right-5 w-4 h-4 bg-white border-l border-t rotate-45" />
 
       <div className="max-w-full w-full px-6">
         {SOCIAL_DATA.map((section, idx) => (
           <div
             key={idx}
-            className={`py-5 ${
-              section.isLast ? "" : "border-b border-gray-300"
-            } ${
-              section.type === "grid-3"
+            className={`py-5 ${section.isLast ? "" : "border-b border-gray-300"
+              } ${section.type === "grid-3"
                 ? "grid grid-cols-3 gap-3"
                 : "flex flex-col gap-3"
-            }`}
+              }`}
           >
             {section.type === "grid-2" && section.links && (
               <>
@@ -158,7 +156,7 @@ const SocialMediaDropdown = () => {
                       key={lIdx}
                       target="_blank"
                       href={link.href}
-                      className="flex items-center gap-2"
+                      className="flex items-center gap-2 group"
                     >
                       <ImageWithFallback
                         src={link.icon}
@@ -166,7 +164,7 @@ const SocialMediaDropdown = () => {
                         height={18}
                         alt={link.name}
                       />
-                      <p className="font-medium">{link.name}</p>
+                      <p className="font-medium group-hover:text-blue-700">{link.name}</p>
                     </Link>
                   ))}
                 </div>
@@ -180,7 +178,7 @@ const SocialMediaDropdown = () => {
                   <Link
                     target="_blank"
                     href={item.href}
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 group"
                   >
                     <ImageWithFallback
                       src={item.icon}
@@ -188,7 +186,7 @@ const SocialMediaDropdown = () => {
                       height={18}
                       alt={item.name}
                     />
-                    <p className="font-medium">{item.name}</p>
+                    <p className="font-medium group-hover:text-blue-700">{item.name}</p>
                   </Link>
                 </div>
               ))}

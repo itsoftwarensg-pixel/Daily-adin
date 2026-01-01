@@ -16,7 +16,7 @@ export default async function ApplicationHeader() {
           </div>
         </Container>
       </div>
-      <div className="sticky top-0 hidden md:block w-full bg-white z-50">
+      <div className="sticky top-0 hidden md:block w-full bg-white z-[11]">
         <Container>
           <Navbar />
         </Container>
