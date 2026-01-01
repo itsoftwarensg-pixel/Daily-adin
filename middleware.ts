@@ -4,6 +4,18 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
+    /** =========================
+       * VIDEO ROUTES
+       * ========================= */
+    // /videos/123 → allow (do nothing)
+    const videoDetails = /^\/videos\/[0-9]+$/;
+    if (videoDetails.test(pathname)) {
+        return NextResponse.next();
+    }
+
+    /** =========================
+       * CONTENT / NEWS ROUTES
+       * ========================= */
     /**details url check */
     const rgxWithSubcategory = new RegExp(/^\/[a-z-]+\/[a-z-]+\/[0-9]+$/);
     const rgxWithoutSubcategory = new RegExp(/^\/[a-z-]+\/[0-9]+$/);
