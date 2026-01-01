@@ -186,82 +186,84 @@ const TopBar = ({ dateTimeBn }: Props) => {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="flex flex-row w-screen h-screen fixed top-0 right-0">
+        <div className="fixed inset-0 z-50 flex">
+          {/* Overlay */}
           <div
-            className="flex-1 bg-[#cfcfcf6e]"
+            className="flex-1 bg-black/30"
             onClick={() => setMobileMenuOpen(false)}
           />
 
-          <div
-            className="
-                md:hidden bg-white border-t border-gray-200 
-                shadow-md overflow-y-auto 
-                 h-screen 
-                w-80 right-0 top-0
-                pb-12"
-          >
-            <div className="sticky top-0 py-4 px-4 bg-gray-100">
-              <div className="flex justify-between items-center gap-10">
-                <div></div>
-
-                <button
-                  className="md:hidden"
-                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                >
-                  {mobileMenuOpen ? (
-                    <AiOutlineClose size={24} />
-                  ) : (
-                    <FaBars size={24} />
-                  )}
-                </button>
-              </div>
+          {/* Drawer */}
+          <div className="md:hidden bg-white shadow-lg h-screen w-80 overflow-y-auto pb-12">
+            {/* Header */}
+            <div className="sticky top-0 bg-gray-100 px-4 py-4 flex justify-end">
+              <button onClick={() => setMobileMenuOpen(false)}>
+                <AiOutlineClose size={24} />
+              </button>
             </div>
-            {navItems.map((item, index) => (
-              <div key={index} className="border-b border-gray-200">
-                <div className="flex justify-between items-center px-2 gap-2">
-                  <Link
-                    href={item.href}
-                    className={`font-medium hover:text-red-500 px-2 py-3 hover:bg-gray-100 ${
-                      item.children ? "w-[85%]" : "w-full"
-                    }`}
-                    onClick={() => setMobileMenuOpen(false)} // Close menu on click
-                  >
-                    {item.text}
-                  </Link>
 
-                  {/* Submenu toggle button */}
-                  {item.children && (
-                    <button
-                      onClick={() => toggleSubmenu(index)}
-                      className="shrink-0 text-gray-500 font-bold hover:bg-gray-100 w-[15%]"
-                    >
-                      {openSubmenus.includes(index) ? (
-                        <IoIosArrowUp />
-                      ) : (
-                        <IoIosArrowDown />
-                      )}
-                    </button>
-                  )}
-                </div>
+            {/* Navigation */}
+            <div>
+              {navItems.map((item, index) => {
+                const isOpen = openSubmenus.includes(index);
 
-                {/* Collapsible submenu */}
-                {item.children && openSubmenus.includes(index) && (
-                  <div className="pl-4 pb-2">
-                    {item.children.map((child, i) => (
-                      <div key={i}>
-                        <Link
-                          href={child.href}
-                          className="px-4 py-2 inline-block text-gray-600 hover:text-red-500"
-                          onClick={() => setMobileMenuOpen(false)} // close menu on submenu click
+                return (
+                  <div key={index} className="border-b border-gray-200">
+                    {/* Parent row */}
+                    <div className="group flex items-center justify-between px-2 hover:bg-gray-100 transition-colors">
+                      <Link
+                        href={item.href}
+                        className={`px-2 py-3 font-medium w-full
+                    transition-colors
+                    group-hover:text-red-500
+                    ${item.children ? "w-[85%]" : "w-full"}
+                  `}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.text}
+                      </Link>
+
+                      {/* Arrow */}
+                      {item.children && (
+                        <button
+                          onClick={() => toggleSubmenu(index)}
+                          className="w-[15%] flex items-center justify-center
+                               text-gray-500
+                               transition-all
+                               group-hover:text-red-500"
                         >
-                          {child.text}
-                        </Link>
+                          <span
+                            className={`transition-transform duration-200
+                        ${isOpen ? "rotate-180" : ""}
+                      `}
+                          >
+                            <IoIosArrowDown />
+                          </span>
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Submenu */}
+                    {item.children && isOpen && (
+                      <div className="pl-4 pb-2 bg-gray-50">
+                        {item.children.map((child, i) => (
+                          <Link
+                            key={i}
+                            href={child.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="block px-4 py-2 text-gray-600
+                                 hover:text-red-500 hover:bg-gray-100
+                                 transition-colors"
+                          >
+                            {child.text}
+                          </Link>
+                        ))}
                       </div>
-                    ))}
+                    )}
                   </div>
-                )}
-              </div>
-            ))}
+                );
+              })}
+            </div>
           </div>
         </div>
       )}
