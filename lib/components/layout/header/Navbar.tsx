@@ -7,6 +7,7 @@ import { LuGlobe } from "react-icons/lu";
 import { FiSearch, FiX } from "react-icons/fi";
 import { whiteArrowDown } from "@/lib/components/icons";
 import { ImageWithFallback } from "@/lib/components/image";
+import { AiOutlineHome } from "react-icons/ai";
 
 const Navbar = () => {
   const searchRef = useRef<HTMLDivElement>(null);
@@ -45,8 +46,15 @@ const Navbar = () => {
       {/* Navbar */}
       <div className="w-full h-full flex items-stretch justify-between bg-[#D30000]">
         <div className="flex-1 flex items-center px-4 py-2">
+
           {!searchOpen ? (
             <div className="flex items-center gap-6">
+              <Link
+                href={'/'}
+                className="text-[18px] font-semibold text-white"
+              >
+                <AiOutlineHome />
+              </Link>
               {navItems.map((item) => (
                 <div
                   key={item.text}

@@ -30,7 +30,7 @@ export type NavItem = {
 };
 
 export const navItems: NavItem[] = [
-  { text: "সর্বশেষ", href: "#" },
+  // { text: "সর্বশেষ", href: "#" },
   { text: "জাতীয়", href: "/national" },
   { text: "রাজনীতি", href: "/politics" },
   {
