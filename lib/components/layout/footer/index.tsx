@@ -4,6 +4,8 @@ import { ImageWithFallback } from "@/lib/components/image";
 import { x, tiktok, youtube, facebook } from "@/lib/components/icons";
 import Container from "@/lib/components/common/container";
 import { CurrentYear } from "@/lib/utils/helpers";
+import { PiPhoneDisconnect } from "react-icons/pi";
+import { BsTelephone } from "react-icons/bs";
 
 export default function ApplicationFooter() {
   const urls = [
@@ -14,10 +16,10 @@ export default function ApplicationFooter() {
   ];
 
   const socialLinks = [
-    { href: "https://www.facebook.com", icon: facebook, alt: "facebook" },
-    { href: "https://www.x.com", icon: x, alt: "x" },
-    { href: "https://www.youtube.com", icon: youtube, alt: "youtube" },
-    { href: "https://www.tiktok.com", icon: tiktok, alt: "tiktok" },
+    { href: "https://www.facebook.com/dailyadin/?ref=waios.fb_links_xma_control", icon: facebook, alt: "facebook" },
+    // { href: "https://www.x.com", icon: x, alt: "x" },
+    { href: "https://www.youtube.com/@dailyadinbd", icon: youtube, alt: "youtube" },
+    { href: "https://www.tiktok.com/@adinbd?_r=1&_t=ZS-92gEDUTEwkL", icon: tiktok, alt: "tiktok" },
   ];
 
   return (
@@ -32,12 +34,10 @@ export default function ApplicationFooter() {
                 <p className="text-lg text-black font-semibold mb-0">
                   ভারপ্রাপ্ত সম্পাদক: মো. সাইদুল ইসলাম সাজু
                   <br />
-                  প্রকাশক : মো. সাইদুল ইসলাম সাজু
+                  নির্বাহী সম্পাদক: খন্দকার মোজাম্মেল হক
                 </p>
                 <p className="text-md text-textGray font-normal">
-                  সম্পাদক কর্তৃক বিসমিল্লাহ্ প্রিন্টিং প্রেস, ২১৯ ফকিরাপুল ১ম
-                  গলি, মতিঝিল, ঢাকা থেকে মুদ্রিত ও হাউজ নং ৯, রোড ১৭, ব্লক ডি,
-                  বনানী, ঢাকা-১২১৭ থেকে প্রকাশিত।
+                  শরীয়তপুর প্রিন্টিং প্রেস  ২৮/বি, টয়েনলি সার্কুলার রোড, মতিঝিল-১০০০, ঢাকা থেকে মুদ্রিত
                 </p>
               </div>
             </div>
@@ -51,8 +51,11 @@ export default function ApplicationFooter() {
                 <p className="text-lg text-textGray font-normal">
                   টাওয়ার-এ (২য় তলা), হাউস-১৩, রোড-১৭, বনানী, ঢাকা-১২১৩।
                 </p>
-                <p className="text-lg text-textGray font-normal">
-                  টেলিফোন : ০৯৬৩৯১০১৯২৩
+                <p className="flex gap-2 items-center text-lg text-textGray font-normal">
+                  <PiPhoneDisconnect />  ০২-২২৬৬০৩৩৫২
+                </p>
+                <p className="flex gap-2 items-center text-lg text-textGray font-normal">
+                  <BsTelephone />  ০১৮৯৭-৬৬৪৬৫৬
                 </p>
                 <p className="text-lg text-textGray font-normal">
                   ইমেইল :{" "}
