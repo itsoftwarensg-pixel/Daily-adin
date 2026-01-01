@@ -16,6 +16,7 @@ import { getSearchArchiveAction } from "@/app/actions/archive";
 import { getDistrictByDivisionIdAction } from "@/app/actions/division";
 import { getUpazilasByDistrictIdAction } from "@/app/actions/district";
 import NewsItemArchive from "@/lib/components/common/news-elements/news-item-archive";
+import NoContentFound from "@/lib/components/no-content-found";
 
 interface PropsType {
     divisionList: DivisionType[];
@@ -271,9 +272,7 @@ const ArchivePage = ({
                             <NewsItemArchive key={newsItem.id} newsItem={newsItem} />
                         ))
                     ) : (
-                        <div className="col-span-full text-center text-gray-500 py-8 text-xl font-semibold">
-                            কোন খবর পাওয়া যায়নি
-                        </div>
+                        <NoContentFound />
                     )}
                 </div>
 

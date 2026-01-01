@@ -9,6 +9,7 @@ import Container from "@/lib/components/common/container";
 import LoadMoreContent from "@/lib/components/load-more-content";
 import { Category, ContentItem } from "@/lib/types/category.page";
 import InnnerInitalContents from "@/lib/components/inner-initial-contents";
+import NoContentFound from "@/lib/components/no-content-found";
 
 // Define the props type
 interface Props {
@@ -80,7 +81,7 @@ const CategoryIndex = ({ category }: Props) => {
                 </Suspense>
               </>
             ) : (
-              <p>No contents available</p>
+              <NoContentFound />
             )}
           </div>
 

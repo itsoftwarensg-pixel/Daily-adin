@@ -8,6 +8,8 @@ import { SubCatContentItem, SubCategory } from "@/lib/types/sub-category.page";
 import { IoIosArrowForward } from "react-icons/io";
 import InnnerInitalContents from "@/lib/components/inner-initial-contents";
 import LatestPopular from "../latest-popular";
+import { FiAlertCircle } from "react-icons/fi";
+import NoContentFound from "@/lib/components/no-content-found";
 
 // Props
 interface Props {
@@ -56,11 +58,10 @@ const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
                       >
                         <Link
                           href={`${subCat.full_url}`}
-                          className={` hover:text-blue-700 font-semibold ${
-                            subCat.alias == subCategory.alias
-                              ? "text-blue-700"
-                              : "text-gray-700"
-                          }`}
+                          className={` hover:text-blue-700 font-semibold ${subCat.alias == subCategory.alias
+                            ? "text-blue-700"
+                            : "text-gray-700"
+                            }`}
                         >
                           {subCat.name}
                         </Link>
@@ -97,9 +98,7 @@ const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
                 />
               </>
             ) : (
-              <div className="text-center text-gray-500 py-20">
-                No contents available.
-              </div>
+              <NoContentFound />
             )}
           </div>
 
@@ -117,8 +116,8 @@ const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
             </div>
           </div>
         </div>
-      </Container>
-    </div>
+      </Container >
+    </div >
   );
 };
 

@@ -7,6 +7,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import LoadMoreContent from "@/lib/components/load-more-content";
 import InnnerInitalContents from "@/lib/components/inner-initial-contents";
 import LatestPopular from "../latest-popular";
+import NoContentFound from "@/lib/components/no-content-found";
 
 // Define the props type
 interface Props {
@@ -63,7 +64,7 @@ const CountryCategory = ({ category, contents, divisions }: Props) => {
         <div className="grid grid-cols-1 lg:grid-cols-[auto_360px] gap-4">
           <div className="col-span-1 lg:col-auto">
             {category?.position_contents &&
-            category?.position_contents.length > 0 ? (
+              category?.position_contents.length > 0 ? (
               <>
                 {/* Lead, SubLead, and 3 contents. Lead below */}
                 <InnnerInitalContents contents={category?.position_contents} />
@@ -88,7 +89,7 @@ const CountryCategory = ({ category, contents, divisions }: Props) => {
                 />
               </>
             ) : (
-              <p>No contents available</p>
+              <NoContentFound />
             )}
           </div>
 

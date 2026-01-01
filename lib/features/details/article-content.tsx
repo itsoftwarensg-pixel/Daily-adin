@@ -68,7 +68,7 @@ const ArticleContent = ({ contentDetails, forwardRef }: Props) => {
         >
           <img
             className="img-fluid w-8"
-            src="https://www.rupalibangladesh.com/media/common/google-news-feed.png"
+            src="https://cdn.dailyadin.com/uploads/January2026/google-news-feed-202601011110526261393218.png"
             alt=" Google News"
           />
           সর্বশেষ খবর পেতে দৈনিক এদিন এর গুগল নিউজ চ্যানেল ফলো করুন

@@ -10,6 +10,7 @@ import { COUNTRY_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
 import LoadMoreContent from "@/lib/components/load-more-content";
 import InnnerInitalContents from "@/lib/components/inner-initial-contents";
 import LatestPopular from "@/lib/features/latest-popular";
+import NoContentFound from "@/lib/components/no-content-found";
 
 // Define the props type
 interface Props {
@@ -73,11 +74,10 @@ const UpazilaPage = ({ contents, upazila, upazilas }: Props) => {
                     >
                       <Link
                         href={`${up.full_url}`}
-                        className={` hover:text-blue-700 font-semibold ${
-                          up.alias === upazila.alias
+                        className={` hover:text-blue-700 font-semibold ${up.alias === upazila.alias
                             ? "text-blue-700"
                             : "text-gray-700"
-                        }`}
+                          }`}
                       >
                         {up.name_bn}
                       </Link>
@@ -113,7 +113,7 @@ const UpazilaPage = ({ contents, upazila, upazilas }: Props) => {
                 />
               </>
             ) : (
-              <p>No contents available</p>
+              <NoContentFound />
             )}
           </div>
 

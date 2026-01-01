@@ -7,6 +7,7 @@ import { COUNTRY_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
 import LoadMoreContent from "@/lib/components/load-more-content";
 import InnnerInitalContents from "@/lib/components/inner-initial-contents";
 import LatestPopular from "@/lib/features/latest-popular";
+import NoContentFound from "@/lib/components/no-content-found";
 
 // Define the props type
 interface Props {
@@ -89,7 +90,7 @@ const DivisionPage = ({ contents, division }: Props) => {
                 />
               </>
             ) : (
-              <p>No contents available</p>
+              <NoContentFound />
             )}
           </div>
 
