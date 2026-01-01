@@ -76,11 +76,11 @@ const Navbar = () => {
                   </Link>
 
                   {item.children && openDropdown === item.text && (
-                    <div className="absolute top-full left-0 mt-1 bg-[#F4F4F4] rounded-md shadow-md z-50">
+                    <div className="absolute top-full left-0 w-32 bg-[#F4F4F4] rounded-md shadow-md z-50">
                       {item.children.map((child) => (
                         <Link
                           key={child.text}
-                          href={child.href ?? "#"}
+                          href={`${item.href}/${child.href}`}
                           className="block px-5 py-2 text-sm hover:bg-red-100 hover:text-red-600"
                         >
                           {child.text}
