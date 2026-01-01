@@ -6,17 +6,17 @@ import { HomePageContnetSection } from "@/lib/types/home.page";
 // Props
 interface Props {
     homeData: {
-        'business-news'?: HomePageContnetSection,
-        'national-news'?: HomePageContnetSection,
-        'lifestyle'?: HomePageContnetSection,
+        'leisfita'?: HomePageContnetSection,
+        'campus'?: HomePageContnetSection,
+        'tourism'?: HomePageContnetSection,
     };
 }
 
 const HomeLaiceFitaPantholokCampus = ({ homeData }: Props) => {
-    const { 'business-news': businessContents, 'national-news': nationalContents, 'lifestyle': lifestyleContents } = homeData;
-    const businessNewsContents = businessContents?.contents || [];
-    const nationalNewsContents = nationalContents?.contents || [];
-    const lifestyleNewsContents = lifestyleContents?.contents || [];
+    const { 'leisfita': leisfitaContents, 'campus': campusContents, 'tourism': tourismContents } = homeData;
+    const leisfitaNewsContents = leisfitaContents?.contents || [];
+    const campusNewsContents = campusContents?.contents || [];
+    const tourismNewsContents = tourismContents?.contents || [];
 
     return (
         <div className="py-8">
@@ -24,33 +24,33 @@ const HomeLaiceFitaPantholokCampus = ({ homeData }: Props) => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {/* লেইসফিতা */}
                     <HomeContentBox
-                        contents={businessNewsContents}
-                        // sectionHeaderTitle={businessContents?.name || `লেইসফিতা`}
+                        contents={leisfitaNewsContents}
+                        // sectionHeaderTitle={leisfitaContents?.name || `লেইসফিতা`}
                         sectionHeaderTitle={`লেইসফিতা`}
                         sectionHeaderColor="emerald"
-                        sectionUrl={businessContents?.url || `/`}
+                        sectionUrl={leisfitaContents?.url || `/`}
                         showSectionReadMoreBtn
                         transparentReadMoreBtn={true}
                     />
 
                     {/* পান্থলোক */}
                     <HomeContentBox
-                        contents={nationalNewsContents}
-                        // sectionHeaderTitle={nationalContents?.name || `পান্থলোক`}
+                        contents={tourismNewsContents}
+                        // sectionHeaderTitle={tourismContents?.name || `পান্থলোক`}
                         sectionHeaderTitle={`পান্থলোক`}
                         sectionHeaderColor="gray"
-                        sectionUrl={nationalContents?.url || `/`}
+                        sectionUrl={tourismContents?.url || `/`}
                         showSectionReadMoreBtn
                         transparentReadMoreBtn={true}
                     />
 
                     {/* ক্যাম্পাস */}
                     <HomeContentBox
-                        contents={lifestyleNewsContents}
-                        // sectionHeaderTitle={lifestyleContents?.name || `ক্যাম্পাস`}
+                        contents={campusNewsContents}
+                        // sectionHeaderTitle={campusContents?.name || `ক্যাম্পাস`}
                         sectionHeaderTitle={`ক্যাম্পাস`}
                         sectionHeaderColor="indigo"
-                        sectionUrl={lifestyleContents?.url || `/`}
+                        sectionUrl={campusContents?.url || `/`}
                         showSectionReadMoreBtn
                         transparentReadMoreBtn={true}
                     />

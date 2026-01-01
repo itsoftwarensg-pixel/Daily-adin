@@ -9,12 +9,12 @@ import { HomePageContnetSection } from "@/lib/types/home.page";
 // Props
 interface Props {
     homeData: {
-        'entertainment-news': HomePageContnetSection,
+        'entertainment': HomePageContnetSection,
     };
 }
 
 const HomeMedia = ({ homeData }: Props) => {
-    const { 'entertainment-news': entertainmentContents } = homeData;
+    const { 'entertainment': entertainmentContents } = homeData;
     const leadMainContent = entertainmentContents?.contents[0];              // Main lead news
     const subLeadContents = entertainmentContents?.contents.slice(1, 4);     // 3 sub lead contents
 

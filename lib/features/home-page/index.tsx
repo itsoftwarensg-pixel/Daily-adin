@@ -24,16 +24,19 @@ import HomeLaiceFitaPantholokCampus from "@/lib/features/home-page/laicefita-pan
 interface FullHomeData {
   lead?: HomePageContnetSection;
   recent?: HomePageContnetSection;
-  "sports-news"?: HomePageContnetSection;
+  sports?: HomePageContnetSection;
   country?: HomePageContnetSection;
-  "entertainment-news"?: HomePageContnetSection;
-  "world-news"?: HomePageContnetSection;
+  entertainment?: HomePageContnetSection;
+  international?: HomePageContnetSection;
   video?: HomePageVideoSection;
-  "business-news"?: HomePageContnetSection;
+  business?: HomePageContnetSection;
   lifestyle?: HomePageContnetSection; // lace tap
   photo?: HomePagePhotoAlbumSection; // clicked memories
-  "national-news"?: HomePageContnetSection;
-  "political-news"?: HomePageContnetSection;
+  national?: HomePageContnetSection;
+  politics?: HomePageContnetSection;
+  tourism?: HomePageContnetSection; // 	পান্থলোক - sub-category
+  campus?: HomePageContnetSection; //
+  leisfita?: HomePageContnetSection; // sub-category
 }
 
 // Props
