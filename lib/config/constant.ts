@@ -8,6 +8,13 @@ export const COUNTRY_PAGE = {
     name_bn: "প্রান্তলোক", // প্রান্তলোক, সারাদেশ, দেশজুড়ে খবর
 }
 
+// Video Page Constants
+export const VIDEO_PAGE = {
+    slug: "videos",
+    name: "Video",
+    name_bn: "ভিডিও"
+}
+
 // Load More Types
 export const LOAD_MORE_TYPES = {
     CATEGORY: "category",
