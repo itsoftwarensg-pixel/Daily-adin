@@ -17,7 +17,7 @@ const VideoItem = ({ videoItem }: Props) => {
         >
             <div className="relative overflow-hidden h-full">
                 <div className="w-full relative aspect-[16/9] bg-white overflow-hidden">
-                    {videoItem.thumbnail ? (
+                    {videoItem.embed_code ? (
                         <ImageWithFallback
                             src={`https://img.youtube.com/vi/${videoItem.embed_code}/hqdefault.jpg`}
                             height={600}
