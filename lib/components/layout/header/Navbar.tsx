@@ -83,8 +83,8 @@ const Navbar = () => {
                     )}
                   </Link>
 
-                  {item.children && openDropdown === item.text && (
-                    <div className="absolute top-full left-0 w-32 bg-[#F4F4F4] rounded-md shadow-md z-50">
+                  {!item.isMegaMenu && item.children && openDropdown === item.text && (
+                    <div className="absolute top-full left-0 w-36 bg-[#F4F4F4] rounded-md shadow-md z-50 py-2">
                       {item.children.map((child) => (
                         <Link
                           key={child.text}
@@ -94,6 +94,22 @@ const Navbar = () => {
                           {child.text}
                         </Link>
                       ))}
+                    </div>
+                  )}
+
+                  {item.isMegaMenu && item.children && openDropdown === item.text && (
+                    <div className="absolute top-full -right-3 w-[600px] pt-1 z-50">
+                      <div className="grid grid-cols-3 bg-[#F4F4F4] rounded-md shadow-md z-50 overflow-hidden py-2">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.text}
+                            href={`/${child.href}`}
+                            className="block px-5 py-2 text-sm hover:bg-red-100 hover:text-red-600 font-medium"
+                          >
+                            {child.text}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>

@@ -26,6 +26,7 @@ export interface NewsItemType {
 export type NavItem = {
   text: string;
   href: string;
+  isMegaMenu?: boolean;
   children?: NavItem[];
 };
 
@@ -34,21 +35,21 @@ export const navItems: NavItem[] = [
   { text: "জাতীয়", href: "/national" },
   { text: "রাজনীতি", href: "/politics" },
   {
-    text: "বিশ্ব",
+    text: "দূরলোক",
     href: "/international",
-    children: [
-      { "text": "লাতিন আমেরিকা", "href": "latin-america" },
-      { "text": "ভারত", "href": "india" },
-      { "text": "পাকিস্তান", "href": "pakistan" },
-      { "text": "চীন", "href": "china" },
-      { "text": "মধ্যপ্রাচ্য", "href": "middle-east" },
-      { "text": "এশিয়া", "href": "asia" },
-      { "text": "যুক্তরাষ্ট্র", "href": "usa" },
-      { "text": "ইউরোপ", "href": "europe" },
-      { "text": "আফ্রিকা", "href": "africa" },
-      { "text": "অস্ট্রেলিয়া", "href": "south-america" },
-      { "text": "অন্যান্য", "href": "others" }
-    ],
+    // children: [
+    //   { "text": "লাতিন আমেরিকা", "href": "latin-america" },
+    //   { "text": "ভারত", "href": "india" },
+    //   { "text": "পাকিস্তান", "href": "pakistan" },
+    //   { "text": "চীন", "href": "china" },
+    //   { "text": "মধ্যপ্রাচ্য", "href": "middle-east" },
+    //   { "text": "এশিয়া", "href": "asia" },
+    //   { "text": "যুক্তরাষ্ট্র", "href": "usa" },
+    //   { "text": "ইউরোপ", "href": "europe" },
+    //   { "text": "আফ্রিকা", "href": "africa" },
+    //   { "text": "অস্ট্রেলিয়া", "href": "south-america" },
+    //   { "text": "অন্যান্য", "href": "others" }
+    // ],
   },
   {
     text: COUNTRY_PAGE.name_bn,
@@ -86,32 +87,32 @@ export const navItems: NavItem[] = [
     ]
     ,
   },
-  { text: "বিজ্ঞানলোক", href: "/science" },
+
   {
     text: "চিত্রলোক",
     href: "/entertainment",
-    children: [
-      { "text": "সিনেমা", "href": "cinema" },
-      { "text": "টেলিভিশন", "href": "television" },
-      { "text": "সিরিয়াল", "href": "serial" },
-      { "text": "মঞ্চ", "href": "stage" },
-      { "text": "লোক-সংস্কৃতি", "href": "treatment" },
-      { "text": "বলিউড", "href": "bollywood" },
-      { "text": "দক্ষিণের সিনেমা", "href": "south-indian-cinema" },
-      { "text": "সংগীত", "href": "music" },
-      { "text": "হলিউড", "href": "hollywood" }
-    ]
-    ,
+    // children: [
+    //   { "text": "সিনেমা", "href": "cinema" },
+    //   { "text": "টেলিভিশন", "href": "television" },
+    //   { "text": "সিরিয়াল", "href": "serial" },
+    //   { "text": "মঞ্চ", "href": "stage" },
+    //   { "text": "লোক-সংস্কৃতি", "href": "treatment" },
+    //   { "text": "বলিউড", "href": "bollywood" },
+    //   { "text": "দক্ষিণের সিনেমা", "href": "south-indian-cinema" },
+    //   { "text": "সংগীত", "href": "music" },
+    //   { "text": "হলিউড", "href": "hollywood" }
+    // ]
   },
+  { text: "বিজ্ঞানলোক", href: "/science" },
   {
     text: "জীবনলোক",
     href: "/lifestyle",
     children: [
-      { "text": "পান্থলোক", "href": "tourism" },
       { "text": "লেইসফিতা", "href": "leisfita" },
+      { "text": "পান্থলোক", "href": "tourism" },
       { "text": "রান্নাঘর", "href": "recipe" },
       { "text": "সামাজিক যোগাযোগ", "href": "social-media" },
-      { "text": "যত্নআত্তি", "href": "take-care" }
+      // { "text": "যত্নআত্তি", "href": "take-care" }
     ]
     ,
   },
@@ -132,31 +133,48 @@ export const navItems: NavItem[] = [
     text: "ফিচার",
     href: "/feature",
     children: [
-      { "text": "দেহঘড়ি", "href": "prescription" },
-      { "text": "ভিন্যলোক", "href": "vinnolok" },
-      { "text": "ভাগ্যলোক", "href": "horoscope" },
-      { "text": "দ্বীনলোক", "href": "religion" },
-      { "text": "ডানপিটে", "href": "dreamer" },
+      { "text": "সাহিত্যলোক", "href": "literature" },
       { "text": "নারীলোক", "href": "women" },
-      { "text": "সাহিত্যলোক", "href": "literature" }
-    ]
-    ,
+      { "text": "ডানপিটে", "href": "dreamer" },
+      { "text": "দ্বীনলোক", "href": "religion" },
+      { "text": "ভাগ্যলোক", "href": "horoscope" },
+      { "text": "ভিন্যলোক", "href": "vinnolok" },
+      { "text": "দেহঘড়ি", "href": "prescription" },
+    ],
   },
+  { text: "ক্যাম্পাস", href: "/campus" },
   {
     text: "কর্মলোক",
     href: "/jobs",
+    // children: [
+    //   { text: "সরকারি", href: "#government" },
+    //   { text: "বেসরকারি", href: "#private" },
+    //   { text: "ব্যাংক", href: "#bank-jobs" },
+    //   { text: "এনজিও", href: "#ngo" },
+    //   { text: "পরামর্শ", href: "#career-advice" },
+    // ],
+  },
+
+  {
+    text: "অন্যান্য",
+    href: "/",
+    isMegaMenu: true,
     children: [
-      { text: "সরকারি", href: "#government" },
-      { text: "বেসরকারি", href: "#private" },
-      { text: "ব্যাংক", href: "#bank-jobs" },
-      { text: "এনজিও", href: "#ngo" },
-      { text: "পরামর্শ", href: "#career-advice" },
+      { "text": "শিল্পলোক", "href": "arts-culture" },
+      { "text": "গণমাধ্যম", "href": "media" },
+      { "text": "দিবস", "href": "festival" },
+      { "text": "প্রবাসলোক", "href": "probash" },
+      { "text": "মতামত", "href": "opinion" },
+      { "text": "সাক্ষাৎকার", "href": "interview" },
+      { "text": "এদিন বিশেষ", "href": "special-report" },
+      { "text": "উদ্যোক্তা", "href": "entrepreneur" },
+      { "text": "আইন-অপরাধ", "href": "law-crime" },
+      { "text": "বাণীলোক", "href": "speech" },
+      { "text": "ক্লিক স্মৃতি", "href": "photos" },
+      { "text": "ভিডিওঘর", "href": "videos" },
+      { "text": "আর্কাইভস", "href": "archive" },
     ],
   },
-  { text: "পান্থলোক", href: "/lifestyle/tourism" },
-  // { text: "আজকের পত্রিকা", href: "#todays-paper" },
-  { text: "আর্কাইভ", href: "/archive" },
-  // { text: "ইপেপার", href: "#epaper" },
 ];
 
 export const newsJson = [

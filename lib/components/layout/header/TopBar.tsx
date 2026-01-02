@@ -19,7 +19,7 @@ import { x, youtube, facebook } from "@/lib/components/icons";
 import SocialMediaDropdown from "@/lib/components/layout/header/SocialMediaDropdown";
 import { navItems } from "@/lib/data";
 import { FaBars } from "react-icons/fa6";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineHome } from "react-icons/ai";
 
 const socialLinks = [
   { href: "https://www.facebook.com", icon: facebook, alt: "facebook" },
@@ -198,9 +198,16 @@ const TopBar = ({ dateTimeBn }: Props) => {
           />
 
           {/* Drawer */}
-          <div className="md:hidden bg-white shadow-lg h-screen w-80 overflow-y-auto pb-12">
+          <div className="md:hidden bg-white shadow-lg h-screen w-80 overflow-y-auto pb-24">
             {/* Header */}
-            <div className="sticky top-0 bg-gray-100 px-4 py-4 flex justify-end">
+            <div className="sticky top-0 bg-gray-100 px-4 py-4 flex justify-between">
+              <Link
+                href={'/'}
+                className="text-[22px] font-semibold text-black"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <AiOutlineHome />
+              </Link>
               <button onClick={() => setMobileMenuOpen(false)}>
                 <AiOutlineClose size={24} />
               </button>
@@ -214,14 +221,12 @@ const TopBar = ({ dateTimeBn }: Props) => {
                 return (
                   <div key={index} className="border-b border-gray-200">
                     {/* Parent row */}
-                    <div className="group flex items-center justify-between px-2 hover:bg-gray-100 transition-colors">
+                    <div className="group relative flex items-stretch justify-between">
                       <Link
                         href={item.href}
-                        className={`px-2 py-3 font-medium w-full
-                    transition-colors
-                    group-hover:text-red-500
-                    ${item.children ? "w-[85%]" : "w-full"}
-                  `}
+                        className={`px-4 py-3 font-medium hover:bg-gray-100 transition-colors hover:text-red-500
+      ${item.children ? "w-[85%]" : "w-full"}
+    `}
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         {item.text}
@@ -231,15 +236,23 @@ const TopBar = ({ dateTimeBn }: Props) => {
                       {item.children && (
                         <button
                           onClick={() => toggleSubmenu(index)}
-                          className="w-[15%] flex items-center justify-center
-                               text-gray-500
-                               transition-all
-                               group-hover:text-red-500"
+                          className="
+                            absolute
+                            right-0
+                            inset-y-0
+                            w-[15%]
+                            flex items-center justify-center
+                            text-gray-500
+                            transition-all
+                            hover:text-red-500
+                            hover:bg-gray-100
+                            border-l
+                          "
                         >
                           <span
                             className={`transition-transform duration-200
-                        ${isOpen ? "rotate-180" : ""}
-                      `}
+          ${isOpen ? "rotate-180" : ""}
+        `}
                           >
                             <IoIosArrowDown />
                           </span>
@@ -247,13 +260,14 @@ const TopBar = ({ dateTimeBn }: Props) => {
                       )}
                     </div>
 
+
                     {/* Submenu */}
                     {item.children && isOpen && (
                       <div className="pl-4 pb-2 bg-gray-50">
                         {item.children.map((child, i) => (
                           <Link
                             key={i}
-                            href={`${item.href}/${child.href}`}
+                            href={`/${child.href}`}
                             onClick={() => setMobileMenuOpen(false)}
                             className="block px-4 py-2 text-gray-600
                                  hover:text-red-500 hover:bg-gray-100
