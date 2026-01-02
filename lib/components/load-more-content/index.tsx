@@ -22,12 +22,12 @@ interface Props {
   };
   id: number;
   type:
-    | typeof LOAD_MORE_TYPES.CATEGORY // category
-    | typeof LOAD_MORE_TYPES.SUB_CATEGORY // sub-category
-    | typeof LOAD_MORE_TYPES.DIVISION // division
-    | typeof LOAD_MORE_TYPES.DISTRICT // district
-    | typeof LOAD_MORE_TYPES.UPAZILA // upazila
-    | typeof COUNTRY_PAGE.slug;
+  | typeof LOAD_MORE_TYPES.CATEGORY // category
+  | typeof LOAD_MORE_TYPES.SUB_CATEGORY // sub-category
+  | typeof LOAD_MORE_TYPES.DIVISION // division
+  | typeof LOAD_MORE_TYPES.DISTRICT // district
+  | typeof LOAD_MORE_TYPES.UPAZILA // upazila
+  | typeof COUNTRY_PAGE.slug;
   excludeIDs?: number[];
 }
 
@@ -40,7 +40,7 @@ const LoadMoreContent = ({
   // States variables
   const [loading, setLoading] = useState(false);
   const [contents, setContents] = useState<ContentItem[]>(
-    loadMoreContents.contents.filter((item) => !excludeIDs.includes(item.id))
+    loadMoreContents?.contents?.filter((item) => !excludeIDs.includes(item.id))
   );
   const [page, setPage] = useState(1);
   const recordsPerPage = 10;
@@ -81,7 +81,7 @@ const LoadMoreContent = ({
 
   return (
     <div className="flex flex-col gap-4">
-      {contents.map((newsItem, idx) => (
+      {contents && contents.length > 0 && contents.map((newsItem, idx) => (
         <div key={idx} className="border-b pb-4">
           <Link
             href={`${newsItem.full_url}`}
