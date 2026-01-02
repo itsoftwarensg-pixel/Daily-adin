@@ -22,8 +22,8 @@ const HomeSports = ({ homeData }: Props) => {
         <div className="py-8 bg-red-50">
             <Container>
                 <GradientHeader
-                    // title={sportsContents?.name || "ক্রীড়া লোক"}
-                    title={"ক্রীড়া লোক"}
+                    // title={sportsContents?.name || "ক্রীড়ালোক"}
+                    title={"ক্রীড়ালোক"}
                     color="red"
                     href={sportsContents?.url || "/"}
                     showReadMoreBtn={true}

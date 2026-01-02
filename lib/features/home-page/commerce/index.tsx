@@ -20,8 +20,8 @@ const HomeCommerce = ({ homeData }: Props) => {
         <div className="py-8 ">
             <Container>
                 <GradientHeader
-                    // title={businessContents?.name || "বাণিজ্য লোক"}
-                    title="বাণিজ্য লোক"
+                    // title={businessContents?.name || "বাণিজ্যলোক"}
+                    title="বাণিজ্যলোক"
                     color="red"
                     href={businessContents.url || "/"}
                     showReadMoreBtn={true}

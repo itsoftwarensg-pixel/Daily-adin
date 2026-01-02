@@ -19,7 +19,7 @@ const HomeVideo = ({ homeData }: Props) => {
         <div className="py-0 md:py-8">
             <Container>
                 <GradientHeader
-                    // title={videoContents?.name || "ভিডিও"}
+                    // title={videoContents?.name || "ভিডিওঘর"}
                     title={VIDEO_PAGE.name_bn}
                     color="red"
                     href={`/${VIDEO_PAGE.slug}`}
