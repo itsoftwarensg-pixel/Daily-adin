@@ -89,7 +89,7 @@ const Navbar = () => {
                         <Link
                           key={child.text}
                           href={`${item.href}/${child.href}`}
-                          className="block px-5 py-2 text-sm hover:bg-red-100 hover:text-red-600"
+                          className="block px-5 py-2 hover:bg-red-100 hover:text-red-600 font-medium"
                         >
                           {child.text}
                         </Link>
@@ -104,7 +104,7 @@ const Navbar = () => {
                           <Link
                             key={child.text}
                             href={`/${child.href}`}
-                            className="block px-5 py-2 text-sm hover:bg-red-100 hover:text-red-600 font-medium"
+                            className="block px-5 py-2 hover:bg-red-100 hover:text-red-600 font-medium"
                           >
                             {child.text}
                           </Link>
