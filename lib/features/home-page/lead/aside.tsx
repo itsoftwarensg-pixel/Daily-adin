@@ -7,7 +7,7 @@ const HomeLeadSidebar = () => {
     return (
         <div className="space-y-6">
             <div className="space-y-3">
-                <LeadVideoHeader title="YouTube" />
+                <LeadVideoHeader title="এদিন জনপ্রিয়" />
                 <LeadNewsItemVideoOverlay />
             </div>
 
