@@ -248,7 +248,7 @@ const ArchivePage = ({
                     </div>
 
                     {/* Buttons */}
-                    <div className="col-span-1 lg:col-span-2 space-y-4 pl-4 border-l">
+                    <div className="col-span-1 lg:col-span-2 md:space-y-4 md:pl-4 md:border-l grid grid-cols-2 md:grid-cols-1 gap-4 md:gap-0">
                         <button
                             onClick={handleReset}
                             className="w-full flex gap-4 px-6 py-3.5 items-center justify-center bg-gray-200 hover:bg-gray-300"
