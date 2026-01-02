@@ -134,64 +134,66 @@ const SOCIAL_DATA = [
 
 const SocialMediaDropdown = () => {
   return (
-    <div className="absolute right-0 mt-3 w-[600px] rounded-md bg-white shadow-lg border z-[9999]">
-      <div className="absolute -top-2 right-5 w-4 h-4 bg-white border-l border-t rotate-45" />
+    <div className="absolute right-0 w-[600px] rounded-md pt-3">
+      <div className="rounded-md bg-white shadow-lg border z-[9999]">
+        <div className="absolute top-1 pt-2 right-5 w-4 h-4 bg-white border-l border-t rotate-45" />
 
-      <div className="max-w-full w-full px-6">
-        {SOCIAL_DATA.map((section, idx) => (
-          <div
-            key={idx}
-            className={`py-5 ${section.isLast ? "" : "border-b border-gray-300"
-              } ${section.type === "grid-3"
-                ? "grid grid-cols-3 gap-3"
-                : "flex flex-col gap-3"
-              }`}
-          >
-            {section.type === "grid-2" && section.links && (
-              <>
-                <p className="text-lg font-semibold">{section.title}</p>
-                <div className="grid grid-cols-2 gap-3">
-                  {section.links.map((link, lIdx) => (
+        <div className="max-w-full w-full px-6">
+          {SOCIAL_DATA.map((section, idx) => (
+            <div
+              key={idx}
+              className={`py-5 ${section.isLast ? "" : "border-b border-gray-300"
+                } ${section.type === "grid-3"
+                  ? "grid grid-cols-3 gap-3"
+                  : "flex flex-col gap-3"
+                }`}
+            >
+              {section.type === "grid-2" && section.links && (
+                <>
+                  <p className="text-lg font-semibold">{section.title}</p>
+                  <div className="grid grid-cols-2 gap-3">
+                    {section.links.map((link, lIdx) => (
+                      <Link
+                        key={lIdx}
+                        target="_blank"
+                        href={link.href}
+                        className="flex items-center gap-2 group"
+                      >
+                        <ImageWithFallback
+                          src={link.icon}
+                          width={18}
+                          height={18}
+                          alt={link.name}
+                        />
+                        <p className="font-medium group-hover:text-blue-700">{link.name}</p>
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {section.type === "grid-3" &&
+                section.items?.map((item, iIdx) => (
+                  <div key={iIdx} className="flex flex-col gap-3">
+                    <p className="text-lg font-semibold">{item.title}</p>
                     <Link
-                      key={lIdx}
                       target="_blank"
-                      href={link.href}
+                      href={item.href}
                       className="flex items-center gap-2 group"
                     >
                       <ImageWithFallback
-                        src={link.icon}
+                        src={item.icon}
                         width={18}
                         height={18}
-                        alt={link.name}
+                        alt={item.name}
                       />
-                      <p className="font-medium group-hover:text-blue-700">{link.name}</p>
+                      <p className="font-medium group-hover:text-blue-700">{item.name}</p>
                     </Link>
-                  ))}
-                </div>
-              </>
-            )}
-
-            {section.type === "grid-3" &&
-              section.items?.map((item, iIdx) => (
-                <div key={iIdx} className="flex flex-col gap-3">
-                  <p className="text-lg font-semibold">{item.title}</p>
-                  <Link
-                    target="_blank"
-                    href={item.href}
-                    className="flex items-center gap-2 group"
-                  >
-                    <ImageWithFallback
-                      src={item.icon}
-                      width={18}
-                      height={18}
-                      alt={item.name}
-                    />
-                    <p className="font-medium group-hover:text-blue-700">{item.name}</p>
-                  </Link>
-                </div>
-              ))}
-          </div>
-        ))}
+                  </div>
+                ))}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

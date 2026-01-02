@@ -140,9 +140,13 @@ const TopBar = ({ dateTimeBn }: Props) => {
               ই-পেপার
             </Link>
 
-            <div ref={dropdownRef} className="relative">
+            <div
+              ref={dropdownRef}
+              className="relative"
+              onMouseEnter={() => setOpenSocialMediaDropdown(true)}
+              onMouseLeave={() => setOpenSocialMediaDropdown(false)}
+            >
               <button
-                onClick={() => setOpenSocialMediaDropdown((prev) => !prev)}
                 className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600"
               >
                 <IoIosShareAlt
