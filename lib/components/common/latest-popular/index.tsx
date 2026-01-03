@@ -52,7 +52,7 @@ export default function LatestPopularNews({
       <div className={`overflow-y-auto`} style={{ maxHeight: `${height}px` }}>
         {activeTab === "latest" && (
           <div>
-            {latestNews && latestNews.length > 0 && latestNews.slice(1, 10).map((newsItem, index) => (
+            {latestNews && latestNews.length > 0 && latestNews.slice(0, 10).map((newsItem, index) => (
               <div key={index} className="px-2">
                 <NewsItemLatestPopular newsItem={newsItem} />
               </div>
@@ -61,7 +61,7 @@ export default function LatestPopularNews({
         )}
         {activeTab === "popular" && (
           <div>
-            {popularNews && popularNews.length > 0 && popularNews.slice(1, 10).map((newsItem, index) => (
+            {popularNews && popularNews.length > 0 && popularNews.slice(0, 10).map((newsItem, index) => (
               <div key={index} className="px-2">
                 <NewsItemLatestPopular newsItem={newsItem} />
               </div>
