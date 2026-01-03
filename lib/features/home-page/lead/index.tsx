@@ -153,7 +153,7 @@ const HomeLead = ({ homeData }: Props) => {
                             {/* এদিন জনপ্রিয় - Home Video */}
                             {homeTopVideoNewsContents && homeTopVideoNewsContents.length > 0 &&
                                 <div className="space-y-3">
-                                    <LeadVideoHeader title="এদিন জনপ্রিয়" />
+                                    <LeadVideoHeader title="এদিন জনপ্রিয়" href={homeTopVideoNewsContents[0].embed_code ? homeTopVideoNewsContents[0].embed_code : ""} />
                                     <LeadNewsItemVideoOverlay video={homeTopVideoNewsContents[0]} />
                                 </div>
                             }
@@ -163,14 +163,14 @@ const HomeLead = ({ homeData }: Props) => {
                                 <div className="space-y-3">
                                     <LeadVideoHeader
                                         title="তারকা আসছেন যিনি"
-                                        href={starProgramNewsContent.video_link ? starProgramNewsContent.video_link : "/"}
+                                        href={starProgramNewsContent.video_link ? starProgramNewsContent.video_link : ""}
                                     />
                                     <LeadNewsItemVideoCelebrity
                                         title={`${starProgramNewsContent.identity}`}
                                         content={`${starProgramNewsContent.details}`}
                                         quote={`${starProgramNewsContent.quote}`}
                                         quoteFrom=""
-                                        href={starProgramNewsContent.video_link}
+                                        href={starProgramNewsContent.video_link ? starProgramNewsContent.video_link : ""}
                                     />
                                 </div>
                             }
