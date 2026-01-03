@@ -29,7 +29,7 @@ const Page = async ({ params }: Params) => {
 
   const [category, subCategory] = await Promise.all([
     getCategoryBySlugAction(category_slug, "subcategories"),
-    getSubCategoryBySlugAction(sub_category_slug, "category"),
+    getSubCategoryBySlugAction(category_slug, sub_category_slug, "category"),
   ]);
 
   if (!subCategory) {

@@ -29,8 +29,8 @@ export const APIEndpoint = {
 
   // Category API endpoints - Only for Category Page
   subCategory: {
-    getBySlug: (slug: string, include?: string) =>
-      `${APIEndpoint.base_url}/subcategories/slug/${slug}?include=${include || ""
+    getBySlug: (catSlug: string, subCatSlug: string, include?: string) =>
+      `${APIEndpoint.base_url}/subcategories/slug/${catSlug}/${subCatSlug}?include=${include || ""
       }`, // include: contents,category
   },
 
