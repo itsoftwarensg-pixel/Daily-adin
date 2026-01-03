@@ -46,7 +46,7 @@ const ArticleContent = ({ contentDetails, forwardRef }: Props) => {
 
       {/* Initial */}
       {contentDetails?.initial && (
-        <i className="text-gray-500 text-sm">{contentDetails.initial}</i>
+        <p className="text-red-400 mb-4 font-semibold">{contentDetails.initial}</p>
       )}
 
       {/* Tags */}
