@@ -3,31 +3,47 @@ import Link from "next/link";
 import Container from "@/lib/components/common/container";
 import { ImageWithFallback } from "@/lib/components/image";
 import Opinion from "@/lib/features/home-page/lead/Opinion";
-import HomeLeadSidebar from "@/lib/features/home-page/lead/aside";
 import LatestPopularNews from "@/lib/components/common/latest-popular";
 import LeadNewsItem from "@/lib/components/common/news-elements/lead-news-item";
-import { HomePageContnetSection } from "@/lib/types/home.page";
+import { HomePageContnetSection, HomePageStarProgramSection } from "@/lib/types/home.page";
 import HomeContentBox from "@/lib/components/home-content-box";
+import LeadVideoHeader from "@/lib/components/common/section-headers/lead-video-header";
+import LeadNewsItemVideoOverlay from "@/lib/components/common/news-elements/lead-news-item-video-overlay";
+import LeadNewsItemVideoCelebrity from "@/lib/components/common/news-elements/lead-news-item-video-celebrity";
 
 // Props
 interface Props {
     homeData: {
-        'lead': HomePageContnetSection,
-        'national'?: HomePageContnetSection,
-        'politics'?: HomePageContnetSection,
-        'recent'?: HomePageContnetSection,
-        'popular'?: HomePageContnetSection,
+        lead: HomePageContnetSection,
+        national?: HomePageContnetSection,
+        politics?: HomePageContnetSection,
+        recent?: HomePageContnetSection,
+        popular?: HomePageContnetSection,
+        star_program?: HomePageStarProgramSection;
+        opinion?: HomePageContnetSection;
     };
 }
 
 const HomeLead = ({ homeData }: Props) => {
-    const { lead: leadContents, 'national': nationalContents, 'politics': politicalContents, 'recent': recentContents, 'popular': popularContents } = homeData;
+    const {
+        lead: leadContents,
+        national: nationalContents,
+        politics: politicalContents,
+        recent: recentContents,
+        popular: popularContents,
+        star_program: starProgramContent,
+        opinion: opinionContents
+
+    } = homeData;
 
     const leadNewsContents = leadContents?.contents || [];
     const nationalNewsContents = nationalContents?.contents || [];
     const politicalNewsContents = politicalContents?.contents || [];
     const recentNewsContents = recentContents?.contents || [];
     const popularNewsContents = popularContents?.contents || [];
+    const opinionNewsContents = opinionContents?.contents || [];
+    const starProgramNewsContent = starProgramContent?.contents;
+
 
     const leadMainContent = leadNewsContents[0];              // Main lead news
     const leadLeftContents = leadNewsContents.slice(1, 6);    // Left side contents
@@ -130,7 +146,27 @@ const HomeLead = ({ homeData }: Props) => {
 
                     {/* Sidebar - Rigt side */}
                     <div className="col-span-1">
-                        <HomeLeadSidebar />
+                        <div className="space-y-6">
+                            <div className="space-y-3">
+                                <LeadVideoHeader title="এদিন জনপ্রিয়" />
+                                <LeadNewsItemVideoOverlay />
+                            </div>
+
+                            {starProgramNewsContent &&
+                                <div className="space-y-3">
+                                    <LeadVideoHeader
+                                        title="তারকা আসছেন যিনি"
+                                        href={starProgramNewsContent.video_link}
+                                    />
+                                    <LeadNewsItemVideoCelebrity
+                                        title={`${starProgramNewsContent.identity}`}
+                                        content={`${starProgramNewsContent.details}`}
+                                        quote={`${starProgramNewsContent.quote}`}
+                                        quoteFrom=""
+                                    />
+                                </div>
+                            }
+                        </div>
 
                         {/* Latest - Popular */}
                         <div className="my-4">
@@ -143,7 +179,11 @@ const HomeLead = ({ homeData }: Props) => {
                         </div>
 
                         {/* Opinion */}
-                        <Opinion />
+                        {opinionNewsContents && opinionNewsContents.length > 0 &&
+                            <Opinion opinionNewsContent={opinionNewsContents[0]} />
+                        }
+
+
                     </div>
                 </div>
             </Container >

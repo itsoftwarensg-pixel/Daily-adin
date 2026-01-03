@@ -5,6 +5,7 @@ import {
   HomePageVideoSection,
   HomePageContnetSection,
   HomePagePhotoAlbumSection,
+  HomePageStarProgramSection,
 } from "@/lib/types/home.page";
 import HomeLead from "@/lib/features/home-page/lead";
 import HomeMedia from "@/lib/features/home-page/media";
@@ -28,6 +29,8 @@ interface FullHomeData {
   country?: HomePageContnetSection;
   entertainment?: HomePageContnetSection;
   international?: HomePageContnetSection;
+  star_program?: HomePageStarProgramSection;
+  opinion?: HomePageContnetSection;
   video?: HomePageVideoSection;
   business?: HomePageContnetSection;
   lifestyle?: HomePageContnetSection; // lace tap
