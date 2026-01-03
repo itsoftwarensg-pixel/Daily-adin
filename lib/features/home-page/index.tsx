@@ -23,6 +23,7 @@ import HomeLaiceFitaPantholokCampus from "@/lib/features/home-page/laicefita-pan
 
 // Type for the combined home data
 interface FullHomeData {
+  scroll?: HomePageContnetSection;
   lead?: HomePageContnetSection;
   recent?: HomePageContnetSection;
   sports?: HomePageContnetSection;
@@ -98,7 +99,12 @@ const HomePage = ({ initialHomeData, divisionList }: Props) => {
 
   return (
     <>
-      {/* <BreakingNews /> */}
+      {/* শিরোনাম - Scroll / Breaking News */}
+      {homeData && homeData.scroll && homeData.scroll.contents && homeData.scroll.contents.length > 0 &&
+        <BreakingNews contents={homeData.scroll.contents} />
+      }
+
+      {/* Fist Chunk data */}
       <HomeLead homeData={homeData as any} />
 
       {/* Second Chunk Components */}
