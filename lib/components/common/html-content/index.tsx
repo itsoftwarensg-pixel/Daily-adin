@@ -57,7 +57,7 @@ function truncateHtml(html: string, maxLength: number) {
 const HtmlContent: React.FC<HtmlContentProps> = ({ html, maxContent, className }) => {
     const displayedHtml = maxContent ? truncateHtml(html, maxContent) : html;
 
-    return <div className={className} dangerouslySetInnerHTML={{ __html: displayedHtml }} />;
+    return <div className={`text-justify ${className}`} dangerouslySetInnerHTML={{ __html: displayedHtml }} />;
 };
 
 export default HtmlContent;

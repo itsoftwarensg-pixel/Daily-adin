@@ -156,13 +156,14 @@ const HomeLead = ({ homeData }: Props) => {
                                 <div className="space-y-3">
                                     <LeadVideoHeader
                                         title="তারকা আসছেন যিনি"
-                                        href={starProgramNewsContent.video_link}
+                                        href={starProgramNewsContent.video_link ? starProgramNewsContent.video_link : "/"}
                                     />
                                     <LeadNewsItemVideoCelebrity
                                         title={`${starProgramNewsContent.identity}`}
                                         content={`${starProgramNewsContent.details}`}
                                         quote={`${starProgramNewsContent.quote}`}
                                         quoteFrom=""
+                                        href={starProgramNewsContent.video_link}
                                     />
                                 </div>
                             }
