@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import logo from "@/public/logo.svg";
+import logo from "@/public/logo.png";
 import { usePathname } from "next/navigation";
 import { globe } from "@/lib/components/icons";
 import { RiNewspaperLine } from "react-icons/ri";
