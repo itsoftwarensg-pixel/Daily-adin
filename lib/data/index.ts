@@ -138,7 +138,7 @@ export const navItems: NavItem[] = [
       { "text": "ডানপিটে", "href": "dreamer" },
       { "text": "দ্বীনলোক", "href": "religion" },
       { "text": "ভাগ্যলোক", "href": "horoscope" },
-      { "text": "ভিন্যলোক", "href": "vinnolok" },
+      { "text": "অন্যলোক", "href": "onnolok" },
       { "text": "দেহঘড়ি", "href": "prescription" },
     ],
   },
