@@ -6,23 +6,20 @@ import { HomePagePhotoAlbumSection } from "@/lib/types/home.page";
 
 // Props
 interface Props {
-    homeData: {
-        'photo': HomePagePhotoAlbumSection,
-    };
+    data: HomePagePhotoAlbumSection | undefined;
 }
 
-const HomeClickedMemories = ({ homeData }: Props) => {
-    const { 'photo': photoContents } = homeData;
-    const photoAlbums = photoContents?.contents.slice(0, 6); // First 6 clicked memories
+const HomeClickedMemories = ({ data }: Props) => {
+    const photoAlbums = data?.contents.slice(0, 6); // First 6 clicked memories
 
     return (
         <div className="py-8">
             <Container>
                 <GradientHeader
-                    // title={photoContents?.name || "ক্লিক স্মৃতি"}
+                    // title={data?.name || "ক্লিক স্মৃতি"}
                     title="ক্লিক স্মৃতি"
                     color="red"
-                    href={photoContents.url || "/"}
+                    href={data?.url || "/"}
                     showReadMoreBtn={true}
                 />
 

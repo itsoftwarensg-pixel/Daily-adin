@@ -8,15 +8,12 @@ import { HomePageContnetSection } from "@/lib/types/home.page";
 
 // Props
 interface Props {
-    homeData: {
-        'entertainment': HomePageContnetSection,
-    };
+    data: HomePageContnetSection | undefined;
 }
 
-const HomeMedia = ({ homeData }: Props) => {
-    const { 'entertainment': entertainmentContents } = homeData;
-    const leadMainContent = entertainmentContents?.contents[0];              // Main lead news
-    const subLeadContents = entertainmentContents?.contents.slice(1, 4);     // 3 sub lead contents
+const HomeMedia = ({ data }: Props) => {
+    const leadMainContent = data?.contents[0];              // Main lead news
+    const subLeadContents = data?.contents.slice(1, 4);     // 3 sub lead contents
 
     return (
         <div className="py-8 bg-red-500 bg-opacity-5">
@@ -25,7 +22,7 @@ const HomeMedia = ({ homeData }: Props) => {
                     // title={entertainmentContents?.name || "চিত্রলোক"}
                     title="চিত্রলোক"
                     color="red"
-                    href={entertainmentContents.url || "/"}
+                    href={data?.url || "/"}
                     showReadMoreBtn={true}
                 />
 
@@ -75,11 +72,11 @@ const HomeMedia = ({ homeData }: Props) => {
                                     />
                                 </div>
 
-                                <h2 className="absolute left-5 bottom-5 text-white text-xl md:text-3xl font-semibold group-hover:underline z-20">
+                                <h2 className="absolute left-5 bottom-5 text-white text-xl md:text-3xl font-semibold group-hover:underline z-10">
                                     {leadMainContent.heading}
                                 </h2>
 
-                                <div className="absolute w-full h-1/2 bg-gradient-to-t from-red-500 to-black/0 bottom-0 right-0 z-10"></div>
+                                <div className="absolute w-full h-1/2 bg-gradient-to-t from-red-500 to-black/0 bottom-0 right-0 z-[5]"></div>
                             </Link>
                         }
                     </div>

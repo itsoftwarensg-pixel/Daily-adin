@@ -7,19 +7,16 @@ import { VIDEO_PAGE } from "@/lib/config/constant";
 
 // Props
 interface Props {
-    homeData: {
-        'video': HomePageVideoSection,
-    };
+    data: HomePageVideoSection | undefined;
 }
 
-const HomeVideo = ({ homeData }: Props) => {
-    const { 'video': videoContents } = homeData;
-    const contents = videoContents?.contents.slice(0, 8); // First 8 clicked memories
+const HomeVideo = ({ data }: Props) => {
+    const contents = data?.contents.slice(0, 8); // First 8 clicked memories
     return (
         <div className="py-0 md:py-8">
             <Container>
                 <GradientHeader
-                    // title={videoContents?.name || "ভিডিওঘর"}
+                    // title={data?.name || "ভিডিওঘর"}
                     title={VIDEO_PAGE.name_bn}
                     color="red"
                     href={`/${VIDEO_PAGE.slug}`}

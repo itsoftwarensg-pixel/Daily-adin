@@ -6,24 +6,21 @@ import { HomePageContnetSection } from "@/lib/types/home.page";
 
 // Props
 interface Props {
-    homeData: {
-        'business': HomePageContnetSection,
-    };
+    data: HomePageContnetSection | undefined;
 }
 
-const HomeCommerce = ({ homeData }: Props) => {
-    const { 'business': businessContents } = homeData;
-    const leadMainContent = businessContents?.contents[0];              // Main lead news
-    const subLeadContents = businessContents?.contents.slice(1, 5);     // 4 sub lead contents
+const HomeCommerce = ({ data }: Props) => {
+    const leadMainContent = data?.contents[0];              // Main lead news
+    const subLeadContents = data?.contents.slice(1, 5);     // 4 sub lead contents
 
     return (
         <div className="py-8 ">
             <Container>
                 <GradientHeader
-                    // title={businessContents?.name || "বাণিজ্যলোক"}
+                    // title={data?.name || "বাণিজ্যলোক"}
                     title="বাণিজ্যলোক"
                     color="red"
-                    href={businessContents.url || "/"}
+                    href={data?.url || "/"}
                     showReadMoreBtn={true}
                 />
 

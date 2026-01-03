@@ -5,18 +5,17 @@ import { HomePageContnetSection } from "@/lib/types/home.page";
 
 // Props
 interface Props {
-    homeData: {
-        'leisfita'?: HomePageContnetSection,
-        'campus'?: HomePageContnetSection,
-        'tourism'?: HomePageContnetSection,
-    };
+    data: {
+        leisfita: HomePageContnetSection | undefined;
+        campus: HomePageContnetSection | undefined;
+        tourism: HomePageContnetSection | undefined;
+    }
 }
 
-const HomeLaiceFitaPantholokCampus = ({ homeData }: Props) => {
-    const { 'leisfita': leisfitaContents, 'campus': campusContents, 'tourism': tourismContents } = homeData;
-    const leisfitaNewsContents = leisfitaContents?.contents || [];
-    const campusNewsContents = campusContents?.contents || [];
-    const tourismNewsContents = tourismContents?.contents || [];
+const HomeLaiceFitaPantholokCampus = ({ data }: Props) => {
+    const leisfitaNewsContents = data.leisfita?.contents || [];
+    const campusNewsContents = data.campus?.contents || [];
+    const tourismNewsContents = data.tourism?.contents || [];
 
     return (
         <div className="py-8">
@@ -28,7 +27,7 @@ const HomeLaiceFitaPantholokCampus = ({ homeData }: Props) => {
                         // sectionHeaderTitle={leisfitaContents?.name || `লেইসফিতা`}
                         sectionHeaderTitle={`লেইসফিতা`}
                         sectionHeaderColor="emerald"
-                        sectionUrl={leisfitaContents?.url || `/`}
+                        sectionUrl={data.leisfita?.url || `/`}
                         showSectionReadMoreBtn
                         transparentReadMoreBtn={true}
                     />
@@ -39,7 +38,7 @@ const HomeLaiceFitaPantholokCampus = ({ homeData }: Props) => {
                         // sectionHeaderTitle={tourismContents?.name || `পান্থলোক`}
                         sectionHeaderTitle={`পান্থলোক`}
                         sectionHeaderColor="gray"
-                        sectionUrl={tourismContents?.url || `/`}
+                        sectionUrl={data.tourism?.url || `/`}
                         showSectionReadMoreBtn
                         transparentReadMoreBtn={true}
                     />
@@ -50,7 +49,7 @@ const HomeLaiceFitaPantholokCampus = ({ homeData }: Props) => {
                         // sectionHeaderTitle={campusContents?.name || `ক্যাম্পাস`}
                         sectionHeaderTitle={`ক্যাম্পাস`}
                         sectionHeaderColor="indigo"
-                        sectionUrl={campusContents?.url || `/`}
+                        sectionUrl={data.campus?.url || `/`}
                         showSectionReadMoreBtn
                         transparentReadMoreBtn={true}
                     />

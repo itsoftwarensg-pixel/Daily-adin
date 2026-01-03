@@ -112,14 +112,18 @@ const HomePage = ({ initialHomeData, divisionList }: Props) => {
       {/* Second Chunk Components */}
       {hasLoadedSecondChunk && (
         <>
-          <HomeSports homeData={homeData as any} />
-          <HomeCountry homeData={homeData as any} divisionList={divisionList} />
-          <HomeMedia homeData={homeData as any} />
-          <HomeCommerce homeData={homeData as any} />
-          <HomeInternational homeData={homeData as any} />
-          <HomeVideo homeData={homeData as any} />
-          <HomeLaiceFitaPantholokCampus homeData={homeData as any} />
-          <HomeClickedMemories homeData={homeData as any} />
+          <HomeSports data={homeData.sports} />
+          <HomeCountry data={homeData.country} divisionList={divisionList} />
+          <HomeMedia data={homeData.entertainment} />
+          <HomeCommerce data={homeData.business} />
+          <HomeInternational data={homeData.international} />
+          <HomeVideo data={homeData.video} />
+          <HomeLaiceFitaPantholokCampus data={{
+            leisfita: homeData.leisfita,
+            campus: homeData.campus,
+            tourism: homeData.tourism,
+          }} />
+          <HomeClickedMemories data={homeData.photo} />
         </>
       )}
 

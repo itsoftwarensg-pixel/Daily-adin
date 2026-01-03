@@ -8,25 +8,22 @@ import NewsItem from "@/lib/features/home-page/international/news-item";
 
 // Props
 interface Props {
-    homeData: {
-        'international': HomePageContnetSection,
-    };
+    data: HomePageContnetSection | undefined;
 }
 
-const HomeInternational = ({ homeData }: Props) => {
-    const { 'international': worldContents } = homeData;
-    const leadMainContent = worldContents?.contents[0];              // Main lead news
-    const leadLeftContents = worldContents?.contents.slice(1, 3);    // Left side contents
-    const leadRightContents = worldContents?.contents.slice(3, 5);   // Right lead contents
+const HomeInternational = ({ data }: Props) => {
+    const leadMainContent = data?.contents[0];              // Main lead news
+    const leadLeftContents = data?.contents.slice(1, 3);    // Left side contents
+    const leadRightContents = data?.contents.slice(3, 5);   // Right lead contents
 
     return (
         <div className="py-8 bg-purple-50">
             <Container>
                 <GradientHeader
-                    // title={worldContents?.name || "দূরলোক"}
+                    // title={data?.name || "দূরলোক"}
                     title="দূরলোক"
                     color="purple"
-                    href={worldContents.url || "/"}
+                    href={data?.url || "/"}
                     showReadMoreBtn={true}
                 />
 
@@ -50,7 +47,7 @@ const HomeInternational = ({ homeData }: Props) => {
                                     <div className={`w-full h-full`}>
                                         <div className="w-full aspect-[16/9]">
                                             <ImageWithFallback
-                                                src={`${leadMainContent.full_image_path}`}
+                                                src={leadMainContent.full_image_path}
                                                 height={600}
                                                 width={900}
                                                 alt={`${leadMainContent.heading}`}

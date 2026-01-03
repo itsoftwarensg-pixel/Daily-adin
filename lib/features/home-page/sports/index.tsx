@@ -7,16 +7,13 @@ import { HomePageContnetSection } from "@/lib/types/home.page";
 
 // Props
 interface Props {
-    homeData: {
-        'sports'?: HomePageContnetSection,
-    };
+    data: HomePageContnetSection | undefined;
 }
 
-const HomeSports = ({ homeData }: Props) => {
-    const { 'sports': sportsContents } = homeData;
-    const leadMainContent = sportsContents?.contents[0];              // Main lead news
-    const leadLeftContents = sportsContents?.contents.slice(1, 3);    // Left side contents
-    const leadRightContents = sportsContents?.contents.slice(3, 5);   // Right lead contents
+const HomeSports = ({ data }: Props) => {
+    const leadMainContent = data?.contents[0];              // Main lead news
+    const leadLeftContents = data?.contents.slice(1, 3);    // Left side contents
+    const leadRightContents = data?.contents.slice(3, 5);   // Right lead contents
 
     return (
         <div className="py-8 bg-red-50">
@@ -25,7 +22,7 @@ const HomeSports = ({ homeData }: Props) => {
                     // title={sportsContents?.name || "ক্রীড়ালোক"}
                     title={"ক্রীড়ালোক"}
                     color="red"
-                    href={sportsContents?.url || "/"}
+                    href={data?.url || "/"}
                     showReadMoreBtn={true}
                 />
                 <div className="grid grid-cols-6 md:grid-cols-12 gap-0 md:gap-4">
@@ -37,7 +34,7 @@ const HomeSports = ({ homeData }: Props) => {
                                     <div className={`w-full h-full bg-red-100`}>
                                         <div className="w-full aspect-[16/9.5]">
                                             <ImageWithFallback
-                                                src={`${newsItem.full_image_path}`}
+                                                src={newsItem.full_image_path}
                                                 height={600}
                                                 width={900}
                                                 alt={`${newsItem.heading}`}
@@ -63,7 +60,7 @@ const HomeSports = ({ homeData }: Props) => {
                                     <div className={`w-full h-full bg-red-100`}>
                                         <div className="w-full aspect-[16/9]">
                                             <ImageWithFallback
-                                                src={`${leadMainContent.full_image_path}`}
+                                                src={leadMainContent.full_image_path}
                                                 height={600}
                                                 width={900}
                                                 alt={`${leadMainContent.heading}`}
@@ -97,7 +94,7 @@ const HomeSports = ({ homeData }: Props) => {
                                     <div className={`w-full h-full bg-red-100`}>
                                         <div className="w-full aspect-[16/9.5]">
                                             <ImageWithFallback
-                                                src={`${newsItem.full_image_path}`}
+                                                src={newsItem.full_image_path}
                                                 height={600}
                                                 width={900}
                                                 alt={`${newsItem.heading}`}

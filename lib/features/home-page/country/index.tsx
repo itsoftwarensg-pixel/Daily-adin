@@ -13,24 +13,21 @@ import GradientHeader from "@/lib/components/common/section-headers/gradient";
 // Props
 interface Props {
   divisionList: DivisionType[];
-  homeData: {
-    [COUNTRY_PAGE.slug]?: HomePageContnetSection;
-  };
+  data: HomePageContnetSection | undefined;
 }
 
-const HomeCountry = ({ homeData, divisionList }: Props) => {
-  const { [COUNTRY_PAGE.slug]: countryContents } = homeData;
-  const leadMainContent = countryContents?.contents[0]; // Main lead news
-  const subLeadContents = countryContents?.contents.slice(1, 7); // 6 Sub lead contents
+const HomeCountry = ({ data, divisionList }: Props) => {
+  const leadMainContent = data?.contents[0]; // Main lead news
+  const subLeadContents = data?.contents.slice(1, 7); // 6 Sub lead contents
 
   return (
     <div className="py-8">
       <Container>
         <GradientHeader
-          // title={countryContents?.name || "প্রান্তলোক"}
+          // title={data?.name || "প্রান্তলোক"}
           title="প্রান্তলোক"
           color="green"
-          href={countryContents?.url || "/"}
+          href={data?.url || "/"}
           showReadMoreBtn={true}
         />
 
@@ -52,7 +49,7 @@ const HomeCountry = ({ homeData, divisionList }: Props) => {
                   <div className={`w-full h-full bg-gray-100`}>
                     <div className="w-full aspect-[16/9]">
                       <ImageWithFallback
-                        src={`${leadMainContent.full_image_path}`}
+                        src={leadMainContent.full_image_path}
                         height={600}
                         width={900}
                         alt={`${leadMainContent.heading}`}
