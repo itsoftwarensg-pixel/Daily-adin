@@ -12,7 +12,7 @@ import DetailsRightSidebarClient from "./right-sidebar-client";
 import { Category } from "@/lib/types/category.page";
 import Container from "@/lib/components/common/container";
 import Image from "next/image";
-import logo from "@/public/logo.svg";
+import logo from "@/public/logo.png";
 
 interface Props {
   initialContent: ContentDetailsType;
