@@ -5,6 +5,8 @@ import {
   HomePageVideoSection,
   HomePageContnetSection,
   HomePagePhotoAlbumSection,
+  HomePageStarProgramSection,
+  HomeLiveVideoSection,
 } from "@/lib/types/home.page";
 import HomeLead from "@/lib/features/home-page/lead";
 import HomeMedia from "@/lib/features/home-page/media";
@@ -22,12 +24,16 @@ import HomeLaiceFitaPantholokCampus from "@/lib/features/home-page/laicefita-pan
 
 // Type for the combined home data
 interface FullHomeData {
+  scroll?: HomePageContnetSection;
   lead?: HomePageContnetSection;
   recent?: HomePageContnetSection;
   sports?: HomePageContnetSection;
   country?: HomePageContnetSection;
   entertainment?: HomePageContnetSection;
   international?: HomePageContnetSection;
+  home_video?: HomeLiveVideoSection;
+  star_program?: HomePageStarProgramSection;
+  opinion?: HomePageContnetSection;
   video?: HomePageVideoSection;
   business?: HomePageContnetSection;
   lifestyle?: HomePageContnetSection; // lace tap
@@ -95,7 +101,12 @@ const HomePage = ({ initialHomeData, divisionList }: Props) => {
 
   return (
     <>
-      {/* <BreakingNews /> */}
+      {/* শিরোনাম - Scroll / Breaking News */}
+      {homeData && homeData.scroll && homeData.scroll.contents && homeData.scroll.contents.length > 0 &&
+        <BreakingNews contents={homeData.scroll.contents} />
+      }
+
+      {/* Fist Chunk data */}
       <HomeLead homeData={homeData as any} />
 
       {/* Second Chunk Components */}

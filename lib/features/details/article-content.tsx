@@ -11,17 +11,18 @@ interface Props {
 const ArticleContent = ({ contentDetails, forwardRef }: Props) => {
   return (
     <div ref={forwardRef}>
-      {/* Headline/Title */}
-      <h2 className="text-2xl lg:text-4xl font-semibold mb-2">{contentDetails.heading}</h2>
+
       {/* Sub-heading */}
       {contentDetails.sub_heading && (
-        <h4 className="text-2xl mb-4 font-medium leading-9">
+        <h4 className="text-xl mb-0 font-medium text-red-500 leading-9">
           {contentDetails.sub_heading}
         </h4>
       )}
+      {/* Headline/Title */}
+      <h2 className="text-2xl lg:text-4xl font-semibold mb-3">{contentDetails.heading}</h2>
 
       {/* Image */}
-      <div className="mb-6">
+      <div className="mb-2.5">
         {/* News Image */}
         <ImageWithFallback
           src={`${contentDetails.full_image_path}`}
@@ -33,20 +34,20 @@ const ArticleContent = ({ contentDetails, forwardRef }: Props) => {
 
         {/* Image Caption */}
         {contentDetails.bg_image_caption && (
-          <p className="block text-gray-500 my-1 text-center text-sm">
+          <p className="block text-gray-500 bg-gray-100 py-1 text-center text-sm">
             {contentDetails.bg_image_caption}
           </p>
         )}
       </div>
 
       {/* Content details */}
-      <article className="mb-4 text-black leading-8 text-lg content-details">
+      <article className="mb-3 text-black leading-8 text-lg content-details">
         <HtmlContent html={contentDetails.content_details} />
       </article>
 
       {/* Initial */}
       {contentDetails?.initial && (
-        <p className="text-red-400 mb-4 font-semibold">{contentDetails.initial}</p>
+        <p className="text-gray-600 text-[15px]  mb-4 italic">{contentDetails.initial}</p>
       )}
 
       {/* Tags */}

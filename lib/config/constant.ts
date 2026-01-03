@@ -12,7 +12,7 @@ export const COUNTRY_PAGE = {
 export const VIDEO_PAGE = {
     slug: "videos",
     name: "Video",
-    name_bn: "ভিডিও"
+    name_bn: "ভিডিওঘর"
 }
 
 // Load More Types
@@ -26,6 +26,6 @@ export const LOAD_MORE_TYPES = {
 };
 
 // Home page dataset includes
-export const HOME_PAGE_CHUNK_1 = `lead,scroll,trending_tag,special,recent,popular,national,politics`;
+export const HOME_PAGE_CHUNK_1 = `lead,scroll,trending_tag,special,recent,popular,national,politics,home_video,star_program,opinion`;
 export const HOME_PAGE_CHUNK_2 = `sports,country,entertainment,lifestyle,international,business,photo,video,tourism,campus,leisfita`;
 export const HOME_PAGE_INCLUDES = `${HOME_PAGE_CHUNK_1},${HOME_PAGE_CHUNK_2}`;

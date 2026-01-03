@@ -1,3 +1,5 @@
+import { Writer } from "@/lib/types/common.types";
+
 // Home page content item interface
 export interface HomePageContentItem {
     id: number;
@@ -7,6 +9,7 @@ export interface HomePageContentItem {
     created_at_bangla: string;
     full_image_path: string;
     full_url: string;
+    writer?: Writer
 }
 
 export interface HomePageContnetSection {
@@ -50,4 +53,39 @@ export interface HomePageVideoSection {
     name: string;
     url: string | null;
     contents: HomeVideoItem[];
+}
+
+// ======== Start program ========
+export interface StartProgramContent {
+    identity: string;
+    details: string;
+    quote: string;
+    photo_path: string;
+    video_link: string;
+    video_id: string;
+    status: boolean;
+}
+
+export interface HomePageStarProgramSection {
+    name: string;
+    contents: StartProgramContent;
+}
+
+
+// ========= Top Video ======
+export interface LiveVideo {
+    id: number;
+    heading: string;
+    embed_code: string;
+    video_id: string;
+    type: 'youtube' | 'facebook' | 'vimeo' | string;
+    is_live: boolean;
+    status: boolean;
+    created_at: string; // ISO datetime string
+    updated_at: string; // ISO datetime string
+}
+
+export interface HomeLiveVideoSection {
+    name: string;
+    contents: LiveVideo[];
 }

@@ -11,6 +11,7 @@ interface Props {
   content: string;
   quote: string;
   quoteFrom: string;
+  href?: string;
 }
 
 const LeadNewsItemVideoCelebrity = ({
@@ -18,11 +19,12 @@ const LeadNewsItemVideoCelebrity = ({
   content,
   quote,
   quoteFrom,
+  href,
 }: Props) => {
   return (
     <>
       <Link
-        href={"/"}
+        href={`${href || "/"}`}
         className="block group relative rounded-md overflow-hidden bg-gray-100"
       >
         <div className="w-full grid grid-cols-2 gap-2 relative">
@@ -45,22 +47,26 @@ const LeadNewsItemVideoCelebrity = ({
             <small>{quoteFrom}</small>
           </div>
 
-          <div
-            className="absolute w-full h-full rounded-md flex items-center justify-center 
+          {href &&
+            <div
+              className="absolute w-full h-full rounded-md flex items-center justify-center 
                 bg-black/0 group-hover:bg-black/50 scale-110
                 transition-colors duration-300 ease-in-out
                 z-10 top-0"
-          >
-            <CiPlay1
-              size={96}
-              className="text-transparent group-hover:text-white scale-75 group-hover:scale-100 transition-all duration-300 ease-in-out"
-            />
-          </div>
+            >
+              <CiPlay1
+                size={96}
+                className="text-transparent group-hover:text-white scale-75 group-hover:scale-100 transition-all duration-300 ease-in-out"
+              />
+            </div>
+          }
 
-          <div className="absolute right-0 -bottom-0 text-white bg-amber-950 flex gap-2 items-center px-2 py-1.5 text-xs">
-            <FaArrowRightLong />
-            ভিডিও দেখুন
-          </div>
+          {href &&
+            <div className="absolute right-0 -bottom-0 text-white bg-amber-950 flex gap-2 items-center px-2 py-1.5 text-xs">
+              <FaArrowRightLong />
+              ভিডিও দেখুন
+            </div>
+          }
         </div>
       </Link>
     </>
