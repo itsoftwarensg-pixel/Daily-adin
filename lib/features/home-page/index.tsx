@@ -6,6 +6,7 @@ import {
   HomePageContnetSection,
   HomePagePhotoAlbumSection,
   HomePageStarProgramSection,
+  HomeLiveVideoSection,
 } from "@/lib/types/home.page";
 import HomeLead from "@/lib/features/home-page/lead";
 import HomeMedia from "@/lib/features/home-page/media";
@@ -30,6 +31,7 @@ interface FullHomeData {
   country?: HomePageContnetSection;
   entertainment?: HomePageContnetSection;
   international?: HomePageContnetSection;
+  home_video?: HomeLiveVideoSection;
   star_program?: HomePageStarProgramSection;
   opinion?: HomePageContnetSection;
   video?: HomePageVideoSection;

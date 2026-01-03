@@ -5,7 +5,7 @@ import { ImageWithFallback } from "@/lib/components/image";
 import Opinion from "@/lib/features/home-page/lead/Opinion";
 import LatestPopularNews from "@/lib/components/common/latest-popular";
 import LeadNewsItem from "@/lib/components/common/news-elements/lead-news-item";
-import { HomePageContnetSection, HomePageStarProgramSection } from "@/lib/types/home.page";
+import { HomeLiveVideoSection, HomePageContnetSection, HomePageStarProgramSection } from "@/lib/types/home.page";
 import HomeContentBox from "@/lib/components/home-content-box";
 import LeadVideoHeader from "@/lib/components/common/section-headers/lead-video-header";
 import LeadNewsItemVideoOverlay from "@/lib/components/common/news-elements/lead-news-item-video-overlay";
@@ -19,6 +19,7 @@ interface Props {
         politics?: HomePageContnetSection,
         recent?: HomePageContnetSection,
         popular?: HomePageContnetSection,
+        home_video: HomeLiveVideoSection,
         star_program?: HomePageStarProgramSection;
         opinion?: HomePageContnetSection;
     };
@@ -31,6 +32,7 @@ const HomeLead = ({ homeData }: Props) => {
         politics: politicalContents,
         recent: recentContents,
         popular: popularContents,
+        home_video: homeVideoContents,
         star_program: starProgramContent,
         opinion: opinionContents
 
@@ -41,6 +43,7 @@ const HomeLead = ({ homeData }: Props) => {
     const politicalNewsContents = politicalContents?.contents || [];
     const recentNewsContents = recentContents?.contents || [];
     const popularNewsContents = popularContents?.contents || [];
+    const homeTopVideoNewsContents = homeVideoContents?.contents || [];
     const opinionNewsContents = opinionContents?.contents || [];
     const starProgramNewsContent = starProgramContent?.contents;
 
@@ -147,11 +150,15 @@ const HomeLead = ({ homeData }: Props) => {
                     {/* Sidebar - Rigt side */}
                     <div className="col-span-1">
                         <div className="space-y-6">
-                            <div className="space-y-3">
-                                <LeadVideoHeader title="এদিন জনপ্রিয়" />
-                                <LeadNewsItemVideoOverlay />
-                            </div>
+                            {/* এদিন জনপ্রিয় - Home Video */}
+                            {homeTopVideoNewsContents && homeTopVideoNewsContents.length > 0 &&
+                                <div className="space-y-3">
+                                    <LeadVideoHeader title="এদিন জনপ্রিয়" />
+                                    <LeadNewsItemVideoOverlay video={homeTopVideoNewsContents[0]} />
+                                </div>
+                            }
 
+                            {/* তারকা আসছেন যিনি - Star Program */}
                             {starProgramNewsContent &&
                                 <div className="space-y-3">
                                     <LeadVideoHeader

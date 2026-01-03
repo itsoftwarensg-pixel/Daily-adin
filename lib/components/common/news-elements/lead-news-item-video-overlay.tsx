@@ -1,37 +1,38 @@
 import React from "react";
-import Link from "next/link";
-import { CiPlay1 } from "react-icons/ci";
-import { newsJson } from "@/lib/data";
-import { ImageWithFallback } from "../../image";
+import { LiveVideo } from "@/lib/types/home.page";
 
-const LeadNewsItemVideoOverlay = () => {
+interface Props {
+  video: LiveVideo;
+}
+
+const LeadNewsItemVideoOverlay: React.FC<Props> = ({ video }) => {
+  if (!video) return null;
+
+  // Determine URL based on platform and live status
+  const url =
+    video.type === "youtube"
+      ? `https://www.youtube.com/embed/${video.video_id}?${video.is_live ? "autoplay=1&mute=1" : "autoplay=0"}&rel=0&modestbranding=1`
+      : `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.embed_code)}&autoplay=${video.is_live ? "true" : "false"}&mute=${video.is_live ? "true" : "false"
+      }&show_text=false`;
+
+  // Set iframe allow attribute
+  const allowAttr =
+    video.type === "youtube"
+      ? "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      : "autoplay; clipboard-write; encrypted-media; picture-in-picture";
+
   return (
-    <>
-      {newsJson.slice(17, 18).map((newsItem, index) => (
-        <Link
-          key={index}
-          href={"/"}
-          className="block group relative rounded-md overflow-hidden"
-        >
-          <div className="w-full aspect-[4/3] bg-white">
-            <ImageWithFallback
-              src={`${newsItem.image}`}
-              height={600}
-              width={900}
-              alt={`${newsItem.title}`}
-              className="w-full object-cover h-full rounded-md group-hover:rotate-[5deg] group-hover:scale-110 transition-all"
-            />
-          </div>
-          <div className="absolute w-full h-full flex items-center justify-center bg-black/50 z-10 top-0">
-            <CiPlay1
-              size={96}
-              color="white"
-              className="group-hover:scale-110 transition-all"
-            />
-          </div>
-        </Link>
-      ))}
-    </>
+    <div className="block group relative rounded-md overflow-hidden">
+      <div className="w-full aspect-[4/3] rounded overflow-hidden bg-black">
+        <iframe
+          src={url}
+          title={video.heading ?? "Video"}
+          allow={allowAttr}
+          allowFullScreen
+          className="w-full h-full border-0"
+        />
+      </div>
+    </div>
   );
 };
 

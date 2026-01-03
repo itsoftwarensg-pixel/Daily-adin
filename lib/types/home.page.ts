@@ -70,3 +70,22 @@ export interface HomePageStarProgramSection {
     name: string;
     contents: StartProgramContent;
 }
+
+
+// ========= Top Video ======
+export interface LiveVideo {
+    id: number;
+    heading: string;
+    embed_code: string;
+    video_id: string;
+    type: 'youtube' | 'facebook' | 'vimeo' | string;
+    is_live: boolean;
+    status: boolean;
+    created_at: string; // ISO datetime string
+    updated_at: string; // ISO datetime string
+}
+
+export interface HomeLiveVideoSection {
+    name: string;
+    contents: LiveVideo[];
+}
