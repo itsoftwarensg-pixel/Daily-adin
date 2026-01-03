@@ -190,8 +190,6 @@ const HomeLead = ({ homeData }: Props) => {
                         {opinionNewsContents && opinionNewsContents.length > 0 &&
                             <Opinion opinionNewsContent={opinionNewsContents[0]} />
                         }
-
-
                     </div>
                 </div>
             </Container >
