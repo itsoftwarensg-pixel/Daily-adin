@@ -31,7 +31,7 @@ const DetailsLeftSidebar = ({
 
       {/* Writer, TODO:: Link to writer page */}
       <div className="text-gray-700 font-semibold mb-2">
-        <span>{contentDetails?.writer?.name || `নিজস্ব প্রতিবেদক`}</span>
+        <span>{contentDetails?.writer?.custom_writer ? contentDetails?.writer?.custom_writer : contentDetails?.writer?.name || `নিজস্ব প্রতিবেদক`}</span>
       </div>
 
       {/* Publish/updated time */}

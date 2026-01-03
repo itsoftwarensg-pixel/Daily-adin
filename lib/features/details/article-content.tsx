@@ -12,7 +12,13 @@ const ArticleContent = ({ contentDetails, forwardRef }: Props) => {
   return (
     <div ref={forwardRef}>
       {/* Headline/Title */}
-      <h2 className="text-2xl lg:text-4xl font-semibold mb-4">{contentDetails.heading}</h2>
+      <h2 className="text-2xl lg:text-4xl font-semibold mb-2">{contentDetails.heading}</h2>
+      {/* Sub-heading */}
+      {contentDetails.sub_heading && (
+        <h4 className="text-2xl mb-4 font-medium leading-9">
+          {contentDetails.sub_heading}
+        </h4>
+      )}
 
       {/* Image */}
       <div className="mb-6">
@@ -26,22 +32,22 @@ const ArticleContent = ({ contentDetails, forwardRef }: Props) => {
         />
 
         {/* Image Caption */}
-        {/* <p className="block text-gray-500 my-1 text-center text-sm">
-          {contentDetails.image_caption}
-        </p> */}
+        {contentDetails.bg_image_caption && (
+          <p className="block text-gray-500 my-1 text-center text-sm">
+            {contentDetails.bg_image_caption}
+          </p>
+        )}
       </div>
-
-      {/* Sub-heading */}
-      {contentDetails.sub_heading && (
-        <h4 className="text-2xl mb-4 font-medium leading-9">
-          {contentDetails.sub_heading}
-        </h4>
-      )}
 
       {/* Content details */}
       <article className="mb-4 text-black leading-8 text-lg content-details">
         <HtmlContent html={contentDetails.content_details} />
       </article>
+
+      {/* Initial */}
+      {contentDetails?.initial && (
+        <i className="text-gray-500 text-sm">{contentDetails.initial}</i>
+      )}
 
       {/* Tags */}
       <div className="mb-4 flex gap-1 items-center">

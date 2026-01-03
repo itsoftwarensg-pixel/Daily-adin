@@ -10,6 +10,8 @@ export interface ContentDetailsType {
   meta_description: string | null;
   content_brief: string | null;
   content_details: string;
+  initial: string | null,
+  bg_image_caption: string | null,
   all_tags: any | null; // TODO:: Define proper type
   tag_ids: any | null; // TODO:: Define proper type
   sound_path: string | null;
