@@ -18,7 +18,7 @@ const HomeClickedMemories = ({ data }: Props) => {
             <Container>
                 <GradientHeader
                     // title={data?.name || "ক্লিকস্মৃতি"}
-                    title={`/${PHOTO_PAGE.name_bn || `ক্লিকস্মৃতি`}`}
+                    title={`${PHOTO_PAGE.name_bn || `ক্লিকস্মৃতি`}`}
                     color="red"
                     href={`/${PHOTO_PAGE.slug}`}
                     showReadMoreBtn={true}
