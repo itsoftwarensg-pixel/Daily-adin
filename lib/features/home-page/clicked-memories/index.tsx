@@ -16,8 +16,8 @@ const HomeClickedMemories = ({ data }: Props) => {
         <div className="py-8">
             <Container>
                 <GradientHeader
-                    // title={data?.name || "ক্লিক স্মৃতি"}
-                    title="ক্লিক স্মৃতি"
+                    // title={data?.name || "ক্লিকস্মৃতি"}
+                    title="ক্লিকস্মৃতি"
                     color="red"
                     href={data?.url || "/"}
                     showReadMoreBtn={true}

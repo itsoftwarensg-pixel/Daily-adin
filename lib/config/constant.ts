@@ -12,7 +12,7 @@ export const COUNTRY_PAGE = {
 export const VIDEO_PAGE = {
     slug: "videos",
     name: "Video",
-    name_bn: "ভিডিওঘর"
+    name_bn: "ভিডিও ঘর"
 }
 
 // Load More Types
