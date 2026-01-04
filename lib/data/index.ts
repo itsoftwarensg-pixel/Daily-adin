@@ -70,7 +70,7 @@ export const navItems: NavItem[] = [
     children: [
       { text: "হলিউড", href: "hollywood" },
       { text: "বলিউড", href: "bollywood" },
-      { text: "সিনেমা", href: "dhallywood" },
+      { text: "ঢালিউড", href: "dhallywood" },
       { text: "দক্ষিণের সিনেমা", href: "south-indian-cinema" },
       { text: "টেলিভিশন", href: "television" },
       { text: "সিরিয়াল", href: "serial" },
