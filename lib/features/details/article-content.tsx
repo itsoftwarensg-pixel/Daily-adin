@@ -14,7 +14,7 @@ const ArticleContent = ({ contentDetails, forwardRef }: Props) => {
 
       {/* Sub-heading */}
       {contentDetails.sub_heading && (
-        <h4 className="text-xl mb-0 font-medium text-red-500 leading-9">
+        <h4 className="text-xl mb-1 font-medium text-gray-700 leading-9">
           {contentDetails.sub_heading}
         </h4>
       )}
