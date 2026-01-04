@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import NewsItemLatestPopular from "@/lib/components/common/news-elements/news-item-latest-popular";
 import { ContentItem } from "@/lib/types/category.page";
@@ -68,7 +69,14 @@ export default function LatestPopularNews({
             ))}
           </div>
         )}
+
       </div>
+      <Link
+        href={'/latest'}
+        className="text-center block text-red-700 bg-red-100 py-2 hover:bg-red-200"
+      >
+        এদিনের সব
+      </Link>
     </div>
   );
 }

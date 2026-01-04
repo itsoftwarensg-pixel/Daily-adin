@@ -8,6 +8,30 @@ import { apiRequest } from "@/lib/api/client";
  * ============================================================================*/
 
 /**
+ * Fetch All Contents
+ *
+ * @param page - Optional page number for pagination
+ * @param limit - Optional limit of items per page
+ * @returns The all contents data or an empty array in case of an error
+ */
+export const getAllContentsAction = async (
+  page?: number,
+  limit?: number
+) => {
+  try {
+    const apiResponse = await apiRequest({
+      url: APIEndpoint.content.getAll(page, limit),
+      method: "GET",
+    });
+
+    return apiResponse.data;
+  } catch (err) {
+    console.error("Error fetching contents:", err);
+    return [];
+  }
+};
+
+/**
  * Fetch Content details by content id with included relations
  *
  * @param id - The id of the content to fetch

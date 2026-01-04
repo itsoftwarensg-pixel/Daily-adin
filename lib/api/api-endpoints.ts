@@ -36,6 +36,8 @@ export const APIEndpoint = {
 
   // Content API endpoints
   content: {
+    getAll: (page?: number, limit?: number) =>
+      `${APIEndpoint.base_url}/contents?page=${page}&limit=${limit}`,
     getByCategoryId: (id: number, page?: number, limit?: number) =>
       `${APIEndpoint.base_url}/contents/?for=category&id=${id}&page=${page}&limit=${limit}`,
     getBySubCategoryId: (id: number, page?: number, limit?: number) =>
