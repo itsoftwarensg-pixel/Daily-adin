@@ -166,11 +166,7 @@ const HomeLead = ({ homeData }: Props) => {
                                         href={starProgramNewsContent.video_link ? starProgramNewsContent.video_link : ""}
                                     />
                                     <LeadNewsItemVideoCelebrity
-                                        title={`${starProgramNewsContent.identity}`}
-                                        content={`${starProgramNewsContent.details}`}
-                                        quote={`${starProgramNewsContent.quote}`}
-                                        quoteFrom=""
-                                        href={starProgramNewsContent.video_link ? starProgramNewsContent.video_link : ""}
+                                        starProgramNewsContent={starProgramNewsContent}
                                     />
                                 </div>
                             }
