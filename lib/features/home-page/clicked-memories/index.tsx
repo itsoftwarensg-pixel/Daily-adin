@@ -3,6 +3,7 @@ import Container from "@/lib/components/common/container";
 import ClickedMemoryItem from "@/lib/components/common/news-elements/clicked-memory-item";
 import GradientHeader from "@/lib/components/common/section-headers/gradient";
 import { HomePagePhotoAlbumSection } from "@/lib/types/home.page";
+import { PHOTO_PAGE } from "@/lib/config/constant";
 
 // Props
 interface Props {
@@ -17,9 +18,9 @@ const HomeClickedMemories = ({ data }: Props) => {
             <Container>
                 <GradientHeader
                     // title={data?.name || "ক্লিকস্মৃতি"}
-                    title="ক্লিকস্মৃতি"
+                    title={`/${PHOTO_PAGE.name_bn || `ক্লিকস্মৃতি`}`}
                     color="red"
-                    href={data?.url || "/"}
+                    href={`/${PHOTO_PAGE.slug}`}
                     showReadMoreBtn={true}
                 />
 
@@ -27,7 +28,7 @@ const HomeClickedMemories = ({ data }: Props) => {
                     {photoAlbums && photoAlbums.length > 0 && photoAlbums.map((newsItem, idx) => (
                         <div key={idx} className="h-auto">
                             <ClickedMemoryItem
-                                newsItem={newsItem}
+                                photoItem={newsItem}
                                 variant="memory"
                                 bgColor="gray"
                             />
