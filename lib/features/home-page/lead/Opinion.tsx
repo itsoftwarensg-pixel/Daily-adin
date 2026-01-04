@@ -34,7 +34,7 @@ const Opinion = ({ opinionNewsContent }: Props) => {
         <div className="flex flex-col items-start justify-center">
           <div className="w-[150px] h-[220px] relative overflow-hidden">
             <ImageWithFallback
-              src={`${opinionNewsContent.full_image_path}`}
+              src={opinionNewsContent.writer?.photo}
               fill
               alt={`${opinionNewsContent.writer?.name || opinionNewsContent.writer?.custom_writer}`}
               className="object-cover"
