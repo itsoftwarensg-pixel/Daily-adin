@@ -18,37 +18,22 @@ import {
 
 const SOCIAL_DATA = [
   {
-    title: "ফেসবুক",
     type: "grid-2",
     links: [
       {
+        title: "ফেসবুক",
         name: "The Daily Adin",
         href: "https://www.facebook.com/dailyadin/?ref=waios.fb_links_xma_control",
         icon: facebook,
       },
       {
+        title: "ইউটিউব",
         name: "The Daily Adin",
         href: "https://www.youtube.com/@dailyadinbd",
         icon: youtube,
       },
     ],
   },
-  // {
-  //   title: "ইউটিউব",
-  //   type: "grid-2",
-  //   links: [
-  //     {
-  //       name: "The Daily Adin",
-  //       href: "https://www.youtube.com",
-  //       icon: youtube,
-  //     },
-  //     {
-  //       name: "Alternative Page",
-  //       href: "https://www.youtube.com",
-  //       icon: youtube,
-  //     },
-  //   ],
-  // },
   {
     type: "grid-3",
     items: [
@@ -150,23 +135,25 @@ const SocialMediaDropdown = () => {
             >
               {section.type === "grid-2" && section.links && (
                 <>
-                  <p className="text-lg font-semibold">{section.title}</p>
                   <div className="grid grid-cols-2 gap-3">
                     {section.links.map((link, lIdx) => (
-                      <Link
-                        key={lIdx}
-                        target="_blank"
-                        href={link.href}
-                        className="flex items-center gap-2 group"
-                      >
-                        <ImageWithFallback
-                          src={link.icon}
-                          width={18}
-                          height={18}
-                          alt={link.name}
-                        />
-                        <p className="font-medium group-hover:text-blue-700">{link.name}</p>
-                      </Link>
+                      <div key={lIdx} className="space-y-3">
+                        <p className="text-lg font-semibold">{link.title}</p>
+                        <Link
+
+                          target="_blank"
+                          href={link.href}
+                          className="flex items-center gap-2 group"
+                        >
+                          <ImageWithFallback
+                            src={link.icon}
+                            width={18}
+                            height={18}
+                            alt={link.name}
+                          />
+                          <p className="font-medium group-hover:text-blue-700">{link.name}</p>
+                        </Link>
+                      </div>
                     ))}
                   </div>
                 </>
