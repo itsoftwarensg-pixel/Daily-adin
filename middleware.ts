@@ -14,6 +14,15 @@ export function middleware(request: NextRequest) {
     }
 
     /** =========================
+       * PHOTO ROUTES
+       * ========================= */
+    // /videos/123 → allow (do nothing)
+    const photoDetails = /^\/photos\/[0-9]+$/;
+    if (photoDetails.test(pathname)) {
+        return NextResponse.next();
+    }
+
+    /** =========================
        * CONTENT / NEWS ROUTES
        * ========================= */
     /**details url check */

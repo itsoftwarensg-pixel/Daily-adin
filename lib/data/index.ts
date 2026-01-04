@@ -170,7 +170,7 @@ export const navItems: NavItem[] = [
       { "text": "উদ্যোক্তা", "href": "entrepreneur" },
       { "text": "আইন-অপরাধ", "href": "law-crime" },
       { "text": "বাণীলোক", "href": "speech" },
-      { "text": "ক্লিক স্মৃতি", "href": "photos" },
+      { "text": "ক্লিকস্মৃতি", "href": "photos" },
       { "text": "ভিডিও ঘর", "href": "videos" },
       { "text": "আর্কাইভস", "href": "archive" },
     ],

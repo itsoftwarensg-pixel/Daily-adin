@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import { ImageWithFallback } from "@/lib/components/image";
-import { HomePagePhotoAlbumItem } from "@/lib/types/home.page";
+import { PhotoItemType } from "@/lib/types/photo.page";
 
 interface PropsType {
-    newsItem: HomePagePhotoAlbumItem;
+    photoItem: PhotoItemType;
     href?: string;
     variant?: "memory" | "clicked"; // choose style
     bgColor?: string; // optional background for memory variant
@@ -12,14 +12,14 @@ interface PropsType {
 }
 
 const ClickedMemoryItem = ({
-    newsItem,
+    photoItem,
     href = "/",
     variant = "clicked",
     bgColor,
     height = "190px",
 }: PropsType) => {
     return (
-        <Link href={`/photos/${newsItem.id}`} className="block overflow-hidden relative group">
+        <Link href={`/photos/${photoItem.id}`} className="block overflow-hidden relative group">
             <div
                 className={`relative w-full ${variant === "memory" ? "px-1 md:px-6 py-1 md:py-5" : ""} ${bgColor && variant === "memory" ? `bg-${bgColor}-100` : ""}`}
             >
@@ -28,10 +28,10 @@ const ClickedMemoryItem = ({
                         }`}
                 >
 
-                    {newsItem.feature_image ? (
+                    {photoItem.feature_image ? (
                         <ImageWithFallback
-                            src={newsItem.feature_image}
-                            alt={newsItem.name}
+                            src={photoItem.feature_image}
+                            alt={photoItem.name}
                             fill
                             className="w-full h-full object-cover"
                         />
@@ -61,7 +61,7 @@ const ClickedMemoryItem = ({
                             className={`${variant === "memory" ? "text-sm md:text-xl" : "text-[20px]"
                                 } font-semibold group-hover:text-red-500`}
                         >
-                            {newsItem.name}
+                            {photoItem.name}
                         </p>
                     </div>
                 </div>

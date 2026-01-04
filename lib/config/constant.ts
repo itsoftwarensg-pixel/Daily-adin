@@ -15,6 +15,13 @@ export const VIDEO_PAGE = {
     name_bn: "ভিডিও ঘর"
 }
 
+// Video Page Constants
+export const PHOTO_PAGE = {
+    slug: "photos",
+    name: "Photo",
+    name_bn: "ক্লিকস্মৃতি"
+}
+
 // Load More Types
 export const LOAD_MORE_TYPES = {
     CATEGORY: "category",

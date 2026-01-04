@@ -110,4 +110,10 @@ export const APIEndpoint = {
     getAll: (page: number, limit: number) => `${APIEndpoint.base_url}/videos?page=${page}&limit=${limit}`,
     getById: (id: number) => `${APIEndpoint.base_url}/videos/${id}`,
   },
+
+  // Photo API endpoints - photo page and photo details page
+  photo: {
+    getAllAlbums: (page: number, limit: number) => `${APIEndpoint.base_url}/photos?page=${page}&limit=${limit}`,
+    getAlbumById: (id: number) => `${APIEndpoint.base_url}/photos/${id}`,
+  },
 };
