@@ -23,7 +23,7 @@ const LeadNewsItemVideoOverlay: React.FC<Props> = ({ video }) => {
 
   return (
     <div className="block group relative rounded-md overflow-hidden">
-      <div className="w-full aspect-[4/3] rounded overflow-hidden bg-black">
+      <div className="w-full aspect-video rounded overflow-hidden">
         <iframe
           src={url}
           title={video.heading ?? "Video"}
