@@ -8,6 +8,7 @@ import LoadMoreContent from "@/lib/components/load-more-content";
 import InnnerInitalContents from "@/lib/components/inner-initial-contents";
 import LatestPopular from "@/lib/features/latest-popular";
 import NoContentFound from "@/lib/components/no-content-found";
+import Advertisement from "@/lib/components/common/advertisement";
 
 // Define the props type
 interface Props {
@@ -80,10 +81,7 @@ const DistrictPage = ({ contents, district }: Props) => {
 
                 {/* Advertisement */}
                 <div className="flex justify-center mb-4">
-                  <img
-                    src="https://tpc.googlesyndication.com/simgad/15643014635329783982"
-                    alt=""
-                  />
+                  <Advertisement width={728} height={90} />
                 </div>
 
                 {/* LoadMoreContent component */}
@@ -103,10 +101,7 @@ const DistrictPage = ({ contents, district }: Props) => {
 
           <div className="col-span-1 lg:col-auto">
             <div className="flex justify-center">
-              <img
-                src="https://tpc.googlesyndication.com/simgad/11473454279542623205"
-                alt=""
-              />
+              <Advertisement width={300} height={300} />
             </div>
 
             {/* Latest - Popular */}

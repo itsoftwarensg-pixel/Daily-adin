@@ -10,6 +10,7 @@ import { RiTwitterXFill, RiWhatsappLine } from "react-icons/ri";
 import { MdContentCopy } from "react-icons/md";
 import { FiPrinter } from "react-icons/fi";
 import HtmlContent from "@/lib/components/common/html-content";
+import Advertisement from "@/lib/components/common/advertisement";
 
 // Props
 interface Props {
@@ -86,10 +87,7 @@ const VideoDetails = ({ videoDetails }: Props) => {
 
                     <div className="col-span-1 lg:col-auto">
                         <div className="flex justify-center">
-                            <img
-                                src="https://tpc.googlesyndication.com/simgad/11473454279542623205"
-                                alt=""
-                            />
+                            <Advertisement width={300} height={300} />
                         </div>
 
                         {/* Latest - Popular */}

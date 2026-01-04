@@ -10,6 +10,7 @@ import HomeContentBox from "@/lib/components/home-content-box";
 import LeadVideoHeader from "@/lib/components/common/section-headers/lead-video-header";
 import LeadNewsItemVideoOverlay from "@/lib/components/common/news-elements/lead-news-item-video-overlay";
 import LeadNewsItemVideoCelebrity from "@/lib/components/common/news-elements/lead-news-item-video-celebrity";
+import Advertisement from "@/lib/components/common/advertisement";
 
 // Props
 interface Props {
@@ -179,7 +180,7 @@ const HomeLead = ({ homeData }: Props) => {
 
                         {/* Advertisement */}
                         <div className="flex justify-center mb-4">
-                            <img src="https://tpc.googlesyndication.com/simgad/11473454279542623205" alt="" />
+                            <Advertisement width={300} height={300} />
                         </div>
 
                         {/* Opinion */}

@@ -1,13 +1,11 @@
+import Advertisement from "@/lib/components/common/advertisement";
 import LatestPopular from "@/lib/features/latest-popular";
 
 const DetailsRightSidebar = async () => {
   return (
     <div>
       <div className="flex justify-center">
-        <img
-          src="https://tpc.googlesyndication.com/simgad/11473454279542623205"
-          alt="logo"
-        />
+        <Advertisement width={300} height={300} />
       </div>
 
       <div className="mt-4">

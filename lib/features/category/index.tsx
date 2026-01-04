@@ -10,6 +10,7 @@ import LoadMoreContent from "@/lib/components/load-more-content";
 import { Category, ContentItem } from "@/lib/types/category.page";
 import InnnerInitalContents from "@/lib/components/inner-initial-contents";
 import NoContentFound from "@/lib/components/no-content-found";
+import Advertisement from "@/lib/components/common/advertisement";
 
 // Define the props type
 interface Props {
@@ -59,17 +60,14 @@ const CategoryIndex = ({ category }: Props) => {
         <div className="grid grid-cols-1 lg:grid-cols-[auto_360px] gap-4">
           <div className="col-span-1 lg:col-auto">
             {category?.position_contents &&
-            category?.position_contents.length > 0 ? (
+              category?.position_contents.length > 0 ? (
               <>
                 {/* Lead, SubLead, and 3 contents. Lead below */}
                 <InnnerInitalContents contents={category.position_contents} />
 
                 {/* Advertisement */}
                 <div className="flex justify-center mb-4">
-                  <img
-                    src="https://tpc.googlesyndication.com/simgad/15643014635329783982"
-                    alt=""
-                  />
+                  <Advertisement width={728} height={90} />
                 </div>
 
                 {/* LoadMoreContent component */}
@@ -87,10 +85,7 @@ const CategoryIndex = ({ category }: Props) => {
 
           <div className="col-span-1 lg:col-auto">
             <div className="flex justify-center">
-              <img
-                src="https://tpc.googlesyndication.com/simgad/11473454279542623205"
-                alt=""
-              />
+              <Advertisement width={300} height={300} />
             </div>
 
             {/* Latest - Popular */}
