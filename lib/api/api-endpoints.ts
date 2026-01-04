@@ -8,6 +8,8 @@ export const APIEndpoint = {
   utils: {
     getBnDateTime: () =>
       `${APIEndpoint.base_url}/datetime-bn`,
+    getMenu: () =>
+      `${APIEndpoint.base_url}/menu`,
   },
 
   // Home API endpoints

@@ -18,3 +18,11 @@ export interface Writer {
     full_url: string;
     custom_writer: string;
 }
+
+export interface NavbarMenuItem {
+    text: string;
+    href: string;
+    isCat?: boolean;            // optional, only exists on some items
+    isMegaMenu?: boolean;
+    children?: NavbarMenuItem[];      // optional, for nested menus
+};

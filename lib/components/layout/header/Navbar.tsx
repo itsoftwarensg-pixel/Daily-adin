@@ -8,8 +8,14 @@ import { FiSearch, FiX } from "react-icons/fi";
 import { whiteArrowDown } from "@/lib/components/icons";
 import { ImageWithFallback } from "@/lib/components/image";
 import { AiOutlineHome } from "react-icons/ai";
+import { NavbarMenuItem } from "@/lib/types/common.types";
 
-const Navbar = () => {
+// Props
+interface Props {
+  menus: NavbarMenuItem[];
+}
+
+const Navbar = ({ menus }: Props) => {
   const searchRef = useRef<HTMLDivElement>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -55,9 +61,9 @@ const Navbar = () => {
               >
                 <AiOutlineHome />
               </Link>
-              {navItems.map((item) => (
+              {menus && menus.length > 0 && menus.map((item, index) => (
                 <div
-                  key={item.text}
+                  key={index}
                   className="relative flex flex-col"
                   onMouseEnter={() =>
                     item.children && setOpenDropdown(item.text)

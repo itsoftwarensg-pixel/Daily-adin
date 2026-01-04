@@ -24,3 +24,21 @@ export const getBnDateTimeAction = async () => {
     return null;
   }
 };
+
+/**
+ * Fetch Navbar Menu items.
+ * @returns array
+ */
+export const getMenuAction = async () => {
+  try {
+    const apiResponse = await apiRequest({
+      url: APIEndpoint.utils.getMenu(),
+      method: "GET",
+    });
+
+    return apiResponse.data;
+  } catch (err) {
+    console.error("Error fetching menus:", err);
+    return null;
+  }
+};

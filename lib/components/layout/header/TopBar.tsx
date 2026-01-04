@@ -20,6 +20,7 @@ import SocialMediaDropdown from "@/lib/components/layout/header/SocialMediaDropd
 import { navItems } from "@/lib/data";
 import { FaBars } from "react-icons/fa6";
 import { AiOutlineClose, AiOutlineHome } from "react-icons/ai";
+import { NavbarMenuItem } from "@/lib/types/common.types";
 
 const socialLinks = [
   { href: "https://www.facebook.com", icon: facebook, alt: "facebook" },
@@ -30,9 +31,10 @@ const socialLinks = [
 // Props
 interface Props {
   dateTimeBn: string;
+  menus: NavbarMenuItem[];
 }
 
-const TopBar = ({ dateTimeBn }: Props) => {
+const TopBar = ({ dateTimeBn, menus }: Props) => {
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [openSocialMediaDropdown, setOpenSocialMediaDropdown] = useState(false);
@@ -215,7 +217,7 @@ const TopBar = ({ dateTimeBn }: Props) => {
 
             {/* Navigation */}
             <div>
-              {navItems.map((item, index) => {
+              {menus && menus.length > 0 && menus.map((item, index) => {
                 const isOpen = openSubmenus.includes(index);
 
                 return (
@@ -264,18 +266,21 @@ const TopBar = ({ dateTimeBn }: Props) => {
                     {/* Submenu */}
                     {item.children && isOpen && (
                       <div className="pl-4 pb-2 bg-gray-50">
-                        {item.children.map((child, i) => (
-                          <Link
-                            key={i}
-                            href={`/${child.href}`}
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="block px-4 py-2 text-gray-600
+                        {item.children.map((child, i) => {
+                          const href = child.isCat ? `${child.href}` : `${item.href}/${child.href}`;
+                          return (
+                            <Link
+                              key={i}
+                              href={item.isMegaMenu ? `/${child.href}` : href}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className="block px-4 py-2 text-gray-600
                                  hover:text-red-500 hover:bg-gray-100
                                  transition-colors"
-                          >
-                            {child.text}
-                          </Link>
-                        ))}
+                            >
+                              {child.text}
+                            </Link>
+                          )
+                        })}
                       </div>
                     )}
                   </div>
