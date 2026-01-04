@@ -38,7 +38,7 @@ const NewsItemLaceTape = ({
     titleSize = "base",
     bgColor,
 }: Props) => {
-    const highlighted = getRandomHighlightedText(newsItem.heading, 3);
+    // const highlighted = getRandomHighlightedText(newsItem.heading, 3);
 
     return (
         <Link href={newsItem.full_url} className="relative block group h-full">
@@ -67,7 +67,8 @@ const NewsItemLaceTape = ({
                             }
                             group-hover:text-blue-700 font-semibold`}
                     >
-                        {highlighted ? (
+                        {newsItem.heading}
+                        {/* {highlighted ? (
                             <>
                                 {highlighted.before && <span>{highlighted.before} </span>}
                                 <span className="text-red-500">{highlighted.highlight}</span>
@@ -75,7 +76,7 @@ const NewsItemLaceTape = ({
                             </>
                         ) : (
                             newsItem.heading
-                        )}
+                        )} */}
                     </h4>
                 </div>
             </div>
