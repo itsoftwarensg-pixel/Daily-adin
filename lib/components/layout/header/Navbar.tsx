@@ -85,15 +85,19 @@ const Navbar = () => {
 
                   {!item.isMegaMenu && item.children && openDropdown === item.text && (
                     <div className="absolute top-full left-0 w-36 bg-[#F4F4F4] rounded-md shadow-md z-50 py-2">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.text}
-                          href={`${item.href}/${child.href}`}
-                          className="block px-5 py-2 hover:bg-red-100 hover:text-red-600 font-medium"
-                        >
-                          {child.text}
-                        </Link>
-                      ))}
+                      {item.children.map((child) => {
+                        const href = child.isCat ? `${child.href}` : `${item.href}/${child.href}`;
+
+                        return (
+                          <Link
+                            key={child.text}
+                            href={href}
+                            className="block px-5 py-2 hover:bg-red-100 hover:text-red-600 font-medium"
+                          >
+                            {child.text}
+                          </Link>
+                        )
+                      })}
                     </div>
                   )}
 
