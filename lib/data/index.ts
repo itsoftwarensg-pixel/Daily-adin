@@ -171,7 +171,7 @@ export const navItems: NavItem[] = [
       { "text": "আইন-অপরাধ", "href": "law-crime" },
       { "text": "বাণীলোক", "href": "speech" },
       { "text": "ক্লিক স্মৃতি", "href": "photos" },
-      { "text": "ভিডিওঘর", "href": "videos" },
+      { "text": "ভিডিও ঘর", "href": "videos" },
       { "text": "আর্কাইভস", "href": "archive" },
     ],
   },
