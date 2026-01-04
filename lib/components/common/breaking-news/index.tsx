@@ -1,6 +1,5 @@
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
-import { newsJson } from "@/lib/data"; // TODO:: Temporary usage, remove later once API integrated
 import Container from "@/lib/components/common/container";
 import { HomePageContentItem } from "@/lib/types/home.page";
 
@@ -8,7 +7,6 @@ import { HomePageContentItem } from "@/lib/types/home.page";
 interface Props {
     contents: HomePageContentItem[];
 }
-
 
 const BreakingNews = ({ contents }: Props) => {
     return (
