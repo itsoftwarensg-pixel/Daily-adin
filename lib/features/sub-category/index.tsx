@@ -82,11 +82,7 @@ const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
 
                 {/* Advertisement */}
                 <div className="flex justify-center mb-4">
-                  <Advertisement
-                    width={300}
-                    height={300}
-                    imgSrc={ADVERTISE_TYPES.SUB_CATEGORY_TOP_RIGHT}
-                  />
+                  <Advertisement width={728} height={90} />
                 </div>
 
                 {/* LoadMoreContent component */}
@@ -106,7 +102,11 @@ const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
 
           <div className="col-span-1 lg:col-auto">
             <div className="flex justify-center">
-              <Advertisement width={300} height={300} />
+              <Advertisement
+                width={300}
+                height={300}
+                imgSrc={ADVERTISE_TYPES.SUB_CATEGORY_TOP_RIGHT}
+              />
             </div>
 
             {/* Latest - Popular */}
