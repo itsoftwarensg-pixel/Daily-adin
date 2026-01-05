@@ -2,13 +2,13 @@ import { ReactNode } from "react";
 import "./globals.css";
 import type { Metadata } from "next";
 import "slick-carousel/slick/slick.css";
-import { Noto_Serif_Bengali } from 'next/font/google'
 import "slick-carousel/slick/slick-theme.css";
 import "react-toastify/dist/ReactToastify.css";
+import { Noto_Serif_Bengali } from "next/font/google";
 import { Bounce, ToastContainer } from "react-toastify";
 
 const noto_serif = Noto_Serif_Bengali({
-  display: 'swap'
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -20,13 +20,14 @@ interface PropsType {
   children: ReactNode;
 }
 
+
 export default function RootLayout({ children }: PropsType) {
   // Schema
   const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'The Daily Adin',
-    url: 'https://www.dailyadin.com/'
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "The Daily Adin",
+    url: "https://www.dailyadin.com/",
   };
 
   return (
