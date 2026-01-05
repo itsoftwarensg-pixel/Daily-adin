@@ -36,3 +36,17 @@ export const LOAD_MORE_TYPES = {
 export const HOME_PAGE_CHUNK_1 = `lead,scroll,trending_tag,special,recent,popular,national,politics,home_video,star_program,opinion`;
 export const HOME_PAGE_CHUNK_2 = `sports,country,entertainment,lifestyle,international,business,photo,video,tourism,campus,leisfita`;
 export const HOME_PAGE_INCLUDES = `${HOME_PAGE_CHUNK_1},${HOME_PAGE_CHUNK_2}`;
+
+// Advertisements
+export const ADVERTISE_TYPES = {
+    HOME_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
+    CATEGORY_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
+    SUB_CATEGORY_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
+    COUNTRY_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
+    DIVISION_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
+    DISTRICT_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
+    UPAZILA_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
+    CONTENT_DETAILS_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
+    VIDEO_DETAILS_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
+    PHOTO_DETAILS_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
+}

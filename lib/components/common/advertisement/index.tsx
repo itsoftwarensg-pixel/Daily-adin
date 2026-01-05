@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 // Props
@@ -6,6 +7,8 @@ interface Props {
   width?: string | number;
   height?: string | number;
   className?: string;
+  imgSrc?: string;
+  link?: string;
 }
 
 const Advertisement = ({
@@ -13,6 +16,8 @@ const Advertisement = ({
   height,
   width,
   className,
+  imgSrc,
+  link
 }: Props) => {
   // Format size
   const formatSize = (value?: string | number) => {
@@ -38,7 +43,7 @@ const Advertisement = ({
     return value;
   };
 
-  return (
+  const markup = (
     <div
       style={{
         width: formatSize(width),
@@ -46,9 +51,32 @@ const Advertisement = ({
       }}
       className={`bg-gray-200 rounded flex items-center justify-center ${className}`}
     >
-      {label}
+      {imgSrc ? (
+        <img
+          src={imgSrc}
+          alt={label}
+          style={{
+            width: formatSize(width),
+            height: formatSize(height),
+          }}
+        />
+      ) : label}
     </div>
   );
+
+  if (link) {
+    return (
+      <Link
+        href={`${link}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {markup}
+      </Link>
+    );
+  }
+
+  return markup;
 };
 
 export default Advertisement;

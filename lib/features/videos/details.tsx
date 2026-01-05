@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Container from "@/lib/components/common/container";
-import { VIDEO_PAGE } from "@/lib/config/constant";
+import { ADVERTISE_TYPES, VIDEO_PAGE } from "@/lib/config/constant";
 import { IoIosArrowForward } from "react-icons/io";
 import LatestPopular from "../latest-popular";
 import NoContentFound from "@/lib/components/no-content-found";
@@ -87,7 +87,11 @@ const VideoDetails = ({ videoDetails }: Props) => {
 
                     <div className="col-span-1 lg:col-auto">
                         <div className="flex justify-center">
-                            <Advertisement width={300} height={300} />
+                            <Advertisement
+                                width={300}
+                                height={300}
+                                imgSrc={ADVERTISE_TYPES.VIDEO_DETAILS_TOP_RIGHT}
+                            />
                         </div>
 
                         {/* Latest - Popular */}

@@ -4,7 +4,7 @@ import CategoryContents from "./contents";
 import LatestPopular from "../latest-popular";
 import { IoIosArrowForward } from "react-icons/io";
 import Loader from "@/lib/components/common/loader";
-import { LOAD_MORE_TYPES } from "@/lib/config/constant";
+import { ADVERTISE_TYPES, LOAD_MORE_TYPES } from "@/lib/config/constant";
 import Container from "@/lib/components/common/container";
 import LoadMoreContent from "@/lib/components/load-more-content";
 import { Category, ContentItem } from "@/lib/types/category.page";
@@ -85,7 +85,11 @@ const CategoryIndex = ({ category }: Props) => {
 
           <div className="col-span-1 lg:col-auto">
             <div className="flex justify-center">
-              <Advertisement width={300} height={300} />
+              <Advertisement
+                width={300}
+                height={300}
+                imgSrc={ADVERTISE_TYPES.CATEGORY_TOP_RIGHT}
+              />
             </div>
 
             {/* Latest - Popular */}

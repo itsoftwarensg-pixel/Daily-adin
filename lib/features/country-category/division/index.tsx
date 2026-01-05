@@ -3,7 +3,7 @@ import Container from "@/lib/components/common/container";
 import { ContentItem } from "@/lib/types/category.page";
 import { DivisionPageContentType } from "@/lib/types/division.page";
 import { IoIosArrowForward } from "react-icons/io";
-import { COUNTRY_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
+import { ADVERTISE_TYPES, COUNTRY_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
 import LoadMoreContent from "@/lib/components/load-more-content";
 import InnnerInitalContents from "@/lib/components/inner-initial-contents";
 import LatestPopular from "@/lib/features/latest-popular";
@@ -94,7 +94,11 @@ const DivisionPage = ({ contents, division }: Props) => {
 
           <div className="col-span-1 lg:col-auto">
             <div className="flex justify-center">
-              <Advertisement width={300} height={300} />
+              <Advertisement
+                width={300}
+                height={300}
+                imgSrc={ADVERTISE_TYPES.DIVISION_TOP_RIGHT}
+              />
             </div>
 
             {/* Latest - Popular */}

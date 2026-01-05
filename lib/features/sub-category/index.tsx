@@ -2,7 +2,7 @@ import Link from "next/link";
 import Container from "@/lib/components/common/container";
 import LatestPopularNews from "@/lib/components/common/latest-popular";
 import LoadMoreContent from "@/lib/components/load-more-content";
-import { LOAD_MORE_TYPES } from "@/lib/config/constant";
+import { ADVERTISE_TYPES, LOAD_MORE_TYPES } from "@/lib/config/constant";
 import { Category } from "@/lib/types/category.page";
 import { SubCatContentItem, SubCategory } from "@/lib/types/sub-category.page";
 import { IoIosArrowForward } from "react-icons/io";
@@ -82,7 +82,11 @@ const SubCategoryIndex = ({ subCategory, category, contents }: Props) => {
 
                 {/* Advertisement */}
                 <div className="flex justify-center mb-4">
-                  <Advertisement width={728} height={90} />
+                  <Advertisement
+                    width={300}
+                    height={300}
+                    imgSrc={ADVERTISE_TYPES.SUB_CATEGORY_TOP_RIGHT}
+                  />
                 </div>
 
                 {/* LoadMoreContent component */}

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import LatestPopular from "../latest-popular";
 import PhotoAlbumDetails from "./album-details";
-import { PHOTO_PAGE } from "@/lib/config/constant";
+import { ADVERTISE_TYPES, PHOTO_PAGE } from "@/lib/config/constant";
 import { IoIosArrowForward } from "react-icons/io";
 import { PhotoItemType } from "@/lib/types/photo.page";
 import Container from "@/lib/components/common/container";
@@ -37,7 +37,11 @@ const PhotoDetails = ({ data }: Props) => {
 
           <div className="col-span-1 lg:col-auto">
             <div className="flex justify-center">
-              <Advertisement width={300} height={300} />
+              <Advertisement
+                width={300}
+                height={300}
+                imgSrc={ADVERTISE_TYPES.PHOTO_DETAILS_TOP_RIGHT}
+              />
             </div>
 
             {/* Latest - Popular */}

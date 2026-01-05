@@ -11,6 +11,7 @@ import LeadVideoHeader from "@/lib/components/common/section-headers/lead-video-
 import LeadNewsItemVideoOverlay from "@/lib/components/common/news-elements/lead-news-item-video-overlay";
 import LeadNewsItemVideoCelebrity from "@/lib/components/common/news-elements/lead-news-item-video-celebrity";
 import Advertisement from "@/lib/components/common/advertisement";
+import { ADVERTISE_TYPES } from "@/lib/config/constant";
 
 // Props
 interface Props {
@@ -180,7 +181,11 @@ const HomeLead = ({ homeData }: Props) => {
 
                         {/* Advertisement */}
                         <div className="flex justify-center mb-4">
-                            <Advertisement width={300} height={300} />
+                            <Advertisement
+                                width={300}
+                                height={300}
+                                imgSrc={ADVERTISE_TYPES.HOME_TOP_RIGHT}
+                            />
                         </div>
 
                         {/* Opinion */}

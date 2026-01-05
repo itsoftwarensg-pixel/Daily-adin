@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Container from "@/lib/components/common/container";
-import { COUNTRY_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
+import { ADVERTISE_TYPES, COUNTRY_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
 import { Division } from "@/lib/types/all-bd-news.page";
 import { Category, ContentItem } from "@/lib/types/category.page";
 import { IoIosArrowForward } from "react-icons/io";
@@ -93,7 +93,11 @@ const CountryCategory = ({ category, contents, divisions }: Props) => {
 
           <div className="col-span-1 lg:col-auto">
             <div className="flex justify-center">
-              <Advertisement width={300} height={300} />
+              <Advertisement
+                width={300}
+                height={300}
+                imgSrc={ADVERTISE_TYPES.COUNTRY_TOP_RIGHT}
+              />
             </div>
 
             {/* Latest - Popular */}

@@ -6,7 +6,7 @@ import {
   UpazilaPageContentType,
 } from "@/lib/types/upazila.page";
 import { UpazilaType } from "@/lib/types/district.page";
-import { COUNTRY_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
+import { ADVERTISE_TYPES, COUNTRY_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
 import LoadMoreContent from "@/lib/components/load-more-content";
 import InnnerInitalContents from "@/lib/components/inner-initial-contents";
 import LatestPopular from "@/lib/features/latest-popular";
@@ -117,7 +117,11 @@ const UpazilaPage = ({ contents, upazila, upazilas }: Props) => {
 
           <div className="col-span-1 lg:col-auto">
             <div className="flex justify-center">
-              <Advertisement width={300} height={300} />
+              <Advertisement
+                width={300}
+                height={300}
+                imgSrc={ADVERTISE_TYPES.UPAZILA_TOP_RIGHT}
+              />
             </div>
 
             {/* Latest - Popular */}
