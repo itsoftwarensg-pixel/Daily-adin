@@ -67,6 +67,12 @@ const NewsItemLaceTape = ({
                             }
                             group-hover:text-blue-700 font-semibold`}
                     >
+                        {newsItem.sub_heading &&
+                            <div className="inline-flex items-center gap-1 mr-1">
+                                <span className="text-red-500">{newsItem.sub_heading}</span>
+                                <span className="w-1.5 h-1.5 rounded-full bg-red-400 inline-block"></span>
+                            </div>
+                        }
                         {newsItem.heading}
                         {/* {highlighted ? (
                             <>

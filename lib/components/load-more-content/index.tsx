@@ -7,6 +7,7 @@ import {
   getContentsByDistrictIdAction,
   getContentsByDivisionIdAction,
   getContentsBySubCategoryIdAction,
+  getContentsByTopicIdAction,
   getContentsByUpazilaIdAction,
 } from "@/app/actions/content";
 import HtmlContent from "@/lib/components/common/html-content";
@@ -27,6 +28,7 @@ interface Props {
   | typeof LOAD_MORE_TYPES.DIVISION // division
   | typeof LOAD_MORE_TYPES.DISTRICT // district
   | typeof LOAD_MORE_TYPES.UPAZILA // upazila
+  | typeof LOAD_MORE_TYPES.TOPIC // topic
   | typeof COUNTRY_PAGE.slug;
   excludeIDs?: number[];
 }
@@ -55,17 +57,15 @@ const LoadMoreContent = ({
     if (type === LOAD_MORE_TYPES.CATEGORY)
       data = await getContentsByCategoryIdAction(id, nextPage, recordsPerPage);
     else if (type === LOAD_MORE_TYPES.SUB_CATEGORY)
-      data = await getContentsBySubCategoryIdAction(
-        id,
-        nextPage,
-        recordsPerPage
-      );
+      data = await getContentsBySubCategoryIdAction(id, nextPage, recordsPerPage);
     else if (type === LOAD_MORE_TYPES.DIVISION)
       data = await getContentsByDivisionIdAction(id, nextPage, recordsPerPage);
     else if (type === LOAD_MORE_TYPES.DISTRICT)
       data = await getContentsByDistrictIdAction(id, nextPage, recordsPerPage);
     else if (type === LOAD_MORE_TYPES.UPAZILA)
       data = await getContentsByUpazilaIdAction(id, nextPage, recordsPerPage);
+    else if (type === LOAD_MORE_TYPES.TOPIC)
+      data = await getContentsByTopicIdAction(id, nextPage, recordsPerPage);
 
     // Append new contents to existing contents
     setContents((prev) => [
@@ -102,6 +102,12 @@ const LoadMoreContent = ({
               <h4
                 className={`pt-2 text-[17px] md:text-xl group-hover:text-blue-700 font-semibold`}
               >
+                {newsItem.sub_heading &&
+                  <div className="inline-flex items-center gap-2 mr-2">
+                    <span className="text-red-500">{newsItem.sub_heading}</span>
+                    <span className="w-2 h-2 rounded-full bg-red-400 inline-block"></span>
+                  </div>
+                }
                 {newsItem.heading}
               </h4>
               <HtmlContent

@@ -41,6 +41,12 @@ const LeadNewsItem = ({ content }: Props) => {
                 leading-snug
               "
                 >
+                  {content.sub_heading &&
+                    <div className="inline-flex items-center gap-1 mr-1">
+                      <span className="text-red-500">{content.sub_heading}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-red-400 inline-block"></span>
+                    </div>
+                  }
                   {content.heading}
                 </h4>
                 <div className="hidden md:block">

@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { NewsItemType } from "@/lib/data"; // Temporary
 import ImageWithFallback from "@/lib/components/image/ImageWithFallback";
 import { ContentItem } from "@/lib/types/category.page";
 
@@ -34,7 +33,14 @@ const NewsItemLatestPopular = ({ newsItem }: Props) => {
           {/* Right: Content */}
           <div className="flex-1">
             <h4 className="group-hover:text-blue-700 font-semibold">
-              {newsItem.heading}
+              {newsItem.sub_heading ?
+                <>
+                  <span className="text-red-500">{newsItem.sub_heading}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-400 inline-block mx-1"></span>
+                  <span>{newsItem.heading}</span>
+                </>
+                : newsItem.heading
+              }
             </h4>
           </div>
         </div>

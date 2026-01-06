@@ -54,12 +54,18 @@ const InnnerInitalContents = ({ contents }: Props) => {
               </div>
 
               <h4 className="pt-2 text-lg font-semibold group-hover:text-blue-700">
+                {subLead.sub_heading &&
+                  <div className="inline-flex items-center gap-1 mr-1">
+                    <span className="text-red-500">{subLead.sub_heading}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-400 inline-block"></span>
+                  </div>
+                }
                 {subLead.heading}
               </h4>
 
               <HtmlContent
                 html={subLead.description}
-                maxContent={300}
+                maxContent={200}
                 className="py-1 text-gray-500"
               />
             </Link>
@@ -120,6 +126,12 @@ const InnnerInitalContents = ({ contents }: Props) => {
 
                 <div className="p-2">
                   <h4 className="text-lg font-semibold group-hover:text-blue-700">
+                    {newsItem.sub_heading &&
+                      <div className="inline-flex items-center gap-1 mr-1">
+                        <span className="text-red-500">{newsItem.sub_heading}</span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-400 inline-block"></span>
+                      </div>
+                    }
                     {newsItem.heading}
                   </h4>
 

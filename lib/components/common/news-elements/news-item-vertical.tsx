@@ -1,13 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import { playVideo } from "../../icons";
-import { NewsItemType } from "@/lib/data"; // Temporary
 import { ImageWithFallback } from "@/lib/components/image";
 import { getRandomHighlightedText } from "@/lib/utils/helpers";
 
 // Props
 interface Props {
-  newsItem: NewsItemType;
+  newsItem: any;
   showVideoLink?: boolean;
   largeVideoIcon?: boolean;
    titleSize?: "base" | "large" | "xlarge" | "3xl";

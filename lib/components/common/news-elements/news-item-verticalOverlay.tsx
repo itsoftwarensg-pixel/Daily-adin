@@ -1,35 +1,34 @@
 import React from "react";
 import Link from "next/link";
-import { NewsItemType } from "@/lib/data"; // Temporary
 import { ImageWithFallback } from "@/lib/components/image";
 
 // Props
 interface Props {
-  newsItem: NewsItemType;
+  newsItem: any;
   titleSize?: "base" | "large";
   bgColor?:
-    | "slate"
-    | "gray"
-    | "zinc"
-    | "neutral"
-    | "stone"
-    | "red"
-    | "orange"
-    | "amber"
-    | "yellow"
-    | "lime"
-    | "green"
-    | "emerald"
-    | "teal"
-    | "cyan"
-    | "sky"
-    | "blue"
-    | "indigo"
-    | "violet"
-    | "purple"
-    | "fuchsia"
-    | "pink"
-    | "rose";
+  | "slate"
+  | "gray"
+  | "zinc"
+  | "neutral"
+  | "stone"
+  | "red"
+  | "orange"
+  | "amber"
+  | "yellow"
+  | "lime"
+  | "green"
+  | "emerald"
+  | "teal"
+  | "cyan"
+  | "sky"
+  | "blue"
+  | "indigo"
+  | "violet"
+  | "purple"
+  | "fuchsia"
+  | "pink"
+  | "rose";
 }
 
 const NewsItemVerticalOverlay = ({
