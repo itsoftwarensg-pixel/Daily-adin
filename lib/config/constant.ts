@@ -29,6 +29,7 @@ export const LOAD_MORE_TYPES = {
     DIVISION: "division",
     DISTRICT: "district",
     UPAZILA: "upazila",
+    TOPIC: "topic",
     COUNTRY: COUNTRY_PAGE.slug,
 };
 

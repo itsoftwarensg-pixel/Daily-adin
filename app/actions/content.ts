@@ -182,6 +182,32 @@ export const getContentsByUpazilaIdAction = async (
 };
 
 /**
+ * Fetch Contents by topic/tag id
+ *
+ * @param id - The id of the topic to fetch
+ * @param page - Optional page number for pagination
+ * @param limit - Optional limit of items per page
+ * @returns The topic content data or an empty array in case of an error
+ */
+export const getContentsByTopicIdAction = async (
+  id: number,
+  page?: number,
+  limit?: number
+) => {
+  try {
+    const apiResponse = await apiRequest({
+      url: APIEndpoint.content.getByTopicId(id, page, limit),
+      method: "GET",
+    });
+
+    return apiResponse.data;
+  } catch (err) {
+    console.error("Error fetching contents by topic id:", err);
+    return [];
+  }
+};
+
+/**
  * Fetch latest popular data
  *
  * @returns The content data or an empty array in case of an error

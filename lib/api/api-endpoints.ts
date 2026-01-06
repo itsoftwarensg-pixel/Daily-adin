@@ -50,6 +50,8 @@ export const APIEndpoint = {
       `${APIEndpoint.base_url}/contents/?for=district&id=${id}&page=${page}&limit=${limit}`,
     getByUpazilaId: (id: number, page?: number, limit?: number) =>
       `${APIEndpoint.base_url}/contents/?for=upazila&id=${id}&page=${page}&limit=${limit}`,
+    getByTopicId: (id: number, page?: number, limit?: number) =>
+      `${APIEndpoint.base_url}/contents/?for=tag&id=${id}&page=${page}&limit=${limit}`,
     getById: (id: number, include?: string) =>
       `${APIEndpoint.base_url}/contents/${id}?include=${include || ""}`,
     getLatestPopular: () => `${APIEndpoint.base_url}/contents/latest-popular`,
@@ -117,5 +119,10 @@ export const APIEndpoint = {
   photo: {
     getAllAlbums: (page: number, limit: number) => `${APIEndpoint.base_url}/photos?page=${page}&limit=${limit}`,
     getAlbumById: (id: number) => `${APIEndpoint.base_url}/photos/${id}`,
+  },
+
+  // Topic API endpoints - topic page with contents
+  topic: {
+    getBySlug: (slug: string) => `${APIEndpoint.base_url}/tags/slug/${slug}`,
   },
 };
