@@ -5,6 +5,7 @@ import GradientHeader from "@/lib/components/common/section-headers/gradient";
 import { ImageWithFallback } from "@/lib/components/image";
 import { HomePageContnetSection } from "@/lib/types/home.page";
 import NewsItem from "@/lib/features/home-page/international/news-item";
+import HtmlContent from "@/lib/components/common/html-content";
 
 // Props
 interface Props {
@@ -60,6 +61,13 @@ const HomeInternational = ({ data }: Props) => {
                                             >
                                                 {leadMainContent.heading}
                                             </h4>
+                                            <div className="hidden md:block">
+                                                <HtmlContent
+                                                    html={leadMainContent.description}
+                                                    maxContent={300}
+                                                    className="pt-1 px-2 text-gray-500"
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </Link>
