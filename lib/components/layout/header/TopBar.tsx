@@ -135,7 +135,8 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
             </Link>
 
             <Link
-              href={"/"}
+              href={"https://epaper.dailyadin.com/"}
+              target="_blank"
               className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600"
             >
               <IoMdPaper size={16} className="group-hover:text-blue-600 " />
