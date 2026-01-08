@@ -81,7 +81,16 @@ const HomeLead = ({ homeData }: Props) => {
                                                 />
                                             </div>
                                             <div className="col-span-3">
-                                                <h4 className="p-2 group-hover:text-blue-700 text-[17px] font-semibold">{newsItem.heading}</h4>
+                                                <h4 className="p-2 group-hover:text-blue-700 text-[17px] font-semibold">
+                                                    {newsItem.sub_heading &&
+                                                        <>
+                                                            <span className="text-red-500">{newsItem.sub_heading}</span>
+                                                            <span className="w-1.5 h-1.5 rounded-full bg-red-400 inline-block mx-1"></span>
+                                                            <span>{newsItem.heading}</span>
+                                                        </>
+                                                    }
+                                                    {newsItem.heading}
+                                                </h4>
                                             </div>
                                         </div>
                                     </Link>
@@ -116,6 +125,13 @@ const HomeLead = ({ homeData }: Props) => {
                                             <h4
                                                 className={`px-2 pt-2 text-lg group-hover:text-blue-700 font-semibold`}
                                             >
+                                                {newsItem.sub_heading &&
+                                                    <>
+                                                        <span className="text-red-500">{newsItem.sub_heading}</span>
+                                                        <span className="w-1.5 h-1.5 rounded-full bg-red-400 inline-block mx-1"></span>
+                                                        <span>{newsItem.heading}</span>
+                                                    </>
+                                                }
                                                 {newsItem.heading}
                                             </h4>
                                         </div>

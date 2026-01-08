@@ -47,7 +47,16 @@ const HomeMedia = ({ data }: Props) => {
                                         </div>
 
                                         <div className="col-span-3 group-hover:text-blue-700 px-2">
-                                            <h4 className="text-[17px] md:text-xl mb-2 font-semibold">{newsItem.heading}</h4>
+                                            <h4 className="text-[17px] md:text-xl mb-2 font-semibold">
+                                                {newsItem.sub_heading &&
+                                                    <>
+                                                        <span className="text-red-500">{newsItem.sub_heading}</span>
+                                                        <span className="w-1.5 h-1.5 rounded-full bg-red-400 inline-block mx-1"></span>
+                                                        <span>{newsItem.heading}</span>
+                                                    </>
+                                                }
+                                                {newsItem.heading}
+                                            </h4>
                                             <div className="hidden md:block">
                                                 <HtmlContent className="text-gray-600" html={newsItem.description} maxContent={100} />
                                             </div>
