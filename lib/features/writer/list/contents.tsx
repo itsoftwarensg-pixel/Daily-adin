@@ -54,7 +54,7 @@ const WriterLoadMoreContent = ({ loadMoreContents }: Props) => {
                 className="w-full h-full rounded-full mx-auto"
               />
             </div>
-            <h4 className="font-semibold text-lg group-hover:text-blue-700">{content.name}{content.id}</h4>
+            <h4 className="font-semibold text-lg group-hover:text-blue-700">{content.name}</h4>
           </Link>
         ))}
       </div>
