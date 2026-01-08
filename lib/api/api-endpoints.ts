@@ -52,6 +52,8 @@ export const APIEndpoint = {
       `${APIEndpoint.base_url}/contents/?for=upazila&id=${id}&page=${page}&limit=${limit}`,
     getByTopicId: (id: number, page?: number, limit?: number) =>
       `${APIEndpoint.base_url}/contents/?for=tag&id=${id}&page=${page}&limit=${limit}`,
+    getByWriterId: (id: number, page?: number, limit?: number) =>
+      `${APIEndpoint.base_url}/contents/?for=writer&id=${id}&page=${page}&limit=${limit}`,
     getById: (id: number, include?: string) =>
       `${APIEndpoint.base_url}/contents/${id}?include=${include || ""}`,
     getLatestPopular: () => `${APIEndpoint.base_url}/contents/latest-popular`,
@@ -124,5 +126,11 @@ export const APIEndpoint = {
   // Topic API endpoints - topic page with contents
   topic: {
     getBySlug: (slug: string) => `${APIEndpoint.base_url}/tags/slug/${slug}`,
+  },
+
+  // Writer/Author API endpoints - Writer page and writer details page
+  writer: {
+    getAll: (page: number, limit: number) => `${APIEndpoint.base_url}/writers?page=${page}&limit=${limit}`,
+    getBySlug: (slug: string) => `${APIEndpoint.base_url}/writers/slug/${slug}`,
   },
 };

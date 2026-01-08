@@ -9,6 +9,7 @@ import {
   getContentsBySubCategoryIdAction,
   getContentsByTopicIdAction,
   getContentsByUpazilaIdAction,
+  getContentsByWriterIdAction,
 } from "@/app/actions/content";
 import HtmlContent from "@/lib/components/common/html-content";
 import { ImageWithFallback } from "@/lib/components/image";
@@ -29,6 +30,7 @@ interface Props {
   | typeof LOAD_MORE_TYPES.DISTRICT // district
   | typeof LOAD_MORE_TYPES.UPAZILA // upazila
   | typeof LOAD_MORE_TYPES.TOPIC // topic
+  | typeof LOAD_MORE_TYPES.WRITER // writer
   | typeof COUNTRY_PAGE.slug;
   excludeIDs?: number[];
 }
@@ -66,6 +68,8 @@ const LoadMoreContent = ({
       data = await getContentsByUpazilaIdAction(id, nextPage, recordsPerPage);
     else if (type === LOAD_MORE_TYPES.TOPIC)
       data = await getContentsByTopicIdAction(id, nextPage, recordsPerPage);
+    else if (type === LOAD_MORE_TYPES.WRITER)
+      data = await getContentsByWriterIdAction(id, nextPage, recordsPerPage);
 
     // Append new contents to existing contents
     setContents((prev) => [

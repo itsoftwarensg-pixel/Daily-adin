@@ -47,7 +47,7 @@ const Page = async ({ params }: Params) => {
         <TopicPage
             topic={topic}
             data={{
-                last_page: 1,
+                last_page: data.last_page,
                 data: data.data,
             }}
         />

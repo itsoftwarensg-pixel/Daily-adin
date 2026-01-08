@@ -22,6 +22,13 @@ export const PHOTO_PAGE = {
     name_bn: "ক্লিকস্মৃতি"
 }
 
+// লেখক তালিকা
+export const WRITER_PAGE = {
+    slug: "author",
+    name: "Writer",
+    name_bn: "লেখক তালিকা"
+}
+
 // Load More Types
 export const LOAD_MORE_TYPES = {
     CATEGORY: "category",
@@ -30,6 +37,7 @@ export const LOAD_MORE_TYPES = {
     DISTRICT: "district",
     UPAZILA: "upazila",
     TOPIC: "topic",
+    WRITER: "writer",
     COUNTRY: COUNTRY_PAGE.slug,
 };
 

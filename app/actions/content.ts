@@ -208,6 +208,32 @@ export const getContentsByTopicIdAction = async (
 };
 
 /**
+ * Fetch Contents by writer id
+ *
+ * @param id - The id of the writer to fetch
+ * @param page - Optional page number for pagination
+ * @param limit - Optional limit of items per page
+ * @returns The writer content data or an empty array in case of an error
+ */
+export const getContentsByWriterIdAction = async (
+  id: number,
+  page?: number,
+  limit?: number
+) => {
+  try {
+    const apiResponse = await apiRequest({
+      url: APIEndpoint.content.getByWriterId(id, page, limit),
+      method: "GET",
+    });
+
+    return apiResponse.data;
+  } catch (err) {
+    console.error("Error fetching contents by writer id:", err);
+    return [];
+  }
+};
+
+/**
  * Fetch latest popular data
  *
  * @returns The content data or an empty array in case of an error
