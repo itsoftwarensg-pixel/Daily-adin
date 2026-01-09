@@ -31,12 +31,25 @@ const DetailsLeftSidebar = ({
 
       {/* Writer, TODO:: Link to writer page */}
       <div className="text-gray-700 font-semibold mb-2">
-        <span>{contentDetails?.writer?.custom_writer ? contentDetails?.writer?.custom_writer : contentDetails?.writer?.name || `নিজস্ব প্রতিবেদক`}</span>
+        <span>
+          {contentDetails?.writer?.custom_writer
+            ? contentDetails?.writer?.custom_writer
+            :
+            <Link
+              href={`${contentDetails?.writer?.full_url}`}
+              className="hover:text-blue-700"
+            >
+              {contentDetails?.writer?.name}
+            </Link>
+
+          }
+        </span>
       </div>
 
       {/* Publish/updated time */}
       <div className="text-gray-500 mb-4">
-        <p>{contentDetails?.created_at_bangla}</p>
+        <p>প্রকাশিত: {contentDetails?.created_at_bangla}</p>
+
         {contentDetails?.updated_at_bangla && (
           <p>আপডেট: {contentDetails.updated_at_bangla}</p>
         )}
