@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { ImageWithFallback } from "../../image";
-import HtmlContent from "@/lib/components/common/html-content";
 import { HomePageContentItem } from "@/lib/types/home.page";
 
 // Props
@@ -50,11 +49,7 @@ const LeadNewsItem = ({ content }: Props) => {
                   {content.heading}
                 </h1>
                 <div className="hidden md:block">
-                  <HtmlContent
-                    html={content.description}
-                    maxContent={200}
-                    className="pt-2 text-gray-500"
-                  />
+                  <p className="pt-2 text-gray-500 overflow-hidden line-clamp-3">{content.description}</p>
                 </div>
               </div>
             </div>
