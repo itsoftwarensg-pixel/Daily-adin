@@ -28,7 +28,7 @@ const UpazilaPage = ({ contents, upazila, upazilas }: Props) => {
     <div className="">
       <Container>
         <div className="my-6">
-          <div className="flex items-center gap-2 overflow-x-auto">
+          <div className="flex items-center gap-2">
             <Link
               href={`/${COUNTRY_PAGE.slug}`}
               className="text-2xl border-l-4 border-red-500 text-red-500 font-bold flex gap-2 items-center"
