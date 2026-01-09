@@ -9,6 +9,7 @@ import { PhotoItemType } from "@/lib/types/photo.page";
 import { ImageWithFallback } from "@/lib/components/image";
 import NoContentFound from "@/lib/components/no-content-found";
 import { RiTwitterXFill, RiWhatsappLine } from "react-icons/ri";
+import HtmlContent from "@/lib/components/common/html-content";
 
 interface PropsType {
   data: PhotoItemType;
@@ -108,7 +109,8 @@ const PhotoAlbumDetails = ({ data }: PropsType) => {
             <div className="border p-2">
               {/* Description */}
               {data.description && (
-                <p className="text-black text-lg">{data.description}</p>
+                // <p className="text-black text-lg">{data.description}</p>
+                <HtmlContent html={data.description} className="text-lg" />
               )}
               {/* Photographer */}
               {data?.photographer_name && (
@@ -117,11 +119,6 @@ const PhotoAlbumDetails = ({ data }: PropsType) => {
                 </div>
               )}
             </div>
-
-            {/* Description */}
-            {data.description && (
-              <p className="text-black text-lg mb-3">{data.description}</p>
-            )}
           </div>
           {/* ====== END Album/Cover information =====*/}
 
@@ -165,15 +162,18 @@ const PhotoAlbumDetails = ({ data }: PropsType) => {
         </>
       ) : (
         <NoContentFound />
-      )}
-      {isOpen && (
-        <PhotoLightboxCarousel
-          images={allImages}
-          startIndex={startIndex}
-          onClose={() => setIsOpen(false)}
-        />
-      )}
-    </div>
+      )
+      }
+      {
+        isOpen && (
+          <PhotoLightboxCarousel
+            images={allImages}
+            startIndex={startIndex}
+            onClose={() => setIsOpen(false)}
+          />
+        )
+      }
+    </div >
   );
 };
 
