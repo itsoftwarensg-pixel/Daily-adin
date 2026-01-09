@@ -86,7 +86,7 @@ const HomeLead = ({ homeData }: Props) => {
                         </div>
                         <div className="col-span-3">
                           <h4 className="p-2 group-hover:text-blue-700 text-[17px] font-semibold">
-                            {newsItem.sub_heading && (
+                            {newsItem.sub_heading ? (
                               <>
                                 <span className="text-red-500">
                                   {newsItem.sub_heading}
@@ -94,8 +94,9 @@ const HomeLead = ({ homeData }: Props) => {
                                 <span className="w-1.5 h-1.5 rounded-full bg-red-400 inline-block mx-1"></span>
                                 <span>{newsItem.heading}</span>
                               </>
-                            )}
-                            {newsItem.heading}
+                            ) :
+                              newsItem.heading
+                            }
                           </h4>
                         </div>
                       </div>
