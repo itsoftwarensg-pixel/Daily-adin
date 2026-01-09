@@ -29,17 +29,17 @@ const LeadNewsItem = ({ content }: Props) => {
                 />
               </div>
               <div className="">
-                <h4
+                <h1
                   className="
-                mt-1
-                pt-1 sm:pt-2
-                pb-0
-                text-2xl
-                lg:text-3xl
-                group-hover:text-blue-700
-                font-semibold
-                leading-snug
-              "
+                    mt-1
+                    pt-1 sm:pt-2
+                    pb-0
+                    text-2xl
+                    lg:text-3xl
+                    group-hover:text-blue-700
+                    font-semibold
+                    leading-snug
+                  "
                 >
                   {content.sub_heading &&
                     <div className="inline-flex items-center gap-1 mr-1">
@@ -48,7 +48,7 @@ const LeadNewsItem = ({ content }: Props) => {
                     </div>
                   }
                   {content.heading}
-                </h4>
+                </h1>
                 <div className="hidden md:block">
                   <HtmlContent
                     html={content.description}
