@@ -9,6 +9,8 @@ import Advertisement from "@/lib/components/common/advertisement";
 import LatestPopular from "@/lib/features/latest-popular";
 import LoadMoreContent from "@/lib/components/load-more-content";
 import { ContentItem } from "@/lib/types/category.page";
+import { ImageWithFallback } from "@/lib/components/image";
+import logo from "@/public/logo.png";
 
 // Define the props type
 interface Props {
@@ -27,20 +29,20 @@ const WriterDetails = ({ writer, data }: Props) => {
         <div className="grid grid-cols-1 lg:grid-cols-[auto_360px] gap-4">
           <div className="col-span-1 lg:col-auto">
             <div className="border-b pb-2 mb-4">
-              <div className="flex items-center gap-2 overflow-x-auto">
-                <Link
-                  href={`/${WRITER_PAGE.slug}`}
-                  className="text-2xl border-l-4 border-red-500 text-red-500 font-bold flex gap-2 items-center"
-                >
-                  <span className="pl-4">{WRITER_PAGE.name_bn}</span>
-                  <IoIosArrowForward />
-                </Link>
-                <Link
-                  href={`${writer.full_url}`}
-                  className="text-xl text-red-600 font-bold flex gap-2 items-center"
-                >
-                  <span>{writer.name}</span>
-                </Link>
+              <div className="text-center gap-2">
+                <div className="h-full text-center group space-y-3 mb-2">
+                  <div className="mb-2 bg-gray-200 w-36 h-36 p-3 rounded-full mx-auto">
+                    <ImageWithFallback
+                      src={writer.photo ? writer.photo : logo}
+                      height={600}
+                      width={900}
+                      alt={`${writer.title}`}
+                      className="w-full h-full rounded-full mx-auto object-contain"
+                    />
+                  </div>
+                  <h4 className="font-semibold text-lg">{writer.name}</h4>
+                  <p className="text-gray-500">{writer.description}</p>
+                </div>
               </div>
             </div>
 
