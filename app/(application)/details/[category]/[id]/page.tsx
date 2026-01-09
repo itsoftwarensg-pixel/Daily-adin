@@ -2,6 +2,7 @@ import React from "react";
 import { getContentByIdAction } from "@/app/actions/content";
 import DetailsPage from "@/lib/features/details";
 import { redirect } from "next/navigation";
+import { ArticleSchema, BreadcrumbSchema } from "@/lib/components/seo/schemas";
 
 // Define the type for the params
 interface Params {
@@ -49,7 +50,39 @@ const Page = async ({ params }: Params) => {
     redirect(`/${content.category.alias}/${content.id}`);
   }
 
-  return <DetailsPage contentDetails={content} category={content.category} />;
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", item: "/" },
+          {
+            name: content.category.name_bn,
+            item: `/${content.category.alias}`,
+          },
+          {
+            name: content.heading,
+            item: `${content.full_url}`,
+          },
+        ]}
+      />
+      <ArticleSchema
+        headline={content.heading}
+        image={content.full_image_path}
+        url={content.full_url}
+        datePublished={content.created_at}
+        dateModified={content.updated_at || content.created_at}
+        authorName={content.writer?.name_bn || "নিজস্ব প্রতিবেদক"}
+        authorUrl={`/author/${content.writer?.slug || "staff"}`}
+        description={content.meta_description || content.content_brief}
+        articleSection={content.category.name_bn}
+        keywords={
+          content.meta_keywords ||
+          content.tags?.map((t: any) => t.name_bn).join(",")
+        }
+      />
+      <DetailsPage contentDetails={content} category={content.category} />
+    </>
+  );
 };
 
 export default Page;

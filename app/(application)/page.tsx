@@ -4,6 +4,12 @@ import { getHomePageDataAction } from "@/app/actions/home";
 import { HOME_PAGE_CHUNK_1 } from "@/lib/config/constant";
 import { getAllDivisionsAction } from "@/app/actions/division";
 
+import {
+  OrganizationSchema,
+  LocalBusinessSchema,
+  BreadcrumbSchema,
+} from "@/lib/components/seo/schemas";
+
 // Generate dynamic metadata
 export async function generateMetadata() {
   return {
@@ -21,7 +27,14 @@ const RootHomePage = async () => {
 
   const divisionList = await getAllDivisionsAction();
 
-  return <HomePage initialHomeData={homeData} divisionList={divisionList} />;
+  return (
+    <>
+      <OrganizationSchema />
+      <LocalBusinessSchema />
+      <BreadcrumbSchema items={[{ name: "Home", item: "/" }]} />
+      <HomePage initialHomeData={homeData} divisionList={divisionList} />
+    </>
+  );
 };
 
 export default RootHomePage;

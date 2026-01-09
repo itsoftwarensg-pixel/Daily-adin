@@ -1,8 +1,7 @@
 import React from "react";
 import CategoryPage from "@/lib/features/category";
 import { getCategoryBySlugAction } from "@/app/actions/category";
-import { getContentsByCategoryIdAction } from "@/app/actions/content";
-import { Category } from "@/lib/types/category.page";
+import { BreadcrumbSchema } from "@/lib/components/seo/schemas";
 
 import { notFound } from "next/navigation";
 
@@ -56,7 +55,17 @@ const CategorySlugPage = async ({ params }: Params) => {
     notFound();
   }
 
-  return <CategoryPage category={category} />;
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", item: "/" },
+          { name: category.name_bn, item: `/${category_slug}` },
+        ]}
+      />
+      <CategoryPage category={category} />
+    </>
+  );
 };
 
 export default CategorySlugPage;
