@@ -83,7 +83,7 @@ const ArticleContent = memo(({ contentDetails, forwardRef }: Props) => {
 
           {/* Initial */}
           {contentDetails?.initial && (
-            <p className="text-gray-600 text-[15px] mb-4 italic">
+            <p className="text-gray-600 text-[15px] mb-4 italic print:hidden">
               {contentDetails.initial}
             </p>
           )}

@@ -28,7 +28,7 @@ export default function ScrollToTopButton() {
     <button
       onClick={scrollToTop}
       aria-label="Scroll to top"
-      className="fixed bottom-6 right-6 z-50 flex items-center justify-center h-12 w-12 rounded-full bg-primaryRed text-white shadow-lg transition hover:bg-red-600"
+      className="fixed bottom-6 right-6 z-50 flex items-center justify-center h-12 w-12 rounded-full bg-primaryRed text-white shadow-lg transition hover:bg-red-600 print:hidden"
     >
       <FaAnglesUp size={22} className="text-white" />
     </button>
