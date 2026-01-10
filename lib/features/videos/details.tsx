@@ -8,7 +8,6 @@ import { VideoItemType } from "@/lib/types/video.page";
 import { GrFacebookOption } from "react-icons/gr";
 import { RiTwitterXFill, RiWhatsappLine } from "react-icons/ri";
 import { MdContentCopy } from "react-icons/md";
-import { FiPrinter } from "react-icons/fi";
 import HtmlContent from "@/lib/components/common/html-content";
 import Advertisement from "@/lib/components/common/advertisement";
 
@@ -66,10 +65,6 @@ const VideoDetails = ({ videoDetails }: Props) => {
                                         className="p-2 hover:bg-gray-100 cursor-pointer rounded text-black border"
                                     />
                                     <MdContentCopy
-                                        size={36}
-                                        className="p-2 hover:bg-gray-100 cursor-pointer rounded text-black border"
-                                    />
-                                    <FiPrinter
                                         size={36}
                                         className="p-2 hover:bg-gray-100 cursor-pointer rounded text-black border"
                                     />
