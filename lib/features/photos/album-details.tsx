@@ -93,7 +93,7 @@ const PhotoAlbumDetails = ({ data }: PropsType) => {
             <div>
               {/* Album image */}
               <div
-                className="w-full aspect-[16/9] mt-4 cursor-pointer"
+                className="w-full mt-4 cursor-pointer"
                 onClick={() => handleOpenCarousel(0)}
               >
                 <ImageWithFallback
@@ -131,7 +131,7 @@ const PhotoAlbumDetails = ({ data }: PropsType) => {
                 <div>
                   {/* Photo */}
                   <div
-                    className="w-full aspect-[16/9] mt-4 cursor-pointer"
+                    className="w-full mt-4 cursor-pointer"
                     onClick={() => handleOpenCarousel(idx + 1)}
                   >
                     <ImageWithFallback
