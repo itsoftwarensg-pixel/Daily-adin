@@ -44,10 +44,10 @@ export const getContentByIdAction = async (id: number, include?: string) => {
       method: "GET",
     });
 
-    return apiResponse.data;
+    return apiResponse.data || null;
   } catch (err) {
     console.error("Error fetching content by content id:", err);
-    return [];
+    return null;
   }
 };
 

@@ -32,7 +32,10 @@ const Page = async ({ params }: Params) => {
     getSubCategoryBySlugAction(category_slug, sub_category_slug, "category"),
   ]);
 
-  if (!subCategory) {
+  if (
+    !subCategory ||
+    (Array.isArray(subCategory) && subCategory.length === 0)
+  ) {
     notFound();
   }
 

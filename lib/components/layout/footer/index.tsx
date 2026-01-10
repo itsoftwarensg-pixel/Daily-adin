@@ -16,14 +16,26 @@ export default function ApplicationFooter() {
   ];
 
   const socialLinks = [
-    { href: "https://www.facebook.com/dailyadin/?ref=waios.fb_links_xma_control", icon: facebook, alt: "facebook" },
+    {
+      href: "https://www.facebook.com/dailyadin/?ref=waios.fb_links_xma_control",
+      icon: facebook,
+      alt: "facebook",
+    },
     // { href: "https://www.x.com", icon: x, alt: "x" },
-    { href: "https://www.youtube.com/@dailyadinbd", icon: youtube, alt: "youtube" },
-    { href: "https://www.tiktok.com/@adinbd?_r=1&_t=ZS-92gEDUTEwkL", icon: tiktok, alt: "tiktok" },
+    {
+      href: "https://www.youtube.com/@dailyadinbd",
+      icon: youtube,
+      alt: "youtube",
+    },
+    {
+      href: "https://www.tiktok.com/@adinbd?_r=1&_t=ZS-92gEDUTEwkL",
+      icon: tiktok,
+      alt: "tiktok",
+    },
   ];
 
   return (
-    <footer className="w-full">
+    <footer className="w-full print:hidden">
       {/* Upper Section */}
       <div className="w-full py-12 bg-gray-2">
         <Container>
@@ -37,7 +49,8 @@ export default function ApplicationFooter() {
                   নির্বাহী সম্পাদক: খন্দকার মোজাম্মেল হক
                 </p>
                 <p className="text-md text-textGray font-normal">
-                  শরীয়তপুর প্রিন্টিং প্রেস  ২৮/বি, টয়েনলি সার্কুলার রোড, মতিঝিল-১০০০, ঢাকা থেকে মুদ্রিত
+                  শরীয়তপুর প্রিন্টিং প্রেস ২৮/বি, টয়েনলি সার্কুলার রোড,
+                  মতিঝিল-১০০০, ঢাকা থেকে মুদ্রিত
                 </p>
               </div>
             </div>
@@ -52,10 +65,10 @@ export default function ApplicationFooter() {
                   টাওয়ার-এ (২য় তলা), হাউস-১৩, রোড-১৭, বনানী, ঢাকা-১২১৩।
                 </p>
                 <p className="flex gap-2 items-center text-lg text-textGray font-normal">
-                  <PiPhoneDisconnect />  ০২-২২৬৬০৩৩৫২
+                  <PiPhoneDisconnect /> ০২-২২৬৬০৩৩৫২
                 </p>
                 <p className="flex gap-2 items-center text-lg text-textGray font-normal">
-                  <BsTelephone />  ০১৮৯৭-৬৬৪৬৫৬
+                  <BsTelephone /> ০১৮৯৭-৬৬৪৬৫৬
                 </p>
                 <p className="text-lg text-textGray font-normal">
                   ইমেইল :{" "}

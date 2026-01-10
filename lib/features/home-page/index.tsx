@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import LoadingNews from "@/lib/components/common/loader/loading-news";
 import {
   HomePageVideoSection,
   HomePageContnetSection,
@@ -102,9 +103,12 @@ const HomePage = ({ initialHomeData, divisionList }: Props) => {
   return (
     <>
       {/* শিরোনাম - Scroll / Breaking News */}
-      {homeData && homeData.scroll && homeData.scroll.contents && homeData.scroll.contents.length > 0 &&
-        <BreakingNews contents={homeData.scroll.contents} />
-      }
+      {homeData &&
+        homeData.scroll &&
+        homeData.scroll.contents &&
+        homeData.scroll.contents.length > 0 && (
+          <BreakingNews contents={homeData.scroll.contents} />
+        )}
 
       {/* Fist Chunk data */}
       <HomeLead homeData={homeData as any} />
@@ -118,11 +122,13 @@ const HomePage = ({ initialHomeData, divisionList }: Props) => {
           <HomeCommerce data={homeData.business} />
           <HomeInternational data={homeData.international} />
           <HomeVideo data={homeData.video} />
-          <HomeLaiceFitaPantholokCampus data={{
-            leisfita: homeData.leisfita,
-            campus: homeData.campus,
-            tourism: homeData.tourism,
-          }} />
+          <HomeLaiceFitaPantholokCampus
+            data={{
+              leisfita: homeData.leisfita,
+              campus: homeData.campus,
+              tourism: homeData.tourism,
+            }}
+          />
           <HomeClickedMemories data={homeData.photo} />
         </>
       )}
@@ -131,13 +137,9 @@ const HomePage = ({ initialHomeData, divisionList }: Props) => {
       {!hasLoadedSecondChunk && (
         <div
           ref={observerTarget}
-          className="h-20 w-full flex items-center justify-center"
+          className="w-full flex items-center justify-center min-h-[200px]"
         >
-          {loading && (
-            <p className="text-gray-500 animate-pulse">
-              Loading more content...
-            </p>
-          )}
+          {loading && <LoadingNews />}
         </div>
       )}
     </>

@@ -28,7 +28,7 @@ const Page = async ({ params }: Params) => {
   // Fetch division details with districts
   const division = await getDivisionBySlugAction(division_slug, "districts");
 
-  if (!division) {
+  if (!division || (Array.isArray(division) && division.length === 0)) {
     notFound();
   }
 

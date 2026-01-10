@@ -1,4 +1,4 @@
-import Reactx, { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { ScrollToTopButton } from "@/lib/components/layout/ui";
 import ApplicationFooter from "@/lib/components/layout/footer";
 import ApplicationHeader from "@/lib/components/layout/header";

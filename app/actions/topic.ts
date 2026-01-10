@@ -20,10 +20,10 @@ export const getTopicBySlugAction = async (slug: string) => {
             method: "GET",
         });
 
-        return apiResponse.data;
+        return apiResponse.data || null;
 
     } catch (err) {
         console.error("Error fetching topic information", err);
-        return [];
+        return null;
     }
 };

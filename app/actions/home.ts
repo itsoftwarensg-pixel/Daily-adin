@@ -20,7 +20,7 @@ export const getHomePageDataAction = async (include?: string) => {
       method: "GET",
     });
 
-    return apiResponse.data;
+    return apiResponse.data || null;
   } catch (err) {
     console.error("Error fetching home page data:", err);
     return null;

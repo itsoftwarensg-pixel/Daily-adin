@@ -42,10 +42,10 @@ export const getWriterBySlugAction = async (slug: string) => {
             method: "GET",
         });
 
-        return apiResponse.data;
+        return apiResponse.data || null;
 
     } catch (err) {
         console.error("Error fetching writer information", err);
-        return [];
+        return null;
     }
 };

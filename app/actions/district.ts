@@ -24,10 +24,10 @@ export const getDistrictBySlugAction = async (
       method: "GET",
     });
 
-    return apiResponse.data;
+    return apiResponse.data || null;
   } catch (err) {
     console.error("Error fetching district by slug:", err);
-    return [];
+    return null;
   }
 };
 
