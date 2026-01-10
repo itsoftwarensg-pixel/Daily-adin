@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FiPrinter } from "react-icons/fi";
 import { MdContentCopy } from "react-icons/md";
 import PhotoLightboxCarousel from "./carousel";
 import { GrFacebookOption } from "react-icons/gr";
@@ -82,10 +81,6 @@ const PhotoAlbumDetails = ({ data }: PropsType) => {
                   size={36}
                   className="p-2 bg-white hover:bg-gray-100 cursor-pointer rounded text-black border"
                 />
-                <FiPrinter
-                  size={36}
-                  className="p-2 bg-white hover:bg-gray-100 cursor-pointer rounded text-black border"
-                />
               </div>
             </div>
 
@@ -93,7 +88,7 @@ const PhotoAlbumDetails = ({ data }: PropsType) => {
             <div>
               {/* Album image */}
               <div
-                className="w-full aspect-[16/9] mt-4 cursor-pointer"
+                className="w-full mt-4 cursor-pointer"
                 onClick={() => handleOpenCarousel(0)}
               >
                 <ImageWithFallback
@@ -131,7 +126,7 @@ const PhotoAlbumDetails = ({ data }: PropsType) => {
                 <div>
                   {/* Photo */}
                   <div
-                    className="w-full aspect-[16/9] mt-4 cursor-pointer"
+                    className="w-full mt-4 cursor-pointer"
                     onClick={() => handleOpenCarousel(idx + 1)}
                   >
                     <ImageWithFallback
