@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FiPrinter } from "react-icons/fi";
 import { MdContentCopy } from "react-icons/md";
 import PhotoLightboxCarousel from "./carousel";
 import { GrFacebookOption } from "react-icons/gr";
@@ -79,10 +78,6 @@ const PhotoAlbumDetails = ({ data }: PropsType) => {
                   className="p-2 bg-white hover:bg-gray-100 cursor-pointer rounded text-black border"
                 />
                 <MdContentCopy
-                  size={36}
-                  className="p-2 bg-white hover:bg-gray-100 cursor-pointer rounded text-black border"
-                />
-                <FiPrinter
                   size={36}
                   className="p-2 bg-white hover:bg-gray-100 cursor-pointer rounded text-black border"
                 />
