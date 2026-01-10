@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Params) {
   }
 
   return {
-    title: category.meta_title || `${category.name_bn} | The Daily Adin`,
+    title: category.meta_title || `${category.name} | The Daily Adin`,
     keywords:
       category.meta_keywords ||
       "daily-adin, adin, news, news-portal, content, article",
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Params) {
       "A modern, fast and SEO-friendly news portal",
     openGraph: {
       images: category.photo || "",
-      title: category.meta_title || `${category.name_bn} | The Daily Adin`,
+      title: category.meta_title || `${category.name} | The Daily Adin`,
       description:
         category.meta_description ||
         "A modern, fast and SEO-friendly news portal",
@@ -60,7 +60,7 @@ const CategorySlugPage = async ({ params }: Params) => {
       <BreadcrumbSchema
         items={[
           { name: "Home", item: "/" },
-          { name: category.name_bn, item: `/${category_slug}` },
+          { name: category.name, item: `/${category_slug}` },
         ]}
       />
       <CategoryPage category={category} />
