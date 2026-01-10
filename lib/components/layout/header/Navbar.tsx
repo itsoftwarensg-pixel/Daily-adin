@@ -51,7 +51,7 @@ const Navbar = ({ menus }: Props) => {
     <div className="w-full flex flex-col items-start justify-between gap-3 print:hidden">
       {/* Navbar */}
       <div className="w-full h-full flex items-stretch justify-between bg-[#D30000]">
-        <div className="flex-1 flex items-center px-4 py-2 overflow-x-auto">
+        <div className="flex-1 flex items-center px-4 py-2">
           {!searchOpen ? (
             <div className="flex items-center gap-6">
               <Link href={"/"} className="text-[18px] font-semibold text-white">
