@@ -1,7 +1,7 @@
 import React from "react";
 import { getContentByIdAction } from "@/app/actions/content";
 import DetailsPage from "@/lib/features/details";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { ArticleSchema, BreadcrumbSchema } from "@/lib/components/seo/schemas";
 
 // Define the type for the params
@@ -44,6 +44,10 @@ const Page = async ({ params }: Params) => {
     id,
     "next_ids,writer,tags,category"
   );
+
+  if (!content || (Array.isArray(content) && content.length === 0)) {
+    notFound();
+  }
 
   // Redirect to correct category if alias doesn't match
   if (content.category.alias !== category) {

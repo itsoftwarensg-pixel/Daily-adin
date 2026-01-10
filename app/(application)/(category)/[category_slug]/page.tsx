@@ -51,7 +51,7 @@ const CategorySlugPage = async ({ params }: Params) => {
     "subcategories,position_contents"
   );
 
-  if (!category) {
+  if (!category || (Array.isArray(category) && category.length === 0)) {
     notFound();
   }
 

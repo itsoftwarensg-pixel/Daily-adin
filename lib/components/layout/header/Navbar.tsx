@@ -48,82 +48,92 @@ const Navbar = ({ menus }: Props) => {
   }, [searchOpen]);
 
   return (
-    <div className="w-full flex flex-col items-start justify-between gap-3">
+    <div className="w-full flex flex-col items-start justify-between gap-3 print:hidden">
       {/* Navbar */}
       <div className="w-full h-full flex items-stretch justify-between bg-[#D30000]">
-        <div className="flex-1 flex items-center px-4 py-2">
-
+        <div className="flex-1 flex items-center px-4 py-2 overflow-x-auto">
           {!searchOpen ? (
             <div className="flex items-center gap-6">
-              <Link
-                href={'/'}
-                className="text-[18px] font-semibold text-white"
-              >
+              <Link href={"/"} className="text-[18px] font-semibold text-white">
                 <AiOutlineHome />
               </Link>
-              {menus && menus.length > 0 && menus.map((item, index) => (
-                <div
-                  key={index}
-                  className="relative flex flex-col"
-                  onMouseEnter={() =>
-                    item.children && setOpenDropdown(item.text)
-                  }
-                  onMouseLeave={() => item.children && setOpenDropdown(null)}
-                >
-                  <Link
-                    href={item.href ?? "#"}
-                    className="flex items-center gap-2 text-[17px] font-semibold text-white"
+              {menus &&
+                menus.length > 0 &&
+                menus.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`relative flex-col ${
+                      index > 9
+                        ? "hidden xl:flex"
+                        : index > 6
+                        ? "hidden lg:flex"
+                        : "flex"
+                    }`}
+                    onMouseEnter={() =>
+                      item.children && setOpenDropdown(item.text)
+                    }
+                    onMouseLeave={() => item.children && setOpenDropdown(null)}
                   >
-                    {item.text}
+                    <Link
+                      href={item.href ?? "#"}
+                      className="flex items-center gap-2 text-[17px] font-semibold text-white"
+                    >
+                      {item.text}
 
-                    {item.children && (
-                      <ImageWithFallback
-                        src={whiteArrowDown}
-                        width={10}
-                        height={5}
-                        alt="arrow"
-                        className={
-                          openDropdown === item.text ? "rotate-180" : ""
-                        }
-                      />
-                    )}
-                  </Link>
+                      {item.children && (
+                        <ImageWithFallback
+                          src={whiteArrowDown}
+                          width={10}
+                          height={5}
+                          alt="arrow"
+                          className={
+                            openDropdown === item.text ? "rotate-180" : ""
+                          }
+                        />
+                      )}
+                    </Link>
 
-                  {!item.isMegaMenu && item.children && openDropdown === item.text && (
-                    <div className="absolute top-full left-0 w-36 bg-[#F4F4F4] rounded-md shadow-md z-50 py-2">
-                      {item.children.map((child) => {
-                        const href = child.isCat ? `${child.href}` : `${item.href}/${child.href}`;
+                    {!item.isMegaMenu &&
+                      item.children &&
+                      openDropdown === item.text && (
+                        <div className="absolute top-full left-0 w-36 bg-[#F4F4F4] rounded-md shadow-md z-50 py-2">
+                          {item.children.map((child) => {
+                            const href = child.isCat
+                              ? `${child.href}`
+                              : `${item.href}/${child.href}`;
 
-                        return (
-                          <Link
-                            key={child.text}
-                            href={href}
-                            className="block px-5 py-2 hover:bg-red-100 hover:text-red-600 font-medium"
-                          >
-                            {child.text}
-                          </Link>
-                        )
-                      })}
-                    </div>
-                  )}
+                            return (
+                              <Link
+                                key={child.text}
+                                href={href}
+                                className="block px-5 py-2 hover:bg-red-100 hover:text-red-600 font-medium"
+                              >
+                                {child.text}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      )}
 
-                  {item.isMegaMenu && item.children && openDropdown === item.text && (
-                    <div className="absolute top-full -right-3 w-[600px] pt-1 z-50">
-                      <div className="grid grid-cols-3 bg-[#F4F4F4] rounded-md shadow-md z-50 overflow-hidden py-2">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.text}
-                            href={`/${child.href}`}
-                            className="block px-5 py-2 hover:bg-red-100 hover:text-red-600 font-medium"
-                          >
-                            {child.text}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
+                    {item.isMegaMenu &&
+                      item.children &&
+                      openDropdown === item.text && (
+                        <div className="absolute top-full -right-3 w-[600px] pt-1 z-50">
+                          <div className="grid grid-cols-3 bg-[#F4F4F4] rounded-md shadow-md z-50 overflow-hidden py-2">
+                            {item.children.map((child) => (
+                              <Link
+                                key={child.text}
+                                href={`/${child.href}`}
+                                className="block px-5 py-2 hover:bg-red-100 hover:text-red-600 font-medium"
+                              >
+                                {child.text}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                  </div>
+                ))}
             </div>
           ) : (
             <div className="flex items-center w-full gap-2">
@@ -145,7 +155,7 @@ const Navbar = ({ menus }: Props) => {
         </div>
 
         {/* Search, Language Icon */}
-        <div className="w-36 flex items-center justify-between">
+        <div className="flex items-center justify-between">
           <div
             className="group px-3 py-2 w-12 border-l border-red-400 ml-auto cursor-pointer"
             onClick={() => setSearchOpen(true)}

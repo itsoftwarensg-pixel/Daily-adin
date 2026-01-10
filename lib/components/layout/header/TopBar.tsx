@@ -38,7 +38,7 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [openSocialMediaDropdown, setOpenSocialMediaDropdown] = useState(false);
-  const [todayDate, setTodayDate] = useState("");
+  const [todayDate, setTodayDate] = useState(dateTimeBn);
 
   // Mobile menu toggle
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -71,7 +71,7 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
     const date =
       pathname === "/home-old" ? `আজ ${TodayDate()}` : `${dateTimeBn}`;
     setTodayDate(date);
-  }, [pathname]);
+  }, [pathname, dateTimeBn]);
 
   // Disable background scroll when mobile menu is open
   useEffect(() => {
@@ -91,10 +91,10 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
 
   return (
     <div className="w-full bg-white border-b-red-500 border-b-2 pb-2 md:pb-0">
-      <div className="flex justify-between items-center gap-10 z-50">
+      <div className="flex justify-between items-center gap-10 z-50 print:justify-center">
         <Link
           href={"/"}
-          className="relative overflow-hidden w-24 h-12 md:w-80 md:h-40"
+          className="relative overflow-hidden w-24 h-12 md:w-52 md:h-28 xl:w-80 xl:h-40"
         >
           <ImageWithFallback
             src={logo}
@@ -103,24 +103,24 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
           />
         </Link>
 
-        <div className="relative overflow-hidden hidden md:block">
+        <div className="relative overflow-hidden hidden md:block print:hidden">
           <ImageWithFallback
             src={headerBanner}
             width={500}
             height={150}
             alt="The Daily Adin Logo"
-            className="object-contain"
+            className="object-contain w-96 xl:w-[500px]"
           />
         </div>
 
         <button
-          className="md:hidden"
+          className="md:hidden print:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <AiOutlineClose size={24} /> : <FaBars size={24} />}
         </button>
 
-        <div className="hidden md:flex flex-col gap-2 items-end">
+        <div className="hidden lg:flex flex-col gap-2 items-end print:hidden">
           <p className="text-[20px] font-normal">{todayDate}</p>
           <div className="flex items-center gap-4">
             <Link
@@ -149,9 +149,7 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
               onMouseEnter={() => setOpenSocialMediaDropdown(true)}
               onMouseLeave={() => setOpenSocialMediaDropdown(false)}
             >
-              <button
-                className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600"
-              >
+              <button className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600">
                 <IoIosShareAlt
                   size={16}
                   className="group-hover:text-blue-600"
@@ -193,7 +191,7 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 flex">
+        <div className="fixed inset-0 z-50 flex print:hidden">
           {/* Overlay */}
           <div
             className="flex-1 bg-black/30"
@@ -205,7 +203,7 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
             {/* Header */}
             <div className="sticky top-0 bg-gray-100 px-4 py-4 flex justify-between">
               <Link
-                href={'/'}
+                href={"/"}
                 className="text-[22px] font-semibold text-black"
                 onClick={() => setMobileMenuOpen(false)}
               >
@@ -218,28 +216,30 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
 
             {/* Navigation */}
             <div>
-              {menus && menus.length > 0 && menus.map((item, index) => {
-                const isOpen = openSubmenus.includes(index);
+              {menus &&
+                menus.length > 0 &&
+                menus.map((item, index) => {
+                  const isOpen = openSubmenus.includes(index);
 
-                return (
-                  <div key={index} className="border-b border-gray-200">
-                    {/* Parent row */}
-                    <div className="group relative flex items-stretch justify-between">
-                      <Link
-                        href={item.href}
-                        className={`px-4 py-3 font-medium hover:bg-gray-100 transition-colors hover:text-red-500
+                  return (
+                    <div key={index} className="border-b border-gray-200">
+                      {/* Parent row */}
+                      <div className="group relative flex items-stretch justify-between">
+                        <Link
+                          href={item.href}
+                          className={`px-4 py-3 font-medium hover:bg-gray-100 transition-colors hover:text-red-500
       ${item.children ? "w-[85%]" : "w-full"}
     `}
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {item.text}
-                      </Link>
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {item.text}
+                        </Link>
 
-                      {/* Arrow */}
-                      {item.children && (
-                        <button
-                          onClick={() => toggleSubmenu(index)}
-                          className="
+                        {/* Arrow */}
+                        {item.children && (
+                          <button
+                            onClick={() => toggleSubmenu(index)}
+                            className="
                             absolute
                             right-0
                             inset-y-0
@@ -251,42 +251,43 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
                             hover:bg-gray-100
                             border-l
                           "
-                        >
-                          <span
-                            className={`transition-transform duration-200
+                          >
+                            <span
+                              className={`transition-transform duration-200
           ${isOpen ? "rotate-180" : ""}
         `}
-                          >
-                            <IoIosArrowDown />
-                          </span>
-                        </button>
-                      )}
-                    </div>
+                            >
+                              <IoIosArrowDown />
+                            </span>
+                          </button>
+                        )}
+                      </div>
 
-
-                    {/* Submenu */}
-                    {item.children && isOpen && (
-                      <div className="pl-4 pb-2 bg-gray-50">
-                        {item.children.map((child, i) => {
-                          const href = child.isCat ? `${child.href}` : `${item.href}/${child.href}`;
-                          return (
-                            <Link
-                              key={i}
-                              href={item.isMegaMenu ? `/${child.href}` : href}
-                              onClick={() => setMobileMenuOpen(false)}
-                              className="block px-4 py-2 text-gray-600
+                      {/* Submenu */}
+                      {item.children && isOpen && (
+                        <div className="pl-4 pb-2 bg-gray-50">
+                          {item.children.map((child, i) => {
+                            const href = child.isCat
+                              ? `${child.href}`
+                              : `${item.href}/${child.href}`;
+                            return (
+                              <Link
+                                key={i}
+                                href={item.isMegaMenu ? `/${child.href}` : href}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="block px-4 py-2 text-gray-600
                                  hover:text-red-500 hover:bg-gray-100
                                  transition-colors"
-                            >
-                              {child.text}
-                            </Link>
-                          )
-                        })}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+                              >
+                                {child.text}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>

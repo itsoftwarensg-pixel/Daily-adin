@@ -43,7 +43,7 @@ export const getCategoryByIdAction = cache(
         method: "GET",
       });
 
-      return apiResponse.data;
+      return apiResponse.data || null;
     } catch (err) {
       console.error("Error fetching category by id:", err);
       return null;
@@ -66,7 +66,7 @@ export const getCategoryBySlugAction = cache(
         method: "GET",
       });
 
-      return apiResponse.data;
+      return apiResponse.data || null;
     } catch (err) {
       console.error("Error fetching category by slug:", err);
       return null;

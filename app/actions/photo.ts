@@ -45,10 +45,10 @@ export const getPhotoDetailsByIdAction = async (id: number) => {
             method: "GET",
         });
 
-        return apiResponse.data;
+        return apiResponse.data || null;
 
     } catch (err) {
         console.error("Error fetching photo", err);
-        return [];
+        return null;
     }
 };

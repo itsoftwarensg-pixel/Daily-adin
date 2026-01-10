@@ -24,7 +24,7 @@ export const getSubCategoryBySlugAction = cache(
         method: "GET",
       });
 
-      return apiResponse.data;
+      return apiResponse.data || null;
     } catch (err) {
       console.error("Error fetching subcategory by slug:", err);
       return null;

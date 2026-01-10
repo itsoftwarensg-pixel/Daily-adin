@@ -42,7 +42,7 @@ export const getDivisionBySlugAction = cache(
         method: "GET",
       });
 
-      return apiResponse.data;
+      return apiResponse.data || null;
     } catch (err) {
       console.error("Error fetching division by slug:", err);
       return null;

@@ -42,10 +42,10 @@ export const getUpazilaBySlugAction = async (slug: string, include?: string) => 
             method: "GET",
         });
 
-        return apiResponse.data;
+        return apiResponse.data || null;
 
     } catch (err) {
         console.error("Error fetching upazila by slug:", err);
-        return [];
+        return null;
     }
 };

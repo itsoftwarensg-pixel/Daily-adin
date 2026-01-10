@@ -12,7 +12,7 @@ interface Props {
 
 const DetailsRightSidebarClient = ({ latestNews, popularNews }: Props) => {
   return (
-    <div>
+    <div className="print:hidden">
       <div className="flex justify-center">
         <Advertisement
           width={300}
