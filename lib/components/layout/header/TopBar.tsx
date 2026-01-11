@@ -90,7 +90,7 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
   }, [mobileMenuOpen]);
 
   return (
-    <div className="w-full bg-white border-b-red-500 border-b-2 pb-2 md:pb-0 print:border-b-[#d4d4d4] print:border-b print:border-dashed">
+    <div className="w-full bg-white pb-2 md:pb-0 print:border-b-[#d4d4d4] print:border-b print:border-dashed">
       <div className="flex justify-between items-center gap-10 z-50 print:justify-center">
         <Link
           href={"/"}

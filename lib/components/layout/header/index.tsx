@@ -21,7 +21,7 @@ export default async function ApplicationHeader() {
           </Container>
         </div>
       </div>
-      <div className="sticky top-0 hidden md:block w-full bg-white z-[11]">
+      <div className="sticky top-0 hidden md:block w-full bg-white z-[11] shadow-md shadow-gray-200 border-t">
         <Container>
           <Navbar menus={menus} />
         </Container>
