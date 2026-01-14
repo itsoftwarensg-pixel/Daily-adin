@@ -90,7 +90,7 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
   }, [mobileMenuOpen]);
 
   return (
-    <div className="w-full bg-white pb-2 md:pb-0 print:border-b-[#d4d4d4] print:border-b print:border-dashed border-b-red-500 border-b-2 md:border-none">
+    <div className="w-full bg-white pb-2 px-8 md:pb-0 print:border-b-[#d4d4d4] print:border-b print:border-dashed border-b-red-500 border-b-2 md:border-none">
       <div className="flex justify-between items-center gap-10 z-50 print:justify-center">
         <Link
           href={"/"}
@@ -109,8 +109,9 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
             width={500}
             height={150}
             alt="The Daily Adin Logo"
-            className="object-contain w-96 xl:w-[500px]"
+            className="object-contain w-96 xl:w-[400px]"
           />
+          <p className="text-[18px] text-center font-normal">{todayDate}</p>
         </div>
 
         <button
@@ -121,7 +122,7 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
         </button>
 
         <div className="hidden lg:flex flex-col gap-2 items-end print:hidden">
-          <p className="text-[20px] font-normal">{todayDate}</p>
+          {/* <p className="text-[20px] font-normal">{todayDate}</p>
           <div className="flex items-center gap-4">
             <Link
               href={"/"}
@@ -185,7 +186,17 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
                 <p className="text-[18px] font-medium leading-none">ENG</p>
               </div>
             </div>
-          </div>
+          </div> */}
+          <Link className="block group overflow-hidden max-w-[360px]" href="https://dailyadin.com/international/695">
+            <div className="w-full grid grid-cols-5 items-center justify-center bg-gray-100 gap-2 overflow-hidden">
+              <div className="col-span-2 aspect-[16/10]">
+                <img alt="ইরানে বিক্ষোভ-সহিংসতায় নিহত বেড়ে ২৫৭১" loading="lazy" width="400" height="300" decoding="async" data-nimg="1" className="w-full object-cover h-full" src="http://localhost:3000/_next/image?url=https%3A%2F%2Fcdn.dailyadin.com%2Fuploads%2FJanuary2026%2Feranallkill-202601141110224688786556.jpg&amp;w=828&amp;q=75" />
+              </div>
+              <div className="col-span-3">
+                <h4 className="p-2 group-hover:text-blue-700 text-[17px] font-semibold">ইরানে বিক্ষোভ-সহিংসতায় নিহত বেড়ে ২৫৭১</h4>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
 
