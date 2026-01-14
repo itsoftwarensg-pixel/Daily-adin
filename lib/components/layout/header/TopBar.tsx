@@ -190,7 +190,7 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
           <Link className="block group overflow-hidden max-w-[360px]" href="https://dailyadin.com/international/695">
             <div className="w-full grid grid-cols-5 items-center justify-center bg-gray-100 gap-2 overflow-hidden">
               <div className="col-span-2 aspect-[16/10]">
-                <img alt="ইরানে বিক্ষোভ-সহিংসতায় নিহত বেড়ে ২৫৭১" loading="lazy" width="400" height="300" decoding="async" data-nimg="1" className="w-full object-cover h-full" src="http://localhost:3000/_next/image?url=https%3A%2F%2Fcdn.dailyadin.com%2Fuploads%2FJanuary2026%2Feranallkill-202601141110224688786556.jpg&amp;w=828&amp;q=75" />
+                <img alt="ইরানে বিক্ষোভ-সহিংসতায় নিহত বেড়ে ২৫৭১" loading="lazy" width="400" height="300" decoding="async" data-nimg="1" className="w-full object-cover h-full" src="https://cdn.dailyadin.com/uploads/January2026/eranallkill-202601141110224688786556.jpg" />
               </div>
               <div className="col-span-3">
                 <h4 className="p-2 group-hover:text-blue-700 text-[17px] font-semibold">ইরানে বিক্ষোভ-সহিংসতায় নিহত বেড়ে ২৫৭১</h4>
