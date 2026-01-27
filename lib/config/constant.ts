@@ -48,7 +48,7 @@ export const HOME_PAGE_INCLUDES = `${HOME_PAGE_CHUNK_1},${HOME_PAGE_CHUNK_2}`;
 
 // Advertisements
 export const ADVERTISE_TYPES = {
-    HOME_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
+    HOME_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/borsosera-puroskar-202601271430007361874571.jpeg",
     CATEGORY_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
     SUB_CATEGORY_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
     COUNTRY_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
