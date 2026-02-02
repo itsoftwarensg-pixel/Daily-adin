@@ -46,6 +46,11 @@ export const HOME_PAGE_CHUNK_1 = `lead,scroll,trending_tag,special,recent,popula
 export const HOME_PAGE_CHUNK_2 = `sports,country,entertainment,lifestyle,international,business,photo,video,tourism,campus,leisfita`;
 export const HOME_PAGE_INCLUDES = `${HOME_PAGE_CHUNK_1},${HOME_PAGE_CHUNK_2}`;
 
+// 
+export const CATEGORY_SLUG = {
+    PERSONALITY: 'personality', // সবিশেষ
+}
+
 // Advertisements
 export const ADVERTISE_TYPES = {
     HOME_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/borsosera-puroskar-202601271430007361874571.jpeg",

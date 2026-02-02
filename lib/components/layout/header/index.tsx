@@ -3,11 +3,14 @@ import Container from "@/lib/components/common/container";
 import TopBar from "@/lib/components/layout/header/TopBar";
 import Navbar from "@/lib/components/layout/header/Navbar";
 import { getBnDateTimeAction, getMenuAction } from "@/app/actions/utils";
+import { CATEGORY_SLUG } from "@/lib/config/constant";
+import { getCategoryBySlugAction } from "@/app/actions/category";
 
 export default async function ApplicationHeader() {
-  const [dateTimeBn, menus] = await Promise.all([
+  const [dateTimeBn, menus, personalityData] = await Promise.all([
     getBnDateTimeAction(),
     getMenuAction(),
+    getCategoryBySlugAction(CATEGORY_SLUG.PERSONALITY, "position_contents") // সবিশেষ
   ]);
 
   return (
@@ -15,7 +18,7 @@ export default async function ApplicationHeader() {
       <div className="w-full bg-white sticky top-0 z-50 md:top-auto">
         <Container>
           <div className="w-full flex flex-col gap-2 pt-3">
-            <TopBar menus={menus} dateTimeBn={dateTimeBn} />
+            <TopBar menus={menus} dateTimeBn={dateTimeBn} personalityData={personalityData} />
           </div>
         </Container>
       </div>

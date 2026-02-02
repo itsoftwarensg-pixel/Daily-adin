@@ -21,6 +21,7 @@ import { navItems } from "@/lib/data";
 import { FaBars } from "react-icons/fa6";
 import { AiOutlineClose, AiOutlineHome } from "react-icons/ai";
 import { NavbarMenuItem } from "@/lib/types/common.types";
+import { Category } from "@/lib/types/category.page";
 
 const socialLinks = [
   { href: "https://www.facebook.com", icon: facebook, alt: "facebook" },
@@ -32,13 +33,15 @@ const socialLinks = [
 interface Props {
   dateTimeBn: string;
   menus: NavbarMenuItem[];
+  personalityData: Category; // সবিশেষ category data
 }
 
-const TopBar = ({ dateTimeBn, menus }: Props) => {
+const TopBar = ({ dateTimeBn, menus, personalityData }: Props) => {
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [openSocialMediaDropdown, setOpenSocialMediaDropdown] = useState(false);
   const [todayDate, setTodayDate] = useState(dateTimeBn);
+  const personalityNews = personalityData?.position_contents?.[0] ?? null; // সবিশেষ এর প্রথম নিউজ
 
   // Mobile menu toggle
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -121,7 +124,7 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
           {mobileMenuOpen ? <AiOutlineClose size={24} /> : <FaBars size={24} />}
         </button>
 
-        <div className="hidden lg:flex flex-col gap-2 items-end print:hidden">
+        <div className="hidden lg:flex flex-col gap-2 border min-h-[85px] items-end print:hidden w-[362px] max-w-[362px]">
           {/* <p className="text-[20px] font-normal">{todayDate}</p>
           <div className="flex items-center gap-4">
             <Link
@@ -187,16 +190,37 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
               </div>
             </div>
           </div> */}
-          <Link className="block group overflow-hidden max-w-[360px]" href="https://dailyadin.com/international/695">
-            <div className="w-full grid grid-cols-5 items-center justify-center bg-gray-100 gap-2 overflow-hidden">
-              <div className="col-span-2 aspect-[16/10]">
-                <img alt="ইরানে বিক্ষোভ-সহিংসতায় নিহত বেড়ে ২৫৭১" loading="lazy" width="400" height="300" decoding="async" data-nimg="1" className="w-full object-cover h-full" src="https://cdn.dailyadin.com/uploads/January2026/eranallkill-202601141110224688786556.jpg" />
+          {/* --{JSON.stringify(personalityData)} */}
+          {personalityNews && (
+            <Link className="block group overflow-hidden w-[360px] max-w-[360px]" href={personalityNews.full_url}>
+              <div className="w-full grid grid-cols-5 items-center justify-center bg-gray-100 gap-2 overflow-hidden">
+                <div className="col-span-2 aspect-[16/10]">
+                  <ImageWithFallback
+                    src={personalityNews.full_image_path}
+                    height={600}
+                    width={900}
+                    alt={`${personalityNews.heading}`}
+                    className="w-full object-cover h-full"
+                  />
+                </div>
+                <div className="col-span-3">
+                  <h4 className="p-2 group-hover:text-blue-700 text-[17px] font-semibold">
+                    {personalityNews.sub_heading ? (
+                      <>
+                        <span className="text-red-500">
+                          {personalityNews.sub_heading}
+                        </span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-400 inline-block mx-1"></span>
+                        <span>{personalityNews.heading}</span>
+                      </>
+                    ) :
+                      personalityNews.heading
+                    }
+                  </h4>
+                </div>
               </div>
-              <div className="col-span-3">
-                <h4 className="p-2 group-hover:text-blue-700 text-[17px] font-semibold">ইরানে বিক্ষোভ-সহিংসতায় নিহত বেড়ে ২৫৭১</h4>
-              </div>
-            </div>
-          </Link>
+            </Link>
+          )}
         </div>
       </div>
 
