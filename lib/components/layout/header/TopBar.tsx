@@ -93,7 +93,7 @@ const TopBar = ({ dateTimeBn, menus, personalityData }: Props) => {
   }, [mobileMenuOpen]);
 
   return (
-    <div className="w-full bg-white pb-2 px-8 md:pb-0 print:border-b-[#d4d4d4] print:border-b print:border-dashed border-b-red-500 border-b-2 md:border-none">
+    <div className="w-full bg-white pb-2 md:pb-0 print:border-b-[#d4d4d4] print:border-b print:border-dashed border-b-red-500 border-b-2 md:border-none">
       <div className="flex justify-between items-center gap-10 z-50 print:justify-center">
         <Link
           href={"/"}
@@ -112,9 +112,9 @@ const TopBar = ({ dateTimeBn, menus, personalityData }: Props) => {
             width={500}
             height={150}
             alt="The Daily Adin Logo"
-            className="object-contain w-96 xl:w-[400px]"
+            className="object-contain w-90 xl:w-[360px]"
           />
-          <p className="text-[18px] text-center font-normal">{todayDate}</p>
+          {/* <p className="text-[18px] text-center font-normal">{todayDate}</p> */}
         </div>
 
         <button
@@ -124,8 +124,9 @@ const TopBar = ({ dateTimeBn, menus, personalityData }: Props) => {
           {mobileMenuOpen ? <AiOutlineClose size={24} /> : <FaBars size={24} />}
         </button>
 
-        <div className="hidden lg:flex flex-col gap-2 border min-h-[85px] items-end print:hidden w-[362px] max-w-[362px]">
-          {/* <p className="text-[20px] font-normal">{todayDate}</p>
+        {/* <div className="hidden lg:flex flex-col gap-2 border min-h-[85px] items-end print:hidden w-[362px] max-w-[362px]"> */}
+        <div className="hidden lg:flex flex-col gap-2 items-end print:hidden">
+          <p className="text-[20px] font-normal">{todayDate}</p>
           <div className="flex items-center gap-4">
             <Link
               href={"/"}
@@ -189,9 +190,9 @@ const TopBar = ({ dateTimeBn, menus, personalityData }: Props) => {
                 <p className="text-[18px] font-medium leading-none">ENG</p>
               </div>
             </div>
-          </div> */}
+          </div>
           {/* --{JSON.stringify(personalityData)} */}
-          {personalityNews && (
+          {/* {personalityNews && (
             <Link className="block group overflow-hidden w-[360px] max-w-[360px]" href={personalityNews.full_url}>
               <div className="w-full grid grid-cols-5 items-center justify-center bg-gray-100 gap-2 overflow-hidden">
                 <div className="col-span-2 aspect-[16/10]">
@@ -220,7 +221,7 @@ const TopBar = ({ dateTimeBn, menus, personalityData }: Props) => {
                 </div>
               </div>
             </Link>
-          )}
+          )} */}
         </div>
       </div>
 
@@ -236,7 +237,7 @@ const TopBar = ({ dateTimeBn, menus, personalityData }: Props) => {
           {/* Drawer */}
           <div className="md:hidden bg-white shadow-lg h-screen w-80 overflow-y-auto pb-24">
             {/* Header */}
-            <div className="sticky top-0 bg-gray-100 px-4 py-4 flex justify-between">
+            <div className="sticky top-0 bg-gray-100 px-4 py-4 flex justify-between z-50">
               <Link
                 href={"/"}
                 className="text-[22px] font-semibold text-black"
