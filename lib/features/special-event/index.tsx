@@ -1,0 +1,156 @@
+"use client";
+
+import Container from "@/lib/components/common/container";
+import { ImageWithFallback } from "@/lib/components/image";
+import { HomePageContnetSection } from "@/lib/types/home.page";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+
+type TimeLeft = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
+
+const TARGET_DATE = new Date("2026-02-12T07:30:00+06:00"); // Bangladesh time
+
+function calculateTimeLeft(): TimeLeft {
+  const difference = TARGET_DATE.getTime() - new Date().getTime();
+
+  if (difference <= 0) {
+    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  }
+
+  return {
+    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((difference / 1000 / 60) % 60),
+    seconds: Math.floor((difference / 1000) % 60),
+  };
+}
+
+// Props
+interface Props {
+  homeData: {
+    special: HomePageContnetSection;
+  };
+}
+
+export default function ElectionCountdown({ homeData }: Props) {
+  const {
+    special: specialontents,
+  } = homeData;
+  const contents = specialontents?.contents.slice(0, 6);    // 6 contents
+
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const toBanglaNumber = (num: number | string) => {
+    const en = "0123456789";
+    const bn = "০১২৩৪৫৬৭৮৯";
+
+    return num
+      .toString()
+      .split("")
+      .map((d) => (en.includes(d) ? bn[en.indexOf(d)] : d))
+      .join("");
+  };
+
+
+  const Box = ({ label, value }: { label: string; value: number }) => (
+    <div className="flex flex-col items-center bg-white/10 backdrop-blur-md rounded-2xl px-4 py-3 min-w-[70px] shadow">
+      <span className="text-2xl font-bold">{toBanglaNumber(value)}</span>
+      <span className="text-xs opacity-80">{label}</span>
+    </div>
+  );
+
+  return (
+    <Container>
+      <div className="mt-4 w-full rounded-xl shadow-sm p-4 md:p-6
+  bg-[radial-gradient(circle_at_top,_rgba(255,80,80,0.15),_rgba(255,255,255,0.95))]
+  border border-red-300 text-slate-800">
+
+        <div className="flex flex-col lg:flex-row gap-6">
+
+          {/* LEFT SECTION */}
+          <div className="w-full lg:max-w-[400px] lg:flex-shrink-0 flex justify-center">
+            <div className="text-center flex flex-col items-center">
+
+              <h2 className="text-lg md:text-2xl font-semibold mb-2 text-red-700">
+                <Link href={`topic/ত্রায়োদশ-জাতীয়-সংসদ-নির্বাচন`}>
+                  ত্রয়োদশ জাতীয় সংসদ নির্বাচন
+                </Link>
+              </h2>
+
+              <div className="flex flex-wrap gap-2 justify-center text-sm md:text-md">
+                <p className="opacity-90">১২ ফেব্রুয়ারি ২০২৬</p>
+                <span className="hidden sm:inline">|</span>
+                <p className="opacity-90">সকাল ৭:৩০ - বিকেল ৪:৩০</p>
+              </div>
+
+              <div className="flex justify-center gap-2 md:gap-3 my-4 flex-wrap">
+                <Box label="দিন" value={timeLeft.days} />
+                <Box label="ঘন্টা" value={timeLeft.hours} />
+                <Box label="মিনিট" value={timeLeft.minutes} />
+                <Box label="সেকেন্ড" value={timeLeft.seconds} />
+              </div>
+
+              <Link
+                href={`topic/ত্রায়োদশ-জাতীয়-সংসদ-নির্বাচন`}
+                className="inline-block bg-red-100 text-red-700 px-5 py-2 rounded-full text-sm font-medium hover:bg-red-200 transition"
+              >
+                বিস্তারিত দেখুন
+              </Link>
+
+            </div>
+          </div>
+
+
+          {/* RIGHT SECTION */}
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {contents && contents.length > 0 && contents.map((newsItem, idx) => (
+              <Link key={idx} href={newsItem.full_url} className="block group">
+                <div className="flex gap-3">
+                  <div className="w-[100px] sm:w-[120px] flex-shrink-0">
+                    <div className="aspect-[16/10]">
+                      <ImageWithFallback
+                        src={newsItem.full_image_path}
+                        height={100}
+                        width={160}
+                        alt={newsItem.heading}
+                        className="w-full h-full object-cover rounded-md"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex-1">
+                    <h4 className="group-hover:underline font-semibold text-sm md:text-base leading-snug">
+                      {newsItem.sub_heading ? (
+                        <>
+                          <span className="text-red-500">{newsItem.sub_heading}</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-red-400 inline-block mx-1"></span>
+                          <span>{newsItem.heading}</span>
+                        </>
+                      ) : (
+                        newsItem.heading
+                      )}
+                    </h4>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+        </div>
+      </div>
+    </Container>
+  );
+}

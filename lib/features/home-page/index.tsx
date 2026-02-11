@@ -22,6 +22,7 @@ import BreakingNews from "@/lib/components/common/breaking-news";
 import HomeInternational from "@/lib/features/home-page/international";
 import HomeClickedMemories from "@/lib/features/home-page/clicked-memories";
 import HomeLaiceFitaPantholokCampus from "@/lib/features/home-page/laicefita-panthopolok-campus";
+import ElectionCountdown from "@/lib/features/special-event";
 
 // Type for the combined home data
 interface FullHomeData {
@@ -107,7 +108,10 @@ const HomePage = ({ initialHomeData, divisionList }: Props) => {
         homeData.scroll &&
         homeData.scroll.contents &&
         homeData.scroll.contents.length > 0 && (
-          <BreakingNews contents={homeData.scroll.contents} />
+          <>
+            <BreakingNews contents={homeData.scroll.contents} />
+            <ElectionCountdown homeData={homeData as any} />
+          </>
         )}
 
       {/* Fist Chunk data */}
