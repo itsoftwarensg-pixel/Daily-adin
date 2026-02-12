@@ -13,7 +13,7 @@ type TimeLeft = {
   seconds: number;
 };
 
-const TARGET_DATE = new Date("2026-02-12T07:30:00+06:00"); // Bangladesh time
+const TARGET_DATE = new Date("2026-02-12T16:30:00+06:00"); // Bangladesh time
 
 function calculateTimeLeft(): TimeLeft {
   const difference = TARGET_DATE.getTime() - new Date().getTime();
@@ -90,17 +90,21 @@ export default function ElectionCountdown({ homeData }: Props) {
                 </Link>
               </h2>
 
-              <div className="flex flex-wrap gap-2 justify-center text-sm md:text-md">
+              <div className="flex flex-wrap gap-2 justify-center text-sm md:text-md border-b border-red-300 pb-2 mb-">
                 <p className="opacity-90">১২ ফেব্রুয়ারি ২০২৬</p>
                 <span className="hidden sm:inline">|</span>
                 <p className="opacity-90">সকাল ৭:৩০ - বিকেল ৪:৩০</p>
               </div>
 
-              <div className="flex justify-center gap-2 md:gap-3 my-4 flex-wrap">
-                <Box label="দিন" value={timeLeft.days} />
-                <Box label="ঘন্টা" value={timeLeft.hours} />
-                <Box label="মিনিট" value={timeLeft.minutes} />
-                <Box label="সেকেন্ড" value={timeLeft.seconds} />
+              <div className="p-3 bg-[radial-gradient(circle_at_botto,_rgba(255,80,80,0.15),_rgba(255,255,255,0.95))] rounded-xl pb-0">
+                <h4 className="font-semibold">ভোট শেষ হওয়ার বাকি</h4>
+
+                <div className="flex justify-center gap-2 md:gap-3 my-4 flex-wrap">
+                  {/* <Box label="দিন" value={timeLeft.days} /> */}
+                  <Box label="ঘন্টা" value={timeLeft.hours} />
+                  <Box label="মিনিট" value={timeLeft.minutes} />
+                  <Box label="সেকেন্ড" value={timeLeft.seconds} />
+                </div>
               </div>
 
               <Link
