@@ -119,7 +119,7 @@ export default function ElectionCountdown({ homeData, electionData }: Props) {
   const {
     special: specialontents,
   } = homeData;
-  const contents = specialontents?.contents.slice(0, 10);    // 6 contents
+  const contents = specialontents?.contents.slice(0, 8);    // 6 contents
   const electionDataInfo = electionData?.data ? electionData.data : null; // Referendum and Result data
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
@@ -200,15 +200,15 @@ export default function ElectionCountdown({ homeData, electionData }: Props) {
 
               <h2 className="text-lg md:text-2xl font-semibold mb-2 text-red-700">
                 <a href="topic/ত্রায়োদশ-জাতীয়-সংসদ-নির্বাচন">
-                  ত্রয়োদশ জাতীয় সংসদ নির্বাচন
+                  ত্রয়োদশ জাতীয় সংসদ নির্বাচনের ফলাফল
                 </a>
               </h2>
 
-              <div className="flex flex-wrap gap-2 justify-center text-sm md:text-md border-b border-red-300 pb-2 mb-4">
+              {/* <div className="flex flex-wrap gap-2 justify-center text-sm md:text-md border-b border-red-300 pb-2 mb-4">
                 <p className="opacity-90">১২ ফেব্রুয়ারি ২০২৬</p>
                 <span className="hidden sm:inline">|</span>
                 <p className="opacity-90">সকাল ৭:৩০ - বিকেল ৪:৩০</p>
-              </div>
+              </div> */}
 
               {/* Referendum */}
               {electionDataInfo?.referendum && (
@@ -249,53 +249,55 @@ export default function ElectionCountdown({ homeData, electionData }: Props) {
                         </span>
                       </div>
                     ))}
-
                 </div>
               )}
-
-              <a
-                href="topic/ত্রায়োদশ-জাতীয়-সংসদ-নির্বাচন"
-                className="inline-block bg-red-100 text-red-700 px-5 py-2 rounded-full text-sm font-medium hover:bg-red-200 transition"
-              >
-                বিস্তারিত দেখুন
-              </a>
             </div>
           </div>
 
 
           {/* RIGHT SECTION */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-2">
-            {contents && contents.length > 0 && contents.map((newsItem, idx) => (
-              <Link key={idx} href={newsItem.full_url} className="block group">
-                <div className="flex gap-3">
-                  <div className="w-[100px] sm:w-[120px] flex-shrink-0">
-                    <div className="aspect-[16/10]">
-                      <ImageWithFallback
-                        src={newsItem.full_image_path}
-                        height={100}
-                        width={160}
-                        alt={newsItem.heading}
-                        className="w-full h-full object-cover rounded-md"
-                      />
+          <div className="flex-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {contents && contents.length > 0 && contents.map((newsItem, idx) => (
+                <Link key={idx} href={newsItem.full_url} className="block group">
+                  <div className="flex gap-3">
+                    <div className="w-[100px] sm:w-[120px] flex-shrink-0">
+                      <div className="aspect-[16/10]">
+                        <ImageWithFallback
+                          src={newsItem.full_image_path}
+                          height={100}
+                          width={160}
+                          alt={newsItem.heading}
+                          className="w-full h-full object-cover rounded-md"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex-1">
+                      <h4 className="group-hover:underline font-semibold text-sm md:text-base leading-snug">
+                        {newsItem.sub_heading ? (
+                          <>
+                            <span className="text-red-500">{newsItem.sub_heading}</span>
+                            <span className="w-1.5 h-1.5 rounded-full bg-red-400 inline-block mx-1"></span>
+                            <span>{newsItem.heading}</span>
+                          </>
+                        ) : (
+                          newsItem.heading
+                        )}
+                      </h4>
                     </div>
                   </div>
-
-                  <div className="flex-1">
-                    <h4 className="group-hover:underline font-semibold text-sm md:text-base leading-snug">
-                      {newsItem.sub_heading ? (
-                        <>
-                          <span className="text-red-500">{newsItem.sub_heading}</span>
-                          <span className="w-1.5 h-1.5 rounded-full bg-red-400 inline-block mx-1"></span>
-                          <span>{newsItem.heading}</span>
-                        </>
-                      ) : (
-                        newsItem.heading
-                      )}
-                    </h4>
-                  </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
+            </div>
+            <div className="text-center mt-6">
+              <a
+                href="topic/ত্রায়োদশ-জাতীয়-সংসদ-নির্বাচন"
+                className="inline-block bg-red-100 text-red-700 px-5 py-2 rounded-full text-sm font-medium hover:bg-red-200 transition"
+              >
+                নির্বাচনের সব খবর দেখুন
+              </a>
+            </div>
           </div>
         </div>
       </div>
