@@ -153,14 +153,13 @@ export default function ElectionCountdown({ homeData, electionData }: Props) {
 
   return (
     <Container>
-      <div className="mt-4 w-full rounded-xl shadow-sm p-4 md:p-6
+      <div className="my-4 w-full rounded-xl shadow-sm p-4 pb-8 md:p-6
   bg-[radial-gradient(circle_at_top,_rgba(255,80,80,0.15),_rgba(255,255,255,0.95))]
   border border-red-300 text-slate-800 relative overflow-hidden">
 
         {/* Top Animated gradient */}
         <div className="h-1 absolute top-0 inset-0 w-1/2 bg-gradient-to-r from-transparent via-red-700 to-transparent
       animate-gradient-move"></div>
-
 
         <div className="flex flex-col lg:flex-row gap-6 mt-4">
 
@@ -311,7 +310,7 @@ export default function ElectionCountdown({ homeData, electionData }: Props) {
         </div>
 
         {/* Bottom Animated gradient */}
-        <div className="h-1 -mb-6 bottom-0 inset-0 w-1/2 bg-gradient-to-r from-transparent via-red-700 to-transparent
+        <div className="hidden md:block h-1 -mb-6 bottom-0 inset-0 w-1/2 bg-gradient-to-r from-transparent via-red-700 to-transparent
       animate-gradient-move"></div>
       </div>
     </Container>
