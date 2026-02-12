@@ -257,7 +257,7 @@ export default function ElectionCountdown({ homeData, electionData }: Props) {
 
           {/* RIGHT SECTION */}
           <div className="flex-1">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
               {contents && contents.length > 0 && contents.map((newsItem, idx) => (
                 <Link key={idx} href={newsItem.full_url} className="block group">
                   <div className="flex gap-3">
