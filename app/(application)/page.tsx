@@ -9,6 +9,7 @@ import {
   LocalBusinessSchema,
   BreadcrumbSchema,
 } from "@/lib/components/seo/schemas";
+import { getElectionDataAction } from "@/app/actions/election";
 
 // Generate dynamic metadata
 export async function generateMetadata() {
@@ -27,12 +28,14 @@ const RootHomePage = async () => {
 
   const divisionList = await getAllDivisionsAction();
 
+  const electionData = await getElectionDataAction();
+
   return (
     <>
       <OrganizationSchema />
       <LocalBusinessSchema />
       <BreadcrumbSchema items={[{ name: "Home", item: "/" }]} />
-      <HomePage initialHomeData={homeData} divisionList={divisionList} />
+      <HomePage initialHomeData={homeData} divisionList={divisionList} electionData={electionData} />
     </>
   );
 };

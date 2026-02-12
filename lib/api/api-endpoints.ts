@@ -133,4 +133,9 @@ export const APIEndpoint = {
     getAll: (page: number, limit: number) => `${APIEndpoint.base_url}/writers?page=${page}&limit=${limit}`,
     getBySlug: (slug: string) => `${APIEndpoint.base_url}/writers/slug/${slug}`,
   },
+
+  // Election API endpoints
+  election: {
+    getData: () => `${APIEndpoint.base_url}/election`,
+  },
 };

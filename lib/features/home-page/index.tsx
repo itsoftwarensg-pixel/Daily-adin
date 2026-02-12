@@ -23,6 +23,7 @@ import HomeInternational from "@/lib/features/home-page/international";
 import HomeClickedMemories from "@/lib/features/home-page/clicked-memories";
 import HomeLaiceFitaPantholokCampus from "@/lib/features/home-page/laicefita-panthopolok-campus";
 import ElectionCountdown from "@/lib/features/special-event";
+import { ElectionApiResponse } from "@/lib/types/election";
 
 // Type for the combined home data
 interface FullHomeData {
@@ -51,9 +52,10 @@ interface FullHomeData {
 interface Props {
   initialHomeData: FullHomeData;
   divisionList: DivisionType[];
+  electionData: ElectionApiResponse;
 }
 
-const HomePage = ({ initialHomeData, divisionList }: Props) => {
+const HomePage = ({ initialHomeData, divisionList, electionData }: Props) => {
   const [homeData, setHomeData] = useState<FullHomeData>(initialHomeData);
   const [loading, setLoading] = useState(false);
   const [hasLoadedSecondChunk, setHasLoadedSecondChunk] = useState(false);
@@ -110,7 +112,7 @@ const HomePage = ({ initialHomeData, divisionList }: Props) => {
         homeData.scroll.contents.length > 0 && (
           <>
             <BreakingNews contents={homeData.scroll.contents} />
-            <ElectionCountdown homeData={homeData as any} />
+            <ElectionCountdown homeData={homeData as any} electionData={electionData} />
           </>
         )}
 
