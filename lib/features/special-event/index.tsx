@@ -119,7 +119,7 @@ export default function ElectionCountdown({ homeData, electionData }: Props) {
   const {
     special: specialontents,
   } = homeData;
-  const contents = specialontents?.contents.slice(0, 8);    // 6 contents
+  const contents = specialontents?.contents.slice(0, 6);    // 6 contents
   const electionDataInfo = electionData?.data ? electionData.data : null; // Referendum and Result data
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
@@ -155,9 +155,14 @@ export default function ElectionCountdown({ homeData, electionData }: Props) {
     <Container>
       <div className="mt-4 w-full rounded-xl shadow-sm p-4 md:p-6
   bg-[radial-gradient(circle_at_top,_rgba(255,80,80,0.15),_rgba(255,255,255,0.95))]
-  border border-red-300 text-slate-800">
+  border border-red-300 text-slate-800 relative overflow-hidden">
 
-        <div className="flex flex-col lg:flex-row gap-6">
+        {/* Top Animated gradient */}
+        <div className="h-1 absolute top-0 inset-0 w-1/2 bg-gradient-to-r from-transparent via-red-700 to-transparent
+      animate-gradient-move"></div>
+
+
+        <div className="flex flex-col lg:flex-row gap-6 mt-4">
 
           {/* LEFT SECTION */}
           {/* <div className="w-full lg:max-w-[400px] lg:flex-shrink-0 flex justify-center">
@@ -213,42 +218,46 @@ export default function ElectionCountdown({ homeData, electionData }: Props) {
               {/* Referendum */}
               {electionDataInfo?.referendum && (
                 <div className="w-full mb-4 bg-red-50 rounded-xl p-3 text-left">
-                  <h4 className="font-bold text-red-800 mb-3 gap-2 bg-red-100/70 px-3 py-2 rounded-lg overflow-hidden">
+                  <h4 className="font-bold text-red-800 mb-3 text-center gap-2 bg-red-100/70 px-3 py-2 rounded-lg overflow-hidden">
                     {electionDataInfo.referendum.title_bn}
                   </h4>
-                  {electionDataInfo.referendum.items.map((item) => (
-                    <div
-                      key={item.key}
-                      className="flex justify-between border-b last:border-none py-1 text-sm"
-                    >
-                      <span>{item.label_bn}</span>
-                      <span className="font-semibold">{toBanglaNumber(item.value)}%</span>
-                    </div>
-                  ))}
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                    {electionDataInfo.referendum.items.map((item) => (
+                      <div
+                        key={item.key}
+                        className="flex justify-center gap-3 py-1 text-sm"
+                      >
+                        <span>{item.label_bn}</span>
+                        <span className="font-semibold">{toBanglaNumber(item.value)}%</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
 
               {/* Result */}
               {electionDataInfo?.result && (
                 <div className="w-full mb-4 bg-red-50 rounded-xl p-3 text-left">
-                  <h4 className="font-bold text-red-800 mb-3 gap-2 bg-red-100/70 px-3 py-2 rounded-lg overflow-hidden">
+                  <h4 className="font-bold text-red-800 mb-3 text-center gap-2 bg-red-100/70 px-3 py-2 rounded-lg overflow-hidden">
                     {electionDataInfo.result.title_bn}
                   </h4>
 
 
-                  {[...electionDataInfo.result.items]
-                    .sort((a, b) => Number(b.value) - Number(a.value)) // descending
-                    .map((item) => (
-                      <div
-                        key={item.key}
-                        className="flex justify-between border-b last:border-none py-1 text-sm"
-                      >
-                        <span>{item.label_bn}</span>
-                        <span className="font-semibold">
-                          {toBanglaNumber(item.value)}
-                        </span>
-                      </div>
-                    ))}
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                    {[...electionDataInfo.result.items]
+                      .sort((a, b) => Number(b.value) - Number(a.value)) // descending
+                      .map((item) => (
+                        <div
+                          key={item.key}
+                          className="flex justify-between border-b py-1 text-sm px-4"
+                        >
+                          <span>{item.label_bn}</span>
+                          <span className="font-semibold">
+                            {toBanglaNumber(item.value)}
+                          </span>
+                        </div>
+                      ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -300,6 +309,10 @@ export default function ElectionCountdown({ homeData, electionData }: Props) {
             </div>
           </div>
         </div>
+
+        {/* Bottom Animated gradient */}
+        <div className="h-1 -mb-6 bottom-0 inset-0 w-1/2 bg-gradient-to-r from-transparent via-red-700 to-transparent
+      animate-gradient-move"></div>
       </div>
     </Container>
   );

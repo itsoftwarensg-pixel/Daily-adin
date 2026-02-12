@@ -27,6 +27,22 @@ input[type="number"] {
   margin-bottom: 10px;
 }
 
+/* Animated Move */
+@keyframes gradient-move {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-gradient-move {
+  background: linear-gradient(to right, transparent, #b91c1c, transparent); /* red-700 */
+  animation: gradient-move 4s ease-in-out infinite alternate;
+}
+
 .content-details blockquote {
   @apply mb-4 relative bg-gray-100 dark:bg-[#414346] px-4 pt-12 pb-2 lg:px-6 lg:pt-12 lg:pb-2 border-l-[6px] border-gray-400;
 }
