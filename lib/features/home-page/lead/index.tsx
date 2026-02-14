@@ -196,7 +196,7 @@ const HomeLead = ({ homeData }: Props) => {
                 )}
 
               {/* তারকা আসছেন যিনি - Star Program */}
-              {starProgramNewsContent && (
+              {/* {starProgramNewsContent && (
                 <div className="space-y-3">
                   <LeadVideoHeader
                     title="তারকা আসছেন যিনি"
@@ -210,7 +210,16 @@ const HomeLead = ({ homeData }: Props) => {
                     starProgramNewsContent={starProgramNewsContent}
                   />
                 </div>
-              )}
+              )} */}
+
+              {/* Advertisement Home top right up */}
+              <div className="flex justify-center mb-4">
+                <Advertisement
+                  width={300}
+                  height={300}
+                  imgSrc={ADVERTISE_TYPES.HOME_TOP_RIGHT_UP}
+                />
+              </div>
             </div>
 
             {/* Latest - Popular */}
