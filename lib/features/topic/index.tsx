@@ -8,6 +8,7 @@ import { Topic, TopicContentItem } from "@/lib/types/topic.page";
 import Advertisement from "@/lib/components/common/advertisement";
 import LatestPopular from "@/lib/features/latest-popular";
 import LoadMoreContent from "@/lib/components/load-more-content";
+import HtmlContent from "@/lib/components/common/html-content";
 
 // Define the props type
 interface Props {
@@ -32,9 +33,6 @@ const TopicPage = ({ topic, data }: Props) => {
                 >
                   <span>{topic.name}</span>
                 </h4>
-                {topic.description &&
-                  <p>{topic.description}</p>
-                }
               </div>
             </div>
 
