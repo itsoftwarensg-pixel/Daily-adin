@@ -112,7 +112,7 @@ const HomePage = ({ initialHomeData, divisionList, electionData }: Props) => {
         homeData.scroll.contents.length > 0 && (
           <>
             <BreakingNews contents={homeData.scroll.contents} />
-            <ElectionCountdown homeData={homeData as any} electionData={electionData} />
+            {/* <ElectionCountdown homeData={homeData as any} electionData={electionData} /> */}
           </>
         )}
 
