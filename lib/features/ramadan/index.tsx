@@ -221,7 +221,7 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
             backgroundImage: `url('https://www.toptal.com/designers/subtlepatterns/uploads/spikes.png')`,
             backgroundPosition: 'top center',
         }}>
-            <div className="min-h-screen bg-gradient-to-b from-emerald-50/40 to-white p-6">
+            <div className="min-h-screen bg-gradient-to-b from-emerald-50/40 to-white p-0 sm:p-6">
                 {/* ================= HEADER ================= */}
                 <Container>
                     <div>
