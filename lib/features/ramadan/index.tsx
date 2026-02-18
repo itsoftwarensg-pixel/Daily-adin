@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 
 import Container from '@/lib/components/common/container';
-import { adjustTime, formatIslamicTime, getBanglaDay, getOffsetMinutes, toBanglaDate, toBanglaNumber } from '@/lib/data/ramadan';
+import { adjustTime, formatIslamicTime, getBanglaDay, getOffsetMinutes, toBanglaMonth, toBanglaNumber, ramadanDatas, duas } from '@/lib/data/ramadan';
 
 type Day = {
     day: number;
@@ -24,30 +24,6 @@ type Division = {
     division_bn_name: string;
     time_offset_minute: number;
 };
-
-/* ===============================
-   🔹 DUA
-   =============================== */
-const duas = [
-
-    {
-        title: "রোজার নিয়ত",
-        arabic: "نَوَيْتُ اَنْ اُصُوْمَ غَدًا مِّنْ شَهْرِ رَمْضَانَ الْمُبَارَكِ فَرْضَا لَكَ يَا اللهُ فَتَقَبَّل مِنِّى اِنَّكَ اَنْتَ السَّمِيْعُ الْعَلِيْم",
-        arbicPronunciation: "রোজার নিয়তের বাংলা উচ্চারণ : নাওয়াইতু আন আছুমা গাদাম, মিন শাহরি রমাদানাল মুবারাক; ফারদাল্লাকা ইয়া আল্লাহু, ফাতাকাব্বাল মিন্নি ইন্নিকা আনতাস সামিউল আলিম।",
-        bangla: "অর্থ : হে আল্লাহ! আমি আগামীকাল পবিত্র রমজানের তোমার পক্ষ থেকে নির্ধারিত ফরজ রোজা রাখার ইচ্ছা পোষণ (নিয়্যত) করলাম। অতএব তুমি আমার পক্ষ থেকে (আমার রোযা তথা পানাহার থেকে বিরত থাকাকে) কবুল কর, নিশ্চয়ই তুমি সর্বশ্রোতা ও সর্বজ্ঞানী।",
-    },
-    {
-        title: "ইফতারের দোয়া",
-        arabic: " بسم الله اَللَّهُمَّ لَكَ صُمْتُ وَ عَلَى رِزْقِكَ اَفْطَرْتُ",
-        arbicPronunciation: "ইফতারের দোয়ার বাংলা উচ্চারণ : বিসমিল্লাহ আল্লাহুম্মা লাকা ছুমতু ওয়া আলা রিজকিকা আফতারতু",
-        bangla: "অর্থ : হে আল্লাহ! আমি তোমারই সন্তুষ্টির জন্য রোজা রেখেছি এবং তোমারই দেয়া রিজিজের মাধ্যমে  ইফতার করছি।",
-    },
-];
-
-/* ===============================
-   🔹 Component
-   =============================== */
-
 
 // Props
 interface Props {
@@ -152,11 +128,16 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
             // formatDiff helper
             const formatDiff = (diff: number) => {
                 if (diff <= 0) return "";
+
                 const hours = Math.floor(diff / 1000 / 3600);
                 const minutes = Math.floor((diff / 1000 % 3600) / 60);
                 const seconds = Math.floor((diff / 1000) % 60);
-                return `${toBanglaNumber(hours)} ঘণ্টা ${toBanglaNumber(minutes)} মিনিট ${toBanglaNumber(seconds)} সেকেন্ড`;
+
+                const pad = (num: number) => num.toString().padStart(2, "0");
+
+                return `${toBanglaNumber(pad(hours))} ঘণ্টা ${toBanglaNumber(pad(minutes))} মিনিট ${toBanglaNumber(pad(seconds))} সেকেন্ড`;
             };
+
 
             /* =======================
                🔹 Normal Sehri / Iftar logic
@@ -164,8 +145,10 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
 
             if (todayIndex === -1) return;
 
+            const offsetMinutes = getOffsetMinutes(Number(selectedDivision.time_offset_minute));
+
             const getIftarTarget = () => {
-                const adjusted = adjustTime(todayData.iftar, getOffsetMinutes(selectedDivision.time_offset_minute));
+                const adjusted = adjustTime(todayData.iftar, offsetMinutes);
                 const [h, m] = adjusted.split(":").map(Number);
                 const target = new Date();
                 target.setHours(h, m, 0, 0);
@@ -174,7 +157,7 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
                 const nextIndex = todayIndex + 1;
                 if (nextIndex >= ramadanData.days.length) return null;
 
-                const nextAdjusted = adjustTime(ramadanData.days[nextIndex].iftar, getOffsetMinutes(selectedDivision.time_offset_minute));
+                const nextAdjusted = adjustTime(ramadanData.days[nextIndex].iftar, offsetMinutes);
                 const [nh, nm] = nextAdjusted.split(":").map(Number);
                 const nextTarget = new Date();
                 nextTarget.setDate(nextTarget.getDate() + 1);
@@ -183,16 +166,16 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
             };
 
             const getSehriTarget = () => {
-                const adjusted = adjustTime(todayData.sehri_end, getOffsetMinutes(selectedDivision.time_offset_minute));
+                const adjusted = adjustTime(todayData.sehri_end, offsetMinutes);
                 const [h, m] = adjusted.split(":").map(Number);
                 const target = new Date();
                 target.setHours(h, m, 0, 0);
                 if (now < target) return target;
 
                 const nextIndex = todayIndex + 1;
-                if (nextIndex >= ramadanData.days.length) return null;
+                if (nextIndex >= ramadanData.days.length - 28) return null;
 
-                const nextAdjusted = adjustTime(ramadanData.days[nextIndex].sehri_end, getOffsetMinutes(selectedDivision.time_offset_minute));
+                const nextAdjusted = adjustTime(ramadanData.days[nextIndex].sehri_end, offsetMinutes);
                 const [nh, nm] = nextAdjusted.split(":").map(Number);
                 const nextTarget = new Date();
                 nextTarget.setDate(nextTarget.getDate() + 1);
@@ -207,7 +190,7 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
             const iftarDiff = iftarTarget ? iftarTarget.getTime() - now.getTime() : -1;
 
             /* =======================
-               🔥 SMART SWITCH
+               SMART SWITCH
             ======================= */
             if (sehriDiff > 0 && sehriDiff < iftarDiff) {
                 setActiveLabel(`সেহরি শেষ হতে বাকি`);
@@ -259,7 +242,7 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
                                     >
                                         {divisions.map((d) => (
                                             <option key={d.division_en_name} value={d.division_en_name}>
-                                                {d.division_bn_name} {d.time_offset_minute}
+                                                {d.division_bn_name}
                                             </option>
                                         ))}
                                     </select>
@@ -271,7 +254,7 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
                         {todayData ? (
                             <div className="text-center space-y-2">
                                 <p className="text-md font-semibold text-gray-600">
-                                    আজ {getBanglaDay(todayData.enDate)}, {toBanglaDate(todayData.enDate)} | {toBanglaNumber(todayData.day)} রমজান, {toBanglaNumber(ramadanData.hijri_year)}
+                                    আজ {getBanglaDay(todayData.enDate)}, {toBanglaMonth(todayData.enDate)} | {toBanglaNumber(todayData.day)} রমজান, {toBanglaNumber(ramadanData.hijri_year)}
                                 </p>
                             </div>
                         ) :
@@ -299,7 +282,7 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
                                 {todayData && (
                                     <div className="text-md font-semibold text-emerald-700">
                                         <p>আজকের সেহরির শেষ সময়</p>
-                                        <h4 className='text-xl'>{formatIslamicTime(todayData.sehri_end, getOffsetMinutes(selectedDivision.time_offset_minute), "Sehri")}</h4>
+                                        <h4 className='text-xl'>{formatIslamicTime(todayData.sehri_end, getOffsetMinutes(Number(selectedDivision.time_offset_minute)), "Sehri")}</h4>
                                     </div>
                                 )}
                             </div>
@@ -320,7 +303,7 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
                                 {todayData && (
                                     <div className="text-md font-semibold text-emerald-700">
                                         <p>আজকের ইফতারের সময়</p>
-                                        <h4 className='text-xl'>{formatIslamicTime(todayData.iftar, getOffsetMinutes(selectedDivision.time_offset_minute), "Iftar")}</h4>
+                                        <h4 className='text-xl'>{formatIslamicTime(todayData.iftar, getOffsetMinutes(Number(selectedDivision.time_offset_minute)), "Iftar")}</h4>
                                     </div>
                                 )}
                             </div>
@@ -351,14 +334,14 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
                                         <tr className="bg-emerald-50 font-bold text-emerald-700"><td colSpan={10} className="py-2"> {segment.name}</td></tr>
                                         {segment.days.filter(d => d.day != 0).map(d => {
                                             const isToday = d.enDate === todayStr;
-                                            const offsetMinutes = getOffsetMinutes(selectedDivision.time_offset_minute);
+                                            const offsetMinutes = getOffsetMinutes(Number(selectedDivision.time_offset_minute));
                                             return (
                                                 <tr
                                                     key={d.day}
                                                     className={`transition-all duration-300 hover:bg-emerald-50 ${isToday ? 'text-emerald-500 font-bold' : ''}`}>
                                                     <td className="p-2">{toBanglaNumber(d.day)}</td>
                                                     <td>{getBanglaDay(d.enDate)}</td>
-                                                    <td>{toBanglaDate(d.enDate)}</td>
+                                                    <td>{toBanglaMonth(d.enDate)}</td>
                                                     <td>{formatIslamicTime(d.sehri_end, offsetMinutes, "Sehri")}</td>
                                                     <td>{formatIslamicTime(d.fajr, offsetMinutes, "Fajr")}</td>
                                                     <td>{formatIslamicTime(d.duhr, offsetMinutes, "Dhuhr")}</td>
