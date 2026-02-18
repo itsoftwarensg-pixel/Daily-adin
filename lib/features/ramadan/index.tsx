@@ -17,6 +17,7 @@ type Day = {
     maghrib: string;
     isha: string;
     iftar: string;
+    status: string | number;
 };
 
 type Division = {
@@ -332,7 +333,7 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
                                 {segments.map((segment, i) => (
                                     <React.Fragment key={i}>
                                         <tr className="bg-emerald-50 font-bold text-emerald-700"><td colSpan={10} className="py-2"> {segment.name}</td></tr>
-                                        {segment.days.filter(d => d.day != 0).map(d => {
+                                        {segment.days.filter(d => d.day != 0 && d.status == 1).map(d => {
                                             const isToday = d.enDate === todayStr;
                                             const offsetMinutes = getOffsetMinutes(Number(selectedDivision.time_offset_minute));
                                             return (
