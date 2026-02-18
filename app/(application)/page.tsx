@@ -10,6 +10,7 @@ import {
   BreadcrumbSchema,
 } from "@/lib/components/seo/schemas";
 import { getElectionDataAction } from "@/app/actions/election";
+import { getRamadanDataAction } from "@/app/actions/ramadan";
 
 // Generate dynamic metadata
 export async function generateMetadata() {
@@ -28,14 +29,23 @@ const RootHomePage = async () => {
 
   const divisionList = await getAllDivisionsAction();
 
-  const electionData = await getElectionDataAction();
+  // const electionData = await getElectionDataAction();
+
+  const response = await getRamadanDataAction();
+  const { days, division_offsets } = response?.data || {};
 
   return (
     <>
       <OrganizationSchema />
       <LocalBusinessSchema />
       <BreadcrumbSchema items={[{ name: "Home", item: "/" }]} />
-      <HomePage initialHomeData={homeData} divisionList={divisionList} electionData={electionData} />
+      <HomePage
+        ramadanDays={days}
+        ramadanDivisionOffsets={division_offsets}
+        initialHomeData={homeData}
+        divisionList={divisionList}
+        // electionData={electionData}
+      />
     </>
   );
 };

@@ -16,6 +16,8 @@ import LeadNewsItemVideoOverlay from "@/lib/components/common/news-elements/lead
 import LeadNewsItemVideoCelebrity from "@/lib/components/common/news-elements/lead-news-item-video-celebrity";
 import Advertisement from "@/lib/components/common/advertisement";
 import { ADVERTISE_TYPES } from "@/lib/config/constant";
+import { RamadanDay, RamadanDivision } from "@/lib/types/ramadan";
+import RamadanCountdown from "@/lib/features/ramadan/countdown";
 
 // Props
 interface Props {
@@ -29,9 +31,11 @@ interface Props {
     star_program?: HomePageStarProgramSection;
     opinion?: HomePageContnetSection;
   };
+  ramadanDays: RamadanDay[];
+  ramadanDivisionOffsets: RamadanDivision[];
 }
 
-const HomeLead = ({ homeData }: Props) => {
+const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
   const {
     lead: leadContents,
     national: nationalContents,
@@ -177,6 +181,12 @@ const HomeLead = ({ homeData }: Props) => {
           {/* Sidebar - Rigt side */}
           <div className="col-span-1">
             <div className="space-y-6">
+              {/* আজকের সেহরি ও ইফতার সময়সূচী */}
+              <RamadanCountdown
+                days={ramadanDays}
+                division_offsets={ramadanDivisionOffsets}
+              />
+
               {/* এদিন জনপ্রিয় - Home Video */}
               {homeTopVideoNewsContents &&
                 homeTopVideoNewsContents.length > 0 && (
@@ -213,13 +223,13 @@ const HomeLead = ({ homeData }: Props) => {
               )} */}
 
               {/* Advertisement Home top right up */}
-              <div className="flex justify-center mb-4">
+              {/* <div className="flex justify-center mb-4">
                 <Advertisement
                   width={300}
                   height={300}
                   imgSrc={ADVERTISE_TYPES.HOME_TOP_RIGHT_UP}
                 />
-              </div>
+              </div> */}
             </div>
 
             {/* Latest - Popular */}

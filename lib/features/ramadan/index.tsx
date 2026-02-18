@@ -6,26 +6,8 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 import Container from '@/lib/components/common/container';
 import { adjustTime, formatIslamicTime, getBanglaDay, getOffsetMinutes, toBanglaMonth, toBanglaNumber, ramadanDatas, duas } from '@/lib/data/ramadan';
 import HtmlContent from '@/lib/components/common/html-content';
-
-type Day = {
-    day: number;
-    enDate: string;
-    sehri_start: string;
-    sehri_end: string;
-    fajr: string;
-    duhr: string;
-    asr: string;
-    maghrib: string;
-    isha: string;
-    iftar: string;
-    status: string | number;
-};
-
-type Division = {
-    division_en_name: string;
-    division_bn_name: string;
-    time_offset_minute: number;
-};
+import RamadanCard from '@/lib/features/ramadan/countdown';
+import { RamadanDay, RamadanDivision } from "@/lib/types/ramadan";
 
 // Props
 interface Props {
@@ -35,8 +17,8 @@ interface Props {
         hijri_year: number;
         name: string;
         footnote: string;
-        days: Day[];
-        division_offsets: Division[];
+        days: RamadanDay[];
+        division_offsets: RamadanDivision[];
     };
 }
 export default function RamadanComponent({ data: ramadanData }: Props) {
@@ -222,6 +204,9 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
             backgroundPosition: 'top center',
         }}>
             <div className="min-h-screen bg-gradient-to-b from-emerald-50/40 to-white p-0 sm:p-6">
+                <div className=".max-w-[360x]">
+                    <RamadanCard days={ramadanData.days} division_offsets={divisions} />
+                </div>
                 {/* ================= HEADER ================= */}
                 <Container>
                     <div>
