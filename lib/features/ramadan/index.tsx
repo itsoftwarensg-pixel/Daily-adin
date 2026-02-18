@@ -5,6 +5,7 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 
 import Container from '@/lib/components/common/container';
 import { adjustTime, formatIslamicTime, getBanglaDay, getOffsetMinutes, toBanglaMonth, toBanglaNumber, ramadanDatas, duas } from '@/lib/data/ramadan';
+import HtmlContent from '@/lib/components/common/html-content';
 
 type Day = {
     day: number;
@@ -33,7 +34,7 @@ interface Props {
         title: string;
         hijri_year: number;
         name: string;
-        footnote: number;
+        footnote: string;
         days: Day[];
         division_offsets: Division[];
     };
@@ -357,6 +358,10 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
                                 ))}
                             </tbody>
                         </table>
+                    </div>
+
+                    <div className="bg-white/60 shadow-lg rounded-3xl mt-4 p-6 hover:shadow-xl transition-shadow duration-300">
+                        <HtmlContent html={ramadanData.footnote} />
                     </div>
                 </Container>
             </div>
