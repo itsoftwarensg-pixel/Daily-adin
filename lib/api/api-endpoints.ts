@@ -138,4 +138,9 @@ export const APIEndpoint = {
   election: {
     getData: () => `${APIEndpoint.base_url}/election`,
   },
+
+  // Ramadan API endpoints
+  ramadan: {
+    getData: () => `${APIEndpoint.base_url}/ramadan`,
+  },
 };
