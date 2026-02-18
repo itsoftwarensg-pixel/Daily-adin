@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { RamadanDay, RamadanDivision } from "@/lib/types/ramadan";
+import Link from "next/link";
 
 type Props = {
   days: RamadanDay[];
@@ -99,8 +100,10 @@ export default function RamadanCountdown({ days, division_offsets }: Props) {
   if (todayIndex === -1) return (
     <div className="max-w-4xl mx-auto rounded-md border p-3 pb-1 bg-white dark:bg-gray-900">
       {/* Header */}
-      <h2 className="text-xl font-semibold text-center mb-3">
-        আজকের সেহরি ও ইফতার সময়সূচী
+      <h2 className="text-xl font-semibold text-center mb-3 hover:text-emerald-500">
+        <Link href="/ramadan">
+          আজকের সেহরি ও ইফতার সময়সূচী
+        </Link>
       </h2>
 
       {/* Table Header */}

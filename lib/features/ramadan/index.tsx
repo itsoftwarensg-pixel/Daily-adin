@@ -204,9 +204,6 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
             backgroundPosition: 'top center',
         }}>
             <div className="min-h-screen bg-gradient-to-b from-emerald-50/40 to-white p-0 sm:p-6">
-                <div className=".max-w-[360x]">
-                    <RamadanCard days={ramadanData.days} division_offsets={divisions} />
-                </div>
                 {/* ================= HEADER ================= */}
                 <Container>
                     <div>
