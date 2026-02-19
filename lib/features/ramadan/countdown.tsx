@@ -111,7 +111,7 @@ export default function RamadanCountdown({ days, division_offsets }: Props) {
         <span>বিভাগ</span>
         <span className="text-center">সেহরি</span>
         <span className="text-center">ইফতার</span>
-        <span className="text-right">কাউন্টডাউন</span>
+        <span className="text-right">সময় বাকি</span>
       </div>
 
       {/* Rows */}
@@ -150,90 +150,145 @@ export default function RamadanCountdown({ days, division_offsets }: Props) {
   const tomorrow = days[todayIndex + 1];
 
   return (
-    <div className="max-w-4xl mx-auto rounded-md border p-3 pb-1 bg-white dark:bg-gray-900">
-      {/* Header */}
-      <h2 className="text-xl font-semibold text-center mb-3">
-        আজকের সেহরি ও ইফতার সময়সূচী
-      </h2>
+    <div className="max-w-4xl mx-auto relative">
 
-      {/* Table Header */}
-      <div className="grid grid-cols-4 text-sm font-semibold border-b pb-2">
-        <span>বিভাগ</span>
-        <span className="text-center">সেহরি</span>
-        <span className="text-center">ইফতার</span>
-        <span className="text-right">কাউন্টডাউন</span>
-      </div>
+      {/* 🌙 Soft Islamic glow */}
+      <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-amber-400 blur-2xl opacity-20 rounded-xl"></div>
 
-      {/* Rows */}
-      <div className="divide-y">
-        {division_offsets.map((division) => {
-          const offset = Number(division.time_offset_minute);
+      {/* Card */}
+      <div className="relative rounded-xl p-[1px] bg-gradient-to-r from-emerald-600 via-teal-500 to-amber-400">
 
-          // today times
-          const sehriTime = addMinutes(
-            getDateTime(today.enDate, today.sehri_end),
-            offset
-          );
+        <div className="rounded-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl p-3 shadow-xl border border-emerald-200/30 dark:border-emerald-800/30">
 
-          const iftarTime = addMinutes(
-            getDateTime(today.enDate, today.iftar),
-            offset
-          );
+          {/* Header */}
+          <h2 className="text-xl md:text-2xl font-semibold text-center mb-5 
+        bg-gradient-to-r from-emerald-600 via-teal-500 to-amber-500 
+        bg-clip-text text-transparent tracking-wide">
+            আজকের সেহরি ও ইফতার সময়সূচী - ১৪৪৭ হিজরি
+          </h2>
 
-          let nextEvent: { label: string; time: Date } | null = null;
+          {/* Header Row */}
+          <div className="grid grid-cols-4 text-xs md:text-sm font-semibold pb-2 
+        text-emerald-800 dark:text-emerald-300 
+        border-b border-emerald-200/30 dark:border-emerald-800/40">
+            <span>বিভাগ</span>
+            <span className="text-center pr-2">সেহরি</span>
+            <span className="text-center pr-4">ইফতার</span>
+            <span className="text-right">সময় বাকি</span>
+          </div>
 
-          if (now < sehriTime) {
-            nextEvent = { label: "সেহরি", time: sehriTime };
-          } else if (now < iftarTime) {
-            nextEvent = { label: "ইফতার", time: iftarTime };
-          } else if (tomorrow) {
-            // tomorrow sehri
-            const tomorrowSehri = addMinutes(
-              getDateTime(tomorrow.enDate, tomorrow.sehri_end),
-              offset
-            );
+          {/* Rows */}
+          <div className="divide-y divide-emerald-100/40 dark:divide-emerald-800/30">
+            {division_offsets.map((division) => {
+              const offset = Number(division.time_offset_minute);
 
-            nextEvent = { label: "আগামী সেহরি", time: tomorrowSehri };
-          }
+              const sehriTime = addMinutes(
+                getDateTime(today.enDate, today.sehri_end),
+                offset
+              );
 
-          const countdown = nextEvent
-            ? getCountdown(nextEvent.time)
-            : "শেষ";
+              const iftarTime = addMinutes(
+                getDateTime(today.enDate, today.iftar),
+                offset
+              );
 
-          return (
-            <div
-              key={division.division_en_name}
-              className="grid grid-cols-4 items-center py-0.5 text-sm hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors"
+              let nextEvent = null;
+
+              if (now < sehriTime) {
+                nextEvent = { label: "সেহরি", time: sehriTime };
+              } else if (now < iftarTime) {
+                nextEvent = { label: "ইফতার", time: iftarTime };
+              } else if (tomorrow) {
+                const tomorrowSehri = addMinutes(
+                  getDateTime(tomorrow.enDate, tomorrow.sehri_end),
+                  offset
+                );
+
+                nextEvent = { label: "আগামী সেহরি", time: tomorrowSehri };
+              }
+
+              const countdown = nextEvent
+                ? getCountdown(nextEvent.time)
+                : "শেষ";
+
+              const isActive = nextEvent !== null;
+
+              return (
+                <div
+                  key={division.division_en_name}
+                  className={`
+                grid grid-cols-4 items-center py-2 px-4 text-sm rounded-lg
+                transition-all duration-300
+
+                ${isActive
+                      ? "bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-amber-400/10 shadow-md"
+                      : ""
+                    }
+
+                hover:bg-emerald-50/60 dark:hover:bg-emerald-900/20
+              `}
+                >
+                  {/* Division */}
+                  <span className="font-medium text-gray-800 dark:text-gray-200">
+                    {division.division_bn_name}
+                  </span>
+
+                  {/* Sehri */}
+                  <span className="text-center pr-4 font-semibold text-emerald-700 dark:text-emerald-400">
+                    {formatTime(sehriTime)}
+                  </span>
+
+                  {/* Iftar */}
+                  <span className="text-center pr-4 font-semibold text-amber-600 dark:text-amber-400">
+                    {formatTime(iftarTime)}
+                  </span>
+
+                  {/* Countdown */}
+                  <span className="text-right">
+                    {nextEvent ? (
+                      <div className="flex flex-col items-end">
+
+                        {/* 🌙 Soft gold gradient */}
+                        <span className="
+                          text-sm md:text-base font-semibold
+                          text-transparent bg-clip-text
+                          bg-gradient-to-r from-emerald-600 via-teal-700 to-amber-600
+                        ">
+                          {countdown}
+                        </span>
+
+                        {/* label */}
+                        <span className="text-[10px] md:text-xs text-emerald-700/70 dark:text-emerald-400/70">
+                          {nextEvent.label}
+                        </span>
+                      </div>
+                    ) : (
+                      <span className="text-gray-400">শেষ</span>
+                    )}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* CTA */}
+          <div className="mt-3 flex justify-center">
+            <Link href="/ramadan"
+              className="
+                px-5 py-2 rounded-full text-sm font-medium
+                bg-gradient-to-r from-emerald-600 via-teal-600 to-amber-500
+                text-white shadow-md
+
+                hover:shadow-lg hover:scale-[1.03]
+                active:scale-95 transition-all duration-300
+
+                border border-white/20
+              "
             >
-              {/* Division */}
-              <span>{division.division_bn_name}</span>
-
-              {/* Sehri */}
-              <span className="text-center">
-                {formatTime(sehriTime)}
-              </span>
-
-              {/* Iftar */}
-              <span className="text-center">
-                {formatTime(iftarTime)}
-              </span>
-
-              {/* Countdown */}
-              <span className="text-right font-semibold">
-                {nextEvent ? (
-                  <>
-                    <span className="text-md">{countdown}</span>
-                    <span className="block text-xs text-gray-500">
-                      {nextEvent.label}
-                    </span>
-                  </>
-                ) : (
-                  "শেষ"
-                )}
-              </span>
-            </div>
-          );
-        })}
+              🌙 পুরো রমজানের সময়সূচী দেখুন
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

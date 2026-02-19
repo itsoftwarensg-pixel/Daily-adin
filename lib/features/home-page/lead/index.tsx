@@ -64,7 +64,7 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
     <div className="pt-4 pb-8">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-0 md:gap-6">
-          <div className="col-span-3 space-y-4">
+          <div className="col-span-3 space-y-4 mb-4">
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
               {/* Lead news - Left side */}
               <div className="order-2 md:order-1 md:col-span-2 space-y-2">
@@ -155,7 +155,7 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
             </div>
 
             {/* National, Politics */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               {/* National */}
               <HomeContentBox
                 contents={nationalNewsContents}
@@ -188,7 +188,7 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
               />
 
               {/* এদিন জনপ্রিয় - Home Video */}
-              {homeTopVideoNewsContents &&
+              {/* {homeTopVideoNewsContents &&
                 homeTopVideoNewsContents.length > 0 && (
                   <div className="space-y-3">
                     <LeadVideoHeader
@@ -203,7 +203,7 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
                       video={homeTopVideoNewsContents[0]}
                     />
                   </div>
-                )}
+                )} */}
 
               {/* তারকা আসছেন যিনি - Star Program */}
               {/* {starProgramNewsContent && (
