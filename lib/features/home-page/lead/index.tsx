@@ -16,6 +16,8 @@ import LeadNewsItemVideoOverlay from "@/lib/components/common/news-elements/lead
 import LeadNewsItemVideoCelebrity from "@/lib/components/common/news-elements/lead-news-item-video-celebrity";
 import Advertisement from "@/lib/components/common/advertisement";
 import { ADVERTISE_TYPES } from "@/lib/config/constant";
+import { RamadanDay, RamadanDivision } from "@/lib/types/ramadan";
+import RamadanCountdown from "@/lib/features/ramadan/countdown";
 
 // Props
 interface Props {
@@ -29,9 +31,11 @@ interface Props {
     star_program?: HomePageStarProgramSection;
     opinion?: HomePageContnetSection;
   };
+  ramadanDays: RamadanDay[];
+  ramadanDivisionOffsets: RamadanDivision[];
 }
 
-const HomeLead = ({ homeData }: Props) => {
+const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
   const {
     lead: leadContents,
     national: nationalContents,
@@ -60,7 +64,7 @@ const HomeLead = ({ homeData }: Props) => {
     <div className="pt-4 pb-8">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-0 md:gap-6">
-          <div className="col-span-3 space-y-4">
+          <div className="col-span-3 space-y-4 mb-4">
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
               {/* Lead news - Left side */}
               <div className="order-2 md:order-1 md:col-span-2 space-y-2">
@@ -151,7 +155,7 @@ const HomeLead = ({ homeData }: Props) => {
             </div>
 
             {/* National, Politics */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               {/* National */}
               <HomeContentBox
                 contents={nationalNewsContents}
@@ -177,8 +181,14 @@ const HomeLead = ({ homeData }: Props) => {
           {/* Sidebar - Rigt side */}
           <div className="col-span-1">
             <div className="space-y-6">
+              {/* আজকের সেহরি ও ইফতার সময়সূচী */}
+              <RamadanCountdown
+                days={ramadanDays}
+                division_offsets={ramadanDivisionOffsets}
+              />
+
               {/* এদিন জনপ্রিয় - Home Video */}
-              {homeTopVideoNewsContents &&
+              {/* {homeTopVideoNewsContents &&
                 homeTopVideoNewsContents.length > 0 && (
                   <div className="space-y-3">
                     <LeadVideoHeader
@@ -193,10 +203,10 @@ const HomeLead = ({ homeData }: Props) => {
                       video={homeTopVideoNewsContents[0]}
                     />
                   </div>
-                )}
+                )} */}
 
               {/* তারকা আসছেন যিনি - Star Program */}
-              {starProgramNewsContent && (
+              {/* {starProgramNewsContent && (
                 <div className="space-y-3">
                   <LeadVideoHeader
                     title="তারকা আসছেন যিনি"
@@ -210,7 +220,16 @@ const HomeLead = ({ homeData }: Props) => {
                     starProgramNewsContent={starProgramNewsContent}
                   />
                 </div>
-              )}
+              )} */}
+
+              {/* Advertisement Home top right up */}
+              {/* <div className="flex justify-center mb-4">
+                <Advertisement
+                  width={300}
+                  height={300}
+                  imgSrc={ADVERTISE_TYPES.HOME_TOP_RIGHT_UP}
+                />
+              </div> */}
             </div>
 
             {/* Latest - Popular */}

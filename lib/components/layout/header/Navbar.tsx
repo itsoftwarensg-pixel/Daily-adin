@@ -9,6 +9,7 @@ import { whiteArrowDown } from "@/lib/components/icons";
 import { ImageWithFallback } from "@/lib/components/image";
 import { AiOutlineHome } from "react-icons/ai";
 import { NavbarMenuItem } from "@/lib/types/common.types";
+import { IoIosArrowDown } from "react-icons/io";
 
 // Props
 interface Props {
@@ -50,11 +51,11 @@ const Navbar = ({ menus }: Props) => {
   return (
     <div className="w-full flex flex-col items-start justify-between gap-3 print:hidden">
       {/* Navbar */}
-      <div className="w-full h-full flex items-stretch justify-between bg-[#D30000]">
-        <div className="flex-1 flex items-center px-4 py-2">
+      <div className="w-full h-full flex items-stretch justify-between bg-white">
+        <div className="flex-1 flex items-center px-4 py-2 pl-0">
           {!searchOpen ? (
-            <div className="flex items-center gap-6">
-              <Link href={"/"} className="text-[18px] font-semibold text-white">
+            <div className="flex items-center gap-4">
+              <Link href={"/"} className="text-[18px] font-semibold text-black">
                 <AiOutlineHome />
               </Link>
               {menus &&
@@ -76,19 +77,26 @@ const Navbar = ({ menus }: Props) => {
                   >
                     <Link
                       href={item.href ?? "#"}
-                      className="flex items-center gap-2 text-[17px] font-semibold text-white"
+                      className="flex items-center gap-2 text-[17px] font-semibold text-black hover:text-red-500"
                     >
                       {item.text}
 
                       {item.children && (
-                        <ImageWithFallback
-                          src={whiteArrowDown}
-                          width={10}
-                          height={5}
-                          alt="arrow"
-                          className={
-                            openDropdown === item.text ? "rotate-180" : ""
-                          }
+                        // <ImageWithFallback
+                        //   src={whiteArrowDown}
+                        //   width={10}
+                        //   height={5}
+                        //   alt="arrow"
+                        //   className={
+                        //     openDropdown === item.text ? "rotate-180" : ""
+                        //   }
+                        // />
+                        <IoIosArrowDown
+                        size={14}
+                          className={`
+                            ${openDropdown === item.text ? "rotate-180" : ""}
+                            transition-all
+                          `}
                         />
                       )}
                     </Link>
@@ -146,7 +154,7 @@ const Navbar = ({ menus }: Props) => {
 
               <button
                 onClick={() => setSearchOpen(false)}
-                className="text-white"
+                className="text-black"
               >
                 <FiX size={24} />
               </button>
@@ -157,12 +165,12 @@ const Navbar = ({ menus }: Props) => {
         {/* Search, Language Icon */}
         <div className="flex items-center justify-between">
           <div
-            className="group px-3 py-2 w-12 border-l border-red-400 ml-auto cursor-pointer"
+            className="group px-3 py-2 w-12 border-l border-r border-gray-200 ml-auto cursor-pointer"
             onClick={() => setSearchOpen(true)}
           >
             <FiSearch
               size={24}
-              className="text-white group-hover:text-red-100"
+              className="text-black group-hover:text-gray-600"
             />
           </div>
           {/* <div className="px-3 py-2 w-22 border-l group border-red-400 ml-auto text-white cursor-pointer">

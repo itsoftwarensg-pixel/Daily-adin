@@ -21,6 +21,7 @@ import { navItems } from "@/lib/data";
 import { FaBars } from "react-icons/fa6";
 import { AiOutlineClose, AiOutlineHome } from "react-icons/ai";
 import { NavbarMenuItem } from "@/lib/types/common.types";
+import { Category } from "@/lib/types/category.page";
 
 const socialLinks = [
   { href: "https://www.facebook.com", icon: facebook, alt: "facebook" },
@@ -32,13 +33,15 @@ const socialLinks = [
 interface Props {
   dateTimeBn: string;
   menus: NavbarMenuItem[];
+  personalityData: Category; // সবিশেষ category data
 }
 
-const TopBar = ({ dateTimeBn, menus }: Props) => {
+const TopBar = ({ dateTimeBn, menus, personalityData }: Props) => {
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [openSocialMediaDropdown, setOpenSocialMediaDropdown] = useState(false);
   const [todayDate, setTodayDate] = useState(dateTimeBn);
+  const personalityNews = personalityData?.position_contents?.[0] ?? null; // সবিশেষ এর প্রথম নিউজ
 
   // Mobile menu toggle
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -90,7 +93,7 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
   }, [mobileMenuOpen]);
 
   return (
-    <div className="w-full bg-white border-b-red-500 border-b-2 pb-2 md:pb-0 print:border-b-[#d4d4d4] print:border-b print:border-dashed">
+    <div className="w-full bg-white pb-2 md:pb-0 print:border-b-[#d4d4d4] print:border-b print:border-dashed border-b-red-500 border-b-2 md:border-none">
       <div className="flex justify-between items-center gap-10 z-50 print:justify-center">
         <Link
           href={"/"}
@@ -109,8 +112,9 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
             width={500}
             height={150}
             alt="The Daily Adin Logo"
-            className="object-contain w-96 xl:w-[500px]"
+            className="object-contain w-90 xl:w-[360px]"
           />
+          {/* <p className="text-[18px] text-center font-normal">{todayDate}</p> */}
         </div>
 
         <button
@@ -120,6 +124,7 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
           {mobileMenuOpen ? <AiOutlineClose size={24} /> : <FaBars size={24} />}
         </button>
 
+        {/* <div className="hidden lg:flex flex-col gap-2 border min-h-[85px] items-end print:hidden w-[362px] max-w-[362px]"> */}
         <div className="hidden lg:flex flex-col gap-2 items-end print:hidden">
           <p className="text-[20px] font-normal">{todayDate}</p>
           <div className="flex items-center gap-4">
@@ -186,6 +191,37 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
               </div>
             </div>
           </div>
+          {/* --{JSON.stringify(personalityData)} */}
+          {/* {personalityNews && (
+            <Link className="block group overflow-hidden w-[360px] max-w-[360px]" href={personalityNews.full_url}>
+              <div className="w-full grid grid-cols-5 items-center justify-center bg-gray-100 gap-2 overflow-hidden">
+                <div className="col-span-2 aspect-[16/10]">
+                  <ImageWithFallback
+                    src={personalityNews.full_image_path}
+                    height={600}
+                    width={900}
+                    alt={`${personalityNews.heading}`}
+                    className="w-full object-cover h-full"
+                  />
+                </div>
+                <div className="col-span-3">
+                  <h4 className="p-2 group-hover:text-blue-700 text-[17px] font-semibold">
+                    {personalityNews.sub_heading ? (
+                      <>
+                        <span className="text-red-500">
+                          {personalityNews.sub_heading}
+                        </span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-400 inline-block mx-1"></span>
+                        <span>{personalityNews.heading}</span>
+                      </>
+                    ) :
+                      personalityNews.heading
+                    }
+                  </h4>
+                </div>
+              </div>
+            </Link>
+          )} */}
         </div>
       </div>
 
@@ -201,7 +237,7 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
           {/* Drawer */}
           <div className="md:hidden bg-white shadow-lg h-screen w-80 overflow-y-auto pb-24">
             {/* Header */}
-            <div className="sticky top-0 bg-gray-100 px-4 py-4 flex justify-between">
+            <div className="sticky top-0 bg-gray-100 px-4 py-4 flex justify-between z-50">
               <Link
                 href={"/"}
                 className="text-[22px] font-semibold text-black"

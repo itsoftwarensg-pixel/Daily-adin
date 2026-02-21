@@ -89,7 +89,7 @@ const ArticleContent = memo(({ contentDetails, forwardRef }: Props) => {
           )}
 
           {/* Tags */}
-          <div className="mb-4 flex gap-1 items-center print:hidden">
+          <div className="mb-4 flex flex-wrap gap-1 items-center print:hidden">
             {contentDetails &&
               contentDetails.tags &&
               contentDetails.tags.length > 0 &&

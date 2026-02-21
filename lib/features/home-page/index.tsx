@@ -22,6 +22,9 @@ import BreakingNews from "@/lib/components/common/breaking-news";
 import HomeInternational from "@/lib/features/home-page/international";
 import HomeClickedMemories from "@/lib/features/home-page/clicked-memories";
 import HomeLaiceFitaPantholokCampus from "@/lib/features/home-page/laicefita-panthopolok-campus";
+import ElectionCountdown from "@/lib/features/special-event";
+import { ElectionApiResponse } from "@/lib/types/election";
+import { RamadanDay, RamadanDivision } from "@/lib/types/ramadan";
 
 // Type for the combined home data
 interface FullHomeData {
@@ -50,9 +53,14 @@ interface FullHomeData {
 interface Props {
   initialHomeData: FullHomeData;
   divisionList: DivisionType[];
+  // electionData: ElectionApiResponse;
+  ramadanDays: RamadanDay[];
+  ramadanDivisionOffsets: RamadanDivision[];
 }
 
-const HomePage = ({ initialHomeData, divisionList }: Props) => {
+const HomePage = ({ initialHomeData, divisionList, 
+  // electionData, 
+  ramadanDays, ramadanDivisionOffsets }: Props) => {
   const [homeData, setHomeData] = useState<FullHomeData>(initialHomeData);
   const [loading, setLoading] = useState(false);
   const [hasLoadedSecondChunk, setHasLoadedSecondChunk] = useState(false);
@@ -107,11 +115,18 @@ const HomePage = ({ initialHomeData, divisionList }: Props) => {
         homeData.scroll &&
         homeData.scroll.contents &&
         homeData.scroll.contents.length > 0 && (
-          <BreakingNews contents={homeData.scroll.contents} />
+          <>
+            <BreakingNews contents={homeData.scroll.contents} />
+            {/* <ElectionCountdown homeData={homeData as any} electionData={electionData} /> */}
+          </>
         )}
 
       {/* Fist Chunk data */}
-      <HomeLead homeData={homeData as any} />
+      <HomeLead
+        homeData={homeData as any}
+        ramadanDays={ramadanDays}
+        ramadanDivisionOffsets={ramadanDivisionOffsets}
+      />
 
       {/* Second Chunk Components */}
       {hasLoadedSecondChunk && (

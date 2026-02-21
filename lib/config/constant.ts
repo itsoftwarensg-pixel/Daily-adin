@@ -46,16 +46,22 @@ export const HOME_PAGE_CHUNK_1 = `lead,scroll,trending_tag,special,recent,popula
 export const HOME_PAGE_CHUNK_2 = `sports,country,entertainment,lifestyle,international,business,photo,video,tourism,campus,leisfita`;
 export const HOME_PAGE_INCLUDES = `${HOME_PAGE_CHUNK_1},${HOME_PAGE_CHUNK_2}`;
 
+// 
+export const CATEGORY_SLUG = {
+    PERSONALITY: 'personality', // সবিশেষ
+}
+
 // Advertisements
 export const ADVERTISE_TYPES = {
-    HOME_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
-    CATEGORY_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
-    SUB_CATEGORY_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
-    COUNTRY_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
-    DIVISION_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
-    DISTRICT_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
-    UPAZILA_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
-    CONTENT_DETAILS_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
-    VIDEO_DETAILS_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
-    PHOTO_DETAILS_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/January2026/adevertisement_300x300-202601051617362294445887.jpeg",
+    HOME_TOP_RIGHT_UP: "https://cdn.dailyadin.com/uploads/February2026/adevertisement-housing-202602142011269842119803.jpeg",
+    HOME_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/February2026/adevertisement-february-202602142011173667929847.jpeg",
+    CATEGORY_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/February2026/adevertisement-february-202602142011173667929847.jpeg",
+    SUB_CATEGORY_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/February2026/adevertisement-february-202602142011173667929847.jpeg",
+    COUNTRY_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/February2026/adevertisement-february-202602142011173667929847.jpeg",
+    DIVISION_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/February2026/adevertisement-february-202602142011173667929847.jpeg",
+    DISTRICT_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/February2026/adevertisement-february-202602142011173667929847.jpeg",
+    UPAZILA_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/February2026/adevertisement-february-202602142011173667929847.jpeg",
+    CONTENT_DETAILS_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/February2026/adevertisement-february-202602142011173667929847.jpeg",
+    VIDEO_DETAILS_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/February2026/adevertisement-february-202602142011173667929847.jpeg",
+    PHOTO_DETAILS_TOP_RIGHT: "https://cdn.dailyadin.com/uploads/February2026/adevertisement-february-202602142011173667929847.jpeg",
 }
