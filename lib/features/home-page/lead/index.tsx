@@ -187,7 +187,7 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
                 division_offsets={ramadanDivisionOffsets}
               />
 
-              {/* এদিন জনপ্রিয় - Home Video */}
+              {/* এদিন জনপ্রিয় - Home Video Section */}
               {/* {homeTopVideoNewsContents &&
                 homeTopVideoNewsContents.length > 0 && (
                   <div className="space-y-3">
