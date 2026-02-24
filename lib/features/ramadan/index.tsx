@@ -42,74 +42,97 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
     /* =======================
        🔹 Before Ramadan
     ======================= */
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const now = new Date();
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         const now = new Date();
 
-            /* =======================
-               🔹 First day before Ramadan
-            ======================= */
-            // Ramadan starts from
-            const ramadanStartDate = ramadanData.ramadan_start_date; // "2026-02-17"
+    //         /* =======================
+    //            🔹 First day before Ramadan
+    //         ======================= */
+    //         // Ramadan starts from
+    //         const ramadanStartDate = ramadanData.ramadan_start_date; // "2026-02-17"
 
-            // 1. Date object বানানো
-            const startDate = new Date(ramadanStartDate + "T00:00:00+06:00"); // Bangladesh UTC+6
+    //         // 1. Date object বানানো
+    //         const startDate = new Date(ramadanStartDate + "T00:00:00+06:00"); // Bangladesh UTC+6
 
-            // 2. Previous day বের করা
-            const prevDay = new Date(startDate);
-            prevDay.setDate(startDate.getDate() - 1);
+    //         // 2. Previous day বের করা
+    //         const prevDay = new Date(startDate);
+    //         prevDay.setDate(startDate.getDate() - 1);
 
-            // 3. yyyy-mm-dd string
-            const prevDayStr = prevDay.toISOString().split('T')[0];
+    //         // 3. yyyy-mm-dd string
+    //         const prevDayStr = prevDay.toISOString().split('T')[0];
 
-            // First date
-            const firstDateIftarTime = ramadanData.days[0].iftar; // "17:50"
+    //         // First date
+    //         const firstDateIftarTime = ramadanData.days[0].iftar; // "17:50"
 
-            // Parse first day iftar time
-            const [h, m] = firstDateIftarTime.split(":").map(Number);
+    //         // Parse first day iftar time
+    //         const [h, m] = firstDateIftarTime.split(":").map(Number);
 
-            // Set previous day + first day iftar time
-            const prevDayTarget = new Date(prevDay);
-            prevDayTarget.setHours(h, m, 0, 0); // 17:50
+    //         // Set previous day + first day iftar time
+    //         const prevDayTarget = new Date(prevDay);
+    //         prevDayTarget.setHours(h, m, 0, 0); // 17:50
 
-            // formatDiff helper
-            const formatDiff = (diff: number) => {
-                if (diff <= 0) return "";
-                const hours = Math.floor(diff / 1000 / 3600);
-                const minutes = Math.floor((diff / 1000 % 3600) / 60);
-                const seconds = Math.floor((diff / 1000) % 60);
-                return `${toBanglaNumber(hours)} ঘণ্টা ${toBanglaNumber(minutes)} মিনিট ${toBanglaNumber(seconds)} সেকেন্ড`;
-            };
+    //         // formatDiff helper
+    //         const formatDiff = (diff: number) => {
+    //             if (diff <= 0) return "";
+    //             const hours = Math.floor(diff / 1000 / 3600);
+    //             const minutes = Math.floor((diff / 1000 % 3600) / 60);
+    //             const seconds = Math.floor((diff / 1000) % 60);
+    //             return `${toBanglaNumber(hours)} ঘণ্টা ${toBanglaNumber(minutes)} মিনিট ${toBanglaNumber(seconds)} সেকেন্ড`;
+    //         };
 
-            if (now >= prevDayTarget && now < startDate) {
-                const [h, m] = ramadanData.days[0].sehri_end.split(":").map(Number);
-                const target = new Date(`${ramadanStartDate}T${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:00+06:00`);
+    //         if (now >= prevDayTarget && now < startDate) {
+    //             const [h, m] = ramadanData.days[0].sehri_end.split(":").map(Number);
+    //             const target = new Date(`${ramadanStartDate}T${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:00+06:00`);
 
-                const diff = target.getTime() - now.getTime();
-                setActiveLabel("🌙 স্বাগতম মাহে রমজান। সেহরি শেষ হতে বাকি");
-                setActiveCountdown(formatDiff(diff));
-                return; // early return
-            }
-            setActiveLabel("স্বাগতম শিঘ্রই মাহে রমজান শুরু হচ্ছে।");
-            setActiveCountdown('');
-        }, 1000);
+    //             const diff = target.getTime() - now.getTime();
+    //             setActiveLabel("🌙 স্বাগতম মাহে রমজান। সেহরি শেষ হতে বাকি");
+    //             setActiveCountdown(formatDiff(diff));
+    //             return; // early return
+    //         }
+    //         setActiveLabel("স্বাগতম শিঘ্রই মাহে রমজান শুরু হচ্ছে।");
+    //         setActiveCountdown('');
+    //     }, 1000);
 
-        return () => clearInterval(interval);
-    }, [todayData, selectedDivision]);
+    //     return () => clearInterval(interval);
+    // }, [todayData, selectedDivision]);
 
 
     /* Countdown - During Ramadan */
     useEffect(() => {
         const interval = setInterval(() => {
             const now = new Date();
-
             if (!todayData) return;
 
-            const todayIndex = ramadanData.days.findIndex(
+            let todayIndex = ramadanData.days.findIndex(
                 d => d.enDate === todayData.enDate
             );
 
-            // formatDiff helper
+            if (todayIndex === -1) return;
+
+            const offsetMinutes = getOffsetMinutes(Number(selectedDivision.time_offset_minute));
+
+            // 🔥 Check if today's iftar already passed
+            const todayIftarAdjusted = adjustTime(todayData.iftar, offsetMinutes);
+            const [ih, im] = todayIftarAdjusted.split(":").map(Number);
+
+            const todayIftarDate = new Date();
+            todayIftarDate.setHours(ih, im, 0, 0);
+
+            // 👉 If after Iftar → move to next day
+            if (now >= todayIftarDate) {
+                todayIndex += 1;
+            }
+
+            // Safety
+            if (todayIndex >= ramadanData.days.length) {
+                setActiveLabel("ঈদ মুবারাক!");
+                setActiveCountdown("");
+                return;
+            }
+
+            const currentDay = ramadanData.days[todayIndex];
+
             const formatDiff = (diff: number) => {
                 if (diff <= 0) return "";
 
@@ -122,60 +145,45 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
                 return `${toBanglaNumber(pad(hours))} ঘণ্টা ${toBanglaNumber(pad(minutes))} মিনিট ${toBanglaNumber(pad(seconds))} সেকেন্ড`;
             };
 
-
-            /* =======================
-               🔹 Normal Sehri / Iftar logic
-            ======================= */
-
-            if (todayIndex === -1) return;
-
-            const offsetMinutes = getOffsetMinutes(Number(selectedDivision.time_offset_minute));
-
-            const getIftarTarget = () => {
-                const adjusted = adjustTime(todayData.iftar, offsetMinutes);
+            // 🔹 Sehri Target
+            const getSehriTarget = () => {
+                const adjusted = adjustTime(currentDay.sehri_end, offsetMinutes);
                 const [h, m] = adjusted.split(":").map(Number);
+
                 const target = new Date();
                 target.setHours(h, m, 0, 0);
-                if (now < target) return target;
 
-                const nextIndex = todayIndex + 1;
-                if (nextIndex >= ramadanData.days.length) return null;
+                // যদি এখন already next day এ shift হয়ে যায়
+                if (now >= todayIftarDate) {
+                    target.setDate(target.getDate() + 1);
+                }
 
-                const nextAdjusted = adjustTime(ramadanData.days[nextIndex].iftar, offsetMinutes);
-                const [nh, nm] = nextAdjusted.split(":").map(Number);
-                const nextTarget = new Date();
-                nextTarget.setDate(nextTarget.getDate() + 1);
-                nextTarget.setHours(nh, nm, 0, 0);
-                return nextTarget;
+                return target;
             };
 
-            const getSehriTarget = () => {
-                const adjusted = adjustTime(todayData.sehri_end, offsetMinutes);
+            // 🔹 Iftar Target
+            const getIftarTarget = () => {
+                const adjusted = adjustTime(currentDay.iftar, offsetMinutes);
                 const [h, m] = adjusted.split(":").map(Number);
+
                 const target = new Date();
                 target.setHours(h, m, 0, 0);
-                if (now < target) return target;
 
-                const nextIndex = todayIndex + 1;
-                if (nextIndex >= ramadanData.days.length - 28) return null;
+                // if we shifted to next day
+                if (now >= todayIftarDate) {
+                    target.setDate(target.getDate() + 1);
+                }
 
-                const nextAdjusted = adjustTime(ramadanData.days[nextIndex].sehri_end, offsetMinutes);
-                const [nh, nm] = nextAdjusted.split(":").map(Number);
-                const nextTarget = new Date();
-                nextTarget.setDate(nextTarget.getDate() + 1);
-                nextTarget.setHours(nh, nm, 0, 0);
-                return nextTarget;
+                return target;
             };
 
             const sehriTarget = getSehriTarget();
             const iftarTarget = getIftarTarget();
 
-            const sehriDiff = sehriTarget ? sehriTarget.getTime() - now.getTime() : -1;
-            const iftarDiff = iftarTarget ? iftarTarget.getTime() - now.getTime() : -1;
+            const sehriDiff = sehriTarget.getTime() - now.getTime();
+            const iftarDiff = iftarTarget.getTime() - now.getTime();
 
-            /* =======================
-               SMART SWITCH
-            ======================= */
+            // 🔥 SMART SWITCH
             if (sehriDiff > 0 && sehriDiff < iftarDiff) {
                 setActiveLabel(`সেহরি শেষ হতে বাকি`);
                 setActiveCountdown(formatDiff(sehriDiff));
@@ -190,6 +198,7 @@ export default function RamadanComponent({ data: ramadanData }: Props) {
 
         return () => clearInterval(interval);
     }, [todayData, selectedDivision]);
+
 
     /* Segments */
     const segments = useMemo(() => [
