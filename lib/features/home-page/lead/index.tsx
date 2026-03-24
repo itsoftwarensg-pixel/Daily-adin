@@ -182,13 +182,13 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
           <div className="col-span-1">
             <div className="space-y-6">
               {/* আজকের সেহরি ও ইফতার সময়সূচী */}
-              <RamadanCountdown
+              {/* <RamadanCountdown
                 days={ramadanDays}
                 division_offsets={ramadanDivisionOffsets}
-              />
+              /> */}
 
               {/* এদিন জনপ্রিয় - Home Video Section */}
-              {/* {homeTopVideoNewsContents &&
+              {homeTopVideoNewsContents &&
                 homeTopVideoNewsContents.length > 0 && (
                   <div className="space-y-3">
                     <LeadVideoHeader
@@ -203,10 +203,10 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
                       video={homeTopVideoNewsContents[0]}
                     />
                   </div>
-                )} */}
+                )}
 
               {/* তারকা আসছেন যিনি - Star Program */}
-              {/* {starProgramNewsContent && (
+              {starProgramNewsContent && (
                 <div className="space-y-3">
                   <LeadVideoHeader
                     title="তারকা আসছেন যিনি"
@@ -220,7 +220,7 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
                     starProgramNewsContent={starProgramNewsContent}
                   />
                 </div>
-              )} */}
+              )}
 
               {/* Advertisement Home top right up */}
               {/* <div className="flex justify-center mb-4">
