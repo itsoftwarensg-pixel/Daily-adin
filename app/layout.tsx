@@ -1,11 +1,13 @@
 import { ReactNode } from "react";
 import "./globals.css";
 import type { Metadata } from "next";
+import Script from 'next/script';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-toastify/dist/ReactToastify.css";
 import { Noto_Serif_Bengali } from "next/font/google";
 import { Bounce, ToastContainer } from "react-toastify";
+import AnalyticsTracker from "@/lib/components/analytics-tracker";
 
 const noto_serif = Noto_Serif_Bengali({
   display: "swap",
@@ -41,22 +43,27 @@ export default function RootLayout({ children }: PropsType) {
         {/* END SCHEMA */}
 
         {/* START Google Analytics */}
-        {/* <Script
+        <Script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
-        /> */}
+        />
 
-        {/* <Script id='google-analytics'>
+        <Script id='google-analytics'>
           {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', ${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID});
           `}
-        </Script> */}
+        </Script>
         {/* END Google Analytics */}
+
       </head>
       <body className={`${noto_serif.className} antialiased`}>
+
+        {/* To track page views for each route change */}
+        <AnalyticsTracker />
+
         <main>
           <div className="w-full">{children}</div>
           <ToastContainer
