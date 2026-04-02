@@ -50,8 +50,8 @@ const HomeContentBoxNewsItem = ({
                         className="w-full object-cover h-full"
                     />
                 </div>
-                <div>
-                    <h4 className={`px-2 py-2 
+                <div className="pb-2">
+                    <h4 className={`leading-[1.4] line-clamp-2 overflow-hidden min-h-[3.5rem] px-2 pt-2 
                                     ${titleSize === "3xl"
                             ? "text-3xl"
                             : titleSize === "xlarge"
