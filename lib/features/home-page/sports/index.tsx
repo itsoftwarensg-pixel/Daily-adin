@@ -79,7 +79,7 @@ const HomeSports = ({ data }: Props) => {
                             </div>
                         }
 
-                        <Link href="/" className="block group bg-red-100 px-6 py-4">
+                        <Link href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/match-schedule-fixtures-results-teams-stadiums" target="_blank" className="block group bg-red-100 px-6 py-4">
                             <h4 className="m-0 text-3xl text-center text-red-700 group-hover:text-red-500">
                                 দেখে নিন ২০২৬ ফুটবল বিশ্বকাপের সূচি
                             </h4>
