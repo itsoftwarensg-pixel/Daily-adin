@@ -81,7 +81,7 @@ const HomeSports = ({ data }: Props) => {
 
                         <Link href="/" className="block group bg-red-100 px-6 py-4">
                             <h4 className="m-0 text-3xl text-center text-red-700 group-hover:text-red-500">
-                                দেখে নিন ২০২৬ টি–টোয়েন্টি বিশ্বকাপের সূচি
+                                দেখে নিন ২০২৬ ফুটবল বিশ্বকাপের সূচি
                             </h4>
                         </Link>
                     </div>
