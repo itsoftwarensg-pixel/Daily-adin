@@ -42,7 +42,7 @@ export const LOAD_MORE_TYPES = {
 };
 
 // Home page dataset includes
-export const HOME_PAGE_CHUNK_1 = `lead,scroll,trending_tag,special,recent,popular,national,politics,home_video,star_program,opinion`;
+export const HOME_PAGE_CHUNK_1 = `eid-collection,lead,scroll,trending_tag,special,recent,popular,national,politics,home_video,star_program,opinion`;
 export const HOME_PAGE_CHUNK_2 = `sports,country,entertainment,lifestyle,international,business,photo,video,tourism,campus,leisfita`;
 export const HOME_PAGE_INCLUDES = `${HOME_PAGE_CHUNK_1},${HOME_PAGE_CHUNK_2}`;
 

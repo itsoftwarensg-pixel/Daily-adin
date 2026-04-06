@@ -18,6 +18,7 @@ import Advertisement from "@/lib/components/common/advertisement";
 import { ADVERTISE_TYPES } from "@/lib/config/constant";
 import { RamadanDay, RamadanDivision } from "@/lib/types/ramadan";
 import RamadanCountdown from "@/lib/features/ramadan/countdown";
+import EidCollection from "@/lib/components/eid-collection";
 
 // Props
 interface Props {
@@ -30,6 +31,7 @@ interface Props {
     home_video: HomeLiveVideoSection;
     star_program?: HomePageStarProgramSection;
     opinion?: HomePageContnetSection;
+    "eid-collection"?: HomePageContnetSection; // eid-collection
   };
   ramadanDays: RamadanDay[];
   ramadanDivisionOffsets: RamadanDivision[];
@@ -45,6 +47,7 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
     home_video: homeVideoContents,
     star_program: starProgramContent,
     opinion: opinionContents,
+    "eid-collection": eid_collections,
   } = homeData;
 
   const leadNewsContents = leadContents?.contents || [];
@@ -55,10 +58,12 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
   const homeTopVideoNewsContents = homeVideoContents?.contents || [];
   const opinionNewsContents = opinionContents?.contents || [];
   const starProgramNewsContent = starProgramContent?.contents;
+  const eid_collection_contents = eid_collections?.contents || [];
 
   const leadMainContent = leadNewsContents[0]; // Main lead news
   const leadLeftContents = leadNewsContents.slice(1, 6); // Left side contents
   const leadBelowContents = leadNewsContents.slice(6, 12); // Below lead contents
+  const eidCollectionContents = eid_collection_contents.slice(0, 4); // ঈদ সংখ্যা contents
 
   return (
     <div className="pt-4 pb-8">
@@ -206,7 +211,7 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
                 )}
 
               {/* তারকা আসছেন যিনি - Star Program */}
-              {starProgramNewsContent && (
+              {/* {starProgramNewsContent && (
                 <div className="space-y-3">
                   <LeadVideoHeader
                     title="তারকা আসছেন যিনি"
@@ -220,7 +225,15 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
                     starProgramNewsContent={starProgramNewsContent}
                   />
                 </div>
-              )}
+              )} */}
+
+              {/* এদিন ঈদ সংখ্যা */}
+              {eidCollectionContents &&
+                <EidCollection
+                  title={eid_collections?.name || `এদিন ঈদ সংখ্যা`}
+                  contents={eidCollectionContents}
+                />
+              }
 
               {/* Advertisement Home top right up */}
               {/* <div className="flex justify-center mb-4">

@@ -47,6 +47,7 @@ interface FullHomeData {
   tourism?: HomePageContnetSection; // 	পান্থলোক - sub-category
   campus?: HomePageContnetSection; //
   leisfita?: HomePageContnetSection; // sub-category
+  "eid-collection"?: HomePageContnetSection; // eid-collection
 }
 
 // Props
