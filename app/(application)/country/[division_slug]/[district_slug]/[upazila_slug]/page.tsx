@@ -1,7 +1,7 @@
 import React from "react";
 import { getContentsByUpazilaIdAction } from "@/app/actions/content";
 import {
-  getUpazilaBySlugAction,
+  getUpazilaByDistrictAndUpazilaSlugAction,
   getUpazilasByDistrictIdAction,
 } from "@/app/actions/upazila";
 import UpazilaPage from "@/lib/features/country-category/upazila";
@@ -29,7 +29,8 @@ const Page = async ({ params }: Params) => {
   const { division_slug, district_slug, upazila_slug } = await params;
 
   // Fetch upazila details with district,division
-  const upazila = await getUpazilaBySlugAction(
+  const upazila = await getUpazilaByDistrictAndUpazilaSlugAction(
+    district_slug,
     upazila_slug,
     "district,division"
   );

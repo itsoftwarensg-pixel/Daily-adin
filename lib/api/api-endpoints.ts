@@ -82,6 +82,8 @@ export const APIEndpoint = {
       `${APIEndpoint.base_url}/districts/${districtId}/upazilas`,
     getBySlug: (slug: string, include?: string) =>
       `${APIEndpoint.base_url}/upazilas/slug/${slug}?include=${include || ""}`, // include: district,division,contents
+    getByDistrictSlugAndUpazilaSlug: (districtSlug: string, upazilaSlug: string, include?: string) =>
+      `${APIEndpoint.base_url}/upazilas/slug/${districtSlug}/${upazilaSlug}?include=${include || ""}`, // include: district,division,contents
   },
 
   //Archive API endpoints
