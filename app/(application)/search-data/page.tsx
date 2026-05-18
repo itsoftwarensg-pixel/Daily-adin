@@ -3,6 +3,8 @@ import Container from "@/lib/components/common/container";
 import { BreadcrumbSchema } from "@/lib/components/seo/schemas";
 import { SITE_CONFIG } from "@/lib/config/site-config";
 
+export const dynamic = "force-dynamic";
+
 interface Props {
   searchParams: Promise<{ q?: string }>;
 }
