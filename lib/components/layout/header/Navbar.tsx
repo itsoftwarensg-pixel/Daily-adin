@@ -19,17 +19,22 @@ const Navbar = ({ menus }: Props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
-  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && searchQuery.trim()) {
-      router.push(`/search-data?q=${encodeURIComponent(searchQuery.trim())}`);
-      setSearchOpen(false);
-      setSearchQuery("");
-    }
+  const submitSearch = () => {
+    const url = `/search-data?q=${encodeURIComponent(searchQuery.trim())}`;
+
+    // Force full page reload
+    window.location.href = url;
+
+    closeSearch();
   };
 
   const closeSearch = () => {
     setSearchOpen(false);
     setSearchQuery("");
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") submitSearch();
   };
 
   // Close search when clicking outside
@@ -71,13 +76,12 @@ const Navbar = ({ menus }: Props) => {
                 menus.map((item, index) => (
                   <div
                     key={index}
-                    className={`relative flex-col ${
-                      index > 9
-                        ? "hidden xl:flex"
-                        : index > 6
+                    className={`relative flex-col ${index > 9
+                      ? "hidden xl:flex"
+                      : index > 6
                         ? "hidden lg:flex"
                         : "flex"
-                    }`}
+                      }`}
                     onMouseEnter={() =>
                       item.children && setOpenDropdown(item.text)
                     }
@@ -91,9 +95,8 @@ const Navbar = ({ menus }: Props) => {
                       {item.children && (
                         <IoIosArrowDown
                           size={14}
-                          className={`${
-                            openDropdown === item.text ? "rotate-180" : ""
-                          } transition-all`}
+                          className={`${openDropdown === item.text ? "rotate-180" : ""
+                            } transition-all`}
                         />
                       )}
                     </Link>
@@ -147,28 +150,42 @@ const Navbar = ({ menus }: Props) => {
                 placeholder="সংবাদ খুঁজুন..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                onKeyDown={handleSearch}
+                onKeyDown={handleKeyDown}
                 className="flex-1 px-4 py-1 rounded-md text-sm focus:outline-none"
               />
               <button onClick={closeSearch} className="text-black shrink-0">
                 <FiX size={24} />
               </button>
+              {/* Search icon */}
+
+              <div className="flex items-center justify-between">
+                <a href={`/search-data?q=${encodeURIComponent(searchQuery.trim())}`}
+                  className="group px-3 py-2 w-12 border-l border-r border-gray-200 ml-auto cursor-pointer"
+                >
+                  <FiSearch
+                    size={24}
+                    className="text-black group-hover:text-gray-600"
+                  />
+                </a>
+              </div>
             </div>
           )}
         </div>
 
         {/* Search icon */}
-        <div className="flex items-center justify-between">
-          <div
-            className="group px-3 py-2 w-12 border-l border-r border-gray-200 ml-auto cursor-pointer"
-            onClick={() => setSearchOpen(true)}
-          >
-            <FiSearch
-              size={24}
-              className="text-black group-hover:text-gray-600"
-            />
+        {!searchOpen &&
+          <div className="flex items-center justify-between">
+            <div
+              className="group px-3 py-2 w-12 border-l border-r border-gray-200 ml-auto cursor-pointer"
+              onClick={() => setSearchOpen(true)}
+            >
+              <FiSearch
+                size={24}
+                className="text-black group-hover:text-gray-600"
+              />
+            </div>
           </div>
-        </div>
+        }
       </div>
     </div>
   );
