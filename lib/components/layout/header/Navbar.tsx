@@ -2,24 +2,35 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { navItems } from "@/lib/data";
-import { LuGlobe } from "react-icons/lu";
+import { useRouter } from "next/navigation";
 import { FiSearch, FiX } from "react-icons/fi";
-import { whiteArrowDown } from "@/lib/components/icons";
-import { ImageWithFallback } from "@/lib/components/image";
 import { AiOutlineHome } from "react-icons/ai";
 import { NavbarMenuItem } from "@/lib/types/common.types";
 import { IoIosArrowDown } from "react-icons/io";
 
-// Props
 interface Props {
   menus: NavbarMenuItem[];
 }
 
 const Navbar = ({ menus }: Props) => {
+  const router = useRouter();
   const searchRef = useRef<HTMLDivElement>(null);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && searchQuery.trim()) {
+      router.push(`/search-data?q=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchOpen(false);
+      setSearchQuery("");
+    }
+  };
+
+  const closeSearch = () => {
+    setSearchOpen(false);
+    setSearchQuery("");
+  };
 
   // Close search when clicking outside
   useEffect(() => {
@@ -29,14 +40,12 @@ const Navbar = ({ menus }: Props) => {
         searchRef.current &&
         !searchRef.current.contains(event.target as Node)
       ) {
-        setSearchOpen(false);
+        closeSearch();
       }
     };
 
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setSearchOpen(false);
-      }
+      if (event.key === "Escape") closeSearch();
     };
 
     document.addEventListener("mousedown", handleClickOutside);
@@ -50,9 +59,8 @@ const Navbar = ({ menus }: Props) => {
 
   return (
     <div className="w-full flex flex-col items-start justify-between gap-3 print:hidden">
-      {/* Navbar */}
       <div className="w-full h-full flex items-stretch justify-between bg-white">
-        <div className="flex-1 flex items-center px-4 py-2 pl-0">
+        <div ref={searchRef} className="flex-1 flex items-center px-4 py-2 pl-0">
           {!searchOpen ? (
             <div className="flex items-center gap-4">
               <Link href={"/"} className="text-[18px] font-semibold text-black">
@@ -80,23 +88,12 @@ const Navbar = ({ menus }: Props) => {
                       className="flex items-center gap-2 text-[17px] font-semibold text-black hover:text-red-500"
                     >
                       {item.text}
-
                       {item.children && (
-                        // <ImageWithFallback
-                        //   src={whiteArrowDown}
-                        //   width={10}
-                        //   height={5}
-                        //   alt="arrow"
-                        //   className={
-                        //     openDropdown === item.text ? "rotate-180" : ""
-                        //   }
-                        // />
                         <IoIosArrowDown
-                        size={14}
-                          className={`
-                            ${openDropdown === item.text ? "rotate-180" : ""}
-                            transition-all
-                          `}
+                          size={14}
+                          className={`${
+                            openDropdown === item.text ? "rotate-180" : ""
+                          } transition-all`}
                         />
                       )}
                     </Link>
@@ -109,7 +106,6 @@ const Navbar = ({ menus }: Props) => {
                             const href = child.isCat
                               ? `${child.href}`
                               : `${item.href}/${child.href}`;
-
                             return (
                               <Link
                                 key={child.text}
@@ -148,21 +144,20 @@ const Navbar = ({ menus }: Props) => {
               <input
                 autoFocus
                 type="text"
-                placeholder="Search news..."
-                className="flex-1 px-4 py-1 rounded-md text-mds focus:outline-none"
+                placeholder="সংবাদ খুঁজুন..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={handleSearch}
+                className="flex-1 px-4 py-1 rounded-md text-sm focus:outline-none"
               />
-
-              <button
-                onClick={() => setSearchOpen(false)}
-                className="text-black"
-              >
+              <button onClick={closeSearch} className="text-black shrink-0">
                 <FiX size={24} />
               </button>
             </div>
           )}
         </div>
 
-        {/* Search, Language Icon */}
+        {/* Search icon */}
         <div className="flex items-center justify-between">
           <div
             className="group px-3 py-2 w-12 border-l border-r border-gray-200 ml-auto cursor-pointer"
@@ -173,15 +168,6 @@ const Navbar = ({ menus }: Props) => {
               className="text-black group-hover:text-gray-600"
             />
           </div>
-          {/* <div className="px-3 py-2 w-22 border-l group border-red-400 ml-auto text-white cursor-pointer">
-            <div className="flex items-center gap-2 group-hover:text-red-100">
-              <LuGlobe
-                size={20}
-                className="text-white group-hover:text-red-100"
-              />
-              <span>ENG</span>
-            </div>
-          </div> */}
         </div>
       </div>
     </div>

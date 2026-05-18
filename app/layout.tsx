@@ -7,7 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 import "react-toastify/dist/ReactToastify.css";
 import { Noto_Serif_Bengali } from "next/font/google";
 import { Bounce, ToastContainer } from "react-toastify";
-import AnalyticsTracker from "@/lib/components/analytics-tracker";
+import AnalyticsTracker from "@/lib/components/google/analytics-tracker";
+import { SITE_CONFIG } from "@/lib/config/site-config";
 
 const noto_serif = Noto_Serif_Bengali({
   display: "swap",
@@ -22,25 +23,22 @@ interface PropsType {
   children: ReactNode;
 }
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_CONFIG.name,
+  alternateName: SITE_CONFIG.alternateName,
+  url: SITE_CONFIG.url,
+};
 
 export default function RootLayout({ children }: PropsType) {
-  // Schema
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "The Daily Adin",
-    url: "https://www.dailyadin.com/",
-  };
-
   return (
-    <html lang="en">
+    <html lang="bn">
       <head>
-        {/* START SCHEMA */}
-        {/* <script
-          type='application/ld+json'
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        /> */}
-        {/* END SCHEMA */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
 
         {/* START Google Analytics */}
         <Script

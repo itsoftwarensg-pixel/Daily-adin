@@ -131,6 +131,42 @@ interface ArticleSchemaProps {
   keywords?: string;
 }
 
+interface VideoObjectSchemaProps {
+  name: string;
+  description: string;
+  thumbnailUrl: string;
+  uploadDate: string;
+  pageUrl: string;
+}
+
+export const VideoObjectSchema: React.FC<VideoObjectSchemaProps> = ({
+  name,
+  description,
+  thumbnailUrl,
+  uploadDate,
+  pageUrl,
+}) => {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name,
+    description,
+    thumbnailUrl,
+    uploadDate,
+    url: pageUrl.startsWith("http") ? pageUrl : `${BASE_URL}${pageUrl}`,
+    publisher: {
+      "@type": "NewsMediaOrganization",
+      name: SITE_CONFIG.name,
+      logo: {
+        "@type": "ImageObject",
+        url: LOGO_URL,
+      },
+    },
+  };
+
+  return <JsonLd data={data} />;
+};
+
 export const ArticleSchema: React.FC<ArticleSchemaProps> = ({
   headline,
   image,

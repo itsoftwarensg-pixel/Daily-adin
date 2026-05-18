@@ -23,6 +23,25 @@ export const versionedUrl = (url: string, version = "v1"): string => {
 };
 
 /**
+ * Strip HTML tags and entities from a rich-text string and return plain text.
+ * Suitable for generating meta descriptions from HTML content.
+ */
+export const stripHtmlToPlainText = (html: string, maxLength = 155): string => {
+  if (!html || typeof html !== "string") return "";
+  return html
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, maxLength);
+};
+
+/**
  * Truncate a string to a specified maximum length and add ellipsis if needed.
  * @param {string} value - The string to truncate.
  * @param {number} maxLength - The maximum length allowed.

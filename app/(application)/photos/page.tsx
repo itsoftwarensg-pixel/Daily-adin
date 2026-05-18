@@ -1,19 +1,31 @@
 import { getAllPhotoAlbumAction } from "@/app/actions/photo";
 import { PHOTO_PAGE } from "@/lib/config/constant";
 import PhotoAlbums from "@/lib/features/photos";
+import { BreadcrumbSchema } from "@/lib/components/seo/schemas";
+import { SITE_CONFIG } from "@/lib/config/site-config";
 
 export const dynamic = "force-dynamic";
 
-// Generate dynamic metadata
 export async function generateMetadata() {
+  const title = `${PHOTO_PAGE.name_bn} | Browse latest photos`;
+  const description =
+    "Browse all latest photos. Daily Adin is a modern, fast and SEO-friendly news portal";
+
   return {
-    title: `${PHOTO_PAGE.name_bn} | Browse all latest photos`,
+    title,
     keywords: "daily-adin, adin, news, news-portal, content, article",
-    description: "Browse all latest photos. Daily Adin is a modern, fast and SEO-friendly news portal",
+    description,
+    alternates: {
+      canonical: `${SITE_CONFIG.url}/photos`,
+    },
     openGraph: {
-      images: "", // TODO:: Add image
-      title: `${PHOTO_PAGE.name_bn} | Browse all latest photos`,
-      description: "Browse all latest photos. Daily Adin is a modern, fast and SEO-friendly news portal",
+      title,
+      description,
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
     },
   };
 }
@@ -21,7 +33,17 @@ export async function generateMetadata() {
 const Page = async () => {
   const response = await getAllPhotoAlbumAction(1, 12);
 
-  return <PhotoAlbums data={response} />;
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", item: "/" },
+          { name: PHOTO_PAGE.name_bn, item: "/photos" },
+        ]}
+      />
+      <PhotoAlbums data={response} />
+    </>
+  );
 };
 
 export default Page;

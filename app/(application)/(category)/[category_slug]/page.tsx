@@ -2,8 +2,8 @@ import React from "react";
 import CategoryPage from "@/lib/features/category";
 import { getCategoryBySlugAction } from "@/app/actions/category";
 import { BreadcrumbSchema } from "@/lib/components/seo/schemas";
-
 import { notFound } from "next/navigation";
+import { SITE_CONFIG } from "@/lib/config/site-config";
 
 // Define the type for the params
 interface Params {
@@ -19,25 +19,32 @@ export async function generateMetadata({ params }: Params) {
   const category = await getCategoryBySlugAction(category_slug);
 
   if (!category) {
-    return {
-      title: "Not Found | The Daily Adin",
-    };
+    return { title: "Not Found | The Daily Adin" };
   }
 
+  const title = category.meta_title || `${category.name} | The Daily Adin`;
+  const description =
+    category.meta_description || "A modern, fast and SEO-friendly news portal";
+
   return {
-    title: category.meta_title || `${category.name} | The Daily Adin`,
+    title,
     keywords:
       category.meta_keywords ||
       "daily-adin, adin, news, news-portal, content, article",
-    description:
-      category.meta_description ||
-      "A modern, fast and SEO-friendly news portal",
+    description,
+    alternates: {
+      canonical: `${SITE_CONFIG.url}/${category_slug}`,
+    },
     openGraph: {
       images: category.photo || "",
-      title: category.meta_title || `${category.name} | The Daily Adin`,
-      description:
-        category.meta_description ||
-        "A modern, fast and SEO-friendly news portal",
+      title,
+      description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: category.photo ? [category.photo] : [],
     },
   };
 }

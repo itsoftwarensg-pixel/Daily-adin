@@ -1,32 +1,45 @@
 import React from "react";
 import PhotoDetails from "@/lib/features/photos/details";
 import { getPhotoDetailsByIdAction } from "@/app/actions/photo";
+import { BreadcrumbSchema } from "@/lib/components/seo/schemas";
+import { SITE_CONFIG } from "@/lib/config/site-config";
+import { PHOTO_PAGE } from "@/lib/config/constant";
 
 // Define the type for the params
 interface Params {
-  params: {
+  params: Promise<{
     id: number;
-  };
+  }>;
 }
 
 // Generate dynamic metadata
 export async function generateMetadata({ params }: Params) {
   const { id } = await params;
 
-  // Fetch content details by id for SEO metadata
   const content = await getPhotoDetailsByIdAction(id);
 
+  const title = `${content.name} | The Daily Adin`;
+  const description =
+    content.description || "Browse latest photo albums on The Daily Adin";
+
   return {
-    title: `${content.name} | The Daily Adin`,
+    title,
     keywords:
       content.name || "daily-adin, adin, news, news-portal, content, article",
-    description:
-      content.description || "A modern, fast and SEO-friendly news portal",
+    description,
+    alternates: {
+      canonical: `${SITE_CONFIG.url}/photos/${id}`,
+    },
     openGraph: {
       images: content.feature_image ? content.feature_image : "",
-      title: `${content.name} | The Daily Adin`,
-      description:
-        content.description || "A modern, fast and SEO-friendly news portal",
+      title,
+      description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: content.feature_image ? [content.feature_image] : [],
     },
   };
 }
@@ -34,10 +47,20 @@ export async function generateMetadata({ params }: Params) {
 const Page = async ({ params }: Params) => {
   const { id } = await params;
 
-  // Fetch content photo details by photo id
   const content = await getPhotoDetailsByIdAction(id);
 
-  return <PhotoDetails data={content} />;
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", item: "/" },
+          { name: PHOTO_PAGE.name_bn, item: "/photos" },
+          { name: content.name, item: `/photos/${id}` },
+        ]}
+      />
+      <PhotoDetails data={content} />
+    </>
+  );
 };
 
 export default Page;

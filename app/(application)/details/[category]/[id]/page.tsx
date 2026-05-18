@@ -3,6 +3,8 @@ import { getContentByIdAction } from "@/app/actions/content";
 import DetailsPage from "@/lib/features/details";
 import { notFound, redirect } from "next/navigation";
 import { ArticleSchema, BreadcrumbSchema } from "@/lib/components/seo/schemas";
+import { stripHtmlToPlainText } from "@/lib/utils/helpers";
+import { SITE_CONFIG } from "@/lib/config/site-config";
 
 // Define the type for the params
 interface Params {
@@ -25,13 +27,27 @@ export async function generateMetadata({ params }: Params) {
       content.meta_keywords ||
       "daily-adin, adin, news, news-portal, content, article",
     description:
-      content.meta_description || "A modern, fast and SEO-friendly news portal",
+      content.meta_description ||
+      stripHtmlToPlainText(content.content_details),
+    alternates: {
+      canonical: content.full_url.startsWith("http")
+        ? content.full_url
+        : `${SITE_CONFIG.url}${content.full_url}`,
+    },
     openGraph: {
       images: content.full_image_path || "",
       title: content.meta_title || `${content.heading} | The Daily Adin`,
       description:
         content.meta_description ||
-        "A modern, fast and SEO-friendly news portal",
+        stripHtmlToPlainText(content.content_details),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: content.meta_title || `${content.heading} | The Daily Adin`,
+      description:
+        content.meta_description ||
+        stripHtmlToPlainText(content.content_details),
+      images: content.full_image_path ? [content.full_image_path] : [],
     },
   };
 }

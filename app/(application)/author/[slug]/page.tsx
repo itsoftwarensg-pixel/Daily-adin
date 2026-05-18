@@ -3,31 +3,44 @@ import { getContentsByWriterIdAction } from "@/app/actions/content";
 import { notFound } from "next/navigation";
 import { getWriterBySlugAction } from "@/app/actions/writer";
 import WriterDetails from "@/lib/features/writer/details";
+import { BreadcrumbSchema } from "@/lib/components/seo/schemas";
+import { SITE_CONFIG } from "@/lib/config/site-config";
+import { WRITER_PAGE } from "@/lib/config/constant";
 
 // Define the type for the params
 interface Params {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // Generate dynamic metadata
 export async function generateMetadata({ params }: Params) {
   const { slug } = await params;
 
-  // Fetch writer/author information for SEO metadata
   const response = await getWriterBySlugAction(slug);
 
+  const title = `${response.name} | The Daily Adin`;
+  const description =
+    response.description || "A modern, fast and SEO-friendly news portal";
+
   return {
-    title: `${response.name} | The Daily Adin`,
+    title,
     keywords: "daily-adin, adin, news, news-portal, content, article",
-    description:
-      response.description || "A modern, fast and SEO-friendly news portal",
+    description,
+    alternates: {
+      canonical: `${SITE_CONFIG.url}/author/${slug}`,
+    },
     openGraph: {
       images: response.photo ? response.photo : "",
-      title: `${response.name} | The Daily Adin`,
-      description:
-        response.description || "A modern, fast and SEO-friendly news portal",
+      title,
+      description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: response.photo ? [response.photo] : [],
     },
   };
 }
@@ -35,24 +48,31 @@ export async function generateMetadata({ params }: Params) {
 const Page = async ({ params }: Params) => {
   const { slug } = await params;
 
-  // Fetch writer/author by slug
   const writer = await getWriterBySlugAction(slug);
 
   if (!writer || (Array.isArray(writer) && writer.length === 0)) {
     notFound();
   }
 
-  // Fetch contents by writer id
   const data = await getContentsByWriterIdAction(writer.id, 1, 10);
 
   return (
-    <WriterDetails
-      writer={writer}
-      data={{
-        last_page: data.last_page,
-        data: data.data,
-      }}
-    />
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", item: "/" },
+          { name: WRITER_PAGE.name_bn, item: "/author" },
+          { name: writer.name, item: `/author/${slug}` },
+        ]}
+      />
+      <WriterDetails
+        writer={writer}
+        data={{
+          last_page: data.last_page,
+          data: data.data,
+        }}
+      />
+    </>
   );
 };
 
