@@ -17,11 +17,12 @@ interface Props {
 }
 
 const AjkerPatrikaCategory = ({ category, contents }: Props) => {
+  const toBDDateStr = (date: Date) =>
+    date.toLocaleDateString("en-CA", { timeZone: "Asia/Dhaka" });
+
   const excludedContents = contents?.data?.filter((content) => {
     const contentDate = new Date(content.created_at);
-    const today = new Date();
-
-    return contentDate.toDateString() === today.toDateString();
+    return toBDDateStr(contentDate) === toBDDateStr(new Date());
   });
 
   const excludedContentsIds = excludedContents?.map((content) => content.id);
@@ -67,7 +68,7 @@ const AjkerPatrikaCategory = ({ category, contents }: Props) => {
                               <h4 className="text-white text-sm md:text-lg font-semibold leading-snug line-clamp-2">
                                 {item.heading}
                               </h4>
-                              <div className="text-gray-300 text-xs mt-1">{item.created_at_bangla}</div>
+                              <div className="text-gray-300 text-xs mt-1">{item.created_at}</div>
                             </div>
                           </div>
                         </Link>
