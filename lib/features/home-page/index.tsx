@@ -59,7 +59,7 @@ interface Props {
   ramadanDivisionOffsets: RamadanDivision[];
 }
 
-const HomePage = ({ initialHomeData, divisionList, 
+const HomePage = ({ initialHomeData, divisionList,
   // electionData, 
   ramadanDays, ramadanDivisionOffsets }: Props) => {
   const [homeData, setHomeData] = useState<FullHomeData>(initialHomeData);

@@ -15,6 +15,13 @@ export const VIDEO_PAGE = {
     name_bn: "ভিডিও ঘর"
 }
 
+// Ajker Patrika (Newspaper) Page Constants
+export const AJKER_PATRIKA_PAGE = {
+    slug: "ajkerpatrika",
+    name: "Ajker Patrika",
+    name_bn: "আজকের পত্রিকা"
+}
+
 // Video Page Constants
 export const PHOTO_PAGE = {
     slug: "photos",
@@ -39,6 +46,7 @@ export const LOAD_MORE_TYPES = {
     TOPIC: "topic",
     WRITER: "writer",
     COUNTRY: COUNTRY_PAGE.slug,
+    AJKER_PATRIKA_CATEGORY: AJKER_PATRIKA_PAGE.slug,
 };
 
 // Home page dataset includes

@@ -22,6 +22,7 @@ import { FaBars } from "react-icons/fa6";
 import { AiOutlineClose, AiOutlineHome } from "react-icons/ai";
 import { NavbarMenuItem } from "@/lib/types/common.types";
 import { Category } from "@/lib/types/category.page";
+import { AJKER_PATRIKA_PAGE } from "@/lib/config/constant";
 
 const socialLinks = [
   { href: "https://www.facebook.com", icon: facebook, alt: "facebook" },
@@ -129,7 +130,7 @@ const TopBar = ({ dateTimeBn, menus, personalityData }: Props) => {
           <p className="text-[20px] font-normal">{todayDate}</p>
           <div className="flex items-center gap-4">
             <Link
-              href={"/"}
+              href={`/${AJKER_PATRIKA_PAGE.slug}`}
               className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600"
             >
               <RiNewspaperLine
