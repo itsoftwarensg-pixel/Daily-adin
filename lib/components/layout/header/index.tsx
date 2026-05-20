@@ -3,7 +3,7 @@ import Container from "@/lib/components/common/container";
 import TopBar from "@/lib/components/layout/header/TopBar";
 import Navbar from "@/lib/components/layout/header/Navbar";
 import { getBnDateTimeAction, getMenuAction } from "@/app/actions/utils";
-import { CATEGORY_SLUG } from "@/lib/config/constant";
+import { AJKER_PATRIKA_PAGE, CATEGORY_SLUG } from "@/lib/config/constant";
 import { getCategoryBySlugAction } from "@/app/actions/category";
 import { ImageWithFallback } from "@/lib/components/image";
 import headerBanner from "@/public/images/header-banner.svg";
@@ -25,7 +25,7 @@ export default async function ApplicationHeader() {
         </div>
         <div className="flex items-end gap-3">
           <Link
-            href={"/"}
+            href={`/${AJKER_PATRIKA_PAGE.slug}`}
             className="group flex items-center gap-1 text-xs text-black hover:text-blue-600"
           >
             আজকের পত্রিকা
