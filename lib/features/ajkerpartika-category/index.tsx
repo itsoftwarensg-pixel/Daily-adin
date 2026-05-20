@@ -68,7 +68,7 @@ const AjkerPatrikaCategory = ({ category, contents }: Props) => {
                               <h4 className="text-white text-sm md:text-lg font-semibold leading-snug line-clamp-2">
                                 {item.heading}
                               </h4>
-                              <div className="text-gray-300 text-xs mt-1">{item.created_at}</div>
+                              <div className="text-gray-300 text-xs mt-1">{item.created_at_bangla}</div>
                             </div>
                           </div>
                         </Link>
