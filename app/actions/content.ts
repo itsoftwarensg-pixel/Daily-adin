@@ -32,6 +32,36 @@ export const getAllContentsAction = async (
 };
 
 /**
+ * Search contents by heading.
+ *
+ * @param heading - The search term to match against content headings
+ * @param page - Optional page number for pagination
+ * @param limit - Optional limit of items per page
+ * @returns The paginated search data or null in case of an error
+ */
+export const searchContentsAction = async (
+  heading: string,
+  page?: number,
+  limit?: number
+) => {
+  if (!heading.trim()) {
+    return null;
+  }
+
+  try {
+    const apiResponse = await apiRequest({
+      url: APIEndpoint.content.search(heading, page, limit),
+      method: "GET",
+    });
+
+    return apiResponse.data || null;
+  } catch (err) {
+    console.error("Error searching contents:", err);
+    return null;
+  }
+};
+
+/**
  * Fetch Content details by content id with included relations
  *
  * @param id - The id of the content to fetch

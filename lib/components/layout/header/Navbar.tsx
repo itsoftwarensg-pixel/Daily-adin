@@ -20,7 +20,7 @@ const Navbar = ({ menus }: Props) => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const submitSearch = () => {
-    const url = `/search-data?q=${encodeURIComponent(searchQuery.trim())}`;
+    const url = `/search?q=${encodeURIComponent(searchQuery.trim())}`;
 
     // Force full page reload
     window.location.href = url;
@@ -159,7 +159,7 @@ const Navbar = ({ menus }: Props) => {
               {/* Search icon */}
 
               <div className="flex items-center justify-between">
-                <a href={`/search-data?q=${encodeURIComponent(searchQuery.trim())}`}
+                <a href={`/search?q=${encodeURIComponent(searchQuery.trim())}`}
                   className="group px-3 py-2 w-12 border-l border-r border-gray-200 ml-auto cursor-pointer"
                 >
                   <FiSearch

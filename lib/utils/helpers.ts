@@ -172,7 +172,7 @@ const bnMonths = [
 ];
 
 // Convert en number into bangla number
-const toBanglaNumber = (num: number) =>
+export const toBanglaNumber = (num: number) =>
   num.toString().replace(/\d/g, (d) => "০১২৩৪৫৬৭৮৯"[+d]);
 
 // Displays today's date in Bangla format (bn-BD locale)

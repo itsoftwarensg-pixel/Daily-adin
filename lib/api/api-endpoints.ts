@@ -40,6 +40,15 @@ export const APIEndpoint = {
   content: {
     getAll: (page?: number, limit?: number) =>
       `${APIEndpoint.base_url}/contents?page=${page}&limit=${limit}`,
+    search: (heading: string, page?: number, limit?: number) => {
+      const query = buildQueryString({
+        heading,
+        page,
+        limit,
+      });
+
+      return `${APIEndpoint.base_url}/content-search${query}`;
+    },
     getByCategoryId: (id: number, page?: number, limit?: number) =>
       `${APIEndpoint.base_url}/contents/?for=category&id=${id}&page=${page}&limit=${limit}`,
     getBySubCategoryId: (id: number, page?: number, limit?: number) =>
