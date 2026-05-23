@@ -20,6 +20,7 @@ import SocialMediaDropdown from "@/lib/components/layout/header/SocialMediaDropd
 import { navItems } from "@/lib/data";
 import { FaBars } from "react-icons/fa6";
 import { AiOutlineClose, AiOutlineHome } from "react-icons/ai";
+import { FiSearch } from "react-icons/fi";
 import { NavbarMenuItem } from "@/lib/types/common.types";
 import { Category } from "@/lib/types/category.page";
 import { AJKER_PATRIKA_PAGE } from "@/lib/config/constant";
@@ -118,12 +119,26 @@ const TopBar = ({ dateTimeBn, menus, personalityData }: Props) => {
           {/* <p className="text-[18px] text-center font-normal">{todayDate}</p> */}
         </div>
 
-        <button
-          className="md:hidden print:hidden"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <AiOutlineClose size={24} /> : <FaBars size={24} />}
-        </button>
+        <div className="flex items-center gap-4 md:hidden print:hidden">
+          <Link
+            href="/search"
+            aria-label="অনুসন্ধান"
+            className="flex h-10 w-10 items-center justify-center text-black hover:text-red-600"
+          >
+            <FiSearch size={24} />
+          </Link>
+          <button
+            aria-label={mobileMenuOpen ? "মেনু বন্ধ করুন" : "মেনু খুলুন"}
+            className="flex h-10 w-10 items-center justify-center"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? (
+              <AiOutlineClose size={24} />
+            ) : (
+              <FaBars size={24} />
+            )}
+          </button>
+        </div>
 
         {/* <div className="hidden lg:flex flex-col gap-2 border min-h-[85px] items-end print:hidden w-[362px] max-w-[362px]"> */}
         <div className="hidden lg:flex flex-col gap-2 items-end print:hidden">
