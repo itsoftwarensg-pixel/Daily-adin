@@ -91,15 +91,17 @@ export default function SearchComponent({ query = "", initialData }: Props) {
           type="search"
           value={searchTerm}
           onChange={(event) => setSearchTerm(event.target.value)}
+          placeholder="অনুসন্ধান করুন"
           className="h-11 min-w-0 flex-1 border border-gray-300 px-3 text-base text-gray-900 outline-none focus:border-red-500"
           aria-label="অনুসন্ধান"
         />
         <button
           type="submit"
-          className="flex h-11 w-12 shrink-0 items-center justify-center bg-red-600 text-white transition hover:bg-red-700"
+          className="flex h-11 shrink-0 items-center justify-center gap-1 bg-red-600 px-3 text-white transition hover:bg-red-700"
           aria-label="অনুসন্ধান করুন"
         >
           <FiSearch className="text-xl" />
+          <span className="text-sm font-semibold">খুঁজুন</span>
         </button>
       </form>
 
