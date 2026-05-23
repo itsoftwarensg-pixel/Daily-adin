@@ -113,17 +113,17 @@ export default function SearchComponent({ query = "", initialData }: Props) {
       {showEmptyState ? (
         <NoContentFound />
       ) : (
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-3 md:gap-5">
           {contents.map((newsItem) => (
             <article
               key={newsItem.id}
-              className="border border-gray-300 bg-white p-4"
+              className="border border-gray-300 bg-white p-3 md:p-4"
             >
               <Link
                 href={newsItem.full_url}
-                className="group flex flex-col gap-4 sm:flex-row sm:items-center"
+                className="group flex flex-row items-center gap-3 sm:gap-4"
               >
-                <div className="w-full shrink-0 sm:w-[280px]">
+                <div className="w-[42%] max-w-[160px] shrink-0 sm:w-[280px] sm:max-w-none">
                   <div className="aspect-[16/9] overflow-hidden bg-gray-100">
                     <ImageWithFallback
                       src={newsItem.full_image_path}
@@ -135,10 +135,10 @@ export default function SearchComponent({ query = "", initialData }: Props) {
                   </div>
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="mb-2 text-sm text-gray-600">
+                  <p className="mb-1 text-xs text-gray-600 sm:mb-2 sm:text-sm">
                     {newsItem.categoryName}
                   </p>
-                  <h2 className="text-lg font-bold leading-snug text-gray-800 transition group-hover:text-blue-700">
+                  <h2 className="text-md font-bold leading-snug text-gray-800 transition group-hover:text-blue-700 sm:text-lg">
                     {newsItem.sub_heading && (
                       <span className="text-red-600">
                         {newsItem.sub_heading} /{" "}
@@ -146,7 +146,7 @@ export default function SearchComponent({ query = "", initialData }: Props) {
                     )}
                     {newsItem.heading}
                   </h2>
-                  <p className="mt-4 text-sm text-gray-500">
+                  <p className="mt-2 text-xs text-gray-500 sm:mt-4 sm:text-sm">
                     {newsItem.created_at_bangla}
                   </p>
                 </div>
