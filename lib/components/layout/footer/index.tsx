@@ -6,12 +6,12 @@ import Container from "@/lib/components/common/container";
 import { CurrentYear } from "@/lib/utils/helpers";
 import { PiPhoneDisconnect } from "react-icons/pi";
 import { BsTelephone } from "react-icons/bs";
+import { ContactEmail } from "./contact-email";
 
 export default function ApplicationFooter() {
   const urls = [
     { href: "#advertisement", label: "বিজ্ঞাপন" },
     { href: "#terms-and-conditions", label: "নীতি ও শর্ত" },
-    { href: "#newsletter", label: "নিউজলেটার" },
     { href: "#about-us", label: "আমাদের সম্পর্কে" },
   ];
 
@@ -65,19 +65,27 @@ export default function ApplicationFooter() {
                   টাওয়ার-এ (২য় তলা), হাউস-১৩, রোড-১৭, বনানী, ঢাকা-১২১৩।
                 </p>
                 <p className="flex gap-2 items-center text-lg text-textGray font-normal">
-                  <PiPhoneDisconnect /> ০২-২২৬৬০৩৩৫২
+                  <PiPhoneDisconnect />
+                  <a
+                    href="tel:+8802226603352"
+                    aria-label="Call at 02-2266033 52"
+                    className="hover:text-black focus:text-black focus:outline-none"
+                  >
+                    ০২-২২৬৬০৩৩৫২
+                  </a>
                 </p>
                 <p className="flex gap-2 items-center text-lg text-textGray font-normal">
-                  <BsTelephone /> ০১৮৯৭-৬৬৪৬৫৬
+                  <BsTelephone />
+                  <a
+                    href="tel:+8801897664656"
+                    aria-label="Call at 01897-664656"
+                    className="hover:text-black focus:text-black focus:outline-none"
+                  >
+                    ০১৮৯৭-৬৬৪৬৫৬
+                  </a>
                 </p>
                 <p className="text-lg text-textGray font-normal">
-                  ইমেইল :{" "}
-                  <Link
-                    href="mailto:dailyadinbd@gmail.com"
-                    className="hover:text-black"
-                  >
-                    dailyadinbd@gmail.com
-                  </Link>
+                  ইমেইল : <ContactEmail />
                 </p>
               </div>
             </div>
