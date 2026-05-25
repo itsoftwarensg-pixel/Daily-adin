@@ -115,6 +115,7 @@ const ArticleContent = memo(({ contentDetails, forwardRef }: Props) => {
                 className="img-fluid w-8"
                 src="https://cdn.dailyadin.com/uploads/January2026/google-news-feed-202601011110526261393218.png"
                 alt=" Google News"
+                loading="lazy"
               />
               সর্বশেষ খবর পেতে দৈনিক এদিন এর গুগল নিউজ চ্যানেল ফলো করুন
             </a>

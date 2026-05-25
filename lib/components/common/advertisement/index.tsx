@@ -55,6 +55,7 @@ const Advertisement = ({
         <img
           src={imgSrc}
           alt={label}
+          loading="lazy"
           style={{
             width: formatSize(width),
             height: formatSize(height),
