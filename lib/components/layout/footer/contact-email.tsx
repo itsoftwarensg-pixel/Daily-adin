@@ -1,18 +1,25 @@
 "use client";
 
-// "dailyadinbd@gmail.com" — assembled at runtime to avoid bot scraping
-const ENCODED = [100,97,105,108,121,97,100,105,110,98,100,64,103,109,97,105,108,46,99,111,109];
-
+// Email is split across data-u / data-d attributes and assembled only via CSS content:
+// CSS: .eml::before { content: attr(data-u) "@" attr(data-d) }
+// No email string exists in any DOM text node or href — only a JS click handler opens mailto.
 export function ContactEmail() {
-  const email = ENCODED.map((c) => String.fromCharCode(c)).join("");
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const { u, d } = e.currentTarget.dataset;
+    if (u && d) window.location.href = `mailto:${u}@${d}`;
+  };
 
   return (
-    <a
-      href={`mailto:${email}`}
-      aria-label={`ইমেইল পাঠান: ${email}`}
-      className="hover:text-black focus:text-black focus:outline-none"
-    >
-      {email}
-    </a>
+    <>
+      <style>{`.eml::before{content:attr(data-u)"@"attr(data-d)}`}</style>
+      <a
+        className="eml hover:text-black focus:text-black focus:outline-none"
+        data-u="dailyadinbd"
+        data-d="gmail.com"
+        href="#"
+        onClick={handleClick}
+      />
+    </>
   );
 }
