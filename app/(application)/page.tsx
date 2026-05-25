@@ -4,7 +4,6 @@ import { getHomePageDataAction } from "@/app/actions/home";
 import { HOME_PAGE_CHUNK_1 } from "@/lib/config/constant";
 import { getAllDivisionsAction } from "@/app/actions/division";
 
-import { BreadcrumbSchema } from "@/lib/components/seo/schemas";
 import { getElectionDataAction } from "@/app/actions/election";
 import { getRamadanDataAction } from "@/app/actions/ramadan";
 
@@ -31,16 +30,13 @@ const RootHomePage = async () => {
   const { days, division_offsets } = response?.data || {};
 
   return (
-    <>
-      <BreadcrumbSchema items={[{ name: "Home", item: "/" }]} />
-      <HomePage
-        ramadanDays={days}
-        ramadanDivisionOffsets={division_offsets}
-        initialHomeData={homeData}
-        divisionList={divisionList}
-        // electionData={electionData}
-      />
-    </>
+    <HomePage
+      ramadanDays={days}
+      ramadanDivisionOffsets={division_offsets}
+      initialHomeData={homeData}
+      divisionList={divisionList}
+      // electionData={electionData}
+    />
   );
 };
 
