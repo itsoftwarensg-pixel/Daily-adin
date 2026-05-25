@@ -9,10 +9,6 @@ import { Noto_Serif_Bengali } from "next/font/google";
 import { Bounce, ToastContainer } from "react-toastify";
 import AnalyticsTracker from "@/lib/components/google/analytics-tracker";
 import { SITE_CONFIG } from "@/lib/config/site-config";
-import {
-  OrganizationSchema,
-  LocalBusinessSchema,
-} from "@/lib/components/seo/schemas";
 
 const noto_serif = Noto_Serif_Bengali({
   display: "swap",
@@ -35,6 +31,65 @@ const websiteSchema = {
   url: SITE_CONFIG.url,
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org/",
+  "@type": "NewsMediaOrganization",
+  name: SITE_CONFIG.name,
+  url: SITE_CONFIG.url,
+  logo: SITE_CONFIG.logo,
+  alternateName: SITE_CONFIG.alternateName,
+  sameAs: Object.values(SITE_CONFIG.socialLinks),
+  foundingDate: SITE_CONFIG.foundingDate,
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: SITE_CONFIG.contact.phone,
+      contactType: "customer service",
+    },
+  ],
+  email: `mailto:${SITE_CONFIG.contact.email}`,
+  telephone: SITE_CONFIG.contact.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: SITE_CONFIG.address.street,
+    addressLocality: SITE_CONFIG.address.locality,
+    postalCode: SITE_CONFIG.address.postalCode,
+    addressCountry: SITE_CONFIG.address.country,
+    addressRegion: SITE_CONFIG.address.region,
+  },
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: SITE_CONFIG.name,
+  image: SITE_CONFIG.logo,
+  "@id": SITE_CONFIG.logo,
+  url: SITE_CONFIG.url,
+  telephone: SITE_CONFIG.contact.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: SITE_CONFIG.address.street,
+    addressLocality: SITE_CONFIG.address.locality,
+    postalCode: SITE_CONFIG.address.postalCode,
+    addressCountry: SITE_CONFIG.address.country,
+    addressRegion: SITE_CONFIG.address.region,
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: SITE_CONFIG.geo.latitude,
+    longitude: SITE_CONFIG.geo.longitude,
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    opens: "00:00",
+    closes: "23:59",
+  },
+  sameAs: Object.values(SITE_CONFIG.socialLinks),
+  priceRange: "৳৳",
+};
+
 export default function RootLayout({ children }: PropsType) {
   return (
     <html lang="bn">
@@ -43,8 +98,14 @@ export default function RootLayout({ children }: PropsType) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-        <OrganizationSchema />
-        <LocalBusinessSchema />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
 
         {/* START Google Analytics */}
         <Script
