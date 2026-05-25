@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Params) {
 
   const title =
     subCategory.meta_title ||
-    `${subCategory.name_bn || subCategory.name} | The Daily Adin`;
+    `${subCategory.name || subCategory.name} | The Daily Adin`;
   const description =
     subCategory.meta_description ||
     stripHtmlToPlainText(subCategory.description);

@@ -9,6 +9,10 @@ import { Noto_Serif_Bengali } from "next/font/google";
 import { Bounce, ToastContainer } from "react-toastify";
 import AnalyticsTracker from "@/lib/components/google/analytics-tracker";
 import { SITE_CONFIG } from "@/lib/config/site-config";
+import {
+  OrganizationSchema,
+  LocalBusinessSchema,
+} from "@/lib/components/seo/schemas";
 
 const noto_serif = Noto_Serif_Bengali({
   display: "swap",
@@ -39,6 +43,8 @@ export default function RootLayout({ children }: PropsType) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
+        <OrganizationSchema />
+        <LocalBusinessSchema />
 
         {/* START Google Analytics */}
         <Script

@@ -4,11 +4,7 @@ import { getHomePageDataAction } from "@/app/actions/home";
 import { HOME_PAGE_CHUNK_1 } from "@/lib/config/constant";
 import { getAllDivisionsAction } from "@/app/actions/division";
 
-import {
-  OrganizationSchema,
-  LocalBusinessSchema,
-  BreadcrumbSchema,
-} from "@/lib/components/seo/schemas";
+import { BreadcrumbSchema } from "@/lib/components/seo/schemas";
 import { getElectionDataAction } from "@/app/actions/election";
 import { getRamadanDataAction } from "@/app/actions/ramadan";
 
@@ -36,8 +32,6 @@ const RootHomePage = async () => {
 
   return (
     <>
-      <OrganizationSchema />
-      <LocalBusinessSchema />
       <BreadcrumbSchema items={[{ name: "Home", item: "/" }]} />
       <HomePage
         ramadanDays={days}

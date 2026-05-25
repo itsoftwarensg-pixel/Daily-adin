@@ -76,7 +76,7 @@ const Page = async ({ params }: Params) => {
         items={[
           { name: "Home", item: "/" },
           {
-            name: content.category.name_bn,
+            name: content.category.name,
             item: `/${content.category.alias}`,
           },
           {
@@ -94,7 +94,7 @@ const Page = async ({ params }: Params) => {
         authorName={content.writer?.name_bn || "নিজস্ব প্রতিবেদক"}
         authorUrl={`/author/${content.writer?.slug || "staff"}`}
         description={content.meta_description || content.content_brief}
-        articleSection={content.category.name_bn}
+        articleSection={content.category.name}
         keywords={
           content.meta_keywords ||
           content.tags?.map((t: any) => t.name_bn).join(",")
