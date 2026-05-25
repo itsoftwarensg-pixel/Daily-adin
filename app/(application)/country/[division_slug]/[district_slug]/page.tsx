@@ -29,8 +29,7 @@ export async function generateMetadata({ params }: Params) {
   return {
     title: district.meta_title || `${district.name_bn} | The Daily Adin`,
     keywords:
-      district.meta_keywords ||
-      "daily-adin, adin, news, news-portal, content, article",
+      district.meta_keywords,
     description,
     alternates: {
       canonical: `${SITE_CONFIG.url}/country/${division_slug}/${district_slug}`,

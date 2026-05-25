@@ -7,13 +7,6 @@ import { AJKER_PATRIKA_PAGE } from "@/lib/config/constant";
 import { getContentsByCategoryIdAction } from "@/app/actions/content";
 import AjkerPatrikaCategory from "@/lib/features/ajkerpartika-category";
 
-// Define the type for the params
-interface Params {
-    params: Promise<{
-        category_slug: string;
-    }>;
-}
-
 // Generate dynamic metadata
 export async function generateMetadata() {
     const category_slug = AJKER_PATRIKA_PAGE.slug;
@@ -26,13 +19,11 @@ export async function generateMetadata() {
 
     const title = category.meta_title || `${category.name} | The Daily Adin`;
     const description =
-        category.meta_description || "A modern, fast and SEO-friendly news portal";
+        category.meta_description;
 
     return {
         title,
-        keywords:
-            category.meta_keywords ||
-            "daily-adin, adin, news, news-portal, content, article",
+        keywords: category.meta_keywords,
         description,
         alternates: {
             canonical: `${SITE_CONFIG.url}/${category_slug}`,
@@ -51,7 +42,9 @@ export async function generateMetadata() {
     };
 }
 
-const CategorySlugPage = async () => {
+export const dynamic = "force-dynamic";
+
+const Page = async () => {
     const category_slug = AJKER_PATRIKA_PAGE.slug;
 
     // Fetch category details with position_contents and subcategories
@@ -78,4 +71,4 @@ const CategorySlugPage = async () => {
     );
 };
 
-export default CategorySlugPage;
+export default Page;
