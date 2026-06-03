@@ -17,7 +17,7 @@ import LeadNewsItemVideoCelebrity from "@/lib/components/common/news-elements/le
 import Advertisement from "@/lib/components/common/advertisement";
 import { ADVERTISE_TYPES } from "@/lib/config/constant";
 import { RamadanDay, RamadanDivision } from "@/lib/types/ramadan";
-import RamadanCountdown from "@/lib/features/ramadan/countdown";
+import WorldCupSection from "@/lib/components/world-cup-section";
 import EidCollection from "@/lib/components/eid-collection";
 
 // Props
@@ -193,7 +193,7 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
               /> */}
 
               {/* এদিন জনপ্রিয় - Home Video Section */}
-              {homeTopVideoNewsContents &&
+              {/* {homeTopVideoNewsContents &&
                 homeTopVideoNewsContents.length > 0 && (
                   <div className="space-y-3">
                     <LeadVideoHeader
@@ -208,7 +208,7 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
                       video={homeTopVideoNewsContents[0]}
                     />
                   </div>
-                )}
+                )} */}
 
               {/* তারকা আসছেন যিনি - Star Program */}
               {/* {starProgramNewsContent && (
@@ -228,12 +228,12 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
               )} */}
 
               {/* এদিন ঈদ সংখ্যা */}
-              {eidCollectionContents &&
+              {/* {eidCollectionContents &&
                 <EidCollection
                   title={eid_collections?.name || `এদিন ঈদ সংখ্যা`}
                   contents={eidCollectionContents}
                 />
-              }
+              } */}
 
               {/* Advertisement Home top right up */}
               {/* <div className="flex justify-center mb-4">
@@ -244,6 +244,9 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
                 />
               </div> */}
             </div>
+
+            {/* মহারণ ২০২৬ - FIFA World Cup 2026 */}
+            <WorldCupSection />
 
             {/* Latest - Popular */}
             <div className="my-4">
