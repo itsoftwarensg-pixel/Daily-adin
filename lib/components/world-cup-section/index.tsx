@@ -77,7 +77,7 @@ export default function WorldCupSection() {
                 {toBanglaNumber(idx + 1)}
               </span>
               <div className="flex-1 min-w-0">
-                <h4 className="text-sm font-semibold text-gray-800 group-hover:text-green-800 leading-snug line-clamp-2">
+                <h4 className="text-base font-semibold text-gray-800 group-hover:text-green-800 leading-snug line-clamp-2">
                   {item.sub_heading ? (
                     <>
                       <span className="text-green-700">{item.sub_heading}</span>
