@@ -6,7 +6,6 @@ import { getTopicBySlugAction } from "@/app/actions/topic";
 import { getContentsByTopicIdAction } from "@/app/actions/content";
 import { TopicContentItem } from "@/lib/types/topic.page";
 import { ImageWithFallback } from "@/lib/components/image";
-import { toBanglaNumber } from "@/lib/utils/helpers";
 
 const TAG_SLUG = "ফুটবল-বিশ্বকাপ-২০২৬";
 const TAG_URL = `/topic/${TAG_SLUG}`;
@@ -23,7 +22,7 @@ export default function WorldCupSection() {
         const data = await getContentsByTopicIdAction(topic.id, 1, 5);
         setContents(data?.data?.slice(0, 5) ?? []);
       } catch {
-        // silently fail — section simply won't render
+        // silently fail
       } finally {
         setLoading(false);
       }
@@ -33,88 +32,82 @@ export default function WorldCupSection() {
   if (!loading && contents.length === 0) return null;
 
   return (
-    <section className="relative overflow-hidden rounded-xl shadow-lg ring-1 ring-green-800/30">
-      {/* Header */}
-      <div className="relative bg-gradient-to-r from-[#0a3d1f] via-[#145a32] to-[#1a7a40] px-4 py-3 flex items-center justify-between">
-        <div className="absolute left-0 top-0 h-full w-1 bg-yellow-400" />
-        <div className="flex items-center gap-2 pl-2">
-          <span className="text-2xl">⚽</span>
-          <div>
-            <p className="text-yellow-400 text-[10px] font-semibold uppercase tracking-widest leading-none">
-              FIFA World Cup 2026
-            </p>
-            <h3 className="text-white text-lg font-extrabold leading-tight">
-              মহারণ ২০২৬
-            </h3>
-          </div>
-        </div>
-        <span className="text-yellow-400 text-2xl select-none">🏆</span>
+    <section className="relative max-w-6xl mx-auto p-4 bg-gradient-to-b from-emerald-100 via-amber-200 to-amber-50 rounded-xl shadow-2xl ring-2 ring-amber-300 hover:ring-amber-400 transition-all duration-500 transform hover:scale-[1.01] overflow-hidden">
+
+      {/* Floating decorations */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="absolute top-4 right-6 text-amber-400 text-4xl animate-bounce-slow">🏆</div>
+        <div className="absolute top-5 left-3 text-yellow-300 text-xl animate-pulse">⚽</div>
       </div>
 
-      {/* Loading skeleton */}
-      {loading ? (
-        <div className="bg-white divide-y divide-gray-100">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} className="flex items-center gap-3 px-3 py-2.5 animate-pulse">
-              <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-200" />
-              <div className="flex-1 space-y-1.5">
-                <div className="h-3 bg-gray-200 rounded w-full" />
-                <div className="h-3 bg-gray-200 rounded w-3/4" />
-              </div>
-              <div className="flex-shrink-0 w-[60px] aspect-[4/3] rounded bg-gray-200" />
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="bg-white divide-y divide-gray-100">
-          {contents.map((item, idx) => (
-            <Link
-              key={item.id}
-              href={item.full_url}
-              className="flex items-center gap-3 px-3 py-2.5 group hover:bg-green-50 transition-colors duration-200"
-            >
-              <span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-700 text-white text-xs font-bold flex items-center justify-center group-hover:bg-yellow-500 transition-colors duration-200">
-                {toBanglaNumber(idx + 1)}
-              </span>
-              <div className="flex-1 min-w-0">
-                <h4 className="text-base font-semibold text-gray-800 group-hover:text-green-800 leading-snug line-clamp-2">
-                  {item.sub_heading ? (
-                    <>
-                      <span className="text-green-700">{item.sub_heading}</span>
-                      <span className="w-1 h-1 rounded-full bg-green-400 inline-block mx-1 align-middle" />
-                      <span>{item.heading}</span>
-                    </>
-                  ) : (
-                    item.heading
-                  )}
-                </h4>
-              </div>
-              <div className="flex-shrink-0 w-[60px]">
-                <div className="aspect-[4/3] overflow-hidden rounded">
-                  <ImageWithFallback
-                    src={item.full_image_path}
-                    height={90}
-                    width={120}
-                    alt={item.heading}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+      {/* Section Heading */}
+      <Link
+        href={TAG_URL}
+        className="relative text-xl md:text-2xl font-extrabold text-center text-amber-700 mb-4 border-b-2 border-amber-300 pb-2 drop-shadow-md block hover:text-amber-500 transition-all duration-300"
+      >
+        মহারণ ২০২৬
+      </Link>
+
+      {/* Contents */}
+      <div className="relative space-y-2">
+        {loading
+          ? Array.from({ length: 5 }).map((_, i) => (
+              <div key={i} className="block overflow-hidden rounded-lg bg-white/60 shadow-lg animate-pulse">
+                <div className="flex gap-3 items-center p-3">
+                  <div className="flex-1 space-y-2">
+                    <div className="h-3 bg-amber-200 rounded w-full" />
+                    <div className="h-3 bg-amber-200 rounded w-3/4" />
+                  </div>
+                  <div className="w-[60px] flex-shrink-0 aspect-[16/12] rounded bg-amber-200" />
                 </div>
               </div>
-            </Link>
-          ))}
-        </div>
-      )}
+            ))
+          : contents.map((item, idx) => (
+              <Link
+                key={item.id}
+                href={item.full_url}
+                className="block group overflow-hidden rounded-lg bg-white/60 shadow-lg backdrop hover:shadow-2xl transition-all duration-300 relative hover:bg-white"
+              >
+                <div className="flex gap-3 items-center p-3">
+                  {/* Text */}
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-gray-800 group-hover:text-amber-600 leading-snug">
+                      {item.sub_heading ? (
+                        <>
+                          <span className="text-emerald-600">{item.sub_heading}</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 inline-block mx-1" />
+                          <span>{item.heading}</span>
+                        </>
+                      ) : (
+                        item.heading
+                      )}
+                    </h4>
+                  </div>
 
-      {/* Footer CTA */}
-      <div className="bg-gradient-to-r from-[#0a3d1f] to-[#145a32] px-4 py-2.5 flex justify-center">
+                  {/* Thumbnail */}
+                  <div className="w-[60px] flex-shrink-0 border">
+                    <div className="aspect-[16/12]">
+                      <ImageWithFallback
+                        src={item.full_image_path}
+                        height={100}
+                        width={160}
+                        alt={item.heading}
+                        className="w-full h-full object-cover rounded"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+      </div>
+
+      {/* CTA */}
+      <div className="mt-3 flex justify-center">
         <Link
           href={TAG_URL}
-          className="inline-flex items-center gap-1.5 px-5 py-1.5 rounded-full text-sm font-semibold bg-yellow-400 text-green-900 hover:bg-yellow-300 active:scale-95 transition-all duration-200 shadow"
+          className="px-5 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-emerald-600 via-teal-600 to-amber-500 text-white shadow-md hover:shadow-lg hover:scale-[1.03] active:scale-95 transition-all duration-300"
         >
           আরও দেখুন
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="9 18 15 12 9 6" />
-          </svg>
         </Link>
       </div>
     </section>
