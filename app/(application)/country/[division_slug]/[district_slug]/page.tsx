@@ -36,7 +36,9 @@ export async function generateMetadata({ params }: Params) {
       canonical: `${SITE_CONFIG.url}/country/${division_slug}/${district_slug}`,
     },
     openGraph: {
-      images: district.photo || SITE_CONFIG.commonOgImage,
+      type: "website",
+      locale: "bn_BD",
+      images: [{ url: district.photo || SITE_CONFIG.commonOgImage, width: 1200, height: 630, alt: title }],
       title,
       description,
     },

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Params) {
 
   const response = await getWriterBySlugAction(slug);
 
-  const title = `${response.name} | The Daily Adin`;
+  const title = `${response.name} | দৈনিক এদিন`;
   const description =
     response.description || "দৈনিক এদিন — বাংলাদেশের বিশ্বস্ত অনলাইন সংবাদ পোর্টাল। জাতীয়, রাজনীতি, আন্তর্জাতিক, ব্যবসা, স্বাস্থ্য, খেলাধুলা ও বিনোদনের সর্বশেষ সংবাদ পড়ুন।";
 
@@ -32,7 +32,9 @@ export async function generateMetadata({ params }: Params) {
       canonical: `${SITE_CONFIG.url}/author/${slug}`,
     },
     openGraph: {
-      images: response.photo ? response.photo : SITE_CONFIG.commonOgImage,
+      type: "website",
+      locale: "bn_BD",
+      images: [{ url: response.photo || SITE_CONFIG.commonOgImage, width: 1200, height: 630, alt: title }],
       title,
       description,
     },

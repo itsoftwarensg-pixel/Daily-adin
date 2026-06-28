@@ -18,9 +18,11 @@ export async function generateMetadata() {
       canonical: `${SITE_CONFIG.url}/archive`,
     },
     openGraph: {
-      images: SITE_CONFIG.commonOgImage,
+      type: "website",
+      locale: "bn_BD",
+      images: [{ url: SITE_CONFIG.commonOgImage, width: 1200, height: 630, alt: title }],
       title,
-      description
+      description,
     },
     twitter: {
       card: "summary",

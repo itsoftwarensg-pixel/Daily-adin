@@ -48,7 +48,9 @@ export async function generateMetadata({ params }: Params) {
       canonical: fullUrl,
     },
     openGraph: {
-      images: content.full_image_path || SITE_CONFIG.commonOgImage,
+      type: "article",
+      locale: "bn_BD",
+      images: [{ url: content.full_image_path || SITE_CONFIG.commonOgImage, width: 1200, height: 630, alt: title }],
       title,
       description,
     },

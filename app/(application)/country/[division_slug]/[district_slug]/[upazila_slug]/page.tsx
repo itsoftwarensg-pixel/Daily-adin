@@ -45,7 +45,9 @@ export async function generateMetadata({ params }: Params) {
       canonical: `${SITE_CONFIG.url}/country/${division_slug}/${district_slug}/${upazila_slug}`,
     },
     openGraph: {
-      images: upazila.photo || SITE_CONFIG.commonOgImage,
+      type: "website",
+      locale: "bn_BD",
+      images: [{ url: upazila.photo || SITE_CONFIG.commonOgImage, width: 1200, height: 630, alt: title }],
       title,
       description,
     },

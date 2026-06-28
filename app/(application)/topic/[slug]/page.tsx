@@ -33,7 +33,9 @@ export async function generateMetadata({ params }: Params) {
       canonical: `${SITE_CONFIG.url}/topic/${slug}`,
     },
     openGraph: {
-      images: response.photo ? response.photo : SITE_CONFIG.commonOgImage,
+      type: "website",
+      locale: "bn_BD",
+      images: [{ url: response.photo || SITE_CONFIG.commonOgImage, width: 1200, height: 630, alt: title }],
       title,
       description,
     },
