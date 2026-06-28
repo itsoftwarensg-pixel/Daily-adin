@@ -34,6 +34,7 @@ export async function generateMetadata({ params }: Params) {
     openGraph: {
       type: "website",
       locale: "bn_BD",
+      url: `${SITE_CONFIG.url}/author/${slug}`,
       images: [{ url: response.photo || SITE_CONFIG.commonOgImage, width: 1200, height: 630, alt: title }],
       title,
       description,

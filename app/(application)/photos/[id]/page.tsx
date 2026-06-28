@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: Params) {
     openGraph: {
       type: "article",
       locale: "bn_BD",
+      url: `${SITE_CONFIG.url}/photos/${id}`,
       images: [{ url: content.feature_image || SITE_CONFIG.commonOgImage, width: 1200, height: 630, alt: title }],
       title,
       description,
