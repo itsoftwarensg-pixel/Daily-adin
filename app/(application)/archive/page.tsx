@@ -7,24 +7,26 @@ import { SITE_CONFIG } from "@/lib/config/site-config";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata() {
+  const title = `আর্কাইভ | দৈনিক এদিন`;
+  const description = "দৈনিক এদিন — বাংলাদেশের বিশ্বস্ত অনলাইন সংবাদ পোর্টাল। জাতীয়, রাজনীতি, আন্তর্জাতিক, ব্যবসা, স্বাস্থ্য, খেলাধুলা ও বিনোদনের সর্বশেষ সংবাদ পড়ুন।";
+
   return {
-    title: `আর্কাইভ | The Daily Adin`,
-    keywords: "daily-adin, adin, news, archive, সংবাদ আর্কাইভ",
-    description:
-      "The Daily Adin-এর সংবাদ আর্কাইভ। তারিখ, বিভাগ ও বিভাগ অনুযায়ী সংবাদ খুঁজুন।",
+    title,
+    keywords: "দৈনিক এদিন, daily adin, বাংলা সংবাদ, বাংলাদেশ সংবাদ, Bangladesh news, Bangla news, online newspaper Bangladesh, জাতীয় সংবাদ, রাজনীতি, আন্তর্জাতিক সংবাদ, ব্যবসা বাণিজ্য, স্বাস্থ্য সংবাদ, ক্রীড়া সংবাদ, ই-পেপার, dailyadin.com",
+    description,
     alternates: {
       canonical: `${SITE_CONFIG.url}/archive`,
     },
     openGraph: {
-      title: `আর্কাইভ | The Daily Adin`,
-      description:
-        "The Daily Adin-এর সংবাদ আর্কাইভ। তারিখ, বিভাগ ও বিভাগ অনুযায়ী সংবাদ খুঁজুন।",
+      images: SITE_CONFIG.commonOgImage,
+      title,
+      description
     },
     twitter: {
       card: "summary",
-      title: `আর্কাইভ | The Daily Adin`,
-      description:
-        "The Daily Adin-এর সংবাদ আর্কাইভ। তারিখ, বিভাগ ও বিভাগ অনুযায়ী সংবাদ খুঁজুন।",
+      title,
+      description,
+      images: [SITE_CONFIG.commonOgImage],
     },
   };
 }

@@ -21,33 +21,42 @@ export async function generateMetadata({ params }: Params) {
   // Fetch content details by id for SEO metadata
   const content = await getContentByIdAction(id);
 
+  // -- Meta Title --
+  const title = content.meta_title || `${content.heading} | দৈনিক এদিন`;
+  
+  // -- Meta description --
+  const description =
+    content.meta_description ||
+    stripHtmlToPlainText(content.content_details) ||
+    "দৈনিক এদিন — বাংলাদেশের বিশ্বস্ত অনলাইন সংবাদ পোর্টাল। জাতীয়, রাজনীতি, আন্তর্জাতিক, ব্যবসা, স্বাস্থ্য, খেলাধুলা ও বিনোদনের সর্বশেষ সংবাদ পড়ুন।";
+  
+  // -- Canonical URL --
+    const fullUrl = content.full_url.startsWith("http")
+    ? content.full_url
+    : `${SITE_CONFIG.url}${content.full_url}`;
+
+  // -- Keywords --
+   const keywords =
+    content.meta_keywords ||
+    "দৈনিক এদিন, daily adin, বাংলা সংবাদ, বাংলাদেশ সংবাদ, Bangladesh news, Bangla news, online newspaper Bangladesh, জাতীয় সংবাদ, রাজনীতি, আন্তর্জাতিক সংবাদ, ব্যবসা বাণিজ্য, স্বাস্থ্য সংবাদ, ক্রীড়া সংবাদ, ই-পেপার, dailyadin.com";
+
   return {
-    title: content.meta_title || `${content.heading} | The Daily Adin`,
-    keywords:
-      content.meta_keywords ||
-      "daily-adin, adin, news, news-portal, content, article",
-    description:
-      content.meta_description ||
-      stripHtmlToPlainText(content.content_details),
+    title,
+    keywords,
+    description,
     alternates: {
-      canonical: content.full_url.startsWith("http")
-        ? content.full_url
-        : `${SITE_CONFIG.url}${content.full_url}`,
+      canonical: fullUrl,
     },
     openGraph: {
-      images: content.full_image_path || "",
-      title: content.meta_title || `${content.heading} | The Daily Adin`,
-      description:
-        content.meta_description ||
-        stripHtmlToPlainText(content.content_details),
+      images: content.full_image_path || SITE_CONFIG.commonOgImage,
+      title,
+      description,
     },
     twitter: {
       card: "summary_large_image",
-      title: content.meta_title || `${content.heading} | The Daily Adin`,
-      description:
-        content.meta_description ||
-        stripHtmlToPlainText(content.content_details),
-      images: content.full_image_path ? [content.full_image_path] : [],
+      title,
+      description,
+      images: content.full_image_path ? [content.full_image_path] : [SITE_CONFIG.commonOgImage],
     },
   };
 }

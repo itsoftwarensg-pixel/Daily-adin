@@ -27,31 +27,33 @@ export async function generateMetadata({ params }: Params) {
     upazila_slug
   );
 
-  if (!upazila) return { title: `Not Found | The Daily Adin` };
+  if (!upazila) return { title: `Not Found | দৈনিক এদিন` };
+
+  const title = upazila.meta_title || `${upazila.name_bn} | দৈনিক এদিন`;
 
   const description =
     upazila.meta_description ||
     `${upazila.name_bn} উপজেলার সর্বশেষ সংবাদ ও আপডেট`;
 
   return {
-    title: upazila.meta_title || `${upazila.name_bn} | The Daily Adin`,
+    title,
     keywords:
       upazila.meta_keywords ||
-      "daily-adin, adin, news, news-portal, content, article",
+      "দৈনিক এদিন, daily adin, বাংলা সংবাদ, বাংলাদেশ সংবাদ, Bangladesh news, Bangla news, online newspaper Bangladesh, জাতীয় সংবাদ, রাজনীতি, আন্তর্জাতিক সংবাদ, ব্যবসা বাণিজ্য, স্বাস্থ্য সংবাদ, ক্রীড়া সংবাদ, ই-পেপার, dailyadin.com",
     description,
     alternates: {
       canonical: `${SITE_CONFIG.url}/country/${division_slug}/${district_slug}/${upazila_slug}`,
     },
     openGraph: {
-      images: upazila.photo || "",
-      title: upazila.meta_title || `${upazila.name_bn} | The Daily Adin`,
+      images: upazila.photo || SITE_CONFIG.commonOgImage,
+      title,
       description,
     },
     twitter: {
       card: "summary_large_image",
-      title: upazila.meta_title || `${upazila.name_bn} | The Daily Adin`,
+      title,
       description,
-      images: upazila.photo ? [upazila.photo] : [],
+      images: upazila.photo ? [upazila.photo] : [SITE_CONFIG.commonOgImage],
     },
   };
 }

@@ -19,21 +19,21 @@ export async function generateMetadata({ params }: Params) {
 
   const response = await getTopicBySlugAction(slug);
 
-  const title = `${response.meta_title || response.name} | The Daily Adin`;
+  const title = `${response.meta_title || response.name} | দৈনিক এদিন`;
   const description =
-    response.meta_description || "A modern, fast and SEO-friendly news portal";
+    response.meta_description || "দৈনিক এদিন — বাংলাদেশের বিশ্বস্ত অনলাইন সংবাদ পোর্টাল। জাতীয়, রাজনীতি, আন্তর্জাতিক, ব্যবসা, স্বাস্থ্য, খেলাধুলা ও বিনোদনের সর্বশেষ সংবাদ পড়ুন।";
 
   return {
     title,
     keywords:
       response.meta_keywords ||
-      "daily-adin, adin, news, news-portal, content, article",
+      "দৈনিক এদিন, daily adin, বাংলা সংবাদ, বাংলাদেশ সংবাদ, Bangladesh news, Bangla news, online newspaper Bangladesh, জাতীয় সংবাদ, রাজনীতি, আন্তর্জাতিক সংবাদ, ব্যবসা বাণিজ্য, স্বাস্থ্য সংবাদ, ক্রীড়া সংবাদ, ই-পেপার, dailyadin.com",
     description,
     alternates: {
       canonical: `${SITE_CONFIG.url}/topic/${slug}`,
     },
     openGraph: {
-      images: response.photo ? response.photo : "",
+      images: response.photo ? response.photo : SITE_CONFIG.commonOgImage,
       title,
       description,
     },
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Params) {
       card: "summary_large_image",
       title,
       description,
-      images: response.photo ? [response.photo] : [],
+      images: response.photo ? [response.photo] : [SITE_CONFIG.commonOgImage],
     },
   };
 }

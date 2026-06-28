@@ -7,25 +7,27 @@ import { SITE_CONFIG } from "@/lib/config/site-config";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata() {
-  const title = `${PHOTO_PAGE.name_bn} | Browse latest photos`;
+  const title = `${PHOTO_PAGE.name_bn} | দৈনিক এদিন - ক্লিকস্মৃতি`;
   const description =
-    "Browse all latest photos. Daily Adin is a modern, fast and SEO-friendly news portal";
+    "দৈনিক এদিন - এর সকল ক্লিকস্মৃতি একসাথে দেখুন। দৈনিক এদিন — বাংলাদেশের বিশ্বস্ত অনলাইন সংবাদ পোর্টাল। জাতীয়, রাজনীতি, আন্তর্জাতিক, ব্যবসা, স্বাস্থ্য, খেলাধুলা ও বিনোদনের সর্বশেষ সংবাদ পড়ুন।";
 
   return {
     title,
-    keywords: "daily-adin, adin, news, news-portal, content, article",
+    keywords: "ক্লিকস্মৃতি, দৈনিক এদিন, daily adin, বাংলা সংবাদ, বাংলাদেশ সংবাদ, Bangladesh news, Bangla news, online newspaper Bangladesh, জাতীয় সংবাদ, রাজনীতি, আন্তর্জাতিক সংবাদ, ব্যবসা বাণিজ্য, স্বাস্থ্য সংবাদ, ক্রীড়া সংবাদ, ই-পেপার, dailyadin.com, photos, photo, album, browse photos, daily-adin, adin, news, news-portal, content, article",
     description,
     alternates: {
       canonical: `${SITE_CONFIG.url}/photos`,
     },
     openGraph: {
+      images: SITE_CONFIG.commonOgImage,
       title,
       description,
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title,
       description,
+      images: [SITE_CONFIG.commonOgImage],
     },
   };
 }

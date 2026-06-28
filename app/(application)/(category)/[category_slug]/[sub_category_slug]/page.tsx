@@ -25,11 +25,11 @@ export async function generateMetadata({ params }: Params) {
     "category"
   );
 
-  if (!subCategory) return { title: `Not Found | The Daily Adin` };
+  if (!subCategory) return { title: `Not Found | দৈনিক এদিন` };
 
   const title =
     subCategory.meta_title ||
-    `${subCategory.name || subCategory.name} | The Daily Adin`;
+    `${subCategory.name || subCategory.name} | দৈনিক এদিন`;
   const description =
     subCategory.meta_description ||
     stripHtmlToPlainText(subCategory.description);
@@ -38,13 +38,13 @@ export async function generateMetadata({ params }: Params) {
     title,
     keywords:
       subCategory.meta_keywords ||
-      "daily-adin, adin, news, news-portal, content, article",
+      "দৈনিক এদিন, daily adin, বাংলা সংবাদ, বাংলাদেশ সংবাদ, Bangladesh news, Bangla news, online newspaper Bangladesh, জাতীয় সংবাদ, রাজনীতি, আন্তর্জাতিক সংবাদ, ব্যবসা বাণিজ্য, স্বাস্থ্য সংবাদ, ক্রীড়া সংবাদ, ই-পেপার, dailyadin.com",
     description,
     alternates: {
       canonical: `${SITE_CONFIG.url}/${category_slug}/${sub_category_slug}`,
     },
     openGraph: {
-      images: subCategory.photo || "",
+      images: subCategory.photo || SITE_CONFIG.commonOgImage,
       title,
       description,
     },
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: Params) {
       card: "summary_large_image",
       title,
       description,
-      images: subCategory.photo ? [subCategory.photo] : [],
+      images: subCategory.photo ? [subCategory.photo] : [SITE_CONFIG.commonOgImage],
     },
   };
 }

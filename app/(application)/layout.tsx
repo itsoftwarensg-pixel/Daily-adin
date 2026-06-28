@@ -6,9 +6,9 @@ import ApplicationHeader from "@/lib/components/layout/header";
 // Generate dynamic metadata
 export async function generateMetadata() {
   return {
-    title: "The Daily Adin",
-    keywords: "daily-adin, adin, news, news-portal, content, article",
-    description: "A modern, fast and SEO-friendly news portal",
+    title: "দৈনিক এদিন",
+    keywords: "দৈনিক এদিন, daily adin, বাংলা সংবাদ, বাংলাদেশ সংবাদ, Bangladesh news, Bangla news, online newspaper Bangladesh, জাতীয় সংবাদ, রাজনীতি, আন্তর্জাতিক সংবাদ, ব্যবসা বাণিজ্য, স্বাস্থ্য সংবাদ, ক্রীড়া সংবাদ, ই-পেপার, dailyadin.com",
+    description: "দৈনিক এদিন — বাংলাদেশের বিশ্বস্ত অনলাইন সংবাদ পোর্টাল। জাতীয়, রাজনীতি, আন্তর্জাতিক, ব্যবসা, স্বাস্থ্য, খেলাধুলা ও বিনোদনের সর্বশেষ সংবাদ পড়ুন।",
   };
 }
 

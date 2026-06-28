@@ -3,6 +3,7 @@ export const SITE_CONFIG = {
   alternateName: "দৈনিক এদিন",
   url: "https://www.dailyadin.com",
   logo: "https://www.dailyadin.com/logo.png",
+  commonOgImage: "https://www.dailyadin.com/images/common-og.jpg",
   socialLinks: {
     facebook: "https://www.facebook.com/dailyadin",
     youtube: "https://www.youtube.com/@dailyadinbd",
