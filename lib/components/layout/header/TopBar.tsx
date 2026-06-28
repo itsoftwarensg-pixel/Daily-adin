@@ -105,6 +105,7 @@ const TopBar = ({ dateTimeBn, menus, personalityData }: Props) => {
             src={logo}
             alt="The Daily Adin Logo"
             className="object-contain"
+            priority={true}
           />
         </Link>
 
