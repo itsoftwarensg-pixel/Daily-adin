@@ -154,4 +154,16 @@ export const APIEndpoint = {
   ramadan: {
     getData: () => `${APIEndpoint.base_url}/ramadan`,
   },
+
+  // Sitemap API endpoints
+  sitemaps: {
+    getIndex: () => `${APIEndpoint.base_url}/sitemaps`,
+    getNews: () => `${APIEndpoint.base_url}/sitemaps/news`,
+    getCategories: () => `${APIEndpoint.base_url}/sitemaps/categories`,
+    getSubCategories: () => `${APIEndpoint.base_url}/sitemaps/sub-categories`,
+    getTopics: () => `${APIEndpoint.base_url}/sitemaps/topics`,
+    getVideos: () => `${APIEndpoint.base_url}/sitemaps/videos`,
+    getCategoryArticles: (categorySlug: string) =>
+      `${APIEndpoint.base_url}/sitemaps/category/${categorySlug}`,
+  },
 };

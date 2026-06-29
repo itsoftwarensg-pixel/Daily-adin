@@ -18,8 +18,11 @@ interface Params {
 export async function generateMetadata({ params }: Params) {
   const { id } = await params;
 
-  // Fetch content details by id for SEO metadata
-  const content = await getContentByIdAction(id);
+  // Fetch content details by id for SEO metadata (using same includes to leverage React cache)
+  const content = await getContentByIdAction(
+    id,
+    "next_ids,writer,tags,category"
+  );
 
   return {
     title: content.meta_title || `${content.heading} | The Daily Adin`,

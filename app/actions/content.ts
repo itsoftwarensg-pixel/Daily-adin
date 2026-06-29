@@ -2,6 +2,7 @@
 
 import { APIEndpoint } from "@/lib/api/api-endpoints";
 import { apiRequest } from "@/lib/api/client";
+import { cache } from "react";
 
 /** ============================================================================
  * Contents APIs
@@ -67,7 +68,7 @@ export const searchContentsAction = async (
  * @param id - The id of the content to fetch
  * @returns The category data or an empty array in case of an error
  */
-export const getContentByIdAction = async (id: number, include?: string) => {
+export const getContentByIdAction = cache(async (id: number, include?: string) => {
   try {
     const apiResponse = await apiRequest({
       url: APIEndpoint.content.getById(id, include),
@@ -79,7 +80,7 @@ export const getContentByIdAction = async (id: number, include?: string) => {
     console.error("Error fetching content by content id:", err);
     return null;
   }
-};
+});
 
 /**
  * Fetch Contents by category id with included relations
