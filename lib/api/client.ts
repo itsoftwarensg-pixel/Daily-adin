@@ -43,7 +43,7 @@ export const apiRequest = async ({
 
   if (method.toUpperCase() === "GET" && data) {
     const queryParams = new URLSearchParams(
-      data as Record<string, string>
+      data as Record<string, string>,
     ).toString();
     url += `?${queryParams}`;
   }
