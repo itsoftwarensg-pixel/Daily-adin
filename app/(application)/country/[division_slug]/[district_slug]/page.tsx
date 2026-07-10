@@ -20,30 +20,34 @@ export async function generateMetadata({ params }: Params) {
   const { division_slug, district_slug } = await params;
   const district = await getDistrictBySlugAction(district_slug);
 
-  if (!district) return { title: `Not Found | The Daily Adin` };
+  if (!district) return { title: `Not Found | দৈনিক এদিন` };
 
+  const title = district.meta_title || `${district.name_bn} | দৈনিক এদিন`;
   const description =
     district.meta_description ||
     `${district.name_bn} জেলার সর্বশেষ সংবাদ ও আপডেট`;
 
   return {
-    title: district.meta_title || `${district.name_bn} | The Daily Adin`,
+    title,
     keywords:
-      district.meta_keywords,
+      district.meta_keywords || "দৈনিক এদিন, daily adin, বাংলা সংবাদ, বাংলাদেশ সংবাদ, Bangladesh news, Bangla news, online newspaper Bangladesh, জাতীয় সংবাদ, রাজনীতি, আন্তর্জাতিক সংবাদ, ব্যবসা বাণিজ্য, স্বাস্থ্য সংবাদ, ক্রীড়া সংবাদ, ই-পেপার, dailyadin.com",
     description,
     alternates: {
       canonical: `${SITE_CONFIG.url}/country/${division_slug}/${district_slug}`,
     },
     openGraph: {
-      images: district.photo || "",
-      title: district.meta_title || `${district.name_bn} | The Daily Adin`,
+      type: "website",
+      locale: "bn_BD",
+      url: `${SITE_CONFIG.url}/country/${division_slug}/${district_slug}`,
+      images: [{ url: district.photo || SITE_CONFIG.commonOgImage, width: 1200, height: 630, alt: title }],
+      title,
       description,
     },
     twitter: {
       card: "summary_large_image",
-      title: district.meta_title || `${district.name_bn} | The Daily Adin`,
+      title,
       description,
-      images: district.photo ? [district.photo] : [],
+      images: district.photo ? [district.photo] : [SITE_CONFIG.commonOgImage],
     },
   };
 }

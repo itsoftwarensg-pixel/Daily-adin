@@ -6,18 +6,22 @@ import { SITE_CONFIG } from "@/lib/config/site-config";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata() {
-  const title = `${WRITER_PAGE.name_bn} | Writer List`;
+  const title = `${WRITER_PAGE.name_bn} | লেখক তালিকা`;
   const description =
-    "Writer List. Daily Adin is a modern, fast and SEO-friendly news portal";
+    "লেখক তালিকা। দৈনিক এদিন — বাংলাদেশের বিশ্বস্ত অনলাইন সংবাদ পোর্টাল";
 
   return {
     title,
-    keywords: "daily-adin, adin, news, news-portal, content, article",
+    keywords: "দৈনিক এদিন, daily adin, বাংলা সংবাদ, বাংলাদেশ সংবাদ, Bangladesh news, Bangla news, online newspaper Bangladesh, জাতীয় সংবাদ, রাজনীতি, আন্তর্জাতিক সংবাদ, ব্যবসা বাণিজ্য, স্বাস্থ্য সংবাদ, ক্রীড়া সংবাদ, ই-পেপার, dailyadin.com, writer, author, writer list, author list, daily-adin, adin, news, news-portal, content, article",
     description,
     alternates: {
       canonical: `${SITE_CONFIG.url}/author`,
     },
     openGraph: {
+      type: "website",
+      locale: "bn_BD",
+      url: `${SITE_CONFIG.url}/author`,
+      images: [{ url: SITE_CONFIG.commonOgImage, width: 1200, height: 630, alt: title }],
       title,
       description,
     },
@@ -25,6 +29,7 @@ export async function generateMetadata() {
       card: "summary",
       title,
       description,
+      images: [SITE_CONFIG.commonOgImage],
     },
   };
 }

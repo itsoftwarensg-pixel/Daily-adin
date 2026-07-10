@@ -15,8 +15,33 @@ const noto_serif = Noto_Serif_Bengali({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_CONFIG.url),
   title: "Daily Adin",
-  description: `Daily Adin is a trusted news portal delivering the latest updates, breaking news, and in-depth analysis from around the world. Stay informed with timely articles, expert insights, and comprehensive coverage on politics, business, technology, culture, and more.`,
+  description: `দৈনিক এদিন — বাংলাদেশের বিশ্বস্ত অনলাইন সংবাদ পোর্টাল। জাতীয়, রাজনীতি, আন্তর্জাতিক, ব্যবসা, স্বাস্থ্য, খেলাধুলা ও বিনোদনের সর্বশেষ সংবাদ পড়ুন।`,
+  keywords: "দৈনিক এদিন, daily adin, বাংলা সংবাদ, বাংলাদেশ সংবাদ, Bangladesh news, Bangla news, online newspaper Bangladesh, জাতীয় সংবাদ, রাজনীতি, আন্তর্জাতিক সংবাদ, ব্যবসা বাণিজ্য, স্বাস্থ্য সংবাদ, ক্রীড়া সংবাদ, ই-পেপার, dailyadin.com",
+  openGraph: {
+    type: "website",
+    siteName: SITE_CONFIG.name,
+    title: "Daily Adin | দৈনিক এদিন",
+    description: `দৈনিক এদিন — বাংলাদেশের বিশ্বস্ত অনলাইন সংবাদ পোর্টাল। জাতীয়, রাজনীতি, আন্তর্জাতিক, ব্যবসা, স্বাস্থ্য, খেলাধুলা ও বিনোদনের সর্বশেষ সংবাদ পড়ুন।`,
+    url: SITE_CONFIG.url,
+    locale: "bn_BD",
+    images: [
+      {
+        url: SITE_CONFIG.commonOgImage,
+        width: 1200,
+        height: 630,
+        alt: "Daily Adin | দৈনিক এদিন",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@dailyadin",
+    title: "Daily Adin | দৈনিক এদিন",
+    description: `দৈনিক এদিন — বাংলাদেশের বিশ্বস্ত অনলাইন সংবাদ পোর্টাল। জাতীয়, রাজনীতি, আন্তর্জাতিক, ব্যবসা, স্বাস্থ্য, খেলাধুলা ও বিনোদনের সর্বশেষ সংবাদ পড়ুন।`,
+    images: [SITE_CONFIG.commonOgImage],
+  },
 };
 
 interface PropsType {

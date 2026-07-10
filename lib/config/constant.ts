@@ -1,6 +1,13 @@
 export const NODE_ENV = process.env.NODE_ENV;
 export const BASE_URL = process.env.BASE_URL;
 
+// // TODO:: This is temporary
+// // Serve uploaded images from the public site instead of the admin host
+// export const IMAGE_SOURCE_REWRITE = {
+//     from: "https://localhost/uploads/",
+//     to: "https://www.admin.dailyadin.com/uploads/",
+// };
+
 // Country Page Constants
 export const COUNTRY_PAGE = {
     slug: "country",

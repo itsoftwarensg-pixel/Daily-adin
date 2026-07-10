@@ -11,9 +11,9 @@ import { SITE_CONFIG } from "@/lib/config/site-config";
 // Generate dynamic metadata
 export async function generateMetadata() {
   // return {
-  //   title: `${COUNTRY_PAGE.name_bn} | The Daily Adin`,
+  //   title: `${COUNTRY_PAGE.name_bn} | দৈনিক এদিন`,
   //   keywords: "daily-adin, adin, news, news-portal, content, article",
-  //   description: "A modern, fast and SEO-friendly news portal",
+  //   description: "দৈনিক এদিন — বাংলাদেশের বিশ্বস্ত অনলাইন সংবাদ পোর্টাল। জাতীয়, রাজনীতি, আন্তর্জাতিক, ব্যবসা, স্বাস্থ্য, খেলাধুলা ও বিনোদনের সর্বশেষ সংবাদ পড়ুন।",
   // };
 
   const category_slug = COUNTRY_PAGE.slug;
@@ -21,19 +21,25 @@ export async function generateMetadata() {
   const category = await getCategoryBySlugAction(category_slug);
 
   if (!category) {
-    return { title: "Not Found | The Daily Adin" };
+    return { title: "Not Found | দৈনিক এদিন" };
   }
 
-  const title = category.meta_title || `${category.name} | The Daily Adin`;
+  const title = category.meta_title || `${category.name} | দৈনিক এদিন`;
   const description =
-    category.meta_description;
+    category.meta_description || "দৈনিক এদিন — বাংলাদেশের বিশ্বস্ত অনলাইন সংবাদ পোর্টাল। জাতীয়, রাজনীতি, আন্তর্জাতিক, ব্যবসা, স্বাস্থ্য, খেলাধুলা ও বিনোদনের সর্বশেষ সংবাদ পড়ুন।";
 
   return {
     title,
-    keywords: category.meta_keywords,
+    keywords: category.meta_keywords || "দৈনিক এদিন, daily adin, বাংলা সংবাদ, বাংলাদেশ সংবাদ, Bangladesh news, Bangla news, online newspaper Bangladesh, জাতীয় সংবাদ, রাজনীতি, আন্তর্জাতিক সংবাদ, ব্যবসা বাণিজ্য, স্বাস্থ্য সংবাদ, ক্রীড়া সংবাদ, ই-পেপার, dailyadin.com",
     description,
+    alternates: {
+      canonical: `${SITE_CONFIG.url}/country`,
+    },
     openGraph: {
-      images: category.photo || "",
+      type: "website",
+      locale: "bn_BD",
+      url: `${SITE_CONFIG.url}/country`,
+      images: [{ url: category.photo || SITE_CONFIG.commonOgImage, width: 1200, height: 630, alt: title }],
       title,
       description,
     },
@@ -41,7 +47,7 @@ export async function generateMetadata() {
       card: "summary_large_image",
       title,
       description,
-      images: category.photo ? [category.photo] : [],
+      images: category.photo ? [category.photo] : [SITE_CONFIG.commonOgImage],
     },
   };
 }

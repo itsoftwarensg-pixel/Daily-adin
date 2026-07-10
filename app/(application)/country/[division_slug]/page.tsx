@@ -19,30 +19,34 @@ export async function generateMetadata({ params }: Params) {
   const { division_slug } = await params;
   const division = await getDivisionBySlugAction(division_slug);
 
-  if (!division) return { title: `Not Found | The Daily Adin` };
+  if (!division) return { title: `Not Found | দৈনিক এদিন` };
 
+  const title = division.meta_title || `${division.name_bn} | দৈনিক এদিন`;
   const description =
     division.meta_description ||
     `${division.name_bn} বিভাগের সর্বশেষ সংবাদ ও আপডেট`;
 
   return {
-    title: division.meta_title || `${division.name_bn} | The Daily Adin`,
+    title,
     keywords:
-      division.meta_keywords,
+      division.meta_keywords || "দৈনিক এদিন, daily adin, বাংলা সংবাদ, বাংলাদেশ সংবাদ, Bangladesh news, Bangla news, online newspaper Bangladesh, জাতীয় সংবাদ, রাজনীতি, আন্তর্জাতিক সংবাদ, ব্যবসা বাণিজ্য, স্বাস্থ্য সংবাদ, ক্রীড়া সংবাদ, ই-পেপার, dailyadin.com",
     description,
     alternates: {
       canonical: `${SITE_CONFIG.url}/country/${division_slug}`,
     },
     openGraph: {
-      images: division.photo || "",
-      title: division.meta_title || `${division.name_bn} | The Daily Adin`,
+      type: "website",
+      locale: "bn_BD",
+      url: `${SITE_CONFIG.url}/country/${division_slug}`,
+      images: [{ url: division.photo || SITE_CONFIG.commonOgImage, width: 1200, height: 630, alt: title }],
+      title,
       description,
     },
     twitter: {
       card: "summary_large_image",
-      title: division.meta_title || `${division.name_bn} | The Daily Adin`,
+      title,
       description,
-      images: division.photo ? [division.photo] : [],
+      images: division.photo ? [division.photo] : [SITE_CONFIG.commonOgImage],
     },
   };
 }

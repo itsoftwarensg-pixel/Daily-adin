@@ -20,21 +20,23 @@ export async function generateMetadata({ params }: Params) {
 
   const content = await getVideoDetailsByIdAction(id);
 
-  const title = `${content.title} | The Daily Adin`;
+  const title = `${content.title} | দৈনিক এদিন - ভিডিও`;
   const description =
     stripHtmlToPlainText(content.description) ||
-    "Watch latest videos on The Daily Adin";
+    "ভিডিও দেখুন। দৈনিক এদিন — বাংলাদেশের বিশ্বস্ত অনলাইন সংবাদ পোর্টাল। জাতীয়, রাজনীতি, আন্তর্জাতিক, ব্যবসা, স্বাস্থ্য, খেলাধুলা ও বিনোদনের সর্বশেষ সংবাদ পড়ুন।";
 
   return {
     title,
-    keywords:
-      content.title || "daily-adin, adin, news, news-portal, content, article",
+    keywords: "দৈনিক এদিন, daily adin, বাংলা সংবাদ, বাংলাদেশ সংবাদ, Bangladesh news, Bangla news, online newspaper Bangladesh, জাতীয় সংবাদ, রাজনীতি, আন্তর্জাতিক সংবাদ, ব্যবসা বাণিজ্য, স্বাস্থ্য সংবাদ, ক্রীড়া সংবাদ, ই-পেপার, dailyadin.com",
     description,
     alternates: {
       canonical: `${SITE_CONFIG.url}/videos/${id}`,
     },
     openGraph: {
-      images: content.thumbnail ? content.thumbnail : "",
+      type: "article",
+      locale: "bn_BD",
+      url: `${SITE_CONFIG.url}/videos/${id}`,
+      images: [{ url: content.thumbnail || SITE_CONFIG.commonOgImage, width: 1200, height: 630, alt: title }],
       title,
       description,
     },
@@ -42,7 +44,7 @@ export async function generateMetadata({ params }: Params) {
       card: "summary_large_image",
       title,
       description,
-      images: content.thumbnail ? [content.thumbnail] : [],
+      images: content.thumbnail ? [content.thumbnail] : [SITE_CONFIG.commonOgImage],
     },
   };
 }

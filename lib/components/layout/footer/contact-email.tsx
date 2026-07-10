@@ -13,11 +13,10 @@ export function ContactEmail() {
   return (
     <>
       <style>{`.eml::before{content:attr(data-u)"@"attr(data-d)}`}</style>
-      <a
-        className="eml hover:text-black focus:text-black focus:outline-none"
+      <span
+        className="eml"
         data-u="dailyadinbd"
         data-d="gmail.com"
-        href="#"
         onClick={handleClick}
       />
     </>

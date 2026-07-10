@@ -84,7 +84,7 @@ export default function ApplicationFooter() {
                     ০১৮৯৭-৬৬৪৬৫৬
                   </a>
                 </p>
-                <p className="text-lg text-textGray font-normal">
+                <p className="text-lg text-textGray font-normal flex gap-2">
                   ইমেইল : <ContactEmail />
                 </p>
               </div>
