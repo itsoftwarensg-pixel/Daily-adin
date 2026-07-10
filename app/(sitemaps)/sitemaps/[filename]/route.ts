@@ -32,6 +32,8 @@ export async function GET(request: NextRequest, { params }: Params) {
     apiUrl = APIEndpoint.sitemaps.getTopics();
   } else if (name === "video-sitemap") {
     apiUrl = APIEndpoint.sitemaps.getVideos();
+  } else if (name === "photo-sitemap") {
+    apiUrl = APIEndpoint.sitemaps.getPhotos();
   } else {
     return new NextResponse("Not Found", { status: 404 });
   }

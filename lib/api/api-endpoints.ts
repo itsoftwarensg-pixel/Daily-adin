@@ -163,6 +163,7 @@ export const APIEndpoint = {
     getSubCategories: () => `${APIEndpoint.base_url}/sitemaps/sub-categories`,
     getTopics: () => `${APIEndpoint.base_url}/sitemaps/topics`,
     getVideos: () => `${APIEndpoint.base_url}/sitemaps/videos`,
+    getPhotos: () => `${APIEndpoint.base_url}/sitemaps/photos`,
     getCategoryArticles: (categorySlug: string) =>
       `${APIEndpoint.base_url}/sitemaps/category/${categorySlug}`,
   },
