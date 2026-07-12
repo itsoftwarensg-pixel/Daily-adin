@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin
+Allow: /
+
+Sitemap: https://www.dailyadin.com/sitemap.xml
+Sitemap: https://www.dailyadin.com/sitemaps/news-sitemap.xml
