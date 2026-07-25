@@ -193,7 +193,7 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
               /> */}
 
               {/* এদিন জনপ্রিয় - Home Video Section */}
-              {/* {homeTopVideoNewsContents &&
+              {homeTopVideoNewsContents &&
                 homeTopVideoNewsContents.length > 0 && (
                   <div className="space-y-3">
                     <LeadVideoHeader
@@ -208,7 +208,7 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
                       video={homeTopVideoNewsContents[0]}
                     />
                   </div>
-                )} */}
+                )}
 
               {/* তারকা আসছেন যিনি - Star Program */}
               {/* {starProgramNewsContent && (
@@ -236,17 +236,17 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
               } */}
 
               {/* Advertisement Home top right up */}
-              {/* <div className="flex justify-center mb-4">
+              <div className="flex justify-center mb-4">
                 <Advertisement
                   width={300}
                   height={300}
                   imgSrc={ADVERTISE_TYPES.HOME_TOP_RIGHT_UP}
                 />
-              </div> */}
+              </div>
             </div>
 
             {/* মহারণ ২০২৬ - FIFA World Cup 2026 */}
-            <WorldCupSection />
+            {/* <WorldCupSection /> */}
 
             {/* Latest - Popular */}
             <div className="my-4">
