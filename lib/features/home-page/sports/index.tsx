@@ -79,9 +79,10 @@ const HomeSports = ({ data }: Props) => {
                             </div>
                         }
 
-                        <Link href="https://dailyadin.com/sports/5811" target="_blank" className="block group bg-red-100 px-6 py-4">
+                        {/*  */}
+                        <Link href="https://dailyadin.com/sports/17721" target="_blank" className="block group bg-red-100 px-6 py-4">
                             <h4 className="m-0 text-3xl text-center text-red-700 group-hover:text-red-500">
-                                দেখে নিন ২০২৬ ফুটবল বিশ্বকাপের সূচি
+                                এক নজরে ক্রিকেট বিশ্বকাপের ২০২৭
                             </h4>
                         </Link>
                     </div>
