@@ -10,3 +10,8 @@ build:
 start:
 	yarn start
 
+
+# Production deployment
+deploy:
+	bash ./deploy.sh
+
