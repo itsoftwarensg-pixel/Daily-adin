@@ -82,7 +82,7 @@ const HomeSports = ({ data }: Props) => {
                         {/*  */}
                         <Link href="https://dailyadin.com/sports/17721" target="_blank" className="block group bg-red-100 px-6 py-4">
                             <h4 className="m-0 text-3xl text-center text-red-700 group-hover:text-red-500">
-                                জেনে নিন ক্রিকেট বিশ্বকাপ ২০২৭ এর সময়সূচি
+                                দেখে নিন ২০২৭ বিশ্বকাপ বিশ্বকাপের সূচি
                             </h4>
                         </Link>
                     </div>
