@@ -10,6 +10,8 @@ export async function generateMetadata() {
   const title = `আর্কাইভ | দৈনিক এদিন`;
   const description = "দৈনিক এদিন — বাংলাদেশের বিশ্বস্ত অনলাইন সংবাদ পোর্টাল। জাতীয়, রাজনীতি, আন্তর্জাতিক, ব্যবসা, স্বাস্থ্য, খেলাধুলা ও বিনোদনের সর্বশেষ সংবাদ পড়ুন।";
 
+  const ogImage = SITE_CONFIG.framedOgImage(SITE_CONFIG.commonOgImage);
+
   return {
     title,
     keywords: "দৈনিক এদিন, daily adin, বাংলা সংবাদ, বাংলাদেশ সংবাদ, Bangladesh news, Bangla news, online newspaper Bangladesh, জাতীয় সংবাদ, রাজনীতি, আন্তর্জাতিক সংবাদ, ব্যবসা বাণিজ্য, স্বাস্থ্য সংবাদ, ক্রীড়া সংবাদ, ই-পেপার, dailyadin.com",
@@ -21,7 +23,7 @@ export async function generateMetadata() {
       type: "website",
       locale: "bn_BD",
       url: `${SITE_CONFIG.url}/archive`,
-      images: [{ url: SITE_CONFIG.commonOgImage, width: 1200, height: 630, alt: title }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
       title,
       description,
     },
@@ -29,7 +31,7 @@ export async function generateMetadata() {
       card: "summary",
       title,
       description,
-      images: [SITE_CONFIG.commonOgImage],
+      images: [ogImage],
     },
   };
 }

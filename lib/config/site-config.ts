@@ -4,6 +4,7 @@ export const SITE_CONFIG = {
   url: "https://www.dailyadin.com",
   logo: "https://www.dailyadin.com/logo.png",
   commonOgImage: "https://www.dailyadin.com/images/common-og.jpg",
+  framedOgImage: (src: string) => `https://www.dailyadin.com/api/og?src=${encodeURIComponent(src)}`,
   socialLinks: {
     facebook: "https://www.facebook.com/dailyadin",
     youtube: "https://www.youtube.com/@dailyadinbd",
