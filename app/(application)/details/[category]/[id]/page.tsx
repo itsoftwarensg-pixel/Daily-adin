@@ -43,6 +43,9 @@ export async function generateMetadata({ params }: Params) {
     content.meta_keywords ||
     "দৈনিক এদিন, daily adin, বাংলা সংবাদ, বাংলাদেশ সংবাদ, Bangladesh news, Bangla news, online newspaper Bangladesh, জাতীয় সংবাদ, রাজনীতি, আন্তর্জাতিক সংবাদ, ব্যবসা বাণিজ্য, স্বাস্থ্য সংবাদ, ক্রীড়া সংবাদ, ই-পেপার, dailyadin.com";
 
+  // -- OG image (framed with brand bar) --
+  const ogImage = SITE_CONFIG.framedOgImage(content.full_image_path || SITE_CONFIG.commonOgImage);
+
   return {
     title,
     keywords,
@@ -54,7 +57,7 @@ export async function generateMetadata({ params }: Params) {
       type: "article",
       locale: "bn_BD",
       url: fullUrl,
-      images: [{ url: content.full_image_path || SITE_CONFIG.commonOgImage, width: 1200, height: 630, alt: title }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
       title,
       description,
     },
@@ -62,7 +65,7 @@ export async function generateMetadata({ params }: Params) {
       card: "summary_large_image",
       title,
       description,
-      images: content.full_image_path ? [content.full_image_path] : [SITE_CONFIG.commonOgImage],
+      images: [ogImage],
     },
   };
 }
