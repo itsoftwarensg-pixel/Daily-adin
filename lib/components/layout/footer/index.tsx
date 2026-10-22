@@ -17,18 +17,18 @@ export default function ApplicationFooter() {
 
   const socialLinks = [
     {
-      href: "https://www.facebook.com/dailyadin/?ref=waios.fb_links_xma_control",
+      href: "https://www.facebook.com/dailyadinbd",
       icon: facebook,
       alt: "facebook",
     },
-    // { href: "https://www.x.com", icon: x, alt: "x" },
+    { href: "https://x.com/dailyadinbd", icon: x, alt: "x" },
     {
       href: "https://www.youtube.com/@dailyadinbd",
       icon: youtube,
       alt: "youtube",
     },
     {
-      href: "https://www.tiktok.com/@adinbd?_r=1&_t=ZS-92gEDUTEwkL",
+      href: "https://www.tiktok.com/@adinbd",
       icon: tiktok,
       alt: "tiktok",
     },

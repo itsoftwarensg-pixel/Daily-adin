@@ -26,9 +26,9 @@ import { Category } from "@/lib/types/category.page";
 import { AJKER_PATRIKA_PAGE } from "@/lib/config/constant";
 
 const socialLinks = [
-  { href: "https://www.facebook.com", icon: facebook, alt: "facebook" },
-  { href: "https://www.youtube.com", icon: youtube, alt: "youtube" },
-  { href: "https://www.x.com", icon: x, alt: "x" },
+  { href: "https://www.facebook.com/dailyadinbd", icon: facebook, alt: "facebook" },
+  { href: "https://www.youtube.com/@dailyadinbd", icon: youtube, alt: "youtube" },
+  { href: "https://x.com/dailyadinbd", icon: x, alt: "x" },
 ];
 
 // Props

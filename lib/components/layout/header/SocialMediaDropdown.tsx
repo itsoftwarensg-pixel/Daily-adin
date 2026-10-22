@@ -23,7 +23,7 @@ const SOCIAL_DATA = [
       {
         title: "ফেসবুক",
         name: "The Daily Adin",
-        href: "https://www.facebook.com/dailyadin/?ref=waios.fb_links_xma_control",
+        href: "https://www.facebook.com/dailyadinbd",
         icon: facebook,
       },
       {
@@ -40,19 +40,19 @@ const SOCIAL_DATA = [
       {
         title: "এক্স",
         name: "The Daily Adin",
-        href: "#",
+        href: "https://x.com/dailyadinbd",
         icon: x,
       },
       {
         title: "টিকটক",
         name: "The Daily Adin",
-        href: "https://www.tiktok.com/@adinbd?_r=1&_t=ZS-92gEDUTEwkL",
+        href: "https://www.tiktok.com/@adinbd",
         icon: tiktok,
       },
       {
         title: "ইনস্টাগ্রাম",
         name: "The Daily Adin",
-        href: "#",
+        href: "https://www.instagram.com/dailyadinbd/",
         icon: instagram,
       },
     ],
@@ -63,13 +63,13 @@ const SOCIAL_DATA = [
       {
         title: "লিঙ্কডইন",
         name: "The Daily Adin",
-        href: "#",
+        href: "https://www.linkedin.com/company/daily-adin",
         icon: linkedIn,
       },
       {
         title: "পিন্টারেস্ট",
         name: "The Daily Adin",
-        href: "#",
+        href: "https://www.pinterest.com/dailyadin",
         icon: pinterest,
       },
       {
@@ -86,13 +86,13 @@ const SOCIAL_DATA = [
       {
         title: "হোয়াটসঅ্যাপ",
         name: "The Daily Adin",
-        href: "#",
+        href: "https://whatsapp.com/channel/0029Vb9Eb1J1CYoRl9hWis1M",
         icon: whatsapp,
       },
       {
         title: "টেলিগ্রাম",
         name: "The Daily Adin",
-        href: "#",
+        href: "https://t.me/dailyadin",
         icon: telegram,
       },
       {

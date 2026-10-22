@@ -6,9 +6,15 @@ export const SITE_CONFIG = {
   commonOgImage: "https://www.dailyadin.com/images/common-og.jpg",
   framedOgImage: (src: string) => `https://www.dailyadin.com/api/og?src=${encodeURIComponent(src)}`,
   socialLinks: {
-    facebook: "https://www.facebook.com/dailyadin",
+    facebook: "https://www.facebook.com/dailyadinbd",
     youtube: "https://www.youtube.com/@dailyadinbd",
     tiktok: "https://www.tiktok.com/@adinbd",
+    x: "https://x.com/dailyadinbd",
+    instagram: "https://www.instagram.com/dailyadinbd/",
+    pinterest: "https://www.pinterest.com/dailyadin",
+    linkedin: "https://www.linkedin.com/company/daily-adin",
+    whatsapp: "https://whatsapp.com/channel/0029Vb9Eb1J1CYoRl9hWis1M",
+    telegram: "https://t.me/dailyadin",
   },
   address: {
     street: "House-13, Road-17, Tower-A (1st Floor), Banani",
