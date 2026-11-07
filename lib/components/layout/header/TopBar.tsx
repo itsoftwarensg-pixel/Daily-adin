@@ -110,6 +110,7 @@ const TopBar = ({ dateTimeBn, menus, personalityData }: Props) => {
         </Link>
 
         <div className="relative overflow-hidden hidden md:block print:hidden">
+            <Link href="https://northsouthgroup.com/">
           <ImageWithFallback
             src={headerBanner}
             width={500}
@@ -117,6 +118,7 @@ const TopBar = ({ dateTimeBn, menus, personalityData }: Props) => {
             alt="The Daily Adin Logo"
             className="object-contain w-90 xl:w-[360px]"
           />
+          </Link>
           {/* <p className="text-[18px] text-center font-normal">{todayDate}</p> */}
         </div>
 
