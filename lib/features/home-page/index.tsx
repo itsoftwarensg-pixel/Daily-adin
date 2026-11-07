@@ -132,12 +132,13 @@ const HomePage = ({ initialHomeData, divisionList,
       {/* Second Chunk Components */}
       {hasLoadedSecondChunk && (
         <>
+         <HomeVideo data={homeData.video} />
           <HomeSports data={homeData.sports} />
           <HomeCountry data={homeData.country} divisionList={divisionList} />
           <HomeMedia data={homeData.entertainment} />
           <HomeCommerce data={homeData.business} />
           <HomeInternational data={homeData.international} />
-          <HomeVideo data={homeData.video} />
+         
           <HomeLaiceFitaPantholokCampus
             data={{
               leisfita: homeData.leisfita,
