@@ -145,10 +145,10 @@ export default function ApplicationFooter() {
             <p className="text-md font-normal text-textGray">
               Design & Developed by
               <a
-                href="http://www.bongosoftbd.com/"
+                href="https://northsouthgroup.com/"
                 className="text-green-600 hover:underline pl-1"
               >
-                Bongosoft Ltd
+                NorthSouth Tech Solutions
               </a>
               .
             </p>
