@@ -64,6 +64,8 @@ const ArticleContent = memo(({ contentDetails, forwardRef }: Props) => {
               src={`${contentDetails.full_image_path}`}
               height={900}
               width={1200}
+              sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1279px) 75vw, 850px"
+              priority
               alt={`${contentDetails.heading}`}
               className="w-full object-cover h-full"
             />

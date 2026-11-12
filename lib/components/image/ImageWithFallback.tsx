@@ -13,6 +13,8 @@ interface ImageWithFallbackProps {
   height?: number;
   fill?: boolean;
   priority?: boolean;
+  sizes?: string;
+  quality?: number;
   onError?: (e: any) => void;
   onClick?: (e: any) => void;
 }
@@ -26,6 +28,8 @@ const ImageWithFallback = ({
   height,
   fill,
   priority = false,
+  sizes,
+  quality = 65,
   onError,
   onClick,
 }: ImageWithFallbackProps) => {
@@ -53,6 +57,10 @@ const ImageWithFallback = ({
       height={fill ? undefined : height}
       fill={fill}
       priority={priority}
+      quality={quality}
+      sizes={sizes ?? (width && width <= 128
+        ? `${width}px`
+        : `(max-width: 767px) calc(100vw - 32px), ${Math.min(width ?? 768, 768)}px`)}
       className={className}
       onError={handleError}
       onClick={onClick}

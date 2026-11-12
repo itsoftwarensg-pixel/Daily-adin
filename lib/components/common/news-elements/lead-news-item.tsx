@@ -26,6 +26,7 @@ const LeadNewsItem = ({ content }: Props) => {
                   alt={`${content.heading}`}
                   className="w-full"
                   priority={true}
+                  sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1439px) 44vw, 620px"
                 />
               </div>
               <div className="">

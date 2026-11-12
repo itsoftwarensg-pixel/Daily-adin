@@ -116,6 +116,7 @@ const localBusinessSchema = {
 };
 
 export default function RootLayout({ children }: PropsType) {
+  const analyticsId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
   return (
     <html lang="bn">
       <head>
@@ -133,19 +134,22 @@ export default function RootLayout({ children }: PropsType) {
         />
 
         {/* START Google Analytics */}
-        <Script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
-        />
-
-        <Script id='google-analytics'>
-          {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', ${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID});
-          `}
-        </Script>
+        {analyticsId && (
+          <>
+            <Script
+              strategy="afterInteractive"
+              src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(analyticsId)}`}
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){window.dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', ${JSON.stringify(analyticsId).replace(/</g, "\\u003c")});
+              `}
+            </Script>
+          </>
+        )}
         {/* END Google Analytics */}
 
       </head>

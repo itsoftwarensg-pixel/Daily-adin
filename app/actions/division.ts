@@ -18,6 +18,7 @@ export const getAllDivisionsAction = async () => {
     const apiResponse = await apiRequest({
       url: APIEndpoint.division.getAll(),
       method: "GET",
+      revalidate: 3600,
     });
 
     return apiResponse.data;

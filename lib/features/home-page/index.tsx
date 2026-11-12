@@ -66,9 +66,12 @@ const HomePage = ({ initialHomeData, divisionList,
   const [loading, setLoading] = useState(false);
   const [hasLoadedSecondChunk, setHasLoadedSecondChunk] = useState(false);
   const observerTarget = useRef<HTMLDivElement>(null);
+  const secondChunkInFlight = useRef(false);
 
   const loadSecondChunk = useCallback(async () => {
-    if (loading || hasLoadedSecondChunk) return;
+    if (secondChunkInFlight.current || hasLoadedSecondChunk) return;
+
+    secondChunkInFlight.current = true;
 
     setLoading(true);
     try {
@@ -83,9 +86,17 @@ const HomePage = ({ initialHomeData, divisionList,
     } catch (error) {
       console.error("Failed to load home page second chunk", error);
     } finally {
+      secondChunkInFlight.current = false;
       setLoading(false);
     }
-  }, [loading, hasLoadedSecondChunk]);
+  }, [hasLoadedSecondChunk]);
+
+  // Warm lower sections after the lead has rendered, even before scrolling.
+  useEffect(() => {
+    if (hasLoadedSecondChunk) return;
+    const timer = window.setTimeout(() => { void loadSecondChunk(); }, 1200);
+    return () => window.clearTimeout(timer);
+  }, [hasLoadedSecondChunk, loadSecondChunk]);
 
   // Infinite Scroll Observer
   useEffect(() => {
@@ -95,7 +106,7 @@ const HomePage = ({ initialHomeData, divisionList,
           loadSecondChunk();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0, rootMargin: "600px 0px" }
     );
 
     if (observerTarget.current) {
@@ -103,9 +114,7 @@ const HomePage = ({ initialHomeData, divisionList,
     }
 
     return () => {
-      if (observerTarget.current) {
-        observer.unobserve(observerTarget.current);
-      }
+      observer.disconnect();
     };
   }, [loadSecondChunk]);
 

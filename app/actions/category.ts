@@ -64,6 +64,7 @@ export const getCategoryBySlugAction = cache(
       const apiResponse = await apiRequest({
         url: APIEndpoint.category.getBySlug(slug, include),
         method: "GET",
+        revalidate: 30,
       });
 
       return apiResponse.data || null;

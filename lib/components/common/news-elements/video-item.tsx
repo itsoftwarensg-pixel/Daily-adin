@@ -22,6 +22,7 @@ const VideoItem = ({ videoItem }: Props) => {
                             src={`https://img.youtube.com/vi/${videoItem.embed_code}/hqdefault.jpg`}
                             height={600}
                             width={900}
+                            sizes="(max-width: 767px) 50vw, (max-width: 1439px) 25vw, 340px"
                             alt={`${videoItem.title}`}
                             className="w-full object-cover h-full group-hover:scale-110 transition-all"
                         />

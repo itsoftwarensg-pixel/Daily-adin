@@ -18,6 +18,7 @@ export const getHomePageDataAction = async (include?: string) => {
     const apiResponse = await apiRequest({
       url: APIEndpoint.home.getData(include),
       method: "GET",
+      revalidate: 30,
     });
 
     return apiResponse.data || null;

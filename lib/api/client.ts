@@ -5,6 +5,7 @@ export type API_Params = {
   verify?: boolean;
   has_file?: boolean;
   cache?: RequestCache;
+  revalidate?: number;
 };
 
 export const apiRequest = async ({
@@ -14,6 +15,7 @@ export const apiRequest = async ({
   method = "POST",
   has_file,
   cache,
+  revalidate,
 }: API_Params) => {
   const isFormData =
     typeof FormData !== "undefined" && data instanceof FormData;
@@ -48,7 +50,14 @@ export const apiRequest = async ({
     url += `?${queryParams}`;
   }
 
-  const response = await fetch(url, { ...options, cache: cache ?? "no-store" });
+  const response = await fetch(url, {
+    ...options,
+    cache: cache ?? (revalidate !== undefined ? "force-cache" : "no-store"),
+    ...(revalidate !== undefined ? { next: { revalidate } } : {}),
+  });
+  if (!response.ok) {
+    throw new Error(`API request failed: ${response.status}`);
+  }
   const dataResponse = await response.json();
   // const apiErrors: Record<string, string[]> = dataResponse.errors ?? {};
 

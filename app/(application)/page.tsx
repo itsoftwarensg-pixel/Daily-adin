@@ -4,8 +4,6 @@ import { getHomePageDataAction } from "@/app/actions/home";
 import { HOME_PAGE_CHUNK_1 } from "@/lib/config/constant";
 import { getAllDivisionsAction } from "@/app/actions/division";
 
-import { getElectionDataAction } from "@/app/actions/election";
-import { getRamadanDataAction } from "@/app/actions/ramadan";
 import { SITE_CONFIG } from "@/lib/config/site-config";
 
 // // Generate dynamic metadata
@@ -37,24 +35,20 @@ export async function generateMetadata() {
   };
 }
 
-export const dynamic = "force-dynamic";
+// Public news data is refreshed in the background every 30 seconds.
+export const revalidate = 30;
 
 const RootHomePage = async () => {
-  // Fetch home page data with included relations
-  const homeData = await getHomePageDataAction(HOME_PAGE_CHUNK_1);
-
-  const divisionList = await getAllDivisionsAction();
-
-  // const electionData = await getElectionDataAction();
-
-  const response = await getRamadanDataAction();
-  const { days, division_offsets } = response?.data || {};
+  const [homeData, divisionList] = await Promise.all([
+    getHomePageDataAction(HOME_PAGE_CHUNK_1),
+    getAllDivisionsAction(),
+  ]);
 
   return (
     <HomePage
-      ramadanDays={days}
-      ramadanDivisionOffsets={division_offsets}
-      initialHomeData={homeData}
+      ramadanDays={[]}
+      ramadanDivisionOffsets={[]}
+      initialHomeData={homeData ?? {}}
       divisionList={divisionList}
     // electionData={electionData}
     />

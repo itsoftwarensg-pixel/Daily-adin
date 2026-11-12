@@ -16,6 +16,7 @@ export const getBnDateTimeAction = async () => {
     const apiResponse = await apiRequest({
       url: APIEndpoint.utils.getBnDateTime(),
       method: "GET",
+      revalidate: 30,
     });
 
     return apiResponse.data;
@@ -34,6 +35,7 @@ export const getMenuAction = async () => {
     const apiResponse = await apiRequest({
       url: APIEndpoint.utils.getMenu(),
       method: "GET",
+      revalidate: 300,
     });
 
     return apiResponse.data;
