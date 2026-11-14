@@ -79,9 +79,9 @@ export const DetailsLeftSidebarDetails = ({
       <div className="text-gray-500 mb-4">
         <p>প্রকাশিত: {contentDetails?.created_at_bangla}</p>
 
-        {contentDetails?.updated_at_bangla && (
+        {/* {contentDetails?.updated_at_bangla && (
           <p>আপডেট: {contentDetails.updated_at_bangla}</p>
-        )}
+        )} */}
       </div>
 
       {/* Social sharable links */}
