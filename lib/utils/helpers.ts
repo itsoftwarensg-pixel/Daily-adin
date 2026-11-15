@@ -215,7 +215,9 @@ const BN_MONTHS = [
 ];
 
 // Standard month lengths (Falgun may change in leap year)
-const BN_MONTH_DAYS = [31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29, 30];
+// Previous: const BN_MONTH_DAYS = [31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29, 30];
+// Bangladesh revised calendar: the first six months have 31 days.
+const BN_MONTH_DAYS = [31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 29, 30];
 
 // Convert number to Bangla digits (plain, no commas)
 const toBnNumber = (num: number) =>
@@ -227,53 +229,81 @@ const isLeapYear = (year: number) =>
 
 // Get Bangla calendar date
 const getBanglaCalendarDate = (date: Date) => {
-  // Fix timezone to Asia/Dhaka
-  const dhakaOffset = 6 * 60; // +6 hours
-  const utcTime = date.getTime() + date.getTimezoneOffset() * 60000;
-  const dhakaTime = new Date(utcTime + dhakaOffset * 60000);
-
-  const enYear = dhakaTime.getFullYear();
-  const enMonth = dhakaTime.getMonth(); // 0-11
-  const enDay = dhakaTime.getDate();
-
-  // Bangla year
-  let bnYear = enYear - 593;
-  if (enMonth < 3 || (enMonth === 3 && enDay < 14)) {
-    bnYear--;
-  }
-
-  // Adjust Falgun for leap year
+  // Read calendar fields in Dhaka regardless of the browser/server timezone.
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Dhaka", calendar: "gregory", numberingSystem: "latn",
+    year: "numeric", month: "numeric", day: "numeric",
+  }).formatToParts(date);
+  const field = (type: Intl.DateTimeFormatPartTypes) => Number(parts.find((part) => part.type === type)!.value);
+  const year = field("year");
+  const month = field("month");
+  const day = field("day");
+  const startYear = month < 4 || (month === 4 && day < 14) ? year - 1 : year;
   const monthDays = [...BN_MONTH_DAYS];
-  if (isLeapYear(enYear)) {
-    monthDays[10] = 30; // Falgun = 30 days
+  // Falgun falls in the Gregorian year AFTER this Bangla year began.
+  if (isLeapYear(startYear + 1)) monthDays[10] = 30;
+  let days = Math.floor((Date.UTC(year, month - 1, day) - Date.UTC(startYear, 3, 14)) / 86400000);
+  let monthIndex = 0;
+  while (monthIndex < 11 && days >= monthDays[monthIndex]) {
+    days -= monthDays[monthIndex];
+    monthIndex++;
   }
-
-  // Bangla New Year starts 14 April
-  const bnYearStart = new Date(
-    Date.UTC(enMonth < 3 ? enYear - 1 : enYear, 3, 14)
-  );
-
-  // Compute days passed
-  let diffDays = Math.round(
-    (dhakaTime.getTime() - bnYearStart.getTime()) / 86400000
-  );
-  if (diffDays < 0) diffDays = 0; // safety for early hours
-
-  // Find month and day
-  let bnMonthIndex = 0;
-  while (diffDays >= monthDays[bnMonthIndex]) {
-    diffDays -= monthDays[bnMonthIndex];
-    bnMonthIndex++;
-  }
-
-  const bnDay = diffDays + 1;
-
   return {
-    day: toBnNumber(bnDay),
-    month: BN_MONTHS[bnMonthIndex],
-    year: toBnNumber(bnYear),
+    day: toBnNumber(days + 1),
+    month: BN_MONTHS[monthIndex],
+    year: toBnNumber(startYear - 593),
   };
 };
+
+// Previous calendar calculation retained for reference (inactive).
+// const getBanglaCalendarDate = (date: Date) => {
+//   // Fix timezone to Asia/Dhaka
+//   const dhakaOffset = 6 * 60; // +6 hours
+//   const utcTime = date.getTime() + date.getTimezoneOffset() * 60000;
+//   const dhakaTime = new Date(utcTime + dhakaOffset * 60000);
+//
+//   const enYear = dhakaTime.getFullYear();
+//   const enMonth = dhakaTime.getMonth(); // 0-11
+//   const enDay = dhakaTime.getDate();
+//
+//   // Bangla year
+//   let bnYear = enYear - 593;
+//   if (enMonth < 3 || (enMonth === 3 && enDay < 14)) {
+//     bnYear--;
+//   }
+//
+//   // Adjust Falgun for leap year
+//   const monthDays = [...BN_MONTH_DAYS];
+//   if (isLeapYear(enYear)) {
+//     monthDays[10] = 30; // Falgun = 30 days
+//   }
+//
+//   // Bangla New Year starts 14 April
+//   const bnYearStart = new Date(
+//     Date.UTC(enMonth < 3 ? enYear - 1 : enYear, 3, 14)
+//   );
+//
+//   // Compute days passed
+//   let diffDays = Math.round(
+//     (dhakaTime.getTime() - bnYearStart.getTime()) / 86400000
+//   );
+//   if (diffDays < 0) diffDays = 0; // safety for early hours
+//
+//   // Find month and day
+//   let bnMonthIndex = 0;
+//   while (diffDays >= monthDays[bnMonthIndex]) {
+//     diffDays -= monthDays[bnMonthIndex];
+//     bnMonthIndex++;
+//   }
+//
+//   const bnDay = diffDays + 1;
+//
+//   return {
+//     day: toBnNumber(bnDay),
+//     month: BN_MONTHS[bnMonthIndex],
+//     year: toBnNumber(bnYear),
+//   };
+// };
 
 // Format Gregorian date in Bangla
 const formatGregorianBn = (date: Date) => {
