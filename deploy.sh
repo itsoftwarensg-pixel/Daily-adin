@@ -24,7 +24,14 @@ echo "======================================"
 
 step "📥 Updating source code..."
 git fetch --prune
-git pull origin dev
+# Previous: git pull origin dev
+DEPLOY_BRANCH=${DEPLOY_BRANCH:-main}
+CURRENT_BRANCH=$(git branch --show-current)
+if [ "$CURRENT_BRANCH" != "$DEPLOY_BRANCH" ]; then
+    echo "Deploy branch mismatch: checked out $CURRENT_BRANCH, expected $DEPLOY_BRANCH"
+    exit 1
+fi
+git pull --ff-only origin "$DEPLOY_BRANCH"
 
 step "📦 Installing dependencies..."
 npm ci
@@ -33,7 +40,8 @@ step "🏗️ Building application..."
 npm run build
 
 step "♻️ Restarting PM2..."
-APP_NAME=$(basename "$PWD")
+# Previous: APP_NAME=$(basename "$PWD")
+APP_NAME=daily-adin # Matches ecosystem.config.js
 
 if pm2 describe "$APP_NAME" >/dev/null 2>&1; then
     pm2 reload ecosystem.config.js --update-env

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import dynamic from "next/dynamic";
 import LoadingNews from "@/lib/components/common/loader/loading-news";
 import {
   HomePageVideoSection,
@@ -10,21 +11,31 @@ import {
   HomeLiveVideoSection,
 } from "@/lib/types/home.page";
 import HomeLead from "@/lib/features/home-page/lead";
-import HomeMedia from "@/lib/features/home-page/media";
-import HomeVideo from "@/lib/features/home-page/video";
-import HomeSports from "@/lib/features/home-page/sports";
+// Previous eager imports; these sections now load when the second chunk renders.
+// import HomeMedia from "@/lib/features/home-page/media";
+// import HomeVideo from "@/lib/features/home-page/video";
+// import HomeSports from "@/lib/features/home-page/sports";
 import { DivisionType } from "@/lib/types/district.page";
-import HomeCountry from "@/lib/features/home-page/country";
+// import HomeCountry from "@/lib/features/home-page/country";
 import { HOME_PAGE_CHUNK_2 } from "@/lib/config/constant";
 import { getHomePageDataAction } from "@/app/actions/home";
-import HomeCommerce from "@/lib/features/home-page/commerce";
+// import HomeCommerce from "@/lib/features/home-page/commerce";
 import BreakingNews from "@/lib/components/common/breaking-news";
-import HomeInternational from "@/lib/features/home-page/international";
-import HomeClickedMemories from "@/lib/features/home-page/clicked-memories";
-import HomeLaiceFitaPantholokCampus from "@/lib/features/home-page/laicefita-panthopolok-campus";
+// import HomeInternational from "@/lib/features/home-page/international";
+// import HomeClickedMemories from "@/lib/features/home-page/clicked-memories";
+// import HomeLaiceFitaPantholokCampus from "@/lib/features/home-page/laicefita-panthopolok-campus";
 import ElectionCountdown from "@/lib/features/special-event";
 import { ElectionApiResponse } from "@/lib/types/election";
 import { RamadanDay, RamadanDivision } from "@/lib/types/ramadan";
+
+const HomeMedia = dynamic(() => import("@/lib/features/home-page/media"));
+const HomeVideo = dynamic(() => import("@/lib/features/home-page/video"));
+const HomeSports = dynamic(() => import("@/lib/features/home-page/sports"));
+const HomeCountry = dynamic(() => import("@/lib/features/home-page/country"));
+const HomeCommerce = dynamic(() => import("@/lib/features/home-page/commerce"));
+const HomeInternational = dynamic(() => import("@/lib/features/home-page/international"));
+const HomeClickedMemories = dynamic(() => import("@/lib/features/home-page/clicked-memories"));
+const HomeLaiceFitaPantholokCampus = dynamic(() => import("@/lib/features/home-page/laicefita-panthopolok-campus"));
 
 // Type for the combined home data
 interface FullHomeData {

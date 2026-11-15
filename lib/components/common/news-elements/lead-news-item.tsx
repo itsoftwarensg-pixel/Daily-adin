@@ -1,4 +1,5 @@
 import React from "react";
+import PublishedTime from "@/lib/components/common/published-time";
 import Link from "next/link";
 import { ImageWithFallback } from "../../image";
 import { HomePageContentItem } from "@/lib/types/home.page";
@@ -53,6 +54,7 @@ const LeadNewsItem = ({ content }: Props) => {
                 <div className="hidden md:block">
                   <p className="pt-2 text-gray-500 overflow-hidden line-clamp-3">{content.description}</p>
                 </div>
+                <PublishedTime date={content.created_at} />
               </div>
             </div>
           </Link>

@@ -1,3 +1,4 @@
+import PublishedTime from "@/lib/components/common/published-time";
 import React from "react";
 import Link from "next/link";
 import Container from "@/lib/components/common/container";
@@ -107,6 +108,7 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
                               newsItem.heading
                             }
                           </h4>
+                          <PublishedTime date={newsItem.created_at} className="px-2 pb-2" />
                         </div>
                       </div>
                     </Link>
@@ -153,6 +155,7 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
                             newsItem.heading
                           )}
                         </h4>
+                        <PublishedTime date={newsItem.created_at} className="px-2 pb-2" />
                       </div>
                     </div>
                   </Link>

@@ -21,7 +21,9 @@ const AjkerPatrikaCategory = ({ category, contents }: Props) => {
     date.toLocaleDateString("en-CA", { timeZone: "Asia/Dhaka" });
 
   const excludedContents = contents?.data?.filter((content) => {
+    if (!content.created_at) return false;
     const contentDate = new Date(content.created_at);
+    if (Number.isNaN(contentDate.getTime())) return false;
     return toBDDateStr(contentDate) === toBDDateStr(new Date());
   });
 

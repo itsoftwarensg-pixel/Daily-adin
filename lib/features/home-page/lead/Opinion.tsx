@@ -1,4 +1,5 @@
 import React from "react";
+import PublishedTime from "@/lib/components/common/published-time";
 import Link from "next/link";
 import { ImageWithFallback } from "@/lib/components/image";
 import { HomePageContentItem } from "@/lib/types/home.page";
@@ -30,6 +31,7 @@ const Opinion = ({ opinionNewsContent }: Props) => {
               className="text-gray-600"
             />
           </h4>
+          <PublishedTime date={opinionNewsContent.created_at} className="px-2 pb-2" />
         </div>
         <div className="flex flex-col items-start justify-center">
           <div className="w-[150px] h-[220px] relative overflow-hidden">

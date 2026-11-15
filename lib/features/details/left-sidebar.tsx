@@ -77,7 +77,8 @@ export const DetailsLeftSidebarDetails = ({
 
       {/* Publish/updated time */}
       <div className="text-gray-500 mb-4">
-        <p>প্রকাশিত: {contentDetails?.created_at_bangla}</p>
+        {/* Previous: <p>প্রকাশিত: {contentDetails?.created_at_bangla}</p> */}
+        <p>{contentDetails?.created_at_bangla?.replace(/\s*(?:পিএম|এএম|PM|AM)\s*$/i, "").trim()}</p>
 
         {/* {contentDetails?.updated_at_bangla && (
           <p>আপডেট: {contentDetails.updated_at_bangla}</p>
