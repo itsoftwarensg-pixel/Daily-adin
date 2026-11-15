@@ -49,9 +49,12 @@ export function getBanglaDay(dateStr: string) {
 }
 
 export function format12Hour(time: string) {
-    let [hour, minute] = time.split(":").map(Number);
+    // Previous:
+    // let [hour, minute] = time.split(":").map(Number);
+    // hour = hour % 12;
+    const [parsedHour, minute] = time.split(":").map(Number);
 
-    hour = hour % 12;
+    let hour = parsedHour % 12;
     if (hour === 0) hour = 12;
 
     return `${hour.toString().padStart(2, "0")}:${minute

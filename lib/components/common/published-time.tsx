@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+// Previous: import { useEffect, useState } from "react";
+import { usePublicationClock } from "@/lib/hooks/use-publication-clock";
 import { formatTimeAgo, parsePublicationDate } from "@/lib/utils/relativeTime";
 
 interface Props {
@@ -9,13 +10,14 @@ interface Props {
 }
 
 export default function PublishedTime({ date, className = "" }: Props) {
-  const [now, setNow] = useState<number | null>(null);
-
-  useEffect(() => {
-    setNow(Date.now());
-    const timer = window.setInterval(() => setNow(Date.now()), 60_000);
-    return () => window.clearInterval(timer);
-  }, []);
+  // Previous implementation: one interval per news card.
+  // const [now, setNow] = useState<number | null>(null);
+  // useEffect(() => {
+  //   setNow(Date.now());
+  //   const timer = window.setInterval(() => setNow(Date.now()), 60_000);
+  //   return () => window.clearInterval(timer);
+  // }, []);
+  const now = usePublicationClock();
 
   const published = date ? parsePublicationDate(date) : null;
   if (!published) return null;

@@ -35,7 +35,8 @@ const socialLinks = [
 interface Props {
   dateTimeBn: string;
   menus: NavbarMenuItem[];
-  personalityData: Category; // সবিশেষ category data
+  // Previous: personalityData: Category;
+  personalityData?: Category; // সবিশেষ category data
 }
 
 const TopBar = ({ dateTimeBn, menus, personalityData }: Props) => {
