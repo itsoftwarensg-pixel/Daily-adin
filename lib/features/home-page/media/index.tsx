@@ -1,4 +1,5 @@
 import React from "react";
+import PublishedTime from "@/lib/components/common/published-time";
 import Link from "next/link";
 import Container from "@/lib/components/common/container";
 import GradientHeader from "@/lib/components/common/section-headers/gradient";
@@ -60,6 +61,7 @@ const HomeMedia = ({ data }: Props) => {
                                             <div className="hidden md:block">
                                                 <HtmlContent className="text-gray-600" html={newsItem.description} maxContent={100} />
                                             </div>
+                                            <PublishedTime date={newsItem.created_at} className="pb-2" />
                                         </div>
                                     </div>
                                 </Link>
@@ -81,9 +83,12 @@ const HomeMedia = ({ data }: Props) => {
                                     />
                                 </div>
 
-                                <h2 className="absolute left-5 bottom-5 text-white text-xl md:text-3xl font-semibold group-hover:underline z-10">
-                                    {leadMainContent.heading}
-                                </h2>
+                                <div className="absolute left-5 right-5 bottom-5 z-10">
+                                    <h2 className="text-white text-xl md:text-3xl font-semibold group-hover:underline">
+                                        {leadMainContent.heading}
+                                    </h2>
+                                    <PublishedTime date={leadMainContent.created_at} className="!text-white/90" />
+                                </div>
 
                                 <div className="absolute w-full h-1/2 bg-gradient-to-t from-red-500 to-black/0 bottom-0 right-0 z-[5]"></div>
                             </Link>

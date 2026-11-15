@@ -1,3 +1,4 @@
+import PublishedTime from "@/lib/components/common/published-time";
 import React from "react";
 import Link from "next/link";
 import Container from "@/lib/components/common/container";
@@ -61,6 +62,7 @@ const HomeInternational = ({ data }: Props) => {
                                             >
                                                 {leadMainContent.heading}
                                             </h4>
+                                            <PublishedTime date={leadMainContent.created_at} className="px-2 pb-2" />
                                             <div className="hidden md:block">
                                                 <HtmlContent
                                                     html={leadMainContent.description}

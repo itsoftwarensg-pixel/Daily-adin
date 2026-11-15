@@ -1,3 +1,4 @@
+import PublishedTime from "@/lib/components/common/published-time";
 import React from "react";
 import Link from "next/link";
 import Container from "@/lib/components/common/container";
@@ -45,6 +46,7 @@ const HomeSports = ({ data }: Props) => {
                                             <h4 className={`px-2 py-2.5 text-[17px] md:text-xl border-l-4 border-red-600 group-hover:text-blue-700 font-semibold h-auto md:h-[72px]`}>
                                                 {newsItem.heading}
                                             </h4>
+                                            <PublishedTime date={newsItem.created_at} className="px-2 pb-2" />
                                         </div>
                                     </div>
                                 </Link>
@@ -73,6 +75,7 @@ const HomeSports = ({ data }: Props) => {
                                             >
                                                 {leadMainContent.heading}
                                             </h4>
+                                            <PublishedTime date={leadMainContent.created_at} className="px-2 pb-2" />
                                         </div>
                                     </div>
                                 </Link>
@@ -106,6 +109,7 @@ const HomeSports = ({ data }: Props) => {
                                             <h4 className={`px-2 py-2.5 text-[17px] md:text-xl border-l-4 border-red-600 group-hover:text-blue-700 font-semibold h-auto md:h-[72px]`}>
                                                 {newsItem.heading}
                                             </h4>
+                                            <PublishedTime date={newsItem.created_at} className="px-2 pb-2" />
                                         </div>
                                     </div>
                                 </Link>

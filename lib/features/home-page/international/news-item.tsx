@@ -1,7 +1,7 @@
+import PublishedTime from "@/lib/components/common/published-time";
 import React from "react";
 import Link from "next/link";
 import { playVideo } from "../../../components/icons";
-import { NewsItemType } from "@/lib/data"; // Temporary
 import { ImageWithFallback } from "@/lib/components/image";
 import { getRandomHighlightedText } from "@/lib/utils/helpers";
 import { HomePageContentItem } from "@/lib/types/home.page";
@@ -72,6 +72,7 @@ const NewsItem = ({
                     >
                         {newsItem.heading}
                     </h4>
+                    <PublishedTime date={newsItem.created_at} className="px-2 pb-2" />
                 </div>
             </div>
 

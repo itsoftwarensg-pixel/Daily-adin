@@ -1,3 +1,4 @@
+import PublishedTime from "@/lib/components/common/published-time";
 import React from "react";
 import Link from "next/link";
 import { ImageWithFallback } from "@/lib/components/image";
@@ -84,6 +85,7 @@ const NewsItemLaceTape = ({
                             newsItem.heading
                         )} */}
                     </h4>
+                    <PublishedTime date={newsItem.created_at} className="px-2 pb-2" />
                 </div>
             </div>
         </Link>
