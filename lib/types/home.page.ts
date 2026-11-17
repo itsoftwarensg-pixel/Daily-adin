@@ -46,6 +46,8 @@ export interface HomeVideoItem {
     embed_code: string;
     description: string;          // HTML string
     thumbnail: string;            // image URL
+    video_category_id?: number | null;
+    video_category_name?: string | null;
     created_at: string;           // ISO datetime
     created_at_bangla: string;
 }

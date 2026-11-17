@@ -124,7 +124,8 @@ export const APIEndpoint = {
 
   // Video API endpoints - Video page and video details page
   video: {
-    getAll: (page: number, limit: number) => `${APIEndpoint.base_url}/videos?page=${page}&limit=${limit}`,
+    getAll: (page: number, limit: number, categoryId?: number) =>
+      `${APIEndpoint.base_url}/videos?page=${page}&limit=${limit}${categoryId ? `&category_id=${categoryId}` : ""}`,
     getById: (id: number) => `${APIEndpoint.base_url}/videos/${id}`,
   },
 

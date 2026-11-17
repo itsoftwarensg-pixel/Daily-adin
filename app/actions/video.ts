@@ -16,11 +16,12 @@ import { apiRequest } from "@/lib/api/client";
  */
 export const getAllVideosAction = async (
     page: number,
-    limit: number
+    limit: number,
+    categoryId?: number,
 ) => {
     try {
         const apiResponse = await apiRequest({
-            url: APIEndpoint.video.getAll(page, limit),
+            url: APIEndpoint.video.getAll(page, limit, categoryId),
             method: "GET",
         });
 

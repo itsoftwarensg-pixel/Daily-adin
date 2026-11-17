@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ReactNode } from "react";
 import { FaArrowRightLong, FaPlay } from "react-icons/fa6";
 import { ImageWithFallback } from "@/lib/components/image";
 import PublishedTime from "@/lib/components/common/published-time";
@@ -9,6 +10,7 @@ interface Props {
   videos: VideoItemType[];
   pageHeading?: boolean;
   showAllLink?: boolean;
+  headerActions?: ReactNode;
 }
 
 function VideoThumbnail({ video, large = false }: { video: VideoItemType; large?: boolean }) {
@@ -41,7 +43,7 @@ function VideoMetadata({ video }: { video: VideoItemType }) {
   );
 }
 
-export default function VideoGallery({ videos, pageHeading = false, showAllLink = false }: Props) {
+export default function VideoGallery({ videos, pageHeading = false, showAllLink = false, headerActions }: Props) {
   const [featured, ...playlist] = videos;
   const Heading = pageHeading ? "h1" : "h2";
 
@@ -52,6 +54,7 @@ export default function VideoGallery({ videos, pageHeading = false, showAllLink 
           {VIDEO_PAGE.name_bn}
         </Heading>
         <div className="flex max-w-full flex-wrap items-center gap-3 text-sm">
+          {headerActions}
           {showAllLink && (
             <Link href="/videos" className="group inline-flex min-h-11 shrink-0 items-center gap-3 whitespace-nowrap bg-gradient-to-r from-red-500 to-neutral-800 px-4 py-2.5 font-medium text-white transition-shadow hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700 sm:px-5">
               আরও দেখুন <FaArrowRightLong aria-hidden="true" className="transition-transform motion-safe:group-hover:translate-x-1" />

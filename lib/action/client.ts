@@ -50,8 +50,6 @@ export async function fetchZodTyped<T>(
     }
 
     const raw = await res.json();
-    console.log(`url: ${vUrl} Response: ${JSON.stringify(raw)}`);
-
     // ✅ Zod validation (with clear, pinpointed errors)
     const parsed = schema.safeParse(raw);
     if (!parsed.success) {
