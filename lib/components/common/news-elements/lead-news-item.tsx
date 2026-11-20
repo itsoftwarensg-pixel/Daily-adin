@@ -1,6 +1,6 @@
 import React from "react";
 import PublishedTime from "@/lib/components/common/published-time";
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import { ImageWithFallback } from "../../image";
 import { HomePageContentItem } from "@/lib/types/home.page";
 

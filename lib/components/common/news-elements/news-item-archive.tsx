@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import { TodayDate } from "@/lib/utils/helpers";
 import { ArchiveType } from "@/lib/types/archive.types";
 import ImageWithFallback from "@/lib/components/image/ImageWithFallback";

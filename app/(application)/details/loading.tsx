@@ -1,6 +1,13 @@
-// Skeleton kept below for reuse. Uncomment it and remove this fallback to enable.
+import LoadingNews from "@/lib/components/common/loader/loading-news";
+
 export default function Loading() {
-  return null;
+  // Previously returned null during article navigation.
+  return (
+    <div role="status" className="container mx-auto px-4">
+      <span className="sr-only">খবর লোড হচ্ছে</span>
+      <LoadingNews />
+    </div>
+  );
 }
 
 // export default function Loading() {

@@ -1,5 +1,5 @@
 import Marquee from "react-fast-marquee";
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import Container from "@/lib/components/common/container";
 import { HomePageContentItem } from "@/lib/types/home.page";
 

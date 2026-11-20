@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import Container from "@/lib/components/common/container";
 import { ADVERTISE_TYPES, COUNTRY_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
 import { Division } from "@/lib/types/all-bd-news.page";

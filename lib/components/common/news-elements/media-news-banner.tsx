@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import { ImageWithFallback } from "@/lib/components/image";
 import { HomePageContentItem } from "@/lib/types/home.page";
 

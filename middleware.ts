@@ -26,6 +26,11 @@ export function middleware(request: NextRequest) {
        * CONTENT / NEWS ROUTES
        * ========================= */
     /**details url check */
+    // Middleware can receive the internal rewrite destination in production.
+    if (pathname.startsWith('/details/')) {
+        return NextResponse.next();
+    }
+
     const rgxWithSubcategory = new RegExp(/^\/[a-z-]+\/[a-z-]+\/[0-9]+$/);
     const rgxWithoutSubcategory = new RegExp(/^\/[a-z-]+\/[0-9]+$/);
     if (rgxWithSubcategory.test(pathname)) {

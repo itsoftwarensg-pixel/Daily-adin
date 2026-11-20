@@ -1,6 +1,6 @@
 import PublishedTime from "@/lib/components/common/published-time";
 import React from "react";
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import Container from "@/lib/components/common/container";
 import { ImageWithFallback } from "@/lib/components/image";
 import Opinion from "@/lib/features/home-page/lead/Opinion";
@@ -90,6 +90,7 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
                             src={`${newsItem.full_image_path}`}
                             height={300}
                             width={400}
+                            sizes="(max-width: 767px) calc(40vw - 16px), (max-width: 1439px) 12vw, 168px"
                             alt={`${newsItem.heading}`}
                             className="w-full object-cover h-full"
                           />
@@ -137,6 +138,7 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
                           src={`${newsItem.full_image_path}`}
                           height={600}
                           width={900}
+                          sizes="(max-width: 767px) calc(50vw - 20px), (max-width: 1439px) 25vw, 340px"
                           alt={`${newsItem.heading}`}
                           className="w-full object-cover h-full"
                         />

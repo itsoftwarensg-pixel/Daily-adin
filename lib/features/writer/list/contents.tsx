@@ -5,7 +5,7 @@ import logo from "@/public/logo.png";
 import { WriterItemType } from "@/lib/types/writer.page";
 import { getAllWritersAction } from "@/app/actions/writer";
 import { ImageWithFallback } from "@/lib/components/image";
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 
 // Props
 interface Props {

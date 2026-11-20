@@ -1,6 +1,6 @@
 import PublishedTime from "@/lib/components/common/published-time";
 import React from "react";
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import { playVideo } from "../../../components/icons";
 import { ImageWithFallback } from "@/lib/components/image";
 import { getRandomHighlightedText } from "@/lib/utils/helpers";

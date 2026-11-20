@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import Container from "@/lib/components/common/container";
 import { AJKER_PATRIKA_PAGE, LOAD_MORE_TYPES } from "@/lib/config/constant";
 import { Category, ContentItem } from "@/lib/types/category.page";

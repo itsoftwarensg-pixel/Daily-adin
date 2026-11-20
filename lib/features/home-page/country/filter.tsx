@@ -8,6 +8,7 @@ import { DistrictType } from "@/lib/types/division.page";
 import { DivisionType } from "@/lib/types/district.page";
 import { getDistrictByDivisionIdAction } from "@/app/actions/division";
 import { getUpazilasByDistrictIdAction } from "@/app/actions/district";
+import { toSiteHref } from "@/lib/utils/site-href";
 
 interface PropsType {
   divisionList: DivisionType[];
@@ -84,17 +85,17 @@ const HomeCountryFilter = ({ divisionList }: PropsType) => {
   //Function to handle search button click
   const handleSearch = () => {
     if (selectedUpazilaObj?.full_url) {
-      router.push(selectedUpazilaObj.full_url);
+      router.push(toSiteHref(selectedUpazilaObj.full_url));
       return;
     }
 
     if (selectedDistrictObj?.full_url) {
-      router.push(selectedDistrictObj.full_url);
+      router.push(toSiteHref(selectedDistrictObj.full_url));
       return;
     }
 
     if (selectedDivisionObj?.full_url) {
-      router.push(selectedDivisionObj.full_url);
+      router.push(toSiteHref(selectedDivisionObj.full_url));
     }
   };
 

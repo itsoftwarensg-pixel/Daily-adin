@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { ContentDetailsType } from "@/lib/types/details.page";
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import { FiPrinter } from "react-icons/fi";
 import { GrFacebookOption } from "react-icons/gr";
 import { IoIosArrowForward } from "react-icons/io";

@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import { useState } from "react";
 import { ContentItem } from "@/lib/types/category.page";
 import {

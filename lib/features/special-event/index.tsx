@@ -4,7 +4,7 @@ import Container from "@/lib/components/common/container";
 import { ImageWithFallback } from "@/lib/components/image";
 import { ElectionApiResponse } from "@/lib/types/election";
 import { HomePageContnetSection } from "@/lib/types/home.page";
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import React, { useEffect, useState } from "react";
 
 type TimeLeft = {

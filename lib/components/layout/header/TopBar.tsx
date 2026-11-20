@@ -22,7 +22,6 @@ import { FaBars } from "react-icons/fa6";
 import { AiOutlineClose, AiOutlineHome } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import { NavbarMenuItem } from "@/lib/types/common.types";
-import { Category } from "@/lib/types/category.page";
 import { AJKER_PATRIKA_PAGE } from "@/lib/config/constant";
 
 const socialLinks = [
@@ -35,16 +34,15 @@ const socialLinks = [
 interface Props {
   dateTimeBn: string;
   menus: NavbarMenuItem[];
-  // Previous: personalityData: Category;
-  personalityData?: Category; // সবিশেষ category data
+  // Previous: personalityData?: Category; // সবিশেষ category data
 }
 
-const TopBar = ({ dateTimeBn, menus, personalityData }: Props) => {
+const TopBar = ({ dateTimeBn, menus }: Props) => {
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [openSocialMediaDropdown, setOpenSocialMediaDropdown] = useState(false);
   const [todayDate, setTodayDate] = useState(dateTimeBn);
-  const personalityNews = personalityData?.position_contents?.[0] ?? null; // সবিশেষ এর প্রথম নিউজ
+  // const personalityNews = personalityData?.position_contents?.[0] ?? null;
 
   // Mobile menu toggle
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -111,7 +109,12 @@ const TopBar = ({ dateTimeBn, menus, personalityData }: Props) => {
         </Link>
 
         <div className="relative overflow-hidden hidden md:block print:hidden">
-            <Link href="https://northsouthgroup.com/">
+            {/* The desktop banner previously opened in the current tab. */}
+            <Link
+              href="https://northsouthgroup.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
           <ImageWithFallback
             src={headerBanner}
             width={500}
