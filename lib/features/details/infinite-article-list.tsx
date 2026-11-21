@@ -9,11 +9,12 @@ import {
 } from "@/lib/types/details.page";
 import ArticleItemContainer from "./article-item-container";
 import { Category } from "@/lib/types/category.page";
+import type { LatestPopularData } from "./right-sidebar-client";
 
 interface Props {
   initialContent: ContentDetailsType;
   category: Category;
-  latestPopularData: any;
+  latestPopularData: Promise<LatestPopularData>;
 }
 
 const InfiniteArticleList = ({

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { memo } from "react";
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import HtmlContent from "@/lib/components/common/html-content";
 import { ContentDetailsType } from "@/lib/types/details.page";
 import { ImageWithFallback } from "@/lib/components/image";

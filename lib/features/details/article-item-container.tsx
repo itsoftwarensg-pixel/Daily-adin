@@ -4,14 +4,15 @@ import React, { FC, useCallback, useEffect, useRef } from "react";
 import { ContentDetailsType } from "@/lib/types/details.page";
 import ArticleContent from "./article-content";
 import Container from "@/lib/components/common/container";
-import DetailsRightSidebarClient from "./right-sidebar-client";
+import DetailsRightSidebarClient, { type LatestPopularData } from "./right-sidebar-client";
 import Image from "next/image";
 import logo from "@/public/logo.png";
+import { toSiteHref } from "@/lib/utils/site-href";
 
 type Props = {
   article: ContentDetailsType;
   index: number;
-  latestPopularData: any;
+  latestPopularData: Promise<LatestPopularData>;
   isLast: boolean;
 };
 
@@ -48,11 +49,11 @@ const ArticleItemContainer: FC<Props> = React.memo(
         if (isInViewport) {
           // Check pathname to avoid redundant replaceState
           const currentPath = window.location.pathname;
-          const targetPath = new URL(article.full_url, window.location.origin)
-            .pathname;
+          const targetUrl = new URL(toSiteHref(article.full_url), window.location.origin);
 
-          if (currentPath !== targetPath) {
-            window.history.replaceState(null, "", article.full_url);
+          if (targetUrl.origin === window.location.origin && currentPath !== targetUrl.pathname) {
+            // Previously passed the API's absolute URL directly to replaceState.
+            window.history.replaceState(null, "", targetUrl);
 
             const newTitle =
               article.meta_title || `${article.heading} | The Daily Adin`;
@@ -142,10 +143,7 @@ const ArticleItemContainer: FC<Props> = React.memo(
 
               {/* Right Sidebar */}
               <div className="col-span-auto lg:sticky lg:top-16 self-start print:hidden">
-                <DetailsRightSidebarClient
-                  latestNews={latestPopularData?.recent?.contents || []}
-                  popularNews={latestPopularData?.popular?.contents || []}
-                />
+                <DetailsRightSidebarClient data={latestPopularData} />
               </div>
             </div>
           </Container>

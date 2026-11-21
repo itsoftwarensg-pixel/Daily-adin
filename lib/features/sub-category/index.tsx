@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import Container from "@/lib/components/common/container";
 import LatestPopularNews from "@/lib/components/common/latest-popular";
 import LoadMoreContent from "@/lib/components/load-more-content";

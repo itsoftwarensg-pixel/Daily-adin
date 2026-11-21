@@ -1,6 +1,6 @@
 import PublishedTime from "@/lib/components/common/published-time";
 import React from "react";
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import { COUNTRY_PAGE } from "@/lib/config/constant";
 import { DivisionType } from "@/lib/types/district.page";
 import Container from "@/lib/components/common/container";

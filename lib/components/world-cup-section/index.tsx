@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import { useEffect, useState } from "react";
 import { getTopicBySlugAction } from "@/app/actions/topic";
 import { getContentsByTopicIdAction } from "@/app/actions/content";

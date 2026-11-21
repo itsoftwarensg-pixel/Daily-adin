@@ -26,6 +26,11 @@ export function middleware(request: NextRequest) {
        * CONTENT / NEWS ROUTES
        * ========================= */
     /**details url check */
+    // Middleware can receive the internal rewrite destination in production.
+    if (pathname.startsWith('/details/')) {
+        return NextResponse.next();
+    }
+
     const rgxWithSubcategory = new RegExp(/^\/[a-z-]+\/[a-z-]+\/[0-9]+$/);
     const rgxWithoutSubcategory = new RegExp(/^\/[a-z-]+\/[0-9]+$/);
     if (rgxWithSubcategory.test(pathname)) {
@@ -46,7 +51,8 @@ export const config = {
          * - _next/static (static files)
          * - _next/image (image optimization files)
          * - favicon.ico (favicon file)
+         * - ads.txt (public seller authorization file)
          */
-        '/((?!api|_next/static|_next/image|favicon.ico).*)',
+        '/((?!api|_next/static|_next/image|favicon.ico|ads\\.txt$).*)',
     ],
 };

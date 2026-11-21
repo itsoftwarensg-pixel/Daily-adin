@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import Container from "@/lib/components/common/container";
 import { IoIosArrowForward } from "react-icons/io";
 import {

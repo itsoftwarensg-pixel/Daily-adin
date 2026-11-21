@@ -10,8 +10,9 @@ interface Props {
   category: Category;
 }
 
-const DetailsPage = async ({ contentDetails, category }: Props) => {
-  const latestPopularData = await getLastestPopularDataAction();
+const DetailsPage = ({ contentDetails, category }: Props) => {
+  // Previously awaited this request before rendering the article.
+  const latestPopularData = getLastestPopularDataAction();
 
   return (
     <div className="my-6">

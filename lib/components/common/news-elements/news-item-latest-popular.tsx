@@ -1,6 +1,6 @@
 import PublishedTime from "@/lib/components/common/published-time";
 import React from "react";
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import ImageWithFallback from "@/lib/components/image/ImageWithFallback";
 import { ContentItem } from "@/lib/types/category.page";
 
@@ -25,6 +25,7 @@ const NewsItemLatestPopular = ({ newsItem }: Props) => {
                 src={newsItem.full_image_path}
                 height={100}
                 width={160}
+                sizes="120px"
                 alt={newsItem.heading}
                 className="w-full h-full object-cover"
               />

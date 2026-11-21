@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import { Suspense } from "react";
 import CategoryContents from "./contents";
 import LatestPopular from "../latest-popular";

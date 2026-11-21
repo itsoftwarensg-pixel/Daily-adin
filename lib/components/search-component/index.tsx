@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import { useRouter } from "next/navigation";
 import { FiSearch } from "react-icons/fi";
 import { LiaSpinnerSolid } from "react-icons/lia";

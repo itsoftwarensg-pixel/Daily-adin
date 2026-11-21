@@ -3,17 +3,17 @@ import Container from "@/lib/components/common/container";
 import TopBar from "@/lib/components/layout/header/TopBar";
 import Navbar from "@/lib/components/layout/header/Navbar";
 import { getBnDateTimeAction, getMenuAction } from "@/app/actions/utils";
-import { AJKER_PATRIKA_PAGE, CATEGORY_SLUG } from "@/lib/config/constant";
-import { getCategoryBySlugAction } from "@/app/actions/category";
+import { AJKER_PATRIKA_PAGE } from "@/lib/config/constant";
 import { ImageWithFallback } from "@/lib/components/image";
 import headerBanner from "@/public/images/header-banner.svg";
 import Link from "next/link";
 
 export default async function ApplicationHeader() {
-  const [dateTimeBn, menus, personalityData] = await Promise.all([
+  // Previously also fetched the personality category for the inactive TopBar card.
+  // getCategoryBySlugAction(CATEGORY_SLUG.PERSONALITY, "position_contents")
+  const [dateTimeBn, menus] = await Promise.all([
     getBnDateTimeAction(),
     getMenuAction(),
-    getCategoryBySlugAction(CATEGORY_SLUG.PERSONALITY, "position_contents") // সবিশেষ
   ]);
 
   return (
@@ -44,7 +44,7 @@ export default async function ApplicationHeader() {
 
         <Container>
           <div className="w-full flex flex-col gap-2 pt-3">
-            <TopBar menus={menus} dateTimeBn={dateTimeBn} personalityData={personalityData} />
+            <TopBar menus={menus} dateTimeBn={dateTimeBn} />
           </div>
         </Container>
       </div>
@@ -56,15 +56,21 @@ export default async function ApplicationHeader() {
 
       {/* Adevtisement - Below Top Header in Mobile view */}
       <div className="relative overflow-hidden block sm:hidden print:hidden pt-2 px-4">
-        <div className="bg-gray-100">
+        {/* The mobile banner previously rendered without a link. */}
+        <Link
+          href="https://northsouthgroup.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block bg-gray-100"
+        >
           <ImageWithFallback
             src={headerBanner}
             width={500}
             height={150}
-            alt="The Daily Adin Logo"
+            alt="North South Group"
             className="object-contain w-80 xl:w-[360px] mx-auto"
           />
-        </div>
+        </Link>
       </div>
     </>
   );

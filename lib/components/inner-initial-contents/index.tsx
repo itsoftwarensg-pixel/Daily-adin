@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/lib/components/common/site-link";
 import { ImageWithFallback } from "@/lib/components/image";
 import HtmlContent from "@/lib/components/common/html-content";
 import { InnerInitialContentItemType } from "@/lib/types/common.types";
