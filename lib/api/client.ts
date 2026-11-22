@@ -6,6 +6,7 @@ export type API_Params = {
   has_file?: boolean;
   cache?: RequestCache;
   revalidate?: number;
+  timeoutMs?: number;
 };
 
 export const apiRequest = async ({
@@ -16,6 +17,7 @@ export const apiRequest = async ({
   has_file,
   cache,
   revalidate,
+  timeoutMs = 10_000,
 }: API_Params) => {
   const isFormData =
     typeof FormData !== "undefined" && data instanceof FormData;
@@ -50,11 +52,20 @@ export const apiRequest = async ({
     url += `?${queryParams}`;
   }
 
-  const response = await fetch(url, {
-    ...options,
-    cache: cache ?? (revalidate !== undefined ? "force-cache" : "no-store"),
-    ...(revalidate !== undefined ? { next: { revalidate } } : {}),
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+  let response: Response;
+  try {
+    response = await fetch(url, {
+      ...options,
+      signal: controller.signal,
+      cache: cache ?? (revalidate !== undefined ? "force-cache" : "no-store"),
+      ...(revalidate !== undefined ? { next: { revalidate } } : {}),
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
   if (!response.ok) {
     throw new Error(`API request failed: ${response.status}`);
   }
