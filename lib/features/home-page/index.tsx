@@ -102,13 +102,6 @@ const HomePage = ({ initialHomeData, divisionList,
     }
   }, [hasLoadedSecondChunk]);
 
-  // Warm lower sections after the lead has rendered, even before scrolling.
-  useEffect(() => {
-    if (hasLoadedSecondChunk) return;
-    const timer = window.setTimeout(() => { void loadSecondChunk(); }, 1200);
-    return () => window.clearTimeout(timer);
-  }, [hasLoadedSecondChunk, loadSecondChunk]);
-
   // Infinite Scroll Observer
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -117,7 +110,7 @@ const HomePage = ({ initialHomeData, divisionList,
           loadSecondChunk();
         }
       },
-      { threshold: 0, rootMargin: "600px 0px" }
+      { threshold: 0, rootMargin: "200px 0px" }
     );
 
     if (observerTarget.current) {

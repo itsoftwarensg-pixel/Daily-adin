@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import React from "react";
 
 // Props
@@ -19,6 +20,8 @@ const Advertisement = ({
   imgSrc,
   link
 }: Props) => {
+  const numericWidth = typeof width === "number" ? width : typeof width === "string" && /^\d+$/.test(width) ? Number(width) : undefined;
+  const numericHeight = typeof height === "number" ? height : typeof height === "string" && /^\d+$/.test(height) ? Number(height) : undefined;
   // Format size
   const formatSize = (value?: string | number) => {
     if (value === undefined) {
@@ -52,15 +55,27 @@ const Advertisement = ({
       className={`bg-gray-200 rounded flex items-center justify-center ${className}`}
     >
       {imgSrc ? (
-        <img
-          src={imgSrc}
-          alt={label}
-          loading="lazy"
-          style={{
-            width: formatSize(width),
-            height: formatSize(height),
-          }}
-        />
+        numericWidth && numericHeight ? (
+          <Image
+            src={imgSrc}
+            alt={label}
+            width={numericWidth}
+            height={numericHeight}
+            sizes={numericWidth <= 300 ? `${numericWidth}px` : `(max-width: 767px) 100vw, ${numericWidth}px`}
+            quality={65}
+            className="object-cover"
+          />
+        ) : (
+          <img
+            src={imgSrc}
+            alt={label}
+            loading="lazy"
+            style={{
+              width: formatSize(width),
+              height: formatSize(height),
+            }}
+          />
+        )
       ) : label}
     </div>
   );

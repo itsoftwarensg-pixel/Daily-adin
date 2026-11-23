@@ -2,11 +2,7 @@ import { ReactNode } from "react";
 import "./globals.css";
 import type { Metadata } from "next";
 import Script from 'next/script';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import "react-toastify/dist/ReactToastify.css";
 import { Noto_Serif_Bengali } from "next/font/google";
-import { Bounce, ToastContainer } from "react-toastify";
 import AnalyticsTracker from "@/lib/components/google/analytics-tracker";
 import { SITE_CONFIG } from "@/lib/config/site-config";
 
@@ -127,8 +123,9 @@ export default function RootLayout({ children }: PropsType) {
           crossOrigin="anonymous"
         />
         */}
-        <script
-          async
+        <Script
+          id="adsense"
+          strategy="lazyOnload"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4038383773222653"
           crossOrigin="anonymous"
         />
@@ -172,21 +169,6 @@ export default function RootLayout({ children }: PropsType) {
 
         <main>
           <div className="w-full">{children}</div>
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick={false}
-            rtl={false}
-            draggable
-            pauseOnHover
-            theme="colored"
-            transition={Bounce}
-            style={{
-              zIndex: 9999999,
-            }}
-          />
         </main>
       </body>
     </html>

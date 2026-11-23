@@ -27,6 +27,7 @@ const LeadNewsItemVideoOverlay: React.FC<Props> = ({ video }) => {
         <iframe
           src={url}
           title={video.heading ?? "Video"}
+          loading="lazy"
           allow={allowAttr}
           allowFullScreen
           className="w-full h-full border-0"
