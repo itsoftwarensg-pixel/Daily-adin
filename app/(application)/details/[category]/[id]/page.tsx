@@ -6,6 +6,11 @@ import { ArticleSchema, BreadcrumbSchema } from "@/lib/components/seo/schemas";
 import { stripHtmlToPlainText } from "@/lib/utils/helpers";
 import { SITE_CONFIG } from "@/lib/config/site-config";
 
+// Article pages are public and change only when editors update an article.
+// ISR avoids rendering the same article on every reader click while keeping
+// newly published or edited news visible within 30 seconds.
+export const revalidate = 30;
+
 // Define the type for the params
 interface Params {
   params: {
