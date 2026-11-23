@@ -120,9 +120,16 @@ export default function RootLayout({ children }: PropsType) {
   return (
     <html lang="bn">
       <head>
+        {/* Previous AdSense script
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6245293403997445"
+          crossOrigin="anonymous"
+        />
+        */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4038383773222653"
           crossOrigin="anonymous"
         />
         <script
