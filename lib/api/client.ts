@@ -1,3 +1,9 @@
+export class ApiHttpError extends Error {
+  constructor(readonly status: number) {
+    super(`API request failed: ${status}`);
+  }
+}
+
 export type API_Params = {
   url: string;
   method?: string;
@@ -64,29 +70,24 @@ export const apiRequest = async ({
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
-  let response: Response;
   try {
-    response = await fetch(url, {
+    const response = await fetch(url, {
       ...options,
       signal: controller.signal,
       cache: cache ?? (effectiveRevalidate !== undefined ? "force-cache" : "no-store"),
       ...(effectiveRevalidate !== undefined ? { next: { revalidate: effectiveRevalidate } } : {}),
     });
+    if (!response.ok) throw new ApiHttpError(response.status);
+    const dataResponse = await response.json();
+    return {
+      success: dataResponse.success,
+      status: response.status,
+      data: dataResponse.data,
+      message: dataResponse.message,
+    };
   } finally {
     clearTimeout(timeout);
   }
-  if (!response.ok) {
-    throw new Error(`API request failed: ${response.status}`);
-  }
-  const dataResponse = await response.json();
-  // const apiErrors: Record<string, string[]> = dataResponse.errors ?? {};
-
-  return {
-    success: dataResponse.success,
-    status: response.status,
-    data: dataResponse.data,
-    message: dataResponse.message,
-  };
 
   /*
   // Example Response:

@@ -24,6 +24,8 @@ export async function generateMetadata({ params }: Params) {
     "next_ids,writer,tags,category"
   );
 
+  if (!content) notFound();
+
   // -- Meta Title --
   const title = content.meta_title || `${content.heading} | দৈনিক এদিন`;
   

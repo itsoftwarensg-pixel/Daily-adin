@@ -1,7 +1,7 @@
 "use server";
 
 import { APIEndpoint } from "@/lib/api/api-endpoints";
-import { apiRequest } from "@/lib/api/client";
+import { ApiHttpError, apiRequest } from "@/lib/api/client";
 import { cache } from "react";
 
 /** ============================================================================
@@ -77,8 +77,8 @@ export const getContentByIdAction = cache(async (id: number, include?: string) =
 
     return apiResponse.data || null;
   } catch (err) {
-    console.error("Error fetching content by content id:", err);
-    return null;
+    if (err instanceof ApiHttpError && err.status === 404) return null;
+    throw err;
   }
 });
 
