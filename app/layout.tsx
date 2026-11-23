@@ -125,7 +125,7 @@ export default function RootLayout({ children }: PropsType) {
         */}
         <Script
           id="adsense"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4038383773222653"
           crossOrigin="anonymous"
         />
