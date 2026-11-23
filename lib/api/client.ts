@@ -52,6 +52,15 @@ export const apiRequest = async ({
     url += `?${queryParams}`;
   }
 
+  // Public news data can safely be reused briefly. Besides reducing origin load,
+  // Next.js keeps the last successful response available while a revalidation
+  // attempt fails, so a short API outage does not blank the whole page.
+  const isGetRequest = method.toUpperCase() === "GET";
+  const defaultRevalidate = isGetRequest && cache === undefined && revalidate === undefined
+    ? 30
+    : undefined;
+  const effectiveRevalidate = revalidate ?? defaultRevalidate;
+
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
@@ -60,8 +69,8 @@ export const apiRequest = async ({
     response = await fetch(url, {
       ...options,
       signal: controller.signal,
-      cache: cache ?? (revalidate !== undefined ? "force-cache" : "no-store"),
-      ...(revalidate !== undefined ? { next: { revalidate } } : {}),
+      cache: cache ?? (effectiveRevalidate !== undefined ? "force-cache" : "no-store"),
+      ...(effectiveRevalidate !== undefined ? { next: { revalidate: effectiveRevalidate } } : {}),
     });
   } finally {
     clearTimeout(timeout);
