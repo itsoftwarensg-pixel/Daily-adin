@@ -12,6 +12,7 @@ export type API_Params = {
   has_file?: boolean;
   cache?: RequestCache;
   revalidate?: number;
+  tags?: string[];
   timeoutMs?: number;
 };
 
@@ -23,6 +24,7 @@ export const apiRequest = async ({
   has_file,
   cache,
   revalidate,
+  tags,
   timeoutMs = 10_000,
 }: API_Params) => {
   const isFormData =
@@ -75,7 +77,10 @@ export const apiRequest = async ({
       ...options,
       signal: controller.signal,
       cache: cache ?? (effectiveRevalidate !== undefined ? "force-cache" : "no-store"),
-      ...(effectiveRevalidate !== undefined ? { next: { revalidate: effectiveRevalidate } } : {}),
+      // Previously cached GETs could only be refreshed by their time limit.
+      ...(effectiveRevalidate !== undefined
+        ? { next: { revalidate: effectiveRevalidate, tags } }
+        : {}),
     });
     if (!response.ok) throw new ApiHttpError(response.status);
     const dataResponse = await response.json();

@@ -19,6 +19,7 @@ export const getHomePageDataAction = async (include?: string) => {
       url: APIEndpoint.home.getData(include),
       method: "GET",
       revalidate: 30,
+      tags: ["news:home"],
     });
 
     return apiResponse.data || null;

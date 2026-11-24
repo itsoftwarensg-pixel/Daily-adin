@@ -3,10 +3,11 @@ module.exports = {
     {
       name: 'daily-adin',
       // Previous: script: 'npm', args: 'start',
-      // Run Next.js in the actual Node workers so PM2 can share the port.
+      // Previous: instances: 2. Next.js 15's default tag invalidation is
+      // process-local. Use one worker until a shared cache handler is configured.
       script: 'node_modules/next/dist/bin/next',
       args: 'start',
-      instances: 2,
+      instances: 1,
       exec_mode: 'cluster',
       watch: false,
       time: true,

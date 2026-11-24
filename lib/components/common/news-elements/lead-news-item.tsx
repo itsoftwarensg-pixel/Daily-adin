@@ -7,15 +7,18 @@ import { HomePageContentItem } from "@/lib/types/home.page";
 // Props
 interface Props {
   content: HomePageContentItem;
+  prefetch?: boolean;
 }
 
-const LeadNewsItem = ({ content }: Props) => {
+// Previously only accepted content and used Next.js's default partial prefetch.
+const LeadNewsItem = ({ content, prefetch }: Props) => {
   return (
     <>
       {content &&
         <>
           <Link
             href={`${content.full_url}`}
+            prefetch={prefetch}
             className="block group mb-0 md:mb-4"
           >
             <div className="w-full bg-white">

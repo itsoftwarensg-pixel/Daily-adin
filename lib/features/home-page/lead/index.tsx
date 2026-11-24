@@ -80,6 +80,8 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
                     <Link
                       key={index}
                       href={`${newsItem.full_url}`}
+                      // Full prefetch is limited to the main story and the first two cards.
+                      prefetch={index < 2 ? true : undefined}
                       className="block group overflow-hidden"
                     >
                       <div
@@ -118,7 +120,8 @@ const HomeLead = ({ homeData, ramadanDays, ramadanDivisionOffsets }: Props) => {
 
               {/* Lead news - Center */}
               <div className="order-1 md:order-2 md:col-span-3">
-                <LeadNewsItem content={leadMainContent} />
+                {/* Previously used the default partial prefetch for the main story. */}
+                <LeadNewsItem content={leadMainContent} prefetch />
               </div>
             </div>
 

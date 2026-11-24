@@ -23,6 +23,7 @@ export const getAllContentsAction = async (
     const apiResponse = await apiRequest({
       url: APIEndpoint.content.getAll(page, limit),
       method: "GET",
+      tags: ["news:latest"],
     });
 
     return apiResponse.data;
@@ -73,6 +74,7 @@ export const getContentByIdAction = cache(async (id: number, include?: string) =
     const apiResponse = await apiRequest({
       url: APIEndpoint.content.getById(id, include),
       method: "GET",
+      tags: [`news:article:${id}`],
     });
 
     return apiResponse.data || null;
