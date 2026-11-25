@@ -14,7 +14,9 @@ import {
 } from "react-icons/io";
 import { ImageWithFallback } from "@/lib/components/image";
 import { TodayBnDate, TodayDate } from "@/lib/utils/helpers";
-import headerBanner from "@/public/images/header-banner.svg";
+// Previous sponsor image: import headerBanner from "@/public/images/header-banner.svg";
+import northSouthGroupLogo from "@/public/images/north-south-group-logo.jpg";
+import topbarLogo from "@/public/images/topbar-logo.png";
 import { x, youtube, facebook } from "@/lib/components/icons";
 import SocialMediaDropdown from "@/lib/components/layout/header/SocialMediaDropdown";
 import { navItems } from "@/lib/data";
@@ -116,10 +118,10 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
               rel="noopener noreferrer"
             >
           <ImageWithFallback
-            src={headerBanner}
+            src={northSouthGroupLogo}
             width={500}
             height={150}
-            alt="The Daily Adin Logo"
+            alt="North South Group"
             className="object-contain w-90 xl:w-[360px]"
           />
           </Link>
@@ -149,6 +151,9 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
 
         {/* <div className="hidden lg:flex flex-col gap-2 border min-h-[85px] items-end print:hidden w-[362px] max-w-[362px]"> */}
         <div className="hidden lg:flex flex-col gap-2 items-end print:hidden">
+          <Link href="https://www.titanicbay.com/" target="_blank" rel="noopener noreferrer">
+            <ImageWithFallback src={topbarLogo} alt="Titanic Bay" width={150} height={63} className="h-auto w-[150px] object-contain" />
+          </Link>
           <p className="text-[20px] font-normal">{todayDate}</p>
           <div className="flex items-center gap-4">
             <Link
