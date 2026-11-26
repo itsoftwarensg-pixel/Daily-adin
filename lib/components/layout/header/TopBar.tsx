@@ -97,10 +97,10 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
 
   return (
     <div className="w-full bg-white pb-2 md:pb-0 print:border-b-[#d4d4d4] print:border-b print:border-dashed border-b-red-500 border-b-2 md:border-none">
-      <div className="flex justify-between items-center gap-10 z-50 print:justify-center">
+      <div className="flex justify-between items-center gap-2 md:gap-10 z-50 print:justify-center">
         <Link
           href={"/"}
-          className="relative overflow-hidden w-24 h-12 md:w-52 md:h-28 xl:w-80 xl:h-40"
+          className="relative overflow-hidden shrink-0 w-24 h-12 md:w-52 md:h-28 xl:w-80 xl:h-40"
         >
           <ImageWithFallback
             src={logo}
@@ -128,7 +128,11 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
           {/* <p className="text-[18px] text-center font-normal">{todayDate}</p> */}
         </div>
 
-        <div className="flex items-center gap-4 md:hidden print:hidden">
+        <Link href="https://www.titanicbay.com/" target="_blank" rel="noopener noreferrer" className="min-w-0 md:hidden print:hidden" aria-label="Titanic Bay">
+          <ImageWithFallback src={topbarLogo} alt="Titanic Bay" width={120} height={50} className="h-auto w-[90px] sm:w-[120px] object-contain" />
+        </Link>
+
+        <div className="flex shrink-0 items-center gap-0 sm:gap-4 md:hidden print:hidden">
           <Link
             href="/search"
             aria-label="অনুসন্ধান"
