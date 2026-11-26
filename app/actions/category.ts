@@ -1,6 +1,6 @@
 "use server";
 
-import { apiRequest } from "@/lib/api/client";
+import { isApiNotFoundError, apiRequest } from "@/lib/api/client";
 import { APIEndpoint } from "@/lib/api/api-endpoints";
 
 import { cache } from "react";
@@ -45,8 +45,8 @@ export const getCategoryByIdAction = cache(
 
       return apiResponse.data || null;
     } catch (err) {
-      console.error("Error fetching category by id:", err);
-      return null;
+      if (isApiNotFoundError(err)) return null;
+      throw err;
     }
   }
 );
@@ -69,8 +69,10 @@ export const getCategoryBySlugAction = cache(
 
       return apiResponse.data || null;
     } catch (err) {
-      console.error("Error fetching category by slug:", err);
-      return null;
+      // Only a confirmed 404 is a missing category. A timeout, 403, 429, or
+      // 5xx must reach the error boundary rather than becoming a false 404.
+      if (isApiNotFoundError(err)) return null;
+      throw err;
     }
   }
 );

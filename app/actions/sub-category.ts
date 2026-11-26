@@ -1,7 +1,7 @@
 "use server";
 
 import { APIEndpoint } from "@/lib/api/api-endpoints";
-import { apiRequest } from "@/lib/api/client";
+import { isApiNotFoundError, apiRequest } from "@/lib/api/client";
 import { cache } from "react";
 
 /** ============================================================================
@@ -26,8 +26,8 @@ export const getSubCategoryBySlugAction = cache(
 
       return apiResponse.data || null;
     } catch (err) {
-      console.error("Error fetching subcategory by slug:", err);
-      return null;
+      if (isApiNotFoundError(err)) return null;
+      throw err;
     }
   }
 );

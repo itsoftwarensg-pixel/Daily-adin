@@ -1,8 +1,21 @@
 export class ApiHttpError extends Error {
-  constructor(readonly status: number) {
+  constructor(readonly status: number, readonly retryable = status >= 500 || status === 429) {
     super(`API request failed: ${status}`);
+    this.name = "ApiHttpError";
   }
 }
+
+/** The upstream service replied, but did not return the public API envelope. */
+export class ApiInvalidResponseError extends Error {
+  constructor() {
+    super("API returned an invalid JSON response");
+    this.name = "ApiInvalidResponseError";
+  }
+}
+
+/** True only for a confirmed API 404; do not turn outages into a 404 page. */
+export const isApiNotFoundError = (error: unknown): error is ApiHttpError =>
+  error instanceof ApiHttpError && error.status === 404;
 
 export type API_Params = {
   url: string;
@@ -83,12 +96,37 @@ export const apiRequest = async ({
         : {}),
     });
     if (!response.ok) throw new ApiHttpError(response.status);
-    const dataResponse = await response.json();
+
+    let dataResponse: unknown;
+    try {
+      dataResponse = await response.json();
+    } catch {
+      throw new ApiInvalidResponseError();
+    }
+
+    if (!dataResponse || typeof dataResponse !== "object") {
+      throw new ApiInvalidResponseError();
+    }
+
+    const apiResponse = dataResponse as {
+      success?: boolean;
+      data?: unknown;
+      message?: unknown;
+      status?: unknown;
+    };
+
+    // Laravel public endpoints use this envelope. A failure envelope with a
+    // 2xx HTTP status must still not be rendered as an empty news response.
+    if (apiResponse.success === false) {
+      const status = typeof apiResponse.status === "number" ? apiResponse.status : response.status;
+      throw new ApiHttpError(status, status >= 500 || status === 429);
+    }
+
     return {
-      success: dataResponse.success,
+      success: apiResponse.success,
       status: response.status,
-      data: dataResponse.data,
-      message: dataResponse.message,
+      data: apiResponse.data as any,
+      message: apiResponse.message as any,
     };
   } finally {
     clearTimeout(timeout);

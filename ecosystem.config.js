@@ -7,6 +7,9 @@ module.exports = {
       // process-local. Use one worker until a shared cache handler is configured.
       script: 'node_modules/next/dist/bin/next',
       args: 'start',
+      // `current` is an atomically swapped symlink to a verified release.
+      // Deployments set APP_CURRENT_PATH; local starts keep this file's folder.
+      cwd: process.env.APP_CURRENT_PATH || __dirname,
       instances: 1,
       exec_mode: 'cluster',
       watch: false,
@@ -15,6 +18,8 @@ module.exports = {
       // a repeatedly failing process from consuming all CPU while it recovers.
       exp_backoff_restart_delay: 100,
       restart_delay: 1000,
+      min_uptime: '10s',
+      max_restarts: 10,
       env: {
         NODE_ENV: 'production',
         PORT: 3000,

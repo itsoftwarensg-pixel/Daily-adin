@@ -1,7 +1,7 @@
 "use server";
 
 import { APIEndpoint } from "@/lib/api/api-endpoints";
-import { ApiHttpError, apiRequest } from "@/lib/api/client";
+import { isApiNotFoundError, apiRequest } from "@/lib/api/client";
 import { cache } from "react";
 
 /** ============================================================================
@@ -50,17 +50,12 @@ export const searchContentsAction = async (
     return null;
   }
 
-  try {
-    const apiResponse = await apiRequest({
-      url: APIEndpoint.content.search(heading, page, limit),
-      method: "GET",
-    });
+  const apiResponse = await apiRequest({
+    url: APIEndpoint.content.search(heading, page, limit),
+    method: "GET",
+  });
 
-    return apiResponse.data || null;
-  } catch (err) {
-    console.error("Error searching contents:", err);
-    return null;
-  }
+  return apiResponse.data || null;
 };
 
 /**
@@ -79,7 +74,7 @@ export const getContentByIdAction = cache(async (id: number, include?: string) =
 
     return apiResponse.data || null;
   } catch (err) {
-    if (err instanceof ApiHttpError && err.status === 404) return null;
+    if (isApiNotFoundError(err)) return null;
     throw err;
   }
 });
@@ -123,17 +118,12 @@ export const getContentsBySubCategoryIdAction = async (
   page?: number,
   limit?: number
 ) => {
-  try {
-    const apiResponse = await apiRequest({
-      url: APIEndpoint.content.getBySubCategoryId(id, page, limit),
-      method: "GET",
-    });
+  const apiResponse = await apiRequest({
+    url: APIEndpoint.content.getBySubCategoryId(id, page, limit),
+    method: "GET",
+  });
 
-    return apiResponse.data;
-  } catch (err) {
-    console.error("Error fetching contents by sub-category id:", err);
-    return [];
-  }
+  return apiResponse.data;
 };
 
 /**

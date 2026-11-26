@@ -11,20 +11,18 @@ import { apiRequest } from "@/lib/api/client";
  * Fetch home page data with included relations
  *
  * @param include - Optional comma-separated list of relations to include. e.g. `lead,scroll,trending_tag,special,recent,popular,national,politics`
- * @returns The home page data or an empty array in case of an error
+ * @returns The home page data.
+ * @throws when the API is unavailable or returns an invalid response. This is
+ * intentionally allowed to reach Next.js' error boundary instead of replacing
+ * the home page with an empty news feed.
  */
 export const getHomePageDataAction = async (include?: string) => {
-  try {
-    const apiResponse = await apiRequest({
-      url: APIEndpoint.home.getData(include),
-      method: "GET",
-      revalidate: 30,
-      tags: ["news:home"],
-    });
+  const apiResponse = await apiRequest({
+    url: APIEndpoint.home.getData(include),
+    method: "GET",
+    revalidate: 30,
+    tags: ["news:home"],
+  });
 
-    return apiResponse.data || null;
-  } catch (err) {
-    console.error("Error fetching home page data:", err);
-    return null;
-  }
+  return apiResponse.data || null;
 };
