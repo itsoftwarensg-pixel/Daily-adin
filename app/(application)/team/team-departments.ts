@@ -33,6 +33,7 @@ export const teamDepartments = [
       { name: "মোহাম্মদ আল-মারুফ", role: "উপব্যবস্থাপক, আইটি ও ব্র্যান্ডিং", photo: "/images/team-mohammad-al-maruf.jpg" },
       // { name: "তারেক হোসেন সাগর", role: "জ্যেষ্ঠ আইটি কর্মকর্তা" },
       { name: "তারেক হোসেন সাগর", role: "জ্যেষ্ঠ আইটি কর্মকর্তা", photo: "/images/team-tareq-hossain-sagor.webp" },
+      { name: "সোহানুর রহমান সোহান", role: "সিনিয়র আইটি অফিসার", photo: "/images/team-sohanur-rahman-sohan.png" },
       { name: "জয় কৃষ্ণ রায়", role: "সফটওয়্যার ইঞ্জিনিয়ার", photo: "/images/team-joy-krisno-ray.png" },
       { name: "মো. তসলিম উদ্দিন তুষার", role: "গ্রাফিক্স ডিজাইনার" },
       { name: "মো. আলমগীর হোসেন", role: "গ্রাফিক্স ডিজাইনার" },
