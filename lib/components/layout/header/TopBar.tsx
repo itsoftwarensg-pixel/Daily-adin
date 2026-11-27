@@ -32,6 +32,9 @@ const socialLinks = [
   { href: "https://x.com/dailyadinbd", icon: x, alt: "x" },
 ];
 
+// Utility links previously used text-sm and an 8-unit minimum height.
+const utilityLinkClass = "inline-flex min-h-9 shrink-0 items-center gap-1.5 whitespace-nowrap rounded px-2 text-lg font-semibold leading-snug text-slate-900 hover:bg-red-50 hover:text-red-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-red-700";
+
 // Props
 interface Props {
   dateTimeBn: string;
@@ -97,7 +100,9 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
 
   return (
     <div className="w-full bg-white pb-2 md:pb-0 print:border-b-[#d4d4d4] print:border-b print:border-dashed border-b-red-500 border-b-2 md:border-none">
-      <div className="flex justify-between items-center gap-2 md:gap-10 z-50 print:justify-center">
+      {/* Previous masthead used a fixed 40px gap from medium screens upward. */}
+      {/* The previous masthead kept the date strip inside the right-hand column. */}
+      <div className="z-50 flex items-center justify-between gap-2 md:gap-4 lg:grid lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:gap-x-6 lg:gap-y-2 lg:pt-2 print:!flex print:justify-center">
         <Link
           href={"/"}
           className="relative overflow-hidden shrink-0 w-24 h-12 md:w-52 md:h-28 xl:w-80 xl:h-40"
@@ -110,7 +115,8 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
           />
         </Link>
 
-        <div className="relative overflow-hidden hidden md:block print:hidden">
+        {/* The previous logo wrapper had no explicit minimum width. */}
+        <div className="relative hidden min-w-0 overflow-hidden md:block lg:justify-self-center print:hidden">
             {/* The desktop banner previously opened in the current tab. */}
             <Link
               href="https://northsouthgroup.com/"
@@ -122,14 +128,16 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
             width={500}
             height={150}
             alt="North South Group"
-            className="object-contain w-90 xl:w-[360px]"
+            className="masthead-logo-motion masthead-logo-motion-delayed h-auto w-full max-w-[360px] object-contain"
           />
           </Link>
           {/* <p className="text-[18px] text-center font-normal">{todayDate}</p> */}
         </div>
 
-        <Link href="https://www.titanicbay.com/" target="_blank" rel="noopener noreferrer" className="min-w-0 md:hidden print:hidden" aria-label="Titanic Bay">
-          <ImageWithFallback src={topbarLogo} alt="Titanic Bay" width={120} height={50} className="h-auto w-[90px] sm:w-[120px] object-contain" />
+        {/* Titanic Bay previously appeared as a bare image on mobile. */}
+        <Link href="https://www.titanicbay.com/" target="_blank" rel="noopener noreferrer" className="flex min-w-0 items-center gap-2 border border-slate-200 bg-white px-2 py-1 hover:border-teal-600 md:hidden print:hidden" aria-label="Titanic Bay Hotel & Resort">
+          <ImageWithFallback src={topbarLogo} alt="Titanic Bay" width={120} height={50} className="masthead-titanic-spin h-auto w-[90px] sm:w-[120px] object-contain" />
+          <span className="hidden border-l border-slate-200 pl-2 text-sm font-semibold text-teal-900 sm:block">হোটেল ও রিসোর্ট</span>
         </Link>
 
         <div className="flex shrink-0 items-center gap-0 sm:gap-4 md:hidden print:hidden">
@@ -154,29 +162,48 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
         </div>
 
         {/* <div className="hidden lg:flex flex-col gap-2 border min-h-[85px] items-end print:hidden w-[362px] max-w-[362px]"> */}
-        <div className="hidden lg:flex flex-col gap-2 items-end print:hidden">
-          <Link href="https://www.titanicbay.com/" target="_blank" rel="noopener noreferrer">
-            <ImageWithFallback src={topbarLogo} alt="Titanic Bay" width={150} height={63} className="h-auto w-[150px] object-contain" />
+        {/* The previous desktop utility column could shrink and wrap. */}
+        <div className="hidden lg:contents print:!hidden">
+          {/* Previously the logo stood alone and the date appeared on a separate line. */}
+          {/* The previous sponsor card was content-width with a 120px logo. */}
+          {/* The previous card was up to 365px wide and sized its height to the content. */}
+          {/* The previous sponsor tile was 306px wide with a logo and a short label. */}
+          {/* The previous desktop card gave most of its width to the text. */}
+          <Link href="https://www.titanicbay.com/" target="_blank" rel="noopener noreferrer" className="group grid min-h-[170px] w-[380px] grid-cols-[150px_minmax(0,1fr)] items-center gap-3 border border-slate-200 border-t-2 border-t-teal-800 bg-[#f8faf9] px-3 py-3 hover:border-teal-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-teal-700 motion-safe:transition-shadow hover:shadow-sm xl:w-[460px] xl:grid-cols-[192px_minmax(0,1fr)] xl:gap-4 xl:px-4">
+            <span className="grid min-h-[128px] place-items-center overflow-hidden bg-white">
+              <ImageWithFallback src={topbarLogo} alt="Titanic Bay" width={192} height={82} sizes="(min-width: 1280px) 192px, 150px" className="masthead-titanic-spin h-auto w-full object-contain" />
+            </span>
+            <span className="border-l border-slate-200 pl-3 xl:pl-4">
+              <span className="block text-lg font-bold leading-snug text-slate-900 xl:text-xl">হোটেল ও রিসোর্টে মালিকানার সুযোগ</span>
+              <span className="mt-1.5 block text-sm leading-relaxed text-slate-700">একক ও যৌথ মালিকানা, স্যুট ও ভিলায় থাকার সুবিধা এবং পরিশোধের নিয়ম।</span>
+              <span className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-teal-800">
+                বিস্তারিত দেখুন
+                <span aria-hidden="true" className="inline-block motion-safe:transition-transform motion-safe:group-hover:translate-x-1 motion-safe:group-focus-visible:translate-x-1">→</span>
+              </span>
+            </span>
           </Link>
-          <p className="text-[20px] font-normal">{todayDate}</p>
-          <div className="flex items-center gap-4">
-            <Link
-              href={`/${AJKER_PATRIKA_PAGE.slug}`}
-              className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600"
-            >
-              <RiNewspaperLine
-                size={16}
-                className="group-hover:text-blue-600"
-              />
-              আজকের পত্রিকা
-            </Link>
+          {/* The previous utility row used plain links and a right border after the date. */}
+          {/* The utility strip previously aligned its contents to the right. */}
+          {/* The previous strip wrapped and displayed the date in a gray box. */}
+          {/* The previous utility row used a 24px right inset only on extra-wide screens. */}
+          <div className="col-span-3 flex items-center justify-center gap-2 whitespace-nowrap border-t border-slate-100 py-1.5 xl:gap-4">
+            <div className="flex min-w-0 items-center gap-1">
+              <p className="mr-2 text-lg font-semibold leading-snug text-slate-900">{todayDate}</p>
+              <Link
+                href={`/${AJKER_PATRIKA_PAGE.slug}`}
+                className={utilityLinkClass}
+              >
+                <RiNewspaperLine size={16} aria-hidden="true" className="text-red-700" />
+                আজকের পত্রিকা
+              </Link>
+            </div>
 
             <Link
               href={"https://epaper.dailyadin.com/"}
               target="_blank"
-              className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600"
+              className={utilityLinkClass}
             >
-              <IoMdPaper size={16} className="group-hover:text-blue-600 " />
+              <IoMdPaper size={16} aria-hidden="true" className="text-red-700" />
               ই-পেপার
             </Link>
 
@@ -186,10 +213,11 @@ const TopBar = ({ dateTimeBn, menus }: Props) => {
               onMouseEnter={() => setOpenSocialMediaDropdown(true)}
               onMouseLeave={() => setOpenSocialMediaDropdown(false)}
             >
-              <button className="group flex items-center gap-1 text-md font-medium text-black hover:text-blue-600">
+              <button className={utilityLinkClass}>
                 <IoIosShareAlt
                   size={16}
-                  className="group-hover:text-blue-600"
+                  aria-hidden="true"
+                  className="text-red-700"
                 />
                 সোশ্যাল মিডিয়া
               </button>
